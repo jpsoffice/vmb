@@ -9,6 +9,15 @@ SIKSHA_STATUS_CHOICES = (
     ("D1", "Harinam"),
     ("D2", "Brahmin"),
 )
+
+COMPLEXION_CHOICES = (
+    ("I", "Light, Pale White"),
+    ("II", "White, Fair"),
+    ("III", "Medium, White to light brown"),
+    ("IV", "Olive, moderate brown"),
+    ("V", "Brown, dark brown"),
+    ("VI", "Very dark brown to black"),
+)
 # Create your models here.
 M_STATUS = (
     ("SGL", "Single"),
@@ -22,17 +31,18 @@ M_STATUS = (
 class Person(models.Model):
     """Model representing a person"""
     name = models.CharField(
-        max_length=200, verbose_name=_("Name"))
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+        max_length=200, verbose_name=_("Name"),
+    )
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
 
     rounds_chanting = models.PositiveIntegerField(
-        verbose_text=_('Rounds'), 
+        verbose_name=_('Rounds'), 
         help_text='How many rounds are you chanting?',
         default=0,
     )
     s_status = models.CharField(
         max_length=1, 
-        help_text= 'Enter siksha status (e.g. Aspiring, Shelter etc.)' 
+        help_text= 'Enter siksha status (e.g. Aspiring, Shelter etc.)',
         choices=SIKSHA_STATUS_CHOICES,
         verbose_name=_("Siksha Status"),
         blank=True,
@@ -49,53 +59,123 @@ class Person(models.Model):
     )
 
     #Birth City/Town, State and Country
-    birth_city = models.Charfield(
+    birth_city = models.CharField(
+        max_length=200,
         verbose_name=_('City'),
         help_text='Enter birth village/town/city'
     )
-    birth_state = models.Charfield(verbose_name =_('State'))
-    birth_country = models.Charfield(verbose_name =_('Country'))
+    birth_state = models.CharField(max_length=200, verbose_name=_('State'))
+    birth_country = models.ForeignKey(
+        'Country', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True,
+        related_name="birthCountry", 
+        verbose_name=_("Country"),
+    )
 
     #Current village/town/city, State and Country
-    current_city = models.Charfield(
-        verbose_name=_('City'),
+    current_city = models.CharField(
+        max_length=200,
+        verbose_name=_("City"),
         help_text='Enter current village/town/city'
     )
-    current_state = models.Charfield(verbose_name =_('State'))
-    current_country = models.Charfield(verbose_name =_('Country'))
+    current_state = models.CharField(max_length=200, verbose_name=_('State'))
+    current_country = models.ForeignKey(
+        'Country', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True, 
+        related_name='currentCountry',
+        verbose_name=_('Country'),
+    )
+
+    languages_known = models.ManyToManyField('Language', help_text='Add the language you know')
     
-    languages_known = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
-    height = models.DecimalField(help_text='Height in cms', blank=True)
-    qualification = models.ForeignKey('Qualification', help_text='H.S., Graduate etc.')
-    occupation = models.ForeignKey('Occupation', help_text='Doctor, Engineer, Businessman etc.')
+    height = models.DecimalField(
+        max_digits=5, 
+        decimal_places=2, 
+        help_text='Height in cms', 
+        blank=True,
+    )
+    complexion = models.CharField(
+        max_length=3, 
+        help_text= 'Enter your complexion',
+        choices=COMPLEXION_CHOICES,
+        blank=True,        
+    )
+
+    qualification = models.ForeignKey(
+        'Qualification',
+        on_delete=models.SET_NULL, 
+        null=True, 
+        help_text='H.S., Graduate etc.'
+    )
+    occupation = models.ForeignKey(
+        'Occupation',
+        on_delete=models.SET_NULL, 
+        null=True, 
+        help_text='Doctor, Engineer, Businessman etc.',
+    )
     annual_income = models.IntegerField(help_text='Enter income in a year')
     marital_status = models.CharField(
         max_length=3, choices=M_STATUS, help_text='Single, Divorced etc.'
     )
     
     email_id = models.EmailField( blank=True, null=True, verbose_name=_("Email"))
-    phone = CharField(
+    phone = models.CharField(
         max_length=17, verbose_name=_("Phone number"),
     )
     
     def age(self):
-    if self.dob:
-        return int((datetime.datetime.now() - self.dob).days / 365.25)
+        if self.dob:
+            return int((datetime.datetime.now() - self.dob).days / 365.25)
 
     def __str__(self):
         return self.name
 
 class Guru(models.Model):
     """Model for representing an Initiating Guru"""
-    name = CharField(max_length=300, blank=True, null=True)
+    name = models.CharField(max_length=300, blank=True, null=True)
 
     def __str__(self):
         return self.name
 
+class Country(models.Model):
+    name = models.CharField(max_length=255, unique=True, db_index=True, help_text=_("Name"))
+    code = models.CharField(max_length=3, unique=True, db_index=True, help_text=_("Code"))
+    nationality = models.CharField(
+        max_length=255, unique=True, db_index=True, help_text=_("Nationality")
+    )
+
+    class Meta:
+        db_table = "country"
+
+    def __str__(self):
+        return "{} ({})".format(self.name, self.code)
+
+
+class Nationality(Country):
+    class Meta:
+        proxy = True
+
+    def __str__(self):
+        return self.nationality
+
 class Language(models.Model):
     """Model representing a Language(e.g. Hindi, English, Gujrati etc.)"""
-    name = CharField(max_length=255, unique=True, db_index=True verbose_name=_('Language'))
-    code = CharField(max_length=3, unique=True, db_index=True, verbose_name=_('Language Code'))
+    name = models.CharField(
+        max_length=255, 
+        unique=True, 
+        db_index=True, 
+        verbose_name=_('Language')
+    )
+    code = models.CharField(
+        max_length=3, 
+        unique=True, 
+        db_index=True, 
+        verbose_name=_('Language Code')
+    )
 
     class Meta:
         db_table = "language"
@@ -105,16 +185,17 @@ class Language(models.Model):
 
 class Qualification(models.Model):
     """Model representing Qualification(e.g. Bachelor, Masters, Doctorate etc.)"""
-    degree = CharField(max_length=255, unique=True, verbose_name=_("Qualification"))
+    degree = models.CharField(max_length=255, unique=True, verbose_name=_("Qualification"))
 
     def __str__(self):
         return f'{self.degree}'
 
 class Occupation(models.Model):
     """Model representing Occupation(e.g. Doctor, Engineer, Entrepreneur etc.)"""
-    occupation = CharField(max_length=255, uniques=True)
+    occupation = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
         return f'{self.occupation}'
+
 
 

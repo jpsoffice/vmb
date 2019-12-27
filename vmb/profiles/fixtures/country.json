@@ -1,0 +1,1109 @@
+[
+    {
+      "model": "profiles.country",
+      "pk": 1,
+      "fields": {
+        "name": "Andorra",
+        "code": "AD",
+        "nationality": "Andorian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 2,
+      "fields": {
+        "name": "United Arab Emirates",
+        "code": "AE",
+        "nationality": "Emirian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 3,
+      "fields": {
+        "name": "Afghanistan",
+        "code": "AF",
+        "nationality": "Afghani"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 4,
+      "fields": {
+        "name": "Anguilla",
+        "code": "AI",
+        "nationality": "Anguillan"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 5,
+      "fields": {
+        "name": "Armenia",
+        "code": "AM",
+        "nationality": "Armenian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 6,
+      "fields": {
+        "name": "Angola",
+        "code": "AO",
+        "nationality": "Angolian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 7,
+      "fields": {
+        "name": "Antarctica",
+        "code": "AQ",
+        "nationality": "Antarctic"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 8,
+      "fields": {
+        "name": "Argentina",
+        "code": "AR",
+        "nationality": "Argentine"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 9,
+      "fields": {
+        "name": "Austria",
+        "code": "AT",
+        "nationality": "Austrian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 10,
+      "fields": {
+        "name": "Australia",
+        "code": "AU",
+        "nationality": "Australian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 11,
+      "fields": {
+        "name": "Aruba",
+        "code": "AW",
+        "nationality": "Arubian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 12,
+      "fields": {
+        "name": "Bangladesh",
+        "code": "BD",
+        "nationality": "Bangladeshi"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 13,
+      "fields": {
+        "name": "Barbados",
+        "code": "BB",
+        "nationality": "Barbadian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 14,
+      "fields": {
+        "name": "Belgium",
+        "code": "BE",
+        "nationality": "Belgian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 15,
+      "fields": {
+        "name": "Bahrain",
+        "code": "BH",
+        "nationality": "Bahrainian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 16,
+      "fields": {
+        "name": "Bermuda",
+        "code": "BM",
+        "nationality": "Bermuda"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 17,
+      "fields": {
+        "name": "Bolivia, Plurinational State of",
+        "code": "BO",
+        "nationality": "Bolivian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 18,
+      "fields": {
+        "name": "Brazil",
+        "code": "BR",
+        "nationality": "Brazilian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 19,
+      "fields": {
+        "name": "Bahamas",
+        "code": "BS",
+        "nationality": "Bahameese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 20,
+      "fields": {
+        "name": "Bhutan",
+        "code": "BT",
+        "nationality": "Bhutanese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 21,
+      "fields": {
+        "name": "Bulgaria",
+        "code": "BG",
+        "nationality": "Bulgarian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 22,
+      "fields": {
+        "name": "Belarus",
+        "code": "BY",
+        "nationality": "Belarusian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 23,
+      "fields": {
+        "name": "Belize",
+        "code": "BZ",
+        "nationality": "Belizean"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 24,
+      "fields": {
+        "name": "Canada",
+        "code": "CA",
+        "nationality": "Canadian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 25,
+      "fields": {
+        "name": "Congo",
+        "code": "CG",
+        "nationality": "Congolese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 26,
+      "fields": {
+        "name": "China",
+        "code": "CN",
+        "nationality": "Chinese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 27,
+      "fields": {
+        "name": "Switzerland",
+        "code": "CH",
+        "nationality": "Swiss"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 28,
+      "fields": {
+        "name": "Chile",
+        "code": "CL",
+        "nationality": "Chilean"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 29,
+      "fields": {
+        "name": "Cambodia",
+        "code": "KH",
+        "nationality": "Cambodian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 30,
+      "fields": {
+        "name": "Cameroon",
+        "code": "CM",
+        "nationality": "Cameroonian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 31,
+      "fields": {
+        "name": "Colombia",
+        "code": "CO",
+        "nationality": "Colombian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 32,
+      "fields": {
+        "name": "Czech Republic",
+        "code": "CZ",
+        "nationality": "Czech"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 33,
+      "fields": {
+        "name": "Costa Rica",
+        "code": "CR",
+        "nationality": "Costa Rican"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 34,
+      "fields": {
+        "name": "Cuba",
+        "code": "CU",
+        "nationality": "Cuban"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 35,
+      "fields": {
+        "name": "Cyprus",
+        "code": "CY",
+        "nationality": "Cypriot"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 36,
+      "fields": {
+        "name": "Germany",
+        "code": "DE",
+        "nationality": "German"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 37,
+      "fields": {
+        "name": "Denmark",
+        "code": "DK",
+        "nationality": "Danish"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 38,
+      "fields": {
+        "name": "Dominica",
+        "code": "DM",
+        "nationality": "Dominican"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 39,
+      "fields": {
+        "name": "Ecuador",
+        "code": "EC",
+        "nationality": "Ecuadorean"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 40,
+      "fields": {
+        "name": "Estonia",
+        "code": "EE",
+        "nationality": "Estonian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 41,
+      "fields": {
+        "name": "Egypt",
+        "code": "EG",
+        "nationality": "Egyptian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 42,
+      "fields": {
+        "name": "Ethiopia",
+        "code": "ET",
+        "nationality": "Ethiopian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 43,
+      "fields": {
+        "name": "Finland",
+        "code": "FI",
+        "nationality": "Finnish"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 44,
+      "fields": {
+        "name": "Fiji",
+        "code": "FJ",
+        "nationality": "Fijian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 45,
+      "fields": {
+        "name": "France",
+        "code": "FR",
+        "nationality": "French"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 46,
+      "fields": {
+        "name": "United Kingdom",
+        "code": "GB",
+        "nationality": "British"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 47,
+      "fields": {
+        "name": "Georgia",
+        "code": "GE",
+        "nationality": "Georgian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 48,
+      "fields": {
+        "name": "Ghana",
+        "code": "GH",
+        "nationality": "Ghanaian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 49,
+      "fields": {
+        "name": "Guinea",
+        "code": "GN",
+        "nationality": "Guinean"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 50,
+      "fields": {
+        "name": "Greece",
+        "code": "GR",
+        "nationality": "Greek"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 51,
+      "fields": {
+        "name": "Guyana",
+        "code": "GY",
+        "nationality": "Guyanese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 52,
+      "fields": {
+        "name": "Hong Kong",
+        "code": "HK",
+        "nationality": "Chinese (HK)"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 53,
+      "fields": {
+        "name": "Croatia",
+        "code": "HR",
+        "nationality": "Croatian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 54,
+      "fields": {
+        "name": "Hungary",
+        "code": "HU",
+        "nationality": "Hungarian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 55,
+      "fields": {
+        "name": "Indonesia",
+        "code": "ID",
+        "nationality": "Indonesian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 56,
+      "fields": {
+        "name": "Ireland",
+        "code": "IE",
+        "nationality": "Irish"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 57,
+      "fields": {
+        "name": "India",
+        "code": "IN",
+        "nationality": "Indian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 58,
+      "fields": {
+        "name": "Iraq",
+        "code": "IQ",
+        "nationality": "Iraqi"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 59,
+      "fields": {
+        "name": "Iran, Islamic Republic of",
+        "code": "IR",
+        "nationality": "Iranian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 60,
+      "fields": {
+        "name": "Israel",
+        "code": "IL",
+        "nationality": "Israeli"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 61,
+      "fields": {
+        "name": "Iceland",
+        "code": "IS",
+        "nationality": "Icelander"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 62,
+      "fields": {
+        "name": "Italy",
+        "code": "IT",
+        "nationality": "Italian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 63,
+      "fields": {
+        "name": "Jamaica",
+        "code": "JM",
+        "nationality": "Jamaican"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 64,
+      "fields": {
+        "name": "Jordan",
+        "code": "JO",
+        "nationality": "Jordanian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 65,
+      "fields": {
+        "name": "Japan",
+        "code": "JP",
+        "nationality": "Japanese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 66,
+      "fields": {
+        "name": "Kenya",
+        "code": "KE",
+        "nationality": "Kenyan"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 67,
+      "fields": {
+        "name": "Korea",
+        "code": "KO",
+        "nationality": "Korean"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 68,
+      "fields": {
+        "name": "Kuwait",
+        "code": "KW",
+        "nationality": "Kuwaiti"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 70,
+      "fields": {
+        "name": "Kazakhstan",
+        "code": "KZ",
+        "nationality": "Kazakhstani"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 71,
+      "fields": {
+        "name": "Lebanon",
+        "code": "LB",
+        "nationality": "Lebanese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 72,
+      "fields": {
+        "name": "Sri Lanka",
+        "code": "LK",
+        "nationality": "Sri Lankan"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 73,
+      "fields": {
+        "name": "Lithuania",
+        "code": "LT",
+        "nationality": "Lithuanian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 74,
+      "fields": {
+        "name": "Luxembourg",
+        "code": "LU",
+        "nationality": "Luxembourger"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 75,
+      "fields": {
+        "name": "Morocco",
+        "code": "MA",
+        "nationality": "Moroccan"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 76,
+      "fields": {
+        "name": "Monaco",
+        "code": "MC",
+        "nationality": "Monacan"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 77,
+      "fields": {
+        "name": "Mexico",
+        "code": "MX",
+        "nationality": "Mexican"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 78,
+      "fields": {
+        "name": "Myanmar",
+        "code": "MM",
+        "nationality": "Mayanmarese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 79,
+      "fields": {
+        "name": "Mongolia",
+        "code": "MN",
+        "nationality": "Mongolian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 80,
+      "fields": {
+        "name": "Macao",
+        "code": "MO",
+        "nationality": "Macao"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 81,
+      "fields": {
+        "name": "Mauritius",
+        "code": "MU",
+        "nationality": "Mauritian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 82,
+      "fields": {
+        "name": "Maldives",
+        "code": "MV",
+        "nationality": "Maldivan"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 83,
+      "fields": {
+        "name": "Malaysia",
+        "code": "MY",
+        "nationality": "Malaysian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 84,
+      "fields": {
+        "name": "Namibia",
+        "code": "NA",
+        "nationality": "Namibian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 85,
+      "fields": {
+        "name": "Nigeria",
+        "code": "NG",
+        "nationality": "Nigerian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 86,
+      "fields": {
+        "name": "Netherlands",
+        "code": "NL",
+        "nationality": "Dutch"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 87,
+      "fields": {
+        "name": "Norway",
+        "code": "NO",
+        "nationality": "Norwegian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 88,
+      "fields": {
+        "name": "Nepal",
+        "code": "NP",
+        "nationality": "Nepalese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 89,
+      "fields": {
+        "name": "New Zealand",
+        "code": "NZ",
+        "nationality": "New Zealander"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 90,
+      "fields": {
+        "name": "Oman",
+        "code": "OM",
+        "nationality": "Omani"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 91,
+      "fields": {
+        "name": "Panama",
+        "code": "PA",
+        "nationality": "Panamanian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 92,
+      "fields": {
+        "name": "Peru",
+        "code": "PE",
+        "nationality": "Peruvian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 93,
+      "fields": {
+        "name": "Philippines",
+        "code": "PH",
+        "nationality": "Filipino"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 94,
+      "fields": {
+        "name": "Pakistan",
+        "code": "PK",
+        "nationality": "Pakistani"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 95,
+      "fields": {
+        "name": "Poland",
+        "code": "PL",
+        "nationality": "Polish"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 96,
+      "fields": {
+        "name": "Portugal",
+        "code": "PT",
+        "nationality": "Portugees"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 97,
+      "fields": {
+        "name": "Paraguay",
+        "code": "PY",
+        "nationality": "Paraguayan"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 98,
+      "fields": {
+        "name": "Qatar",
+        "code": "QA",
+        "nationality": "Qatari"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 99,
+      "fields": {
+        "name": "Romania",
+        "code": "RO",
+        "nationality": "Romanian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 100,
+      "fields": {
+        "name": "Russian Federation",
+        "code": "RU",
+        "nationality": "Russian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 101,
+      "fields": {
+        "name": "Saudi Arabia",
+        "code": "SA",
+        "nationality": "Saudi Arabian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 102,
+      "fields": {
+        "name": "Seychelles",
+        "code": "SC",
+        "nationality": "Seychellois"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 103,
+      "fields": {
+        "name": "Sweden",
+        "code": "SE",
+        "nationality": "Swedish"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 104,
+      "fields": {
+        "name": "Singapore",
+        "code": "SG",
+        "nationality": "Singaporean"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 105,
+      "fields": {
+        "name": "Slovakia",
+        "code": "SK",
+        "nationality": "Slovakian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 106,
+      "fields": {
+        "name": "Senegal",
+        "code": "SN",
+        "nationality": "Senegalese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 107,
+      "fields": {
+        "name": "Somalia",
+        "code": "SO",
+        "nationality": "Somali"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 108,
+      "fields": {
+        "name": "Spain",
+        "code": "ES",
+        "nationality": "Spanish"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 109,
+      "fields": {
+        "name": "Thailand",
+        "code": "TH",
+        "nationality": "Thai"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 110,
+      "fields": {
+        "name": "Tunisia",
+        "code": "TN",
+        "nationality": "Tunisian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 111,
+      "fields": {
+        "name": "Turkey",
+        "code": "TR",
+        "nationality": "Turkish"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 112,
+      "fields": {
+        "name": "Taiwan, Province of China",
+        "code": "TW",
+        "nationality": "Taiwanese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 113,
+      "fields": {
+        "name": "Tanzania, United Republic of",
+        "code": "TZ",
+        "nationality": "Tanzanian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 114,
+      "fields": {
+        "name": "Ukraine",
+        "code": "UA",
+        "nationality": "Ukrainian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 115,
+      "fields": {
+        "name": "Uganda",
+        "code": "UG",
+        "nationality": "Ugandan"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 116,
+      "fields": {
+        "name": "United States",
+        "code": "US",
+        "nationality": "American"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 117,
+      "fields": {
+        "name": "Uruguay",
+        "code": "UY",
+        "nationality": "Uruguayan"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 118,
+      "fields": {
+        "name": "Uzbekistan",
+        "code": "UZ",
+        "nationality": "Uzbekistani"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 119,
+      "fields": {
+        "name": "Venezuela, Bolivarian Republic of",
+        "code": "VE",
+        "nationality": "Venezuelan"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 120,
+      "fields": {
+        "name": "Viet Nam",
+        "code": "VN",
+        "nationality": "Vietnamese"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 121,
+      "fields": {
+        "name": "Yemen",
+        "code": "YE",
+        "nationality": "Yemeni"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 122,
+      "fields": {
+        "name": "South Africa",
+        "code": "ZA",
+        "nationality": "South African"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 123,
+      "fields": {
+        "name": "Zambia",
+        "code": "ZM",
+        "nationality": "Zambian"
+      }
+    },
+    {
+      "model": "profiles.country",
+      "pk": 124,
+      "fields": {
+        "name": "Zimbabwe",
+        "code": "ZW",
+        "nationality": "Zimbabwean"
+      }
+    }
+  ]

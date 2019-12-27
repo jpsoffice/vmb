@@ -1,0 +1,576 @@
+[
+    {
+      "model": "profiles.guru",
+      "pk": 1,
+      "fields": {
+      "name": "Atmanivedana Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 2,
+      "fields": {
+      "name": "Bhaktivaibhava Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 3,
+      "fields": {
+      "name": "Bhakti Bhrnga Govinda Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 4,
+      "fields": {
+      "name": "Bhakti Caitanya Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 5,
+      "fields": {
+      "name": "Bhakti Charu Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 6,
+      "fields": {
+      "name": "Bhakti Dhira Damodara Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 7,
+      "fields": {
+      "name": "Bhakti Gaurava Narayan Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 8,
+      "fields": {
+      "name": "Bhakti Gauravani Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 9,
+      "fields": {
+      "name": "Bhakti Prabhupada-vrata Damodara Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 10,
+      "fields": {
+      "name": "Bhakti Raghava Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 11,
+      "fields": {
+      "name": "Bhakti Sundar Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 12,
+      "fields": {
+      "name": "Bhakti Vijnana Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 13,
+      "fields": {
+      "name": "Bhakti Vikasa Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 14,
+      "fields": {
+      "name": "Bhaktivyasa Tirtha Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 15,
+      "fields": {
+      "name": "Bhakti VV Narasimha Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 16,
+      "fields": {
+      "name": "Bhakti-bhusana Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 17,
+      "fields": {
+      "name": "Bhaktimarga Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 18,
+      "fields": {
+      "name": "Bhurijana Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 19,
+      "fields": {
+      "name": "Bir Krsna Das Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 20,
+      "fields": {
+      "name": "Caitanya Candra Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 21,
+      "fields": {
+      "name": "Caitanya Candra Caran Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 22,
+      "fields": {
+      "name": "Candra Mukha Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 23,
+      "fields": {
+      "name": "Candramauli Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 24,
+      "fields": {
+      "name": "Caru Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 25,
+      "fields": {
+      "name": "Danavir Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 26,
+      "fields": {
+      "name": "Devamrita Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 27,
+      "fields": {
+      "name": "Dhanvantari Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 28,
+      "fields": {
+      "name": "Dhirasanta Das Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 29,
+      "fields": {
+      "name": "Drutakarma Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 30,
+      "fields": {
+      "name": "Giridhari Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 31,
+      "fields": {
+      "name": "Giriraja Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 32,
+      "fields": {
+      "name": "Gopaswami Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 33,
+      "fields": {
+      "name": "Gopal Krsna Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 34,
+      "fields": {
+      "name": "Guru Prasad Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 35,
+      "fields": {
+      "name": "Hanumatpresaka Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 36,
+      "fields": {
+      "name": "Harivilas Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 37,
+      "fields": {
+      "name": "Hrdayananda dasa Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 38,
+      "fields": {
+      "name": "Indradyumna Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 39,
+      "fields": {
+      "name": "Janananda dasa Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 40,
+      "fields": {
+      "name": "Jayapataka Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 41,
+      "fields": {
+      "name": "Jivananda Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 42,
+      "fields": {
+      "name": "Kadamba Kanana Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 43,
+      "fields": {
+      "name": "Kalakantha Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 44,
+      "fields": {
+      "name": "Kavicandra Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 45,
+      "fields": {
+      "name": "Kesava Bharati dasa Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 46,
+      "fields": {
+      "name": "Kratu Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 47,
+      "fields": {
+      "name": "Kripamoya Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 48,
+      "fields": {
+      "name": "Krsna Ksetra Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 49,
+      "fields": {
+      "name": "Lokanath Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 50,
+      "fields": {
+      "name": "Madhu Sevita Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 51,
+      "fields": {
+      "name": "Mahadyuti Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 52,
+      "fields": {
+      "name": "Mahaman Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 53,
+      "fields": {
+      "name": "Mahatma Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 54,
+      "fields": {
+      "name": "Mahavisnu Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 55,
+      "fields": {
+      "name": "Manonatha Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 56,
+      "fields": {
+      "name": "Matsya Avatara Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 57,
+      "fields": {
+      "name": "Medhavi Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 58,
+      "fields": {
+      "name": "Nanda Kumar Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 59,
+      "fields": {
+      "name": "Navayogendra Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 60,
+      "fields": {
+      "name": "Niranjana Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 61,
+      "fields": {
+      "name": "Partha Sarathi Das Goswami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 62,
+      "fields": {
+      "name": "Prahladananda Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 63,
+      "fields": {
+      "name": "Purushatraya Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 64,
+      "fields": {
+      "name": "Radha Govinda Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 65,
+      "fields": {
+      "name": "Radhanath Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 66,
+      "fields": {
+      "name": "Rama Govinda Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 67,
+      "fields": {
+      "name": "Ravindra Svarupa Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 68,
+      "fields": {
+      "name": "Romapada Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 69,
+      "fields": {
+      "name": "Rtadhvaja Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 70,
+      "fields": {
+      "name": "Sacinandana Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 71,
+      "fields": {
+      "name": "Samik Rsi Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 72,
+      "fields": {
+      "name": "Sankarsana Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 73,
+      "fields": {
+      "name": "Satyadeva Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 74,
+      "fields": {
+      "name": "Sivarama Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 75,
+      "fields": {
+      "name": "Smita Krsna Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 76,
+      "fields": {
+      "name": "Subhaga Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 77,
+      "fields": {
+      "name": "Suresvara Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 78,
+      "fields": {
+      "name": "Trivikrama Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 79,
+      "fields": {
+      "name": "Vaisesika Das"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 80,
+      "fields": {
+      "name": "Varsana Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 81,
+      "fields": {
+      "name": "Vedavyasapriya Swami"
+      }
+    },
+    {
+      "model": "profiles.guru",
+      "pk": 82,
+      "fields": {
+      "name": "Virabahu Das"
+      }
+    }
+]       

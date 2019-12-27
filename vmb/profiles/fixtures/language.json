@@ -1,0 +1,1474 @@
+[
+    {
+      "model": "profiles.language",
+      "pk": 1,
+      "fields": {
+        "name": "Afar",
+        "code": "aa"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 2,
+      "fields": {
+        "name": "Abkhazian",
+        "code": "ab"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 3,
+      "fields": {
+        "name": "Avestan",
+        "code": "ae"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 4,
+      "fields": {
+        "name": "Afrikaans",
+        "code": "af"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 5,
+      "fields": {
+        "name": "Akan",
+        "code": "ak"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 6,
+      "fields": {
+        "name": "Amharic",
+        "code": "am"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 7,
+      "fields": {
+        "name": "Aragonese",
+        "code": "an"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 8,
+      "fields": {
+        "name": "Arabic",
+        "code": "ar"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 9,
+      "fields": {
+        "name": "Assamese",
+        "code": "as"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 10,
+      "fields": {
+        "name": "Avaric",
+        "code": "av"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 11,
+      "fields": {
+        "name": "Aymara",
+        "code": "ay"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 12,
+      "fields": {
+        "name": "Azerbaijani",
+        "code": "az"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 13,
+      "fields": {
+        "name": "Bashkir",
+        "code": "ba"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 14,
+      "fields": {
+        "name": "Belarusian",
+        "code": "be"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 15,
+      "fields": {
+        "name": "Bulgarian",
+        "code": "bg"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 16,
+      "fields": {
+        "name": "Bihari languages",
+        "code": "bh"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 17,
+      "fields": {
+        "name": "Bislama",
+        "code": "bi"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 18,
+      "fields": {
+        "name": "Bambara",
+        "code": "bm"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 19,
+      "fields": {
+        "name": "Bengali",
+        "code": "bn"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 20,
+      "fields": {
+        "name": "Tibetan",
+        "code": "bo"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 21,
+      "fields": {
+        "name": "Breton",
+        "code": "br"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 22,
+      "fields": {
+        "name": "Bosnian",
+        "code": "bs"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 23,
+      "fields": {
+        "name": "Catalan; Valencian",
+        "code": "ca"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 24,
+      "fields": {
+        "name": "Chechen",
+        "code": "ce"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 25,
+      "fields": {
+        "name": "Chamorro",
+        "code": "ch"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 26,
+      "fields": {
+        "name": "Corsican",
+        "code": "co"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 27,
+      "fields": {
+        "name": "Cree",
+        "code": "cr"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 28,
+      "fields": {
+        "name": "Czech",
+        "code": "cs"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 29,
+      "fields": {
+        "name": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic",
+        "code": "cu"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 30,
+      "fields": {
+        "name": "Chuvash",
+        "code": "cv"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 31,
+      "fields": {
+        "name": "Welsh",
+        "code": "cy"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 32,
+      "fields": {
+        "name": "Danish",
+        "code": "da"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 33,
+      "fields": {
+        "name": "German",
+        "code": "de"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 34,
+      "fields": {
+        "name": "Divehi; Dhivehi; Maldivian",
+        "code": "dv"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 35,
+      "fields": {
+        "name": "Dzongkha",
+        "code": "dz"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 36,
+      "fields": {
+        "name": "Ewe",
+        "code": "ee"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 37,
+      "fields": {
+        "name": "Greek, Modern (1453-)",
+        "code": "el"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 38,
+      "fields": {
+        "name": "English",
+        "code": "en"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 39,
+      "fields": {
+        "name": "Esperanto",
+        "code": "eo"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 40,
+      "fields": {
+        "name": "Spanish; Castilian",
+        "code": "es"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 41,
+      "fields": {
+        "name": "Estonian",
+        "code": "et"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 42,
+      "fields": {
+        "name": "Basque",
+        "code": "eu"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 43,
+      "fields": {
+        "name": "Persian",
+        "code": "fa"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 44,
+      "fields": {
+        "name": "Fulah",
+        "code": "ff"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 45,
+      "fields": {
+        "name": "Finnish",
+        "code": "fi"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 46,
+      "fields": {
+        "name": "Fijian",
+        "code": "fj"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 47,
+      "fields": {
+        "name": "Faroese",
+        "code": "fo"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 48,
+      "fields": {
+        "name": "French",
+        "code": "fr"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 49,
+      "fields": {
+        "name": "Western Frisian",
+        "code": "fy"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 50,
+      "fields": {
+        "name": "Irish",
+        "code": "ga"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 51,
+      "fields": {
+        "name": "Gaelic; Scottish Gaelic",
+        "code": "gd"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 52,
+      "fields": {
+        "name": "Galician",
+        "code": "gl"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 53,
+      "fields": {
+        "name": "Guarani",
+        "code": "gn"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 54,
+      "fields": {
+        "name": "Gujarati",
+        "code": "gu"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 55,
+      "fields": {
+        "name": "Manx",
+        "code": "gv"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 56,
+      "fields": {
+        "name": "Hausa",
+        "code": "ha"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 57,
+      "fields": {
+        "name": "Hebrew",
+        "code": "he"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 58,
+      "fields": {
+        "name": "Hindi",
+        "code": "hi"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 59,
+      "fields": {
+        "name": "Hiri Motu",
+        "code": "ho"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 60,
+      "fields": {
+        "name": "Croatian",
+        "code": "hr"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 61,
+      "fields": {
+        "name": "Haitian; Haitian Creole",
+        "code": "ht"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 62,
+      "fields": {
+        "name": "Hungarian",
+        "code": "hu"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 63,
+      "fields": {
+        "name": "Armenian",
+        "code": "hy"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 64,
+      "fields": {
+        "name": "Herero",
+        "code": "hz"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 65,
+      "fields": {
+        "name": "Interlingua (International Auxiliary Language Association)",
+        "code": "ia"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 66,
+      "fields": {
+        "name": "Indonesian",
+        "code": "id"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 67,
+      "fields": {
+        "name": "Interlingue; Occidental",
+        "code": "ie"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 68,
+      "fields": {
+        "name": "Igbo",
+        "code": "ig"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 69,
+      "fields": {
+        "name": "Sichuan Yi; Nuosu",
+        "code": "ii"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 70,
+      "fields": {
+        "name": "Inupiaq",
+        "code": "ik"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 71,
+      "fields": {
+        "name": "Ido",
+        "code": "io"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 72,
+      "fields": {
+        "name": "Icelandic",
+        "code": "is"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 73,
+      "fields": {
+        "name": "Italian",
+        "code": "it"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 74,
+      "fields": {
+        "name": "Inuktitut",
+        "code": "iu"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 75,
+      "fields": {
+        "name": "Japanese",
+        "code": "ja"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 76,
+      "fields": {
+        "name": "Javanese",
+        "code": "jv"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 77,
+      "fields": {
+        "name": "Georgian",
+        "code": "ka"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 78,
+      "fields": {
+        "name": "Kongo",
+        "code": "kg"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 79,
+      "fields": {
+        "name": "Kikuyu; Gikuyu",
+        "code": "ki"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 80,
+      "fields": {
+        "name": "Kuanyama; Kwanyama",
+        "code": "kj"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 81,
+      "fields": {
+        "name": "Kazakh",
+        "code": "kk"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 82,
+      "fields": {
+        "name": "Kalaallisut; Greenlandic",
+        "code": "kl"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 83,
+      "fields": {
+        "name": "Central Khmer",
+        "code": "km"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 84,
+      "fields": {
+        "name": "Kannada",
+        "code": "kn"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 85,
+      "fields": {
+        "name": "Korean",
+        "code": "ko"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 86,
+      "fields": {
+        "name": "Kanuri",
+        "code": "kr"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 87,
+      "fields": {
+        "name": "Kashmiri",
+        "code": "ks"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 88,
+      "fields": {
+        "name": "Kurdish",
+        "code": "ku"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 89,
+      "fields": {
+        "name": "Komi",
+        "code": "kv"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 90,
+      "fields": {
+        "name": "Cornish",
+        "code": "kw"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 91,
+      "fields": {
+        "name": "Kirghiz; Kyrgyz",
+        "code": "ky"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 92,
+      "fields": {
+        "name": "Latin",
+        "code": "la"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 93,
+      "fields": {
+        "name": "Luxembourgish; Letzeburgesch",
+        "code": "lb"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 94,
+      "fields": {
+        "name": "Ganda",
+        "code": "lg"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 95,
+      "fields": {
+        "name": "Limburgan; Limburger; Limburgish",
+        "code": "li"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 96,
+      "fields": {
+        "name": "Lingala",
+        "code": "ln"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 97,
+      "fields": {
+        "name": "Lao",
+        "code": "lo"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 98,
+      "fields": {
+        "name": "Lithuanian",
+        "code": "lt"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 99,
+      "fields": {
+        "name": "Luba-Katanga",
+        "code": "lu"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 100,
+      "fields": {
+        "name": "Latvian",
+        "code": "lv"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 101,
+      "fields": {
+        "name": "Malagasy",
+        "code": "mg"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 102,
+      "fields": {
+        "name": "Marshallese",
+        "code": "mh"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 103,
+      "fields": {
+        "name": "Maori",
+        "code": "mi"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 104,
+      "fields": {
+        "name": "Macedonian",
+        "code": "mk"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 105,
+      "fields": {
+        "name": "Malayalam",
+        "code": "ml"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 106,
+      "fields": {
+        "name": "Mongolian",
+        "code": "mn"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 107,
+      "fields": {
+        "name": "Marathi",
+        "code": "mr"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 108,
+      "fields": {
+        "name": "Malay",
+        "code": "ms"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 109,
+      "fields": {
+        "name": "Maltese",
+        "code": "mt"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 110,
+      "fields": {
+        "name": "Burmese",
+        "code": "my"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 111,
+      "fields": {
+        "name": "Nauru",
+        "code": "na"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 112,
+      "fields": {
+        "name": "Bokm\u00e5l, Norwegian; Norwegian Bokm\u00e5l",
+        "code": "nb"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 113,
+      "fields": {
+        "name": "Ndebele, North; North Ndebele",
+        "code": "nd"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 114,
+      "fields": {
+        "name": "Nepali",
+        "code": "ne"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 115,
+      "fields": {
+        "name": "Ndonga",
+        "code": "ng"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 116,
+      "fields": {
+        "name": "Dutch; Flemish",
+        "code": "nl"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 117,
+      "fields": {
+        "name": "Norwegian Nynorsk; Nynorsk, Norwegian",
+        "code": "nn"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 118,
+      "fields": {
+        "name": "Norwegian",
+        "code": "no"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 119,
+      "fields": {
+        "name": "Ndebele, South; South Ndebele",
+        "code": "nr"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 120,
+      "fields": {
+        "name": "Navajo; Navaho",
+        "code": "nv"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 121,
+      "fields": {
+        "name": "Chichewa; Chewa; Nyanja",
+        "code": "ny"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 122,
+      "fields": {
+        "name": "Occitan (post 1500); Proven\u00e7al",
+        "code": "oc"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 123,
+      "fields": {
+        "name": "Ojibwa",
+        "code": "oj"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 124,
+      "fields": {
+        "name": "Oromo",
+        "code": "om"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 125,
+      "fields": {
+        "name": "Oriya",
+        "code": "or"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 126,
+      "fields": {
+        "name": "Ossetian; Ossetic",
+        "code": "os"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 127,
+      "fields": {
+        "name": "Panjabi; Punjabi",
+        "code": "pa"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 128,
+      "fields": {
+        "name": "Pali",
+        "code": "pi"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 129,
+      "fields": {
+        "name": "Polish",
+        "code": "pl"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 130,
+      "fields": {
+        "name": "Pushto; Pashto",
+        "code": "ps"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 131,
+      "fields": {
+        "name": "Portuguese",
+        "code": "pt"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 132,
+      "fields": {
+        "name": "Quechua",
+        "code": "qu"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 133,
+      "fields": {
+        "name": "Romansh",
+        "code": "rm"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 134,
+      "fields": {
+        "name": "Rundi",
+        "code": "rn"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 135,
+      "fields": {
+        "name": "Romanian; Moldavian; Moldovan",
+        "code": "ro"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 136,
+      "fields": {
+        "name": "Russian",
+        "code": "ru"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 137,
+      "fields": {
+        "name": "Kinyarwanda",
+        "code": "rw"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 138,
+      "fields": {
+        "name": "Sanskrit",
+        "code": "sa"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 139,
+      "fields": {
+        "name": "Sardinian",
+        "code": "sc"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 140,
+      "fields": {
+        "name": "Sindhi",
+        "code": "sd"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 141,
+      "fields": {
+        "name": "Northern Sami",
+        "code": "se"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 142,
+      "fields": {
+        "name": "Sango",
+        "code": "sg"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 143,
+      "fields": {
+        "name": "Sinhala; Sinhalese",
+        "code": "si"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 144,
+      "fields": {
+        "name": "Slovak",
+        "code": "sk"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 145,
+      "fields": {
+        "name": "Slovenian",
+        "code": "sl"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 146,
+      "fields": {
+        "name": "Samoan",
+        "code": "sm"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 147,
+      "fields": {
+        "name": "Shona",
+        "code": "sn"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 148,
+      "fields": {
+        "name": "Somali",
+        "code": "so"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 149,
+      "fields": {
+        "name": "Albanian",
+        "code": "sq"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 150,
+      "fields": {
+        "name": "Serbian",
+        "code": "sr"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 151,
+      "fields": {
+        "name": "Swati",
+        "code": "ss"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 152,
+      "fields": {
+        "name": "Sotho, Southern",
+        "code": "st"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 153,
+      "fields": {
+        "name": "Sundanese",
+        "code": "su"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 154,
+      "fields": {
+        "name": "Swedish",
+        "code": "sv"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 155,
+      "fields": {
+        "name": "Swahili",
+        "code": "sw"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 156,
+      "fields": {
+        "name": "Tamil",
+        "code": "ta"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 157,
+      "fields": {
+        "name": "Telugu",
+        "code": "te"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 158,
+      "fields": {
+        "name": "Tajik",
+        "code": "tg"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 159,
+      "fields": {
+        "name": "Thai",
+        "code": "th"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 160,
+      "fields": {
+        "name": "Tigrinya",
+        "code": "ti"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 161,
+      "fields": {
+        "name": "Turkmen",
+        "code": "tk"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 162,
+      "fields": {
+        "name": "Tagalog",
+        "code": "tl"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 163,
+      "fields": {
+        "name": "Tswana",
+        "code": "tn"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 164,
+      "fields": {
+        "name": "Tonga (Tonga Islands)",
+        "code": "to"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 165,
+      "fields": {
+        "name": "Turkish",
+        "code": "tr"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 166,
+      "fields": {
+        "name": "Tsonga",
+        "code": "ts"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 167,
+      "fields": {
+        "name": "Tatar",
+        "code": "tt"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 168,
+      "fields": {
+        "name": "Twi",
+        "code": "tw"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 169,
+      "fields": {
+        "name": "Tahitian",
+        "code": "ty"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 170,
+      "fields": {
+        "name": "Uighur; Uyghur",
+        "code": "ug"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 171,
+      "fields": {
+        "name": "Ukrainian",
+        "code": "uk"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 172,
+      "fields": {
+        "name": "Urdu",
+        "code": "ur"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 173,
+      "fields": {
+        "name": "Uzbek",
+        "code": "uz"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 174,
+      "fields": {
+        "name": "Venda",
+        "code": "ve"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 175,
+      "fields": {
+        "name": "Vietnamese",
+        "code": "vi"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 176,
+      "fields": {
+        "name": "Volap\u00fck",
+        "code": "vo"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 177,
+      "fields": {
+        "name": "Walloon",
+        "code": "wa"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 178,
+      "fields": {
+        "name": "Wolof",
+        "code": "wo"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 179,
+      "fields": {
+        "name": "Xhosa",
+        "code": "xh"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 180,
+      "fields": {
+        "name": "Yiddish",
+        "code": "yi"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 181,
+      "fields": {
+        "name": "Yoruba",
+        "code": "yo"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 182,
+      "fields": {
+        "name": "Zhuang; Chuang",
+        "code": "za"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 183,
+      "fields": {
+        "name": "Chinese",
+        "code": "zh"
+      }
+    },
+    {
+      "model": "profiles.language",
+      "pk": 184,
+      "fields": {
+        "name": "Zulu",
+        "code": "zu"
+      }
+    }
+]
