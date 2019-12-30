@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person, Guru, Language, Qualification, Occupation
+from .models import Person, Guru, Language, Degree, Occupation
 
 
 # Register your models here.
@@ -13,13 +13,15 @@ class PersonInline(admin.TabularInline):
     verbose_name_plural = 'Languages Known'
 
 class PersonAdmin(admin.ModelAdmin):
+
     fieldsets = [
-        (None, {'fields': ['name','gender']}),
+        (None, {'fields': ['name',('gender','marital_status')]}),
         ('SPIRITUAL QUOTIENT', {'fields': ['rounds_chanting',('s_status','guru')]}),
         ('BIRTH DETAILS', {'fields': [('dob','tob'),'birth_country',('birth_state','birth_city')]}),
         ('CURRENT LOCATION', {'fields': ['current_country',('current_state','current_city')]}),
-        ('PHYSICAL APPEARANCE', {'fields': [('height','complextion')]})
-
+        ('PHYSICAL APPEARANCE', {'fields': [('height','complexion')]}),            
+        ('QUALIFICATON', {'fields': ['degree', ('occupation', 'annual_income')]}),
+        ('CONTACT INFORMATION', {'fields': [('phone', 'email_id')]}),
     ]
     inlines = [PersonInline]
 
@@ -29,23 +31,3 @@ class PersonAdmin(admin.ModelAdmin):
 admin.site.register(Person, PersonAdmin)
 
 
-
-class GuruAdmin(admin.ModelAdmin):
-    list_display = ['name']
-
-admin.site.register(Guru, GuruAdmin)
-
-class LanguageAdmin(admin.ModelAdmin):
-    list_display = ['name']
-
-admin.site.register(Language, LanguageAdmin)
-
-class QualificationAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Qualification, QualificationAdmin)
-
-class  OccupationAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Occupation, OccupationAdmin)

@@ -22,7 +22,6 @@ COMPLEXION_CHOICES = (
 M_STATUS = (
     ("SGL", "Single"),
     ("ENG", "Engaged"),
-    ("MRD", "Married"),
     ("SEP", "Separated"),
     ("DIV", "Divorced"),
     ("WID", "Widow")
@@ -105,8 +104,8 @@ class Person(models.Model):
         blank=True,        
     )
 
-    qualification = models.ForeignKey(
-        'Qualification',
+    degree = models.ForeignKey(
+        'Degree',
         on_delete=models.SET_NULL, 
         null=True, 
         help_text='H.S., Graduate etc.'
@@ -115,9 +114,9 @@ class Person(models.Model):
         'Occupation',
         on_delete=models.SET_NULL, 
         null=True, 
-        help_text='Doctor, Engineer, Businessman etc.',
+        help_text= 'Surgeon, Computer Application Engineer, etc.',
     )
-    annual_income = models.IntegerField(help_text='Enter income in a year')
+    annual_income = models.PositiveIntegerField(help_text='Enter income in a year')
     marital_status = models.CharField(
         max_length=3, choices=M_STATUS, help_text='Single, Divorced etc.'
     )
@@ -183,9 +182,9 @@ class Language(models.Model):
     def __str__(self):
         return f'{self.name} {self.code}'
 
-class Qualification(models.Model):
-    """Model representing Qualification(e.g. Bachelor, Masters, Doctorate etc.)"""
-    degree = models.CharField(max_length=255, unique=True, verbose_name=_("Qualification"))
+class Degree(models.Model):
+    """Model representing Degree(e.g. Bachelor, Masters, Doctorate etc.)"""
+    degree = models.CharField(max_length=255, unique=True, verbose_name=_("Degree"))
 
     def __str__(self):
         return f'{self.degree}'
@@ -193,6 +192,9 @@ class Qualification(models.Model):
 class Occupation(models.Model):
     """Model representing Occupation(e.g. Doctor, Engineer, Entrepreneur etc.)"""
     occupation = models.CharField(max_length=255, unique=True)
+
+    class Meta:
+        ordering = ['occupation']
 
     def __str__(self):
         return f'{self.occupation}'

@@ -1,0 +1,6764 @@
+[
+    {
+      "model": "profiles.occupation",
+      "pk": 1,
+      "fields":{
+        "occupation": "Able Seamen"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 2,
+      "fields":{
+        "occupation": "Account Collector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 3,
+      "fields":{
+        "occupation": "Accounting Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 4,
+      "fields":{
+        "occupation": "Adjustment Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 5,
+      "fields":{
+        "occupation": "Administrative Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 6,
+      "fields":{
+        "occupation": "Administrative Law Judge"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 7,
+      "fields":{
+        "occupation": "Administrative Service Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 8,
+      "fields":{
+        "occupation": "Admiralty Lawyer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 9,
+      "fields":{
+        "occupation": "Adult Literacy and Remedial Education Teachers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 10,
+      "fields":{
+        "occupation": "Advertising Account Executive"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 11,
+      "fields":{
+        "occupation": "Advertising Agency Coordinator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 12,
+      "fields":{
+        "occupation": "Aeronautical & Aerospace Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 13,
+      "fields":{
+        "occupation": "Aerospace Engineering Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 14,
+      "fields":{
+        "occupation": "Agricultural Crop Farm Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 15,
+      "fields":{
+        "occupation": "Agricultural Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 16,
+      "fields":{
+        "occupation": "Agricultural Equipment Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 17,
+      "fields":{
+        "occupation": "Agricultural Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 18,
+      "fields":{
+        "occupation": "Agricultural Product Sorter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 19,
+      "fields":{
+        "occupation": "Agricultural Sciences Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 20,
+      "fields":{
+        "occupation": "Agricultural Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 21,
+      "fields":{
+        "occupation": "Air Crew Member"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 22,
+      "fields":{
+        "occupation": "Air Crew Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 23,
+      "fields":{
+        "occupation": "Air Traffic Controller"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 24,
+      "fields":{
+        "occupation": "Aircraft Assembler"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 25,
+      "fields":{
+        "occupation": "Aircraft Body and Bonded Structure Repairer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 26,
+      "fields":{
+        "occupation": "Aircraft Cargo Handling Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 27,
+      "fields":{
+        "occupation": "Aircraft Examiner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 28,
+      "fields":{
+        "occupation": "Aircraft Launch and Recovery Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 29,
+      "fields":{
+        "occupation": "Aircraft Launch and Recovery Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 30,
+      "fields":{
+        "occupation": "Aircraft Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 31,
+      "fields":{
+        "occupation": "Airfield Operations Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 32,
+      "fields":{
+        "occupation": "Airline Flight Attendant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 33,
+      "fields":{
+        "occupation": "Airline Flight Control Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 34,
+      "fields":{
+        "occupation": "Airline Flight Operations Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 35,
+      "fields":{
+        "occupation": "Airline Flight Reservations Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 36,
+      "fields":{
+        "occupation": "Airport Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 37,
+      "fields":{
+        "occupation": "Airport Design Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 38,
+      "fields":{
+        "occupation": "Alcohol & Drug Abuse Assistance Coordinator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 39,
+      "fields":{
+        "occupation": "Alumni Relations Coordinator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 40,
+      "fields":{
+        "occupation": "Ambulance Drivers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 41,
+      "fields":{
+        "occupation": "Amusement Park & Recreation Attendants"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 42,
+      "fields":{
+        "occupation": "Anesthesiologist (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 43,
+      "fields":{
+        "occupation": "Animal Breeder"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 44,
+      "fields":{
+        "occupation": "Animal Control Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 45,
+      "fields":{
+        "occupation": "Animal Husbandry Worker Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 46,
+      "fields":{
+        "occupation": "Animal Keepers and Groomers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 47,
+      "fields":{
+        "occupation": "Animal Kennel Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 48,
+      "fields":{
+        "occupation": "Animal Scientist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 49,
+      "fields":{
+        "occupation": "Animal Trainer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 50,
+      "fields":{
+        "occupation": "Animation Cartoonist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 51,
+      "fields":{
+        "occupation": "Answering Service Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 52,
+      "fields":{
+        "occupation": "Anthropology and Archeology Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 53,
+      "fields":{
+        "occupation": "Anti-Terrorism Intelligence Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 54,
+      "fields":{
+        "occupation": "Appeals Referee"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 55,
+      "fields":{
+        "occupation": "Aquaculturist (Fish Farmer)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 56,
+      "fields":{
+        "occupation": "Aquarium Curator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 57,
+      "fields":{
+        "occupation": "Architecture Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 58,
+      "fields":{
+        "occupation": "Area, Ethnic, and Cultural Studies Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 59,
+      "fields":{
+        "occupation": "Armored Assault Vehicle Crew Member"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 60,
+      "fields":{
+        "occupation": "Armored Assault Vehicle Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 61,
+      "fields":{
+        "occupation": "Art Appraiser"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 62,
+      "fields":{
+        "occupation": "Art Director"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 63,
+      "fields":{
+        "occupation": "Art Restorer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 64,
+      "fields":{
+        "occupation": "Art Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 65,
+      "fields":{
+        "occupation": "Art, Drama, and Music Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 66,
+      "fields":{
+        "occupation": "Artillery and Missile Crew Member"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 67,
+      "fields":{
+        "occupation": "Artillery and Missile Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 68,
+      "fields":{
+        "occupation": "Artists Agent (Manager)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 69,
+      "fields":{
+        "occupation": "Athletes' Business Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 70,
+      "fields":{
+        "occupation": "Athletic Coach"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 71,
+      "fields":{
+        "occupation": "Athletic Director"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 72,
+      "fields":{
+        "occupation": "Athletic Trainer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 73,
+      "fields":{
+        "occupation": "ATM Machine Servicer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 74,
+      "fields":{
+        "occupation": "Atmospheric and Space Scientist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 75,
+      "fields":{
+        "occupation": "Audio-Visual Collections Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 76,
+      "fields":{
+        "occupation": "Audiovisual Production Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 77,
+      "fields":{
+        "occupation": "Automobile Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 78,
+      "fields":{
+        "occupation": "Automotive Body Repairer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 79,
+      "fields":{
+        "occupation": "Automotive Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 80,
+      "fields":{
+        "occupation": "Automotive Glass Installer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 81,
+      "fields":{
+        "occupation": "Avionics Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 82,
+      "fields":{
+        "occupation": "Baggage Porters and Bellhops"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 83,
+      "fields":{
+        "occupation": "Baker (Commercial)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 84,
+      "fields":{
+        "occupation": "Ballistics Expert"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 85,
+      "fields":{
+        "occupation": "Bank and Branch Managers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 86,
+      "fields":{
+        "occupation": "Bank Examiner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 87,
+      "fields":{
+        "occupation": "Bank Teller"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 88,
+      "fields":{
+        "occupation": "Benefits Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 89,
+      "fields":{
+        "occupation": "Bicycle Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 90,
+      "fields":{
+        "occupation": "Billing Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 91,
+      "fields":{
+        "occupation": "Bindery Machine Set-Up Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 92,
+      "fields":{
+        "occupation": "Bindery Machine Tender"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 93,
+      "fields":{
+        "occupation": "Biological Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 94,
+      "fields":{
+        "occupation": "Biology Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 95,
+      "fields":{
+        "occupation": "Biomedical Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 96,
+      "fields":{
+        "occupation": "Biomedical Equipment Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 97,
+      "fields":{
+        "occupation": "Boat Builder"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 98,
+      "fields":{
+        "occupation": "Book Editor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 99,
+      "fields":{
+        "occupation": "Border Patrol Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 100,
+      "fields":{
+        "occupation": "Brattice Builder"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 101,
+      "fields":{
+        "occupation": "Bridge and Lock Tenders"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 102,
+      "fields":{
+        "occupation": "Broadcast News Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 103,
+      "fields":{
+        "occupation": "Broadcast Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 104,
+      "fields":{
+        "occupation": "Broker's Floor Representative"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 105,
+      "fields":{
+        "occupation": "Brokerage Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 106,
+      "fields":{
+        "occupation": "Budget Accountant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 107,
+      "fields":{
+        "occupation": "Budget Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 108,
+      "fields":{
+        "occupation": "Building Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 109,
+      "fields":{
+        "occupation": "Building Maintenance Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 110,
+      "fields":{
+        "occupation": "Bulldozer / Grader Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 111,
+      "fields":{
+        "occupation": "Bus and Truck Mechanics"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 112,
+      "fields":{
+        "occupation": "Bus Boy / Bus Girl"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 113,
+      "fields":{
+        "occupation": "Bus Driver (School)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 114,
+      "fields":{
+        "occupation": "Bus Driver (Transit)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 115,
+      "fields":{
+        "occupation": "Business Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 116,
+      "fields":{
+        "occupation": "Business Service Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 117,
+      "fields":{
+        "occupation": "Cabinet Maker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 118,
+      "fields":{
+        "occupation": "Camp Director"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 119,
+      "fields":{
+        "occupation": "Caption Writer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 120,
+      "fields":{
+        "occupation": "Cardiologist (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 121,
+      "fields":{
+        "occupation": "Cardiopulmonary Technologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 122,
+      "fields":{
+        "occupation": "Career Counselor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 123,
+      "fields":{
+        "occupation": "Cargo and Freight Agents"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 124,
+      "fields":{
+        "occupation": "Carpenter's Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 125,
+      "fields":{
+        "occupation": "Carpet Installer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 126,
+      "fields":{
+        "occupation": "Cartographer (Map Scientist)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 127,
+      "fields":{
+        "occupation": "Cartographic Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 128,
+      "fields":{
+        "occupation": "Cartoonist (Publications)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 129,
+      "fields":{
+        "occupation": "Casino Cage Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 130,
+      "fields":{
+        "occupation": "Casino Cashier"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 131,
+      "fields":{
+        "occupation": "Casino Dealer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 132,
+      "fields":{
+        "occupation": "Casino Floor Person"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 133,
+      "fields":{
+        "occupation": "Casino Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 134,
+      "fields":{
+        "occupation": "Casino Pit Boss"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 135,
+      "fields":{
+        "occupation": "Casino Slot Machine Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 136,
+      "fields":{
+        "occupation": "Casino Surveillance Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 137,
+      "fields":{
+        "occupation": "Casting Director"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 138,
+      "fields":{
+        "occupation": "Catering Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 139,
+      "fields":{
+        "occupation": "Ceiling Tile Installer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 140,
+      "fields":{
+        "occupation": "Cement Mason"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 141,
+      "fields":{
+        "occupation": "Ceramic Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 142,
+      "fields":{
+        "occupation": "Certified Public Accountant (CPA)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 143,
+      "fields":{
+        "occupation": "Chaplain (Prison, Military, Hospital)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 144,
+      "fields":{
+        "occupation": "Chemical Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 145,
+      "fields":{
+        "occupation": "Chemical Equipment Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 146,
+      "fields":{
+        "occupation": "Chemical Plant Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 147,
+      "fields":{
+        "occupation": "Chemical Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 148,
+      "fields":{
+        "occupation": "Chemistry Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 149,
+      "fields":{
+        "occupation": "Chief Financial Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 150,
+      "fields":{
+        "occupation": "Child Care Center Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 151,
+      "fields":{
+        "occupation": "Child Care Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 152,
+      "fields":{
+        "occupation": "Child Life Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 153,
+      "fields":{
+        "occupation": "Child Support Investigator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 154,
+      "fields":{
+        "occupation": "Child Support Services Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 155,
+      "fields":{
+        "occupation": "City Planning Aide"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 156,
+      "fields":{
+        "occupation": "Civil Drafter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 157,
+      "fields":{
+        "occupation": "Civil Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 158,
+      "fields":{
+        "occupation": "Civil Engineering Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 159,
+      "fields":{
+        "occupation": "Clergy Member (Religious Leader)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 160,
+      "fields":{
+        "occupation": "Clinical Dietitian"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 161,
+      "fields":{
+        "occupation": "Clinical Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 162,
+      "fields":{
+        "occupation": "Clinical Sociologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 163,
+      "fields":{
+        "occupation": "Coatroom and Dressing Room Attendants"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 164,
+      "fields":{
+        "occupation": "College/University Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 165,
+      "fields":{
+        "occupation": "Commercial Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 166,
+      "fields":{
+        "occupation": "Commercial Diver"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 167,
+      "fields":{
+        "occupation": "Commercial Fisherman"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 168,
+      "fields":{
+        "occupation": "Communication Equipment Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 169,
+      "fields":{
+        "occupation": "Communications Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 170,
+      "fields":{
+        "occupation": "Community Health Nurse"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 171,
+      "fields":{
+        "occupation": "Community Organization Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 172,
+      "fields":{
+        "occupation": "Community Welfare Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 173,
+      "fields":{
+        "occupation": "Compensation Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 174,
+      "fields":{
+        "occupation": "Compensation Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 175,
+      "fields":{
+        "occupation": "Compliance Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 176,
+      "fields":{
+        "occupation": "Computer Aided Design (CAD) Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 177,
+      "fields":{
+        "occupation": "Computer and Information Scientists, Research"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 178,
+      "fields":{
+        "occupation": "Computer and Information Systems Managers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 179,
+      "fields":{
+        "occupation": "Computer Applications Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 180,
+      "fields":{
+        "occupation": "Computer Controlled Machine Tool Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 181,
+      "fields":{
+        "occupation": "Computer Customer Support Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 182,
+      "fields":{
+        "occupation": "Computer Hardware Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 183,
+      "fields":{
+        "occupation": "Computer Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 184,
+      "fields":{
+        "occupation": "Computer Programmer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 185,
+      "fields":{
+        "occupation": "Computer Science Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 186,
+      "fields":{
+        "occupation": "Computer Security Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 187,
+      "fields":{
+        "occupation": "Computer Software Engineers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 188,
+      "fields":{
+        "occupation": "Computer Software Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 189,
+      "fields":{
+        "occupation": "Computer Systems Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 190,
+      "fields":{
+        "occupation": "Congressional Aide"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 191,
+      "fields":{
+        "occupation": "Conservation Scientist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 192,
+      "fields":{
+        "occupation": "Construction Driller"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 193,
+      "fields":{
+        "occupation": "Construction Laborer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 194,
+      "fields":{
+        "occupation": "Construction Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 195,
+      "fields":{
+        "occupation": "Construction Trades Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 196,
+      "fields":{
+        "occupation": "Contract Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 197,
+      "fields":{
+        "occupation": "Contract Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 198,
+      "fields":{
+        "occupation": "Control Center Specialist (Military)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 199,
+      "fields":{
+        "occupation": "Controller (Finance)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 200,
+      "fields":{
+        "occupation": "Cook (Cafeteria)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 201,
+      "fields":{
+        "occupation": "Cook (Fast Food)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 202,
+      "fields":{
+        "occupation": "Cook (Private Household)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 203,
+      "fields":{
+        "occupation": "Cook (Restaurant)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 204,
+      "fields":{
+        "occupation": "Cook (Short Order)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 205,
+      "fields":{
+        "occupation": "Copy Writer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 206,
+      "fields":{
+        "occupation": "Corporation Lawyer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 207,
+      "fields":{
+        "occupation": "Correction Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 208,
+      "fields":{
+        "occupation": "Correspondence Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 209,
+      "fields":{
+        "occupation": "Cosmetologist (Hair Stylist)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 210,
+      "fields":{
+        "occupation": "Cost Accountant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 211,
+      "fields":{
+        "occupation": "Cost Analysis Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 212,
+      "fields":{
+        "occupation": "Cost Estimator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 213,
+      "fields":{
+        "occupation": "Costume Attendant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 214,
+      "fields":{
+        "occupation": "Counseling Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 215,
+      "fields":{
+        "occupation": "Counter and Rental Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 216,
+      "fields":{
+        "occupation": "County or City Auditor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 217,
+      "fields":{
+        "occupation": "Couriers and Messengers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 218,
+      "fields":{
+        "occupation": "Court Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 219,
+      "fields":{
+        "occupation": "Court Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 220,
+      "fields":{
+        "occupation": "Court Reporter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 221,
+      "fields":{
+        "occupation": "Craft Artist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 222,
+      "fields":{
+        "occupation": "Crane Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 223,
+      "fields":{
+        "occupation": "Credit Adjuster"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 224,
+      "fields":{
+        "occupation": "Credit Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 225,
+      "fields":{
+        "occupation": "Credit Reporter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 226,
+      "fields":{
+        "occupation": "Criminal Investigator (Detective)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 227,
+      "fields":{
+        "occupation": "Criminal Justice Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 228,
+      "fields":{
+        "occupation": "Criminal Lawyer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 229,
+      "fields":{
+        "occupation": "Crop Workers Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 230,
+      "fields":{
+        "occupation": "Crossing Guard"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 231,
+      "fields":{
+        "occupation": "Custom Tailor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 232,
+      "fields":{
+        "occupation": "Customer Service Representative (Utilities)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 233,
+      "fields":{
+        "occupation": "Customer Service Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 234,
+      "fields":{
+        "occupation": "Customs Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 235,
+      "fields":{
+        "occupation": "Cutting Machine Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 236,
+      "fields":{
+        "occupation": "Dairy Technologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 237,
+      "fields":{
+        "occupation": "Database Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 238,
+      "fields":{
+        "occupation": "Deaf Students Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 239,
+      "fields":{
+        "occupation": "Delivery Driver"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 240,
+      "fields":{
+        "occupation": "Demonstrators and Product Promoters"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 241,
+      "fields":{
+        "occupation": "Dental / Orthodontic Office Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 242,
+      "fields":{
+        "occupation": "Dental Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 243,
+      "fields":{
+        "occupation": "Dental Hygienist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 244,
+      "fields":{
+        "occupation": "Dental Laboratory Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 245,
+      "fields":{
+        "occupation": "Dentist (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 246,
+      "fields":{
+        "occupation": "Dermatologist (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 247,
+      "fields":{
+        "occupation": "Desktop Publishing Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 248,
+      "fields":{
+        "occupation": "Developmental Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 249,
+      "fields":{
+        "occupation": "Die Cutter Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 250,
+      "fields":{
+        "occupation": "Dietetic Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 251,
+      "fields":{
+        "occupation": "Dietitian and Nutritionist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 252,
+      "fields":{
+        "occupation": "Directory Assistance Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 253,
+      "fields":{
+        "occupation": "Disabled Students Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 254,
+      "fields":{
+        "occupation": "Disk Jockey"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 255,
+      "fields":{
+        "occupation": "Dispatcher (Safety Vehicles)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 256,
+      "fields":{
+        "occupation": "Door To Door Salesmen"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 257,
+      "fields":{
+        "occupation": "Dry Wall Installer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 258,
+      "fields":{
+        "occupation": "Economics Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 259,
+      "fields":{
+        "occupation": "Editorial Writer, Newspapers & Magazines"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 260,
+      "fields":{
+        "occupation": "Education and Training Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 261,
+      "fields":{
+        "occupation": "Education Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 262,
+      "fields":{
+        "occupation": "Educational Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 263,
+      "fields":{
+        "occupation": "Educational Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 264,
+      "fields":{
+        "occupation": "Educational Resource Coordinator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 265,
+      "fields":{
+        "occupation": "Educational Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 266,
+      "fields":{
+        "occupation": "EEG Technician/Technologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 267,
+      "fields":{
+        "occupation": "Electric Meter Installer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 268,
+      "fields":{
+        "occupation": "Electric Motor Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 269,
+      "fields":{
+        "occupation": "Electrical and Electronic Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 270,
+      "fields":{
+        "occupation": "Electrical Drafter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 271,
+      "fields":{
+        "occupation": "Electrical Engineers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 272,
+      "fields":{
+        "occupation": "Electrical Parts Reconditioner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 273,
+      "fields":{
+        "occupation": "Electrical Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 274,
+      "fields":{
+        "occupation": "Electro-Mechanical Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 275,
+      "fields":{
+        "occupation": "Electromechanical Equipment Assembler"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 276,
+      "fields":{
+        "occupation": "Electronic Drafter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 277,
+      "fields":{
+        "occupation": "Electronics Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 278,
+      "fields":{
+        "occupation": "Electronics Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 279,
+      "fields":{
+        "occupation": "Elementary School Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 280,
+      "fields":{
+        "occupation": "Elementary School Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 281,
+      "fields":{
+        "occupation": "Elevator Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 282,
+      "fields":{
+        "occupation": "Emergency Management Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 283,
+      "fields":{
+        "occupation": "Emergency Medical Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 284,
+      "fields":{
+        "occupation": "Employee Benefits Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 285,
+      "fields":{
+        "occupation": "Employee Training Instructor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 286,
+      "fields":{
+        "occupation": "Employment Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 287,
+      "fields":{
+        "occupation": "Employment and Placement Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 288,
+      "fields":{
+        "occupation": "Employment Interviewer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 289,
+      "fields":{
+        "occupation": "Engine and Machine Assemblers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 290,
+      "fields":{
+        "occupation": "Engineering Managers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 291,
+      "fields":{
+        "occupation": "Engineering Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 292,
+      "fields":{
+        "occupation": "English Language and Literature Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 293,
+      "fields":{
+        "occupation": "Environmental Compliance Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 294,
+      "fields":{
+        "occupation": "Environmental Disease Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 295,
+      "fields":{
+        "occupation": "Environmental Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 296,
+      "fields":{
+        "occupation": "Environmental Planner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 297,
+      "fields":{
+        "occupation": "Environmental Research Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 298,
+      "fields":{
+        "occupation": "Environmental Science Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 299,
+      "fields":{
+        "occupation": "Environmental Science Professsor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 300,
+      "fields":{
+        "occupation": "Environmental Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 301,
+      "fields":{
+        "occupation": "Equal Opportunity Representative"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 302,
+      "fields":{
+        "occupation": "Etchers and Engravers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 303,
+      "fields":{
+        "occupation": "Excavating Machine Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 304,
+      "fields":{
+        "occupation": "Excavating Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 305,
+      "fields":{
+        "occupation": "Executive Secretary"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 306,
+      "fields":{
+        "occupation": "Exercise Physiologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 307,
+      "fields":{
+        "occupation": "Exhibit Artist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 308,
+      "fields":{
+        "occupation": "Exhibit Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 309,
+      "fields":{
+        "occupation": "Experimental Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 310,
+      "fields":{
+        "occupation": "Explosives Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 311,
+      "fields":{
+        "occupation": "Export Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 312,
+      "fields":{
+        "occupation": "Fabric and Apparel Patternmakers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 313,
+      "fields":{
+        "occupation": "Facilities Planner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 314,
+      "fields":{
+        "occupation": "Factory Layout Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 315,
+      "fields":{
+        "occupation": "Family Caseworker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 316,
+      "fields":{
+        "occupation": "Family Practitioner (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 317,
+      "fields":{
+        "occupation": "Farm Equipment Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 318,
+      "fields":{
+        "occupation": "Farm Hand"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 319,
+      "fields":{
+        "occupation": "Farm Labor Contractor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 320,
+      "fields":{
+        "occupation": "Farm Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 321,
+      "fields":{
+        "occupation": "Farm Products Purchasing Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 322,
+      "fields":{
+        "occupation": "Farmers and Ranchers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 323,
+      "fields":{
+        "occupation": "Fashion Artist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 324,
+      "fields":{
+        "occupation": "Fashion Coordinator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 325,
+      "fields":{
+        "occupation": "Fashion Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 326,
+      "fields":{
+        "occupation": "Fashion Model"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 327,
+      "fields":{
+        "occupation": "Fence Installer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 328,
+      "fields":{
+        "occupation": "Field Contractor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 329,
+      "fields":{
+        "occupation": "Field Health Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 330,
+      "fields":{
+        "occupation": "File Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 331,
+      "fields":{
+        "occupation": "Film Editor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 332,
+      "fields":{
+        "occupation": "Film Laboratory Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 333,
+      "fields":{
+        "occupation": "Finance Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 334,
+      "fields":{
+        "occupation": "Financial Aid Counselor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 335,
+      "fields":{
+        "occupation": "Financial Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 336,
+      "fields":{
+        "occupation": "Financial Examiner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 337,
+      "fields":{
+        "occupation": "Financial Planner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 338,
+      "fields":{
+        "occupation": "Financial Services Sales Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 339,
+      "fields":{
+        "occupation": "Fine Artist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 340,
+      "fields":{
+        "occupation": "Fire Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 341,
+      "fields":{
+        "occupation": "Fire Investigator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 342,
+      "fields":{
+        "occupation": "Fire Prevention Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 343,
+      "fields":{
+        "occupation": "Fire Protection Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 344,
+      "fields":{
+        "occupation": "Fire Protection Engineering Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 345,
+      "fields":{
+        "occupation": "Fish & Game Warden"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 346,
+      "fields":{
+        "occupation": "Fish Hatchery Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 347,
+      "fields":{
+        "occupation": "Fishery Worker Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 348,
+      "fields":{
+        "occupation": "Fitness Trainer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 349,
+      "fields":{
+        "occupation": "Flight Engineers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 350,
+      "fields":{
+        "occupation": "Floral Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 351,
+      "fields":{
+        "occupation": "Food & Drug Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 352,
+      "fields":{
+        "occupation": "Food Batchmaker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 353,
+      "fields":{
+        "occupation": "Food Preparation Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 354,
+      "fields":{
+        "occupation": "Food Science Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 355,
+      "fields":{
+        "occupation": "Food Technologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 356,
+      "fields":{
+        "occupation": "Foreign Exchange Trader"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 357,
+      "fields":{
+        "occupation": "Foreign Language Interpreter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 358,
+      "fields":{
+        "occupation": "Foreign Language Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 359,
+      "fields":{
+        "occupation": "Foreign Language Translator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 360,
+      "fields":{
+        "occupation": "Foreign Service Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 361,
+      "fields":{
+        "occupation": "Foreign Service Peacekeeping Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 362,
+      "fields":{
+        "occupation": "Foreign Student Adviser"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 363,
+      "fields":{
+        "occupation": "Forensic Science Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 364,
+      "fields":{
+        "occupation": "Forensics Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 365,
+      "fields":{
+        "occupation": "Forest and Conservation Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 366,
+      "fields":{
+        "occupation": "Forest Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 367,
+      "fields":{
+        "occupation": "Forest Fire Prevention Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 368,
+      "fields":{
+        "occupation": "Forest Fire Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 369,
+      "fields":{
+        "occupation": "Forestry and Conservation Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 370,
+      "fields":{
+        "occupation": "Forging Machine Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 371,
+      "fields":{
+        "occupation": "Forklift and Industrial Truck Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 372,
+      "fields":{
+        "occupation": "Fraud Investigator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 373,
+      "fields":{
+        "occupation": "Freight and Stock Handler"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 374,
+      "fields":{
+        "occupation": "Fund Raiser"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 375,
+      "fields":{
+        "occupation": "Funds Development Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 376,
+      "fields":{
+        "occupation": "Funeral Attendant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 377,
+      "fields":{
+        "occupation": "Funeral Director"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 378,
+      "fields":{
+        "occupation": "Furniture Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 379,
+      "fields":{
+        "occupation": "Furniture Finishers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 380,
+      "fields":{
+        "occupation": "Game Runner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 381,
+      "fields":{
+        "occupation": "Gas Plant Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 382,
+      "fields":{
+        "occupation": "General and Operations Managers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 383,
+      "fields":{
+        "occupation": "General Farmworkers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 384,
+      "fields":{
+        "occupation": "General Internists (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 385,
+      "fields":{
+        "occupation": "Geography Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 386,
+      "fields":{
+        "occupation": "Geological Data Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 387,
+      "fields":{
+        "occupation": "Geological Technician (Drafter)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 388,
+      "fields":{
+        "occupation": "Glass Blower"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 389,
+      "fields":{
+        "occupation": "Gluing Machine Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 390,
+      "fields":{
+        "occupation": "Golf Course Superintendent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 391,
+      "fields":{
+        "occupation": "Government Budget Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 392,
+      "fields":{
+        "occupation": "Government Property Inspectors"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 393,
+      "fields":{
+        "occupation": "Government Service Executives"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 394,
+      "fields":{
+        "occupation": "Graduate Teaching Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 395,
+      "fields":{
+        "occupation": "Graphic Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 396,
+      "fields":{
+        "occupation": "Greenhouse and Nursery Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 397,
+      "fields":{
+        "occupation": "Gynecologist (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 398,
+      "fields":{
+        "occupation": "Hand and Portable Tool Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 399,
+      "fields":{
+        "occupation": "Hand Sewer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 400,
+      "fields":{
+        "occupation": "Harbor Master"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 401,
+      "fields":{
+        "occupation": "Harbor, Lake & Waterways Police"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 402,
+      "fields":{
+        "occupation": "Hardwood Floor Finisher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 403,
+      "fields":{
+        "occupation": "Hazardous Materials Removal Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 404,
+      "fields":{
+        "occupation": "Hazardous Waste Management Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 405,
+      "fields":{
+        "occupation": "Health Care Facilities Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 406,
+      "fields":{
+        "occupation": "Health Case Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 407,
+      "fields":{
+        "occupation": "Health Educators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 408,
+      "fields":{
+        "occupation": "Health Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 409,
+      "fields":{
+        "occupation": "Hearing Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 410,
+      "fields":{
+        "occupation": "Heating, A/C, Refrigeration Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 411,
+      "fields":{
+        "occupation": "Heavy Equipment Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 412,
+      "fields":{
+        "occupation": "High School Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 413,
+      "fields":{
+        "occupation": "High School Guidance Counselor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 414,
+      "fields":{
+        "occupation": "High School Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 415,
+      "fields":{
+        "occupation": "Highway Maintenance Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 416,
+      "fields":{
+        "occupation": "Highway Patrol Pilot"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 417,
+      "fields":{
+        "occupation": "Historic Site Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 418,
+      "fields":{
+        "occupation": "Historical Archivist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 419,
+      "fields":{
+        "occupation": "History Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 420,
+      "fields":{
+        "occupation": "Home Appliance Installer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 421,
+      "fields":{
+        "occupation": "Home Appliance Repairer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 422,
+      "fields":{
+        "occupation": "Home Economics Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 423,
+      "fields":{
+        "occupation": "Home Economist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 424,
+      "fields":{
+        "occupation": "Home Entertainment System Installer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 425,
+      "fields":{
+        "occupation": "Home Health Aide"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 426,
+      "fields":{
+        "occupation": "Home Health Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 427,
+      "fields":{
+        "occupation": "Horticultural Worker Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 428,
+      "fields":{
+        "occupation": "Horticulture Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 429,
+      "fields":{
+        "occupation": "Horticulturist (Vineyard)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 430,
+      "fields":{
+        "occupation": "Hospital Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 431,
+      "fields":{
+        "occupation": "Hospital Nurse"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 432,
+      "fields":{
+        "occupation": "Hosts and Hostesses"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 433,
+      "fields":{
+        "occupation": "Hotel and Motel Desk Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 434,
+      "fields":{
+        "occupation": "Hotel Convention/Events Coordinator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 435,
+      "fields":{
+        "occupation": "Hotel Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 436,
+      "fields":{
+        "occupation": "Housekeeping Supervisors"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 437,
+      "fields":{
+        "occupation": "Human Factors Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 438,
+      "fields":{
+        "occupation": "Human Resources Management Advisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 439,
+      "fields":{
+        "occupation": "Human Resources Management Consultant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 440,
+      "fields":{
+        "occupation": "Hydraulic Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 441,
+      "fields":{
+        "occupation": "Immigration Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 442,
+      "fields":{
+        "occupation": "Industrial Air Pollution Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 443,
+      "fields":{
+        "occupation": "Industrial Arts Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 444,
+      "fields":{
+        "occupation": "Industrial Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 445,
+      "fields":{
+        "occupation": "Industrial Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 446,
+      "fields":{
+        "occupation": "Industrial Engineering Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 447,
+      "fields":{
+        "occupation": "Industrial Health Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 448,
+      "fields":{
+        "occupation": "Industrial Hygienist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 449,
+      "fields":{
+        "occupation": "Industrial Machinery Mechanics"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 450,
+      "fields":{
+        "occupation": "Industrial Relations Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 451,
+      "fields":{
+        "occupation": "Industrial Relations Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 452,
+      "fields":{
+        "occupation": "Industrial Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 453,
+      "fields":{
+        "occupation": "Industrial Waste Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 454,
+      "fields":{
+        "occupation": "Industrial-Organizational Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 455,
+      "fields":{
+        "occupation": "Infantry Officers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 456,
+      "fields":{
+        "occupation": "Instructional Coordinators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 457,
+      "fields":{
+        "occupation": "Instructor, Police-Canine Services"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 458,
+      "fields":{
+        "occupation": "Instrument Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 459,
+      "fields":{
+        "occupation": "Insulation Installer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 460,
+      "fields":{
+        "occupation": "Insurance Adjuster"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 461,
+      "fields":{
+        "occupation": "Insurance Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 462,
+      "fields":{
+        "occupation": "Insurance Appraiser (Auto Damage)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 463,
+      "fields":{
+        "occupation": "Insurance Claim Examiner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 464,
+      "fields":{
+        "occupation": "Insurance Claims Adjuster"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 465,
+      "fields":{
+        "occupation": "Insurance Claims Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 466,
+      "fields":{
+        "occupation": "Insurance Estate Planner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 467,
+      "fields":{
+        "occupation": "Insurance Lawyer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 468,
+      "fields":{
+        "occupation": "Insurance Policy Processing Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 469,
+      "fields":{
+        "occupation": "Insurance Underwriter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 470,
+      "fields":{
+        "occupation": "Intelligence Specialist (Government)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 471,
+      "fields":{
+        "occupation": "Interior Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 472,
+      "fields":{
+        "occupation": "Internal Auditor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 473,
+      "fields":{
+        "occupation": "Interpreter for the Hearing Impaired"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 474,
+      "fields":{
+        "occupation": "Irradiated-Fuel Handlers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 475,
+      "fields":{
+        "occupation": "Irrigation Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 476,
+      "fields":{
+        "occupation": "IT Administrator (Information Technology)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 477,
+      "fields":{
+        "occupation": "Janitorial Supervisors"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 478,
+      "fields":{
+        "occupation": "Job Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 479,
+      "fields":{
+        "occupation": "Job Development Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 480,
+      "fields":{
+        "occupation": "Job Printer (Graphic Arts)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 481,
+      "fields":{
+        "occupation": "Kindergarten Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 482,
+      "fields":{
+        "occupation": "Labor Relations Advisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 483,
+      "fields":{
+        "occupation": "Laboratory Tester"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 484,
+      "fields":{
+        "occupation": "Land Surveyor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 485,
+      "fields":{
+        "occupation": "Landscape Architect"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 486,
+      "fields":{
+        "occupation": "Landscape Contractor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 487,
+      "fields":{
+        "occupation": "Lathe Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 488,
+      "fields":{
+        "occupation": "Law Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 489,
+      "fields":{
+        "occupation": "Law Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 490,
+      "fields":{
+        "occupation": "Legal Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 491,
+      "fields":{
+        "occupation": "Legal Secretary"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 492,
+      "fields":{
+        "occupation": "Legislative Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 493,
+      "fields":{
+        "occupation": "Library Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 494,
+      "fields":{
+        "occupation": "Library Consultant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 495,
+      "fields":{
+        "occupation": "Library Science Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 496,
+      "fields":{
+        "occupation": "Library Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 497,
+      "fields":{
+        "occupation": "License Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 498,
+      "fields":{
+        "occupation": "Licensed Practical Nurse (LPN)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 499,
+      "fields":{
+        "occupation": "Livestock Commission Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 500,
+      "fields":{
+        "occupation": "Loan Counselor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 501,
+      "fields":{
+        "occupation": "Loan Interviewers and Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 502,
+      "fields":{
+        "occupation": "Loan Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 503,
+      "fields":{
+        "occupation": "Locomotive Engineers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 504,
+      "fields":{
+        "occupation": "Log Graders and Scalers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 505,
+      "fields":{
+        "occupation": "Logging Tractor Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 506,
+      "fields":{
+        "occupation": "Logging Worker Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 507,
+      "fields":{
+        "occupation": "Machine Feeders and Offbearers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 508,
+      "fields":{
+        "occupation": "Mail Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 509,
+      "fields":{
+        "occupation": "Mail Machine Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 510,
+      "fields":{
+        "occupation": "Maintenance Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 511,
+      "fields":{
+        "occupation": "Makeup Artists - Theatrical"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 512,
+      "fields":{
+        "occupation": "Management Consultant (Analyst)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 513,
+      "fields":{
+        "occupation": "Manicurists and Pedicurists"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 514,
+      "fields":{
+        "occupation": "Manual Arts Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 515,
+      "fields":{
+        "occupation": "Mapping Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 516,
+      "fields":{
+        "occupation": "Marina Boat Charter Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 517,
+      "fields":{
+        "occupation": "Marine and Aquatic Biologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 518,
+      "fields":{
+        "occupation": "Marine Architect"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 519,
+      "fields":{
+        "occupation": "Marine Cargo Surveyor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 520,
+      "fields":{
+        "occupation": "Marine Drafter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 521,
+      "fields":{
+        "occupation": "Marine Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 522,
+      "fields":{
+        "occupation": "Marine Surveyor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 523,
+      "fields":{
+        "occupation": "Marine/Port Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 524,
+      "fields":{
+        "occupation": "Market Research Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 525,
+      "fields":{
+        "occupation": "Marketing Managers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 526,
+      "fields":{
+        "occupation": "Marking Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 527,
+      "fields":{
+        "occupation": "Marriage and Family Therapists"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 528,
+      "fields":{
+        "occupation": "Massage Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 529,
+      "fields":{
+        "occupation": "Materials Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 530,
+      "fields":{
+        "occupation": "Materials Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 531,
+      "fields":{
+        "occupation": "Materials Scientist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 532,
+      "fields":{
+        "occupation": "Math Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 533,
+      "fields":{
+        "occupation": "Mathematical Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 534,
+      "fields":{
+        "occupation": "Meat Packers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 535,
+      "fields":{
+        "occupation": "Meat, Poultry, and Fish Trimmers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 536,
+      "fields":{
+        "occupation": "Mechanical Drafter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 537,
+      "fields":{
+        "occupation": "Mechanical Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 538,
+      "fields":{
+        "occupation": "Mechanical Engineering Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 539,
+      "fields":{
+        "occupation": "Mechanical Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 540,
+      "fields":{
+        "occupation": "Medical Administrative Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 541,
+      "fields":{
+        "occupation": "Medical and Public Health Social Workers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 542,
+      "fields":{
+        "occupation": "Medical and Scientific Illustrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 543,
+      "fields":{
+        "occupation": "Medical Appliance Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 544,
+      "fields":{
+        "occupation": "Medical Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 545,
+      "fields":{
+        "occupation": "Medical Equipment Preparer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 546,
+      "fields":{
+        "occupation": "Medical Examiner/Coroner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 547,
+      "fields":{
+        "occupation": "Medical Insurance Claims Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 548,
+      "fields":{
+        "occupation": "Medical Laboratory Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 549,
+      "fields":{
+        "occupation": "Medical Photographer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 550,
+      "fields":{
+        "occupation": "Medical Records Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 551,
+      "fields":{
+        "occupation": "Medical Records Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 552,
+      "fields":{
+        "occupation": "Medical Secretary"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 553,
+      "fields":{
+        "occupation": "Medical Technologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 554,
+      "fields":{
+        "occupation": "Medical Transcriptionist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 555,
+      "fields":{
+        "occupation": "Mental Health Counselor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 556,
+      "fields":{
+        "occupation": "Mentally Retarded Students Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 557,
+      "fields":{
+        "occupation": "Merchandise Displayer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 558,
+      "fields":{
+        "occupation": "Metal Casting Machine Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 559,
+      "fields":{
+        "occupation": "Metal Fabricator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 560,
+      "fields":{
+        "occupation": "Meter Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 561,
+      "fields":{
+        "occupation": "Middle School Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 562,
+      "fields":{
+        "occupation": "Middle School Guidance Counselor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 563,
+      "fields":{
+        "occupation": "Middle School Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 564,
+      "fields":{
+        "occupation": "Military Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 565,
+      "fields":{
+        "occupation": "Military Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 566,
+      "fields":{
+        "occupation": "Military-Enlisted Personnel"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 567,
+      "fields":{
+        "occupation": "Mill Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 568,
+      "fields":{
+        "occupation": "Mine Cutting Machine Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 569,
+      "fields":{
+        "occupation": "Mine Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 570,
+      "fields":{
+        "occupation": "Mining Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 571,
+      "fields":{
+        "occupation": "Mining Machine Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 572,
+      "fields":{
+        "occupation": "Mining Shovel Machine Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 573,
+      "fields":{
+        "occupation": "Missing Person Investigator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 574,
+      "fields":{
+        "occupation": "Missionary Worker (Foreign Country)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 575,
+      "fields":{
+        "occupation": "Model Maker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 576,
+      "fields":{
+        "occupation": "Model Makers, Metal and Plastic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 577,
+      "fields":{
+        "occupation": "Motion Picture Director"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 578,
+      "fields":{
+        "occupation": "Motion Picture Projectionist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 579,
+      "fields":{
+        "occupation": "Motor Vehicle Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 580,
+      "fields":{
+        "occupation": "Motorboat Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 581,
+      "fields":{
+        "occupation": "Motorcycle Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 582,
+      "fields":{
+        "occupation": "Municipal Fire Fighting Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 583,
+      "fields":{
+        "occupation": "Museum Curator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 584,
+      "fields":{
+        "occupation": "Museum Technicians and Conservators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 585,
+      "fields":{
+        "occupation": "Music Arrangers and Orchestrators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 586,
+      "fields":{
+        "occupation": "Music Director"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 587,
+      "fields":{
+        "occupation": "Music Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 588,
+      "fields":{
+        "occupation": "Music Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 589,
+      "fields":{
+        "occupation": "Musical Instrument Tuner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 590,
+      "fields":{
+        "occupation": "Narcotics Investigator (Government)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 591,
+      "fields":{
+        "occupation": "New Accounts Clerk (Banking)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 592,
+      "fields":{
+        "occupation": "Newspaper Editor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 593,
+      "fields":{
+        "occupation": "Newspaper/Magazines Writer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 594,
+      "fields":{
+        "occupation": "Non-Retail Sales Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 595,
+      "fields":{
+        "occupation": "Nuclear Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 596,
+      "fields":{
+        "occupation": "Nuclear Equipment Operation Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 597,
+      "fields":{
+        "occupation": "Nuclear Fuels Research Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 598,
+      "fields":{
+        "occupation": "Nuclear Medicine Technologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 599,
+      "fields":{
+        "occupation": "Nuclear Monitoring Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 600,
+      "fields":{
+        "occupation": "Nuclear Power Reactor Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 601,
+      "fields":{
+        "occupation": "Nuclear Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 602,
+      "fields":{
+        "occupation": "Numerical Tool Programmer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 603,
+      "fields":{
+        "occupation": "Nurse Practitioner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 604,
+      "fields":{
+        "occupation": "Nurse's Aide"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 605,
+      "fields":{
+        "occupation": "Nursery Workers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 606,
+      "fields":{
+        "occupation": "Nursing Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 607,
+      "fields":{
+        "occupation": "Obstetrician (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 608,
+      "fields":{
+        "occupation": "Occupational Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 609,
+      "fields":{
+        "occupation": "Occupational Physician (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 610,
+      "fields":{
+        "occupation": "Occupational Safety & Health Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 611,
+      "fields":{
+        "occupation": "Occupational Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 612,
+      "fields":{
+        "occupation": "Occupational Therapy Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 613,
+      "fields":{
+        "occupation": "Oceanographic Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 614,
+      "fields":{
+        "occupation": "Office Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 615,
+      "fields":{
+        "occupation": "Office Machine Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 616,
+      "fields":{
+        "occupation": "Office Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 617,
+      "fields":{
+        "occupation": "Offset Press Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 618,
+      "fields":{
+        "occupation": "Operating Engineers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 619,
+      "fields":{
+        "occupation": "Operations Management Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 620,
+      "fields":{
+        "occupation": "Ophthalmic Laboratory Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 621,
+      "fields":{
+        "occupation": "Ophthalmologist (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 622,
+      "fields":{
+        "occupation": "Oral and Maxillofacial Surgeons"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 623,
+      "fields":{
+        "occupation": "Order Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 624,
+      "fields":{
+        "occupation": "Order Fillers, Wholesale and Retail Sales"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 625,
+      "fields":{
+        "occupation": "Ordinary Seamen"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 626,
+      "fields":{
+        "occupation": "Ornamental-Metalwork Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 627,
+      "fields":{
+        "occupation": "Orthodontic Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 628,
+      "fields":{
+        "occupation": "Orthodontic Laboratory Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 629,
+      "fields":{
+        "occupation": "Orthodontist (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 630,
+      "fields":{
+        "occupation": "Outdoor Education Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 631,
+      "fields":{
+        "occupation": "Overhead Door Installer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 632,
+      "fields":{
+        "occupation": "Package Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 633,
+      "fields":{
+        "occupation": "Packaging Machine Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 634,
+      "fields":{
+        "occupation": "Packers and Packagers, Hand"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 635,
+      "fields":{
+        "occupation": "Painter (Industrial)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 636,
+      "fields":{
+        "occupation": "Painters, Construction and Maintenance"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 637,
+      "fields":{
+        "occupation": "Painters, Transportation Equipment"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 638,
+      "fields":{
+        "occupation": "Park Naturalist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 639,
+      "fields":{
+        "occupation": "Parking Enforcement Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 640,
+      "fields":{
+        "occupation": "Parking Lot Attendant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 641,
+      "fields":{
+        "occupation": "Parole Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 642,
+      "fields":{
+        "occupation": "Parts Salesperson"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 643,
+      "fields":{
+        "occupation": "Paste-Up Worker (Graphic Arts)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 644,
+      "fields":{
+        "occupation": "Patent Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 645,
+      "fields":{
+        "occupation": "Patent Lawyer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 646,
+      "fields":{
+        "occupation": "Pathologist (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 647,
+      "fields":{
+        "occupation": "Payroll and Timekeeping Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 648,
+      "fields":{
+        "occupation": "PBX Installer and Repairer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 649,
+      "fields":{
+        "occupation": "Peace Corps Worker (Volunteer)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 650,
+      "fields":{
+        "occupation": "Pediatric Dentist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 651,
+      "fields":{
+        "occupation": "Pediatrician (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 652,
+      "fields":{
+        "occupation": "Personal Service Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 653,
+      "fields":{
+        "occupation": "Personnel Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 654,
+      "fields":{
+        "occupation": "Personnel Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 655,
+      "fields":{
+        "occupation": "Personnel Recruiter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 656,
+      "fields":{
+        "occupation": "Pest Control Workers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 657,
+      "fields":{
+        "occupation": "Pesticide Handlers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 658,
+      "fields":{
+        "occupation": "Petroleum Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 659,
+      "fields":{
+        "occupation": "Petroleum Geologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 660,
+      "fields":{
+        "occupation": "Petroleum Laboratory Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 661,
+      "fields":{
+        "occupation": "Petroleum Refinery Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 662,
+      "fields":{
+        "occupation": "Petroleum Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 663,
+      "fields":{
+        "occupation": "Pharmacy Aides"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 664,
+      "fields":{
+        "occupation": "Pharmacy Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 665,
+      "fields":{
+        "occupation": "Philosophy and Religion Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 666,
+      "fields":{
+        "occupation": "Photo-Optics Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 667,
+      "fields":{
+        "occupation": "Photoengravers (Graphic Arts)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 668,
+      "fields":{
+        "occupation": "Photogrammetric Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 669,
+      "fields":{
+        "occupation": "Photographic Equipment Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 670,
+      "fields":{
+        "occupation": "Photographic Process Workers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 671,
+      "fields":{
+        "occupation": "Physical Education Instructor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 672,
+      "fields":{
+        "occupation": "Physical Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 673,
+      "fields":{
+        "occupation": "Physical Therapist Aides"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 674,
+      "fields":{
+        "occupation": "Physical Therapy Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 675,
+      "fields":{
+        "occupation": "Physician's Assistant (PA)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 676,
+      "fields":{
+        "occupation": "Physician's Office Nurse"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 677,
+      "fields":{
+        "occupation": "Physics Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 678,
+      "fields":{
+        "occupation": "Pilot (Commercial Airlines)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 679,
+      "fields":{
+        "occupation": "Plant Breeder"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 680,
+      "fields":{
+        "occupation": "Plant Manager (Manufacturing)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 681,
+      "fields":{
+        "occupation": "Plasterers and Stucco Masons"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 682,
+      "fields":{
+        "occupation": "Plastic Surgeon"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 683,
+      "fields":{
+        "occupation": "Platemakers (Graphic Arts)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 684,
+      "fields":{
+        "occupation": "Plumber (Plumbing Contractor)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 685,
+      "fields":{
+        "occupation": "Poets and Lyricists"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 686,
+      "fields":{
+        "occupation": "Police and Detectives Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 687,
+      "fields":{
+        "occupation": "Police Artist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 688,
+      "fields":{
+        "occupation": "Police Identification and Records Officers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 689,
+      "fields":{
+        "occupation": "Police Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 690,
+      "fields":{
+        "occupation": "Political Science Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 691,
+      "fields":{
+        "occupation": "Political Scientist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 692,
+      "fields":{
+        "occupation": "Postal Service Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 693,
+      "fields":{
+        "occupation": "Postal Service Mail Carriers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 694,
+      "fields":{
+        "occupation": "Postal Service Mail Sorter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 695,
+      "fields":{
+        "occupation": "Postmasters and Mail Superintendents"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 696,
+      "fields":{
+        "occupation": "Power Plant Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 697,
+      "fields":{
+        "occupation": "Power-Line Installer and Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 698,
+      "fields":{
+        "occupation": "Precision Devices Inspectors and Testers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 699,
+      "fields":{
+        "occupation": "Preschool Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 700,
+      "fields":{
+        "occupation": "Preschool Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 701,
+      "fields":{
+        "occupation": "Pressing Machine Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 702,
+      "fields":{
+        "occupation": "Pressure Vessel Inspectors"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 703,
+      "fields":{
+        "occupation": "Printing/Graphic Arts Reproduction Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 704,
+      "fields":{
+        "occupation": "Printmaker (Artist)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 705,
+      "fields":{
+        "occupation": "Private Detectives and Investigators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 706,
+      "fields":{
+        "occupation": "Private Nurse"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 707,
+      "fields":{
+        "occupation": "Private Sector Executives"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 708,
+      "fields":{
+        "occupation": "Probate Lawyer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 709,
+      "fields":{
+        "occupation": "Probation Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 710,
+      "fields":{
+        "occupation": "Procurement Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 711,
+      "fields":{
+        "occupation": "Product Planner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 712,
+      "fields":{
+        "occupation": "Product Safety Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 713,
+      "fields":{
+        "occupation": "Production Planner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 714,
+      "fields":{
+        "occupation": "Production, Planning, and Expediting Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 715,
+      "fields":{
+        "occupation": "Professional Sports Scout"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 716,
+      "fields":{
+        "occupation": "Proofreaders and Copy Markers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 717,
+      "fields":{
+        "occupation": "Property Accountant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 718,
+      "fields":{
+        "occupation": "Property Assessor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 719,
+      "fields":{
+        "occupation": "Property Managers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 720,
+      "fields":{
+        "occupation": "Props and Lighting Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 721,
+      "fields":{
+        "occupation": "Prosthetic Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 722,
+      "fields":{
+        "occupation": "Psychiatric Aide"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 723,
+      "fields":{
+        "occupation": "Psychiatric Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 724,
+      "fields":{
+        "occupation": "Psychiatrist (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 725,
+      "fields":{
+        "occupation": "Psychology Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 726,
+      "fields":{
+        "occupation": "Public Health Service Officer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 727,
+      "fields":{
+        "occupation": "Public Relations Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 728,
+      "fields":{
+        "occupation": "Public Relations Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 729,
+      "fields":{
+        "occupation": "Public Transportation Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 730,
+      "fields":{
+        "occupation": "Publications Editor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 731,
+      "fields":{
+        "occupation": "Purchasing Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 732,
+      "fields":{
+        "occupation": "Purchasing Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 733,
+      "fields":{
+        "occupation": "Quality Control Coordinator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 734,
+      "fields":{
+        "occupation": "Quality Control Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 735,
+      "fields":{
+        "occupation": "Quality Control Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 736,
+      "fields":{
+        "occupation": "Quality Control Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 737,
+      "fields":{
+        "occupation": "Quarry Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 738,
+      "fields":{
+        "occupation": "Radar and Sonar Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 739,
+      "fields":{
+        "occupation": "Radiation Protection Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 740,
+      "fields":{
+        "occupation": "Radiation Therapists"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 741,
+      "fields":{
+        "occupation": "Radio & TV Announcer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 742,
+      "fields":{
+        "occupation": "Radio & TV News Commentator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 743,
+      "fields":{
+        "occupation": "Radio & TV Newscaster"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 744,
+      "fields":{
+        "occupation": "Radio & TV Producer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 745,
+      "fields":{
+        "occupation": "Radio & TV Program Director"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 746,
+      "fields":{
+        "occupation": "Radio & TV Sports Announcer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 747,
+      "fields":{
+        "occupation": "Radio & TV Station Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 748,
+      "fields":{
+        "occupation": "Radio & TV Talk Show Host"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 749,
+      "fields":{
+        "occupation": "Radio Mechanics"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 750,
+      "fields":{
+        "occupation": "Radio Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 751,
+      "fields":{
+        "occupation": "Radiologic Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 752,
+      "fields":{
+        "occupation": "Radiologic Technologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 753,
+      "fields":{
+        "occupation": "Radiologist (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 754,
+      "fields":{
+        "occupation": "Rail Yard Engineers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 755,
+      "fields":{
+        "occupation": "Railroad Conductors and Yardmasters"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 756,
+      "fields":{
+        "occupation": "Railroad Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 757,
+      "fields":{
+        "occupation": "Railroad Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 758,
+      "fields":{
+        "occupation": "Range Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 759,
+      "fields":{
+        "occupation": "Real Estate Appraiser"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 760,
+      "fields":{
+        "occupation": "Real Estate Assessor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 761,
+      "fields":{
+        "occupation": "Real Estate Broker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 762,
+      "fields":{
+        "occupation": "Real Estate Lawyer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 763,
+      "fields":{
+        "occupation": "Real Estate Sales Agents"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 764,
+      "fields":{
+        "occupation": "Recreation Leader"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 765,
+      "fields":{
+        "occupation": "Recreational Protective Service Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 766,
+      "fields":{
+        "occupation": "Recreational Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 767,
+      "fields":{
+        "occupation": "Recreational Vehicle Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 768,
+      "fields":{
+        "occupation": "Referee / Umpire"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 769,
+      "fields":{
+        "occupation": "Refuse and Recyclable Material Collectors"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 770,
+      "fields":{
+        "occupation": "Registrar Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 771,
+      "fields":{
+        "occupation": "Reliability Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 772,
+      "fields":{
+        "occupation": "Religious Institution Education Coordinator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 773,
+      "fields":{
+        "occupation": "Reservation Ticket Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 774,
+      "fields":{
+        "occupation": "Residence Counselor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 775,
+      "fields":{
+        "occupation": "Resource Recovery Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 776,
+      "fields":{
+        "occupation": "Resource Teacher"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 777,
+      "fields":{
+        "occupation": "Respiratory Care Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 778,
+      "fields":{
+        "occupation": "Respiratory Therapist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 779,
+      "fields":{
+        "occupation": "Respiratory Therapy Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 780,
+      "fields":{
+        "occupation": "Restaurant Food Coordinator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 781,
+      "fields":{
+        "occupation": "Restaurant Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 782,
+      "fields":{
+        "occupation": "Retail Buyer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 783,
+      "fields":{
+        "occupation": "Retail Customer Service Representative"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 784,
+      "fields":{
+        "occupation": "Retail Inventory Control Analyst"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 785,
+      "fields":{
+        "occupation": "Retail Sales Department Supervisor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 786,
+      "fields":{
+        "occupation": "Retail Salespersons"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 787,
+      "fields":{
+        "occupation": "Retail Store Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 788,
+      "fields":{
+        "occupation": "Revenue Agent (Government)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 789,
+      "fields":{
+        "occupation": "Safety Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 790,
+      "fields":{
+        "occupation": "Sales Engineers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 791,
+      "fields":{
+        "occupation": "Sales Floor Stock Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 792,
+      "fields":{
+        "occupation": "Sales Managers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 793,
+      "fields":{
+        "occupation": "Sales Promoter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 794,
+      "fields":{
+        "occupation": "Sales Representative (Aircraft)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 795,
+      "fields":{
+        "occupation": "Sales Representative (Chemicals & Drugs)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 796,
+      "fields":{
+        "occupation": "Sales Representative (Computers)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 797,
+      "fields":{
+        "occupation": "Sales Representative (Graphic Arts)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 798,
+      "fields":{
+        "occupation": "Sales Representative (Hotel Furnishings)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 799,
+      "fields":{
+        "occupation": "Sales Representative (Medical Equipment)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 800,
+      "fields":{
+        "occupation": "Sales Representative (Printed Advertising)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 801,
+      "fields":{
+        "occupation": "Sales Representative (Radio & TV Time)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 802,
+      "fields":{
+        "occupation": "Sales Representative (Telecommunications)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 803,
+      "fields":{
+        "occupation": "Sales Representative (Teleconferencing)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 804,
+      "fields":{
+        "occupation": "Sales Representative ( Education Programs)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 805,
+      "fields":{
+        "occupation": "Sales Representatives (Agricultural Products)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 806,
+      "fields":{
+        "occupation": "Sales Representatives (Instruments)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 807,
+      "fields":{
+        "occupation": "Sales Representatives (Mechanical Equipment)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 808,
+      "fields":{
+        "occupation": "Sales Representitive (Psychological Tests)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 809,
+      "fields":{
+        "occupation": "Sanitary Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 810,
+      "fields":{
+        "occupation": "Sawing Machine Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 811,
+      "fields":{
+        "occupation": "Scanner Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 812,
+      "fields":{
+        "occupation": "School Nurse"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 813,
+      "fields":{
+        "occupation": "School Plant Consultant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 814,
+      "fields":{
+        "occupation": "School Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 815,
+      "fields":{
+        "occupation": "Scientific Linguist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 816,
+      "fields":{
+        "occupation": "Scientific Photographer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 817,
+      "fields":{
+        "occupation": "Screen Printing Machine Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 818,
+      "fields":{
+        "occupation": "Screen Writer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 819,
+      "fields":{
+        "occupation": "Script Editor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 820,
+      "fields":{
+        "occupation": "Securities Broker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 821,
+      "fields":{
+        "occupation": "Security and Fire Alarm Systems Installers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 822,
+      "fields":{
+        "occupation": "Security Guard"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 823,
+      "fields":{
+        "occupation": "Self-Enrichment Education Teachers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 824,
+      "fields":{
+        "occupation": "Septic Tank and Sewer Servicers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 825,
+      "fields":{
+        "occupation": "Service Station Attendants"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 826,
+      "fields":{
+        "occupation": "Set Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 827,
+      "fields":{
+        "occupation": "Set Illustrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 828,
+      "fields":{
+        "occupation": "Sewing Machine Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 829,
+      "fields":{
+        "occupation": "Sheet Metal Workers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 830,
+      "fields":{
+        "occupation": "Ship Carpenters and Joiners"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 831,
+      "fields":{
+        "occupation": "Ship Engineers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 832,
+      "fields":{
+        "occupation": "Ship Master"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 833,
+      "fields":{
+        "occupation": "Ship Mate"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 834,
+      "fields":{
+        "occupation": "Ship Pilot"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 835,
+      "fields":{
+        "occupation": "Shipping, Receiving, and Traffic Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 836,
+      "fields":{
+        "occupation": "Shoe Machine Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 837,
+      "fields":{
+        "occupation": "Signal Switch Repairers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 838,
+      "fields":{
+        "occupation": "Skin Care Specialists"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 839,
+      "fields":{
+        "occupation": "Small Engine Mechanics"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 840,
+      "fields":{
+        "occupation": "Social and Community Service Managers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 841,
+      "fields":{
+        "occupation": "Social and Human Service Assistants"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 842,
+      "fields":{
+        "occupation": "Social Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 843,
+      "fields":{
+        "occupation": "Social Science Research Assistants"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 844,
+      "fields":{
+        "occupation": "Social Service Volunteer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 845,
+      "fields":{
+        "occupation": "Social Welfare Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 846,
+      "fields":{
+        "occupation": "Social Work Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 847,
+      "fields":{
+        "occupation": "Social Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 848,
+      "fields":{
+        "occupation": "Sociology Professor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 849,
+      "fields":{
+        "occupation": "Soil Conservation Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 850,
+      "fields":{
+        "occupation": "Soil Conservationist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 851,
+      "fields":{
+        "occupation": "Soil Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 852,
+      "fields":{
+        "occupation": "Soil Scientist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 853,
+      "fields":{
+        "occupation": "Solar Energy Systems Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 854,
+      "fields":{
+        "occupation": "Solid Waste Disposal Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 855,
+      "fields":{
+        "occupation": "Sound Engineering Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 856,
+      "fields":{
+        "occupation": "Special Education Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 857,
+      "fields":{
+        "occupation": "Special Forces"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 858,
+      "fields":{
+        "occupation": "Special Forces Officers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 859,
+      "fields":{
+        "occupation": "Speech Pathologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 860,
+      "fields":{
+        "occupation": "Speech Writer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 861,
+      "fields":{
+        "occupation": "Sport Psychologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 862,
+      "fields":{
+        "occupation": "Sport's/Entertainment Agent (Manager)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 863,
+      "fields":{
+        "occupation": "Sports Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 864,
+      "fields":{
+        "occupation": "Sports Events Business Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 865,
+      "fields":{
+        "occupation": "Sports Physician (Orthopedist)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 866,
+      "fields":{
+        "occupation": "Sportswriter (Journalist)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 867,
+      "fields":{
+        "occupation": "Stained Glass Artist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 868,
+      "fields":{
+        "occupation": "Standards Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 869,
+      "fields":{
+        "occupation": "Statement Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 870,
+      "fields":{
+        "occupation": "Stationary Engineers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 871,
+      "fields":{
+        "occupation": "Statistical Assistants"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 872,
+      "fields":{
+        "occupation": "Steel Workers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 873,
+      "fields":{
+        "occupation": "Storage and Distribution Manager"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 874,
+      "fields":{
+        "occupation": "Stress Analyst Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 875,
+      "fields":{
+        "occupation": "Structural Drafter"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 876,
+      "fields":{
+        "occupation": "Structural Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 877,
+      "fields":{
+        "occupation": "Student Admissions Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 878,
+      "fields":{
+        "occupation": "Student Affairs Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 879,
+      "fields":{
+        "occupation": "Student Financial Aid Administrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 880,
+      "fields":{
+        "occupation": "Substance Abuse Counselor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 881,
+      "fields":{
+        "occupation": "Subway and Streetcar Conductor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 882,
+      "fields":{
+        "occupation": "Surgeons (MD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 883,
+      "fields":{
+        "occupation": "Surgical Technician/Technologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 884,
+      "fields":{
+        "occupation": "Survey Researchers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 885,
+      "fields":{
+        "occupation": "Surveying Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 886,
+      "fields":{
+        "occupation": "Switchboard Operator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 887,
+      "fields":{
+        "occupation": "Systems Accountant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 888,
+      "fields":{
+        "occupation": "Systems Analyst, Data Processing"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 889,
+      "fields":{
+        "occupation": "Tax Accountant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 890,
+      "fields":{
+        "occupation": "Tax Auditor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 891,
+      "fields":{
+        "occupation": "Tax Collector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 892,
+      "fields":{
+        "occupation": "Tax Examiner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 893,
+      "fields":{
+        "occupation": "Tax Lawyer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 894,
+      "fields":{
+        "occupation": "Tax Preparer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 895,
+      "fields":{
+        "occupation": "Taxi Drivers and Chauffeurs"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 896,
+      "fields":{
+        "occupation": "Teacher of the Blind"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 897,
+      "fields":{
+        "occupation": "Teachers Aide"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 898,
+      "fields":{
+        "occupation": "Team Assemblers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 899,
+      "fields":{
+        "occupation": "Technical & Scientific Publications Editor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 900,
+      "fields":{
+        "occupation": "Technical Directors/Managers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 901,
+      "fields":{
+        "occupation": "Technical Illustrator"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 902,
+      "fields":{
+        "occupation": "Technical Publications Writer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 903,
+      "fields":{
+        "occupation": "Technological Espionage Intelligence Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 904,
+      "fields":{
+        "occupation": "Telecommunications Line Installers and Repairers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 905,
+      "fields":{
+        "occupation": "Telecommunications Maintenance Worker"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 906,
+      "fields":{
+        "occupation": "Telecommunications Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 907,
+      "fields":{
+        "occupation": "Telephone Station Installers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 908,
+      "fields":{
+        "occupation": "Textile Bleaching and Dyeing Machine Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 909,
+      "fields":{
+        "occupation": "Textile Cutting Machine Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 910,
+      "fields":{
+        "occupation": "Textile Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 911,
+      "fields":{
+        "occupation": "Tile and Marble Setters"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 912,
+      "fields":{
+        "occupation": "Title Examiner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 913,
+      "fields":{
+        "occupation": "Title Searchers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 914,
+      "fields":{
+        "occupation": "Tool & Machine Designer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 915,
+      "fields":{
+        "occupation": "Tool and Die Makers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 916,
+      "fields":{
+        "occupation": "Tool Grinders, Filers, and Sharpeners"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 917,
+      "fields":{
+        "occupation": "Tour Guide"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 918,
+      "fields":{
+        "occupation": "Town Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 919,
+      "fields":{
+        "occupation": "Traffic Administrator (Freight & Passenger)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 920,
+      "fields":{
+        "occupation": "Traffic Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 921,
+      "fields":{
+        "occupation": "Traffic Technicians"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 922,
+      "fields":{
+        "occupation": "Transit and Railroad Police"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 923,
+      "fields":{
+        "occupation": "Transportation Attendants"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 924,
+      "fields":{
+        "occupation": "Transportation Systems Design Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 925,
+      "fields":{
+        "occupation": "Travel Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 926,
+      "fields":{
+        "occupation": "Travel Clerks"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 927,
+      "fields":{
+        "occupation": "Travel Counselor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 928,
+      "fields":{
+        "occupation": "Travel Writer (Journalist)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 929,
+      "fields":{
+        "occupation": "Treasurer (Corporate)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 930,
+      "fields":{
+        "occupation": "Treatment Plant Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 931,
+      "fields":{
+        "occupation": "Tree Trimmers and Pruners"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 932,
+      "fields":{
+        "occupation": "Truck Driver, Light Duty"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 933,
+      "fields":{
+        "occupation": "Truck Driver, Long Distance"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 934,
+      "fields":{
+        "occupation": "Ultrasound Technologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 935,
+      "fields":{
+        "occupation": "Unemployment Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 936,
+      "fields":{
+        "occupation": "Urban and Regional Planner"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 937,
+      "fields":{
+        "occupation": "Ushers and Lobby Attendants"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 938,
+      "fields":{
+        "occupation": "Utility Meter Reader"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 939,
+      "fields":{
+        "occupation": "Vending Machine Mechanic"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 940,
+      "fields":{
+        "occupation": "Veterinarian (VMD)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 941,
+      "fields":{
+        "occupation": "Veterinarian Technician"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 942,
+      "fields":{
+        "occupation": "Veterinary Assistant"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 943,
+      "fields":{
+        "occupation": "Video Engineer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 944,
+      "fields":{
+        "occupation": "Vocational Education Instructors College"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 945,
+      "fields":{
+        "occupation": "Vocational Education Teachers, High School"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 946,
+      "fields":{
+        "occupation": "Vocational Education Teachers, Middle School"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 947,
+      "fields":{
+        "occupation": "Vocational Rehabilitation Counselor"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 948,
+      "fields":{
+        "occupation": "Voice Pathologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 949,
+      "fields":{
+        "occupation": "Waiters and Waitresses"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 950,
+      "fields":{
+        "occupation": "Warehouse Stock Clerk"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 951,
+      "fields":{
+        "occupation": "Watch Repairers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 952,
+      "fields":{
+        "occupation": "Water Pollution Control Inspector"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 953,
+      "fields":{
+        "occupation": "Weather Observer"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 954,
+      "fields":{
+        "occupation": "Web Art Director"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 955,
+      "fields":{
+        "occupation": "Weighers and Measurers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 956,
+      "fields":{
+        "occupation": "Welder (Gas, Arc, Plasma, Laser)"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 957,
+      "fields":{
+        "occupation": "Welfare Eligibility Workers and Interviewers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 958,
+      "fields":{
+        "occupation": "Wholesale Buyers"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 959,
+      "fields":{
+        "occupation": "Wildlife Biologist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 960,
+      "fields":{
+        "occupation": "Wildlife Control Agent"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 961,
+      "fields":{
+        "occupation": "Windows - Draperies Treatment Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 962,
+      "fields":{
+        "occupation": "Woodworking Machine Operators"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 963,
+      "fields":{
+        "occupation": "Word Processing Specialist"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 964,
+      "fields":{
+        "occupation": "Writer /Author"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 965,
+      "fields":{
+        "occupation": "Zoo Veterinarian"
+      }
+    },
+    {
+      "model": "profiles.occupation",
+      "pk": 966,
+      "fields":{
+        "occupation": "Zoologist"
+      }
+    }
+  ]

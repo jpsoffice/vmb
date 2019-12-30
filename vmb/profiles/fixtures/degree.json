@@ -1,0 +1,2606 @@
+[
+    {
+      "model":"profiles.degree",
+      "pk": 1,
+      "fields":{
+        "degree": "Associate Degree in Administration of Justice"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 2,
+      "fields":{
+        "degree": "Associate Degree in Advertising"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 3,
+      "fields":{
+        "degree": "Associate Degree in Agribusiness"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 4,
+      "fields":{
+        "degree": "Associate Degree in Animal Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 5,
+      "fields":{
+        "degree": "Associate Degree in Architectural Building Engineering Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 6,
+      "fields":{
+        "degree": "Associate Degree in Architecture and Career Options"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 7,
+      "fields":{
+        "degree": "Associate Degree in Art"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 8,
+      "fields":{
+        "degree": "Associate Degree in Automotive Maintenance Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 9,
+      "fields":{
+        "degree": "Associate Degree in Aviation Mechanics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 10,
+      "fields":{
+        "degree": "Associate Degree in Behavioral Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 11,
+      "fields":{
+        "degree": "Associate Degree in Boat Mechanics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 12,
+      "fields":{
+        "degree": "Associate Degree in Boat Repair and Maintenance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 13,
+      "fields":{
+        "degree": "Associate Degree in Cabinet Design Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 14,
+      "fields":{
+        "degree": "Associate Degree in Child Development: Program Summary"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 15,
+      "fields":{
+        "degree": "Associate Degree in Christian Ministry"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 16,
+      "fields":{
+        "degree": "Associate Degree in Cosmetology Business"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 17,
+      "fields":{
+        "degree": "Associate Degree in Digital Media"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 18,
+      "fields":{
+        "degree": "Associate Degree in Early Childhood Special Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 19,
+      "fields":{
+        "degree": "Associate Degree in Elementary Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 20,
+      "fields":{
+        "degree": "Associate Degree in English"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 21,
+      "fields":{
+        "degree": "Associate Degree in Environmental Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 22,
+      "fields":{
+        "degree": "Associate Degree in Environmental Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 23,
+      "fields":{
+        "degree": "Associate Degree in General Psychology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 24,
+      "fields":{
+        "degree": "Associate Degree in History and Information"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 25,
+      "fields":{
+        "degree": "Associate Degree in Interdisciplinary Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 26,
+      "fields":{
+        "degree": "Associate Degree in International Relations"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 27,
+      "fields":{
+        "degree": "Associate Degree in Landscape Architecture"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 28,
+      "fields":{
+        "degree": "Associate Degree in Landscaping Design"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 29,
+      "fields":{
+        "degree": "Associate Degree in Library Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 30,
+      "fields":{
+        "degree": "Associate Degree in Music"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 31,
+      "fields":{
+        "degree": "Associate Degree in Wildlife Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 32,
+      "fields":{
+        "degree": "Associate Degree in Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 33,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Accelerated Culinary Arts"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 34,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Accounting Specialist"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 35,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Administrative Support"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 36,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Baking and Pastry"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 37,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Business Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 38,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Business Administration - Finance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 39,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Business Information Systems"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 40,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Civil Justice - Law Enforcement"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 41,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Clinical Medical Assisting"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 42,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Computer Applications"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 43,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Computer Electronics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 44,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Computer Game Design"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 45,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Computer Information Systems"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 46,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Culinary Arts"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 47,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Digital Media Communications"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 48,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Digital Photography"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 49,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Electronic Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 50,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Emergency Medical Services"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 51,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Health Care Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 52,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Health Information Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 53,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Healthcare Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 54,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Legal Office E-ministration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 55,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Telecommunications Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 56,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Television Production"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 57,
+      "fields":{
+        "degree": "Associate of Applied Science (AAS) in Visual Communications"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 58,
+      "fields":{
+        "degree": "Associate of Arts (AA) in Computer Information Systems"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 59,
+      "fields":{
+        "degree": "Associate of Arts (AA) in Internetworking Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 60,
+      "fields":{
+        "degree": "Associate of Arts (AA) in Psychology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 61,
+      "fields":{
+        "degree": "Associate of Arts (AA) in Interior Architecture and Design"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 62,
+      "fields":{
+        "degree": "Associate of Biotechnology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 63,
+      "fields":{
+        "degree": "Associate of Business Science (ABS) in Individualized Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 64,
+      "fields":{
+        "degree": "Associate of Early Childhood Education (AECE)"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 65,
+      "fields":{
+        "degree": "Associate of Occupational Studies (AOS) in Legal Office Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 66,
+      "fields":{
+        "degree": "Associate of Science (AS) in Computer Information Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 67,
+      "fields":{
+        "degree": "Associate of Science (AS) in Computer Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 68,
+      "fields":{
+        "degree": "Associate of Science (AS) in Corrections, Probation, & Parole"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 69,
+      "fields":{
+        "degree": "Associate of Science (AS) in Electronics Engineering Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 70,
+      "fields":{
+        "degree": "Associate of Science (AS) in Interactive & Graphic Art"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 71,
+      "fields":{
+        "degree": "Associate of Science (AS) in Industrial Maintenance Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 72,
+      "fields":{
+        "degree": "Associate of Arts and science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 73,
+      "fields":{
+        "degree": "Bachelor of Science in Genetic Engineering and Biotechnology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 74,
+      "fields":{
+        "degree": "Bachelor of Architecture"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 75,
+      "fields":{
+        "degree": "Bachelor of Biomedical Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 76,
+      "fields":{
+        "degree": "Bachelor of Business Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 77,
+      "fields":{
+        "degree": "Bachelor of Clinical Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 78,
+      "fields":{
+        "degree": "Bachelor of Commerce"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 79,
+      "fields":{
+        "degree": "Bachelor of Computer Applications"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 80,
+      "fields":{
+        "degree": "Bachelor of Community Health"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 81,
+      "fields":{
+        "degree": "Bachelor of Computer Information Systems"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 82,
+      "fields":{
+        "degree": "Bachelor of Science in Construction Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 83,
+      "fields":{
+        "degree": "Bachelor of Criminal Justice"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 84,
+      "fields":{
+        "degree": "Bachelor of Divinity"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 85,
+      "fields":{
+        "degree": "Bachelor of Economics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 86,
+      "fields":{
+        "degree": "Bachelor of Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 87,
+      "fields":{
+        "degree": "Bachelor of Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 88,
+      "fields":{
+        "degree": "Bachelor of Fine Arts"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 89,
+      "fields":{
+        "degree": "Bachelor of Letters"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 90,
+      "fields":{
+        "degree": "Bachelor of Information Systems"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 91,
+      "fields":{
+        "degree": "Bachelor of Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 92,
+      "fields":{
+        "degree": "Bachelor of Music"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 93,
+      "fields":{
+        "degree": "Bachelor of Pharmacy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 94,
+      "fields":{
+        "degree": "Bachelor of Philosophy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 95,
+      "fields":{
+        "degree": "Bachelor of Social Work"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 96,
+      "fields":{
+        "degree": "Bachelor of Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 97,
+      "fields":{
+        "degree": "Bachelor of Accountancy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 98,
+      "fields":{
+        "degree": "Bachelor of Arts in American Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 99,
+      "fields":{
+        "degree": "Bachelor of Arts in American Indian Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 100,
+      "fields":{
+        "degree": "Bachelor of Arts in Applied Psychology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 101,
+      "fields":{
+        "degree": "Bachelor of Arts in Biology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 102,
+      "fields":{
+        "degree": "Bachelor of Arts in Anthropology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 103,
+      "fields":{
+        "degree": "Bachelor of Arts in Child Advocacy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 104,
+      "fields":{
+        "degree": "Bachelor of Arts in Clinical Psychology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 105,
+      "fields":{
+        "degree": "Bachelor of Arts in Forensic Psychology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 106,
+      "fields":{
+        "degree": "Bachelor of Arts in Organizational Psychology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 107,
+      "fields":{
+        "degree": "Bachelor of Science in Aerospace Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 108,
+      "fields":{
+        "degree": "Bachelor of Science in Actuarial"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 109,
+      "fields":{
+        "degree": "Bachelor of Science in Agriculture"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 110,
+      "fields":{
+        "degree": "Bachelor of Science in Architecture"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 111,
+      "fields":{
+        "degree": "Bachelor of Science in Architectural Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 112,
+      "fields":{
+        "degree": "Bachelor of Science in Athletic Training"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 113,
+      "fields":{
+        "degree": "Bachelor of Science in Biology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 114,
+      "fields":{
+        "degree": "Bachelor of Science in Biomedical Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 115,
+      "fields":{
+        "degree": "Bachelor of Science in Bible"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 116,
+      "fields":{
+        "degree": "Bachelor of Science in Business Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 117,
+      "fields":{
+        "degree": "Bachelor of Science in Business and Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 118,
+      "fields":{
+        "degree": "Bachelor of Science in Chemical Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 119,
+      "fields":{
+        "degree": "Bachelor of Science in Chemistry"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 120,
+      "fields":{
+        "degree": "Bachelor of Science in Civil Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 121,
+      "fields":{
+        "degree": "Bachelor of Science in Clinical Laboratory Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 122,
+      "fields":{
+        "degree": "Bachelor of Science in Cognitive Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 123,
+      "fields":{
+        "degree": "Bachelor of Science in Computer Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 124,
+      "fields":{
+        "degree": "Bachelor of Science in Computer Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 125,
+      "fields":{
+        "degree": "Bachelor of Science in Construction Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 126,
+      "fields":{
+        "degree": "Bachelor of Science in Construction Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 127,
+      "fields":{
+        "degree": "Bachelor of Science in Criminal Justice"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 128,
+      "fields":{
+        "degree": "Bachelor of Science in Criminology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 129,
+      "fields":{
+        "degree": "Bachelor of Science in Diagnostic Radiography"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 130,
+      "fields":{
+        "degree": "Bachelor of Science in Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 131,
+      "fields":{
+        "degree": "Bachelor of Science in Electrical Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 132,
+      "fields":{
+        "degree": "Bachelor of Science in Engineering Physics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 133,
+      "fields":{
+        "degree": "Bachelor of Science in Engineering Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 134,
+      "fields":{
+        "degree": "Bachelor of Science in Engineering Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 135,
+      "fields":{
+        "degree": "Bachelor of Science in English Literature"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 136,
+      "fields":{
+        "degree": "Bachelor of Science in Environmental Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 137,
+      "fields":{
+        "degree": "Bachelor of Science in Environmental Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 138,
+      "fields":{
+        "degree": "Bachelor of Science in Environmental Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 139,
+      "fields":{
+        "degree": "Bachelor of Science in Food Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 140,
+      "fields":{
+        "degree": "Bachelor of Science in Foreign Service"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 141,
+      "fields":{
+        "degree": "Bachelor of Science in Forensic Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 142,
+      "fields":{
+        "degree": "Bachelor of Science in Forestry"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 143,
+      "fields":{
+        "degree": "Bachelor of Science in History"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 144,
+      "fields":{
+        "degree": "Bachelor of Science in Hospitality Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 145,
+      "fields":{
+        "degree": "Bachelor of Science in Human Resources Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 146,
+      "fields":{
+        "degree": "Bachelor of Science in Industrial Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 147,
+      "fields":{
+        "degree": "Bachelor of Science in Information Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 148,
+      "fields":{
+        "degree": "Bachelor of Science in Information Systems"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 149,
+      "fields":{
+        "degree": "Bachelor of Science in Integrated Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 150,
+      "fields":{
+        "degree": "Bachelor of Science in International Relations"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 151,
+      "fields":{
+        "degree": "Bachelor of Science in Journalism"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 152,
+      "fields":{
+        "degree": "Bachelor of Science in Legal Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 153,
+      "fields":{
+        "degree": "Bachelor of Science in Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 154,
+      "fields":{
+        "degree": "Bachelor of Science in Manufacturing Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 155,
+      "fields":{
+        "degree": "Bachelor of Science in Marketing"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 156,
+      "fields":{
+        "degree": "Bachelor of Science in Mathematics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 157,
+      "fields":{
+        "degree": "Bachelor of Science in Mechanical Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 158,
+      "fields":{
+        "degree": "Bachelor of Science in Medical Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 159,
+      "fields":{
+        "degree": "Bachelor of Science in Metallurgical Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 160,
+      "fields":{
+        "degree": "Bachelor of Science in Meteorology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 161,
+      "fields":{
+        "degree": "Bachelor of Science in Microbiology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 162,
+      "fields":{
+        "degree": "Bachelor of Science in Mining Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 163,
+      "fields":{
+        "degree": "Bachelor of Science in Molecular Biology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 164,
+      "fields":{
+        "degree": "Bachelor of Science in Neuroscience"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 165,
+      "fields":{
+        "degree": "Bachelor of Science in Nursing"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 166,
+      "fields":{
+        "degree": "Bachelor of Science in Nutrition science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 167,
+      "fields":{
+        "degree": "Bachelor of Science in Software Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 168,
+      "fields":{
+        "degree": "Bachelor of Science in Petroleum Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 169,
+      "fields":{
+        "degree": "Bachelor of Science in Podiatry"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 170,
+      "fields":{
+        "degree": "Bachelor of Science in Pharmacology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 171,
+      "fields":{
+        "degree": "Bachelor of Science in Pharmacy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 172,
+      "fields":{
+        "degree": "Bachelor of Science in Physical Therapy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 173,
+      "fields":{
+        "degree": "Bachelor of Science in Physics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 174,
+      "fields":{
+        "degree": "Bachelor of Science in Plant Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 175,
+      "fields":{
+        "degree": "Bachelor of Science in Politics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 176,
+      "fields":{
+        "degree": "Bachelor of Science in Psychology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 177,
+      "fields":{
+        "degree": "Bachelor of Science in Public Safety"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 178,
+      "fields":{
+        "degree": "Bachelor of Science in Physiology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 179,
+      "fields":{
+        "degree": "Bachelor of Science in Quantity Surveying Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 180,
+      "fields":{
+        "degree": "Bachelor of Science in Radiologic Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 181,
+      "fields":{
+        "degree": "Bachelor of Science in Real-Time Interactive Simulation"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 182,
+      "fields":{
+        "degree": "Bachelor of Science in Religion"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 183,
+      "fields":{
+        "degree": "Bachelor of Science in Respiratory Therapy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 184,
+      "fields":{
+        "degree": "Bachelor of Science in Risk Management and Insurance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 185,
+      "fields":{
+        "degree": "Bachelor of Science in Science Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 186,
+      "fields":{
+        "degree": "Bachelor of Science in Sports Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 187,
+      "fields":{
+        "degree": "Bachelor of Science in Systems Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 188,
+      "fields":{
+        "degree": "Bachelor of Music in Jazz Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 189,
+      "fields":{
+        "degree": "Bachelor of Music in Composition"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 190,
+      "fields":{
+        "degree": "Bachelor of Music in Performance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 191,
+      "fields":{
+        "degree": "Bachelor of Music in Theory"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 192,
+      "fields":{
+        "degree": "Bachelor of Music in Music Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 193,
+      "fields":{
+        "degree": "Bachelor of Science in Veterinary Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 194,
+      "fields":{
+        "degree": "Master of Accountancy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 195,
+      "fields":{
+        "degree": "Master of Accounting and Information Systems"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 196,
+      "fields":{
+        "degree": "Master of Advanced Study"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 197,
+      "fields":{
+        "degree": "Master of Applied Finance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 198,
+      "fields":{
+        "degree": "Master of Applied Mathematical Sciences"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 199,
+      "fields":{
+        "degree": "Master of Applied Psychology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 200,
+      "fields":{
+        "degree": "Master of Applied Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 201,
+      "fields":{
+        "degree": "Master of Architecture"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 202,
+      "fields":{
+        "degree": "Master of Arts"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 203,
+      "fields":{
+        "degree": "Master of Arts in Archives and Records Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 204,
+      "fields":{
+        "degree": "Master of Arts in Bioethics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 205,
+      "fields":{
+        "degree": "Master of Arts in Liberal Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 206,
+      "fields":{
+        "degree": "Master of Arts in Museum Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 207,
+      "fields":{
+        "degree": "Master of Arts in Strategic Communication Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 208,
+      "fields":{
+        "degree": "Master of Arts in Teaching"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 209,
+      "fields":{
+        "degree": "Master of Athletic Training"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 210,
+      "fields":{
+        "degree": "Master of Bioethics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 211,
+      "fields":{
+        "degree": "Master of Bioinformatics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 212,
+      "fields":{
+        "degree": "Master of Biotechnology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 213,
+      "fields":{
+        "degree": "Master of Business Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 214,
+      "fields":{
+        "degree": "Master of Business Administration Management of Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 215,
+      "fields":{
+        "degree": "Master of Business"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 216,
+      "fields":{
+        "degree": "Master of Business Economics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 217,
+      "fields":{
+        "degree": "Master of Business Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 218,
+      "fields":{
+        "degree": "Master of Business Informatics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 219,
+      "fields":{
+        "degree": "Master of Chemistry"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 220,
+      "fields":{
+        "degree": "Master of City Planning"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 221,
+      "fields":{
+        "degree": "Master of Commerce"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 222,
+      "fields":{
+        "degree": "Master of Community Health"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 223,
+      "fields":{
+        "degree": "Master of Computational Finance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 224,
+      "fields":{
+        "degree": "Master of Computer Applications"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 225,
+      "fields":{
+        "degree": "Master of Computer Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 226,
+      "fields":{
+        "degree": "Master of Communication"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 227,
+      "fields":{
+        "degree": "Master of Counselling (or Counseling)"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 228,
+      "fields":{
+        "degree": "Master of Criminal Justice"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 229,
+      "fields":{
+        "degree": "Master in Creative Technologies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 230,
+      "fields":{
+        "degree": "Master of Design"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 231,
+      "fields":{
+        "degree": "Master of Divinity"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 232,
+      "fields":{
+        "degree": "Master of Economics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 233,
+      "fields":{
+        "degree": "Master of Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 234,
+      "fields":{
+        "degree": "Master of Educational Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 235,
+      "fields":{
+        "degree": "Master of Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 236,
+      "fields":{
+        "degree": "Master of Engineering Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 237,
+      "fields":{
+        "degree": "Master of Enterprise"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 238,
+      "fields":{
+        "degree": "Master of European Law"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 239,
+      "fields":{
+        "degree": "Master of Finance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 240,
+      "fields":{
+        "degree": "Master of Financial Economics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 241,
+      "fields":{
+        "degree": "Master of Financial Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 242,
+      "fields":{
+        "degree": "Master of Financial Mathematics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 243,
+      "fields":{
+        "degree": "Master of Fine Arts"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 244,
+      "fields":{
+        "degree": "Master of Geospatial Science & Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 245,
+      "fields":{
+        "degree": "Master of Health Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 246,
+      "fields":{
+        "degree": "Master of Health Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 247,
+      "fields":{
+        "degree": "Master of Humanities"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 248,
+      "fields":{
+        "degree": "Master of Industrial and Labor Relations"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 249,
+      "fields":{
+        "degree": "Master of International Affairs"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 250,
+      "fields":{
+        "degree": "Master of International Business"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 251,
+      "fields":{
+        "degree": "Master of International Economics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 252,
+      "fields":{
+        "degree": "Master of International Public Policy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 253,
+      "fields":{
+        "degree": "Master of International Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 254,
+      "fields":{
+        "degree": "Master of Information"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 255,
+      "fields":{
+        "degree": "Master of Information Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 256,
+      "fields":{
+        "degree": "Master of Information Systems"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 257,
+      "fields":{
+        "degree": "Master of Information System Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 258,
+      "fields":{
+        "degree": "Master of Islamic Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 259,
+      "fields":{
+        "degree": "Master of IT"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 260,
+      "fields":{
+        "degree": "Master of Jurisprudence"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 261,
+      "fields":{
+        "degree": "Master of Laws"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 262,
+      "fields":{
+        "degree": "Master of Studies in Law"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 263,
+      "fields":{
+        "degree": "Master of Landscape Architecture"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 264,
+      "fields":{
+        "degree": "Master of Letters"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 265,
+      "fields":{
+        "degree": "Master of Liberal Arts"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 266,
+      "fields":{
+        "degree": "Master of Library and Information Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 267,
+      "fields":{
+        "degree": "Master of Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 268,
+      "fields":{
+        "degree": "Master of Mass Communication and Journalism"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 269,
+      "fields":{
+        "degree": "Master of Mathematical Finance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 270,
+      "fields":{
+        "degree": "Master of Mathematics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 271,
+      "fields":{
+        "degree": "Master of Mathematics and Computer Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 272,
+      "fields":{
+        "degree": "Master of Mathematics and Philosophy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 273,
+      "fields":{
+        "degree": "Master of Medical Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 274,
+      "fields":{
+        "degree": "Master of Medicine"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 275,
+      "fields":{
+        "degree": "Master of Military Art and Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 276,
+      "fields":{
+        "degree": "Master of Music"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 277,
+      "fields":{
+        "degree": "Master of Network and Communications Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 278,
+      "fields":{
+        "degree": "Master of Occupational Therapy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 279,
+      "fields":{
+        "degree": "Master of Pharmacy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 280,
+      "fields":{
+        "degree": "Master of Philosophy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 281,
+      "fields":{
+        "degree": "Master of Physician Assistant Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 282,
+      "fields":{
+        "degree": "Master of Physics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 283,
+      "fields":{
+        "degree": "Master of Political Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 284,
+      "fields":{
+        "degree": "Master of Professional Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 285,
+      "fields":{
+        "degree": "Master of Psychology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 286,
+      "fields":{
+        "degree": "Master of Public Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 287,
+      "fields":{
+        "degree": "Master of Public Affairs"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 288,
+      "fields":{
+        "degree": "Master of Public Diplomacy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 289,
+      "fields":{
+        "degree": "Master of Public Health"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 290,
+      "fields":{
+        "degree": "Master of Public Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 291,
+      "fields":{
+        "degree": "Master of Public Policy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 292,
+      "fields":{
+        "degree": "Master of Public Relations"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 293,
+      "fields":{
+        "degree": "Master of Public Service"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 294,
+      "fields":{
+        "degree": "Master of Quantitative Finance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 295,
+      "fields":{
+        "degree": "Master of Rabbinic Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 296,
+      "fields":{
+        "degree": "Master of Real Estate Development"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 297,
+      "fields":{
+        "degree": "Master of Religious Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 298,
+      "fields":{
+        "degree": "Master of Research"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 299,
+      "fields":{
+        "degree": "Master of Sacred Music"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 300,
+      "fields":{
+        "degree": "Master of Sacred Theology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 301,
+      "fields":{
+        "degree": "Master of Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 302,
+      "fields":{
+        "degree": "Master of Science in Applied Cognition and Neuroscience"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 303,
+      "fields":{
+        "degree": "Master of Science in Athletic Training"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 304,
+      "fields":{
+        "degree": "Master of Science in Bioinformatics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 305,
+      "fields":{
+        "degree": "Master of Science in Business Analytics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 306,
+      "fields":{
+        "degree": "Master of Science in Clinical Epidemiology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 307,
+      "fields":{
+        "degree": "Master of Science in Computing Research"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 308,
+      "fields":{
+        "degree": "Master of Science in Cyber Security"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 309,
+      "fields":{
+        "degree": "Master of Science in Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 310,
+      "fields":{
+        "degree": "Master of Science in Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 311,
+      "fields":{
+        "degree": "Master of Science in Development Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 312,
+      "fields":{
+        "degree": "Master of Science in Finance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 313,
+      "fields":{
+        "degree": "Master of Science in Governance & Organizational Sciences"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 314,
+      "fields":{
+        "degree": "Master of Science in Government Contracts"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 315,
+      "fields":{
+        "degree": "Master of Science in Health Informatics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 316,
+      "fields":{
+        "degree": "Master of Science in Human Resource Development"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 317,
+      "fields":{
+        "degree": "Master of Science in Information Assurance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 318,
+      "fields":{
+        "degree": "Master of Science in Information Systems"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 319,
+      "fields":{
+        "degree": "Master of Science in Information Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 320,
+      "fields":{
+        "degree": "Master of Science in Leadership"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 321,
+      "fields":{
+        "degree": "Master of Science in Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 322,
+      "fields":{
+        "degree": "Master of Science in Nursing"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 323,
+      "fields":{
+        "degree": "Master of Science in Project Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 324,
+      "fields":{
+        "degree": "Master of Science in Quality Assurance"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 325,
+      "fields":{
+        "degree": "Master of Science in Risk Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 326,
+      "fields":{
+        "degree": "Master of Science in Supply Chain Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 327,
+      "fields":{
+        "degree": "Master of Science in Teaching"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 328,
+      "fields":{
+        "degree": "Master of Science in Taxation"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 329,
+      "fields":{
+        "degree": "Master of Social Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 330,
+      "fields":{
+        "degree": "Master of Social Work"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 331,
+      "fields":{
+        "degree": "Master of Statistics"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 332,
+      "fields":{
+        "degree": "Master of Strategic Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 333,
+      "fields":{
+        "degree": "Master of Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 334,
+      "fields":{
+        "degree": "Master of Surgery"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 335,
+      "fields":{
+        "degree": "Master of Theological Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 336,
+      "fields":{
+        "degree": "Master of Technology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 337,
+      "fields":{
+        "degree": "Master of Theology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 338,
+      "fields":{
+        "degree": "Master of Urban Planning"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 339,
+      "fields":{
+        "degree": "Master of Veterinary Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 340,
+      "fields":{
+        "degree": "Doctor of Arts"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 341,
+      "fields":{
+        "degree": "Doctor of Audiology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 342,
+      "fields":{
+        "degree": "Doctor of Aviation (Av.D.)"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 343,
+      "fields":{
+        "degree": "Doctor of Business Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 344,
+      "fields":{
+        "degree": "Doctor of Canon Law"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 345,
+      "fields":{
+        "degree": "Doctor of Chiropractic"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 346,
+      "fields":{
+        "degree": "Doctor of Commerce"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 347,
+      "fields":{
+        "degree": "Doctor of Community Health"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 348,
+      "fields":{
+        "degree": "Doctor of Dental Surgery"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 349,
+      "fields":{
+        "degree": "Doctor of Divinity"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 350,
+      "fields":{
+        "degree": "Doctor of Education"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 351,
+      "fields":{
+        "degree": "Doctor of Engineering"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 352,
+      "fields":{
+        "degree": "Doctor of Fine Arts"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 353,
+      "fields":{
+        "degree": "Doctor of Health Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 354,
+      "fields":{
+        "degree": "Doctor of Health Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 355,
+      "fields":{
+        "degree": "Doctor of Juridical Science; Juris Doctor"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 356,
+      "fields":{
+        "degree": "Doctor of Law; Legum Doctor"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 357,
+      "fields":{
+        "degree": "Doctor of Liberal Studies"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 358,
+      "fields":{
+        "degree": "Doctor of Management"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 359,
+      "fields":{
+        "degree": "Doctor of Medicine (M.D.)"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 360,
+      "fields":{
+        "degree": "Doctor of Ministry"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 361,
+      "fields":{
+        "degree": "Doctor of Modern Languages"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 362,
+      "fields":{
+        "degree": "Doctor of Musical Arts"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 363,
+      "fields":{
+        "degree": "Doctor of Naturopathic Medicine"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 364,
+      "fields":{
+        "degree": "Doctor of Optometry"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 365,
+      "fields":{
+        "degree": "Doctor of Osteopathic Medicine"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 366,
+      "fields":{
+        "degree": "Doctor of Pharmacy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 367,
+      "fields":{
+        "degree": "Doctor of Philosophy"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 368,
+      "fields":{
+        "degree": "Doctor of Public Administration"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 369,
+      "fields":{
+        "degree": "Doctor of Science"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 370,
+      "fields":{
+        "degree": "Doctor of Theology"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 371,
+      "fields":{
+        "degree": "Doctor of Veterinary Medicine"
+      }
+    },
+    {
+      "model":"profiles.degree",
+      "pk": 372,
+      "fields":{
+        "degree": "Doctor of Radio oncology"
+      }
+    }
+  ]
