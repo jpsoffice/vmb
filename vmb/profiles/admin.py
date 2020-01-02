@@ -13,7 +13,6 @@ class PersonInline(admin.TabularInline):
     verbose_name_plural = 'Languages Known'
 
 class PersonAdmin(admin.ModelAdmin):
-
     fieldsets = [
         (None, {'fields': ['name',('gender','marital_status')]}),
         ('SPIRITUAL QUOTIENT', {'fields': ['rounds_chanting',('s_status','guru')]}),
@@ -24,7 +23,9 @@ class PersonAdmin(admin.ModelAdmin):
         ('CONTACT INFORMATION', {'fields': [('phone', 'email_id')]}),
     ]
     inlines = [PersonInline]
-
+    list_display = ('name','age','dob','current_country','current_city','occupation','annual_income','phone','email_id')
+    list_filter = ('current_state','current_city','annual_income','gender')
+    search_fields = ['name','current_country__name','current_state','current_city','occupation__occupation','annual_income','phone','email_id']
 
 
 # Register the admin class with associated model 

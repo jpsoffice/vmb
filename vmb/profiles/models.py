@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -40,7 +41,7 @@ class Person(models.Model):
         default=0,
     )
     s_status = models.CharField(
-        max_length=1, 
+        max_length=2, 
         help_text= 'Enter siksha status (e.g. Aspiring, Shelter etc.)',
         choices=SIKSHA_STATUS_CHOICES,
         verbose_name=_("Siksha Status"),
@@ -121,14 +122,16 @@ class Person(models.Model):
         max_length=3, choices=M_STATUS, help_text='Single, Divorced etc.'
     )
     
-    email_id = models.EmailField( blank=True, null=True, verbose_name=_("Email"))
+    email_id = models.EmailField(blank=True, null=True, verbose_name=_("Email"))
     phone = models.CharField(
         max_length=17, verbose_name=_("Phone number"),
     )
     
+    expectations = models.TextField(max_length=300, null=True)
+    
     def age(self):
         if self.dob:
-            return int((datetime.datetime.now() - self.dob).days / 365.25)
+            return int((datetime.datetime.now().date() - self.dob).days / 365.25)
 
     def __str__(self):
         return self.name
