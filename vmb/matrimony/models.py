@@ -29,7 +29,7 @@ M_STATUS = (
 )
 
 class MatrimonyProfile(models.Model):
-    """Model representing a person"""
+    """Model representing matrimonial profile of a candidate"""
     name = models.CharField(
         max_length=200, verbose_name=_("Name"),
     )

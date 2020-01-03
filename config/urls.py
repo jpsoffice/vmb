@@ -44,4 +44,4 @@ if settings.DEBUG:
 
         urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
 
-# urlpatterns += [path('profiles/', include('profiles.urls'))]
+# urlpatterns += [path('matrimony/', include('matrimony.urls'))]
