@@ -58,7 +58,8 @@ class Person(models.Model):
         verbose_name=_("Birth Time"),
     )
 
-    #Birth City/Town, State and Country
+    #Birth details
+    # ------------------------------------------------------------------------------------
     birth_city = models.CharField(
         max_length=200,
         verbose_name=_('City'),
@@ -74,7 +75,7 @@ class Person(models.Model):
         verbose_name=_("Country"),
     )
 
-    #Current village/town/city, State and Country
+    #Current details
     current_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
