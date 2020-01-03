@@ -28,7 +28,7 @@ M_STATUS = (
     ("WID", "Widow")
 )
 
-class Person(models.Model):
+class MatrimonyProfile(models.Model):
     """Model representing a person"""
     name = models.CharField(
         max_length=200, verbose_name=_("Name"),
@@ -130,6 +130,7 @@ class Person(models.Model):
     
     expectations = models.TextField(max_length=300, null=True)
     
+
     def age(self):
         if self.dob:
             return int((datetime.datetime.now().date() - self.dob).days / 365.25)
@@ -137,12 +138,20 @@ class Person(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        db_table = "matrimony_profile"
+
+
 class Guru(models.Model):
     """Model for representing an Initiating Guru"""
     name = models.CharField(max_length=300, blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        db_table = "guru"
+
 
 class Country(models.Model):
     name = models.CharField(max_length=255, unique=True, db_index=True, help_text=_("Name"))
@@ -186,6 +195,7 @@ class Language(models.Model):
     def __str__(self):
         return f'{self.name} {self.code}'
 
+
 class Degree(models.Model):
     """Model representing Degree(e.g. Bachelor, Masters, Doctorate etc.)"""
     degree = models.CharField(max_length=255, unique=True, verbose_name=_("Degree"))
@@ -193,12 +203,17 @@ class Degree(models.Model):
     def __str__(self):
         return f'{self.degree}'
 
+    class Meta:
+        db_table = "degree"
+
+
 class Occupation(models.Model):
     """Model representing Occupation(e.g. Doctor, Engineer, Entrepreneur etc.)"""
     occupation = models.CharField(max_length=255, unique=True)
 
     class Meta:
         ordering = ['occupation']
+        db_table = 'occupation'
 
     def __str__(self):
         return f'{self.occupation}'
