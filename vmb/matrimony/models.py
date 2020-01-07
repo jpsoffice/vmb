@@ -48,7 +48,7 @@ class MatrimonyProfile(models.Model):
         blank=True,
     )
     guru = models.ForeignKey('Guru', on_delete=models.SET_NULL, null=True, blank=True)
-
+    
     dob = models.DateField(
         help_text= 'Enter birth date as YYYY-MM-DD', 
         verbose_name=_("Birth Date")
@@ -130,6 +130,11 @@ class MatrimonyProfile(models.Model):
     
     expectations = models.TextField(max_length=300, null=True)
     
+    #Admins
+    user = ForeignKey(
+        on_delete=models.SET_NULL, 
+        null=True
+    )
 
     def age(self):
         if self.dob:
@@ -140,6 +145,16 @@ class MatrimonyProfile(models.Model):
 
     class Meta:
         db_table = "matrimony_profile"
+
+
+class User(models.Model):
+    name = CharField(_("Name of User"), blank=True, 
+        max_length=255, 
+        verbose_name=(_("Person in-charge"))
+    )
+
+    def get_absolute_url(self):
+        return reverse("users:detail", kwargs={"username": self.username})
 
 
 class Guru(models.Model):
