@@ -119,7 +119,7 @@ class MatrimonyProfile(models.Model):
         null=True, 
         help_text= 'Surgeon, Computer Application Engineer, etc.',
     )
-    annual_income = models.PositiveIntegerField(max_digits=14, decimal_places=2, default_currency='USD')
+    annual_income = models.PositiveIntegerField()
     marital_status = models.CharField(
         max_length=3, choices=M_STATUS, help_text='Single, Divorced etc.'
     )
@@ -133,8 +133,9 @@ class MatrimonyProfile(models.Model):
     
     #Admins
     user = models.ForeignKey(
+        'User',
         on_delete=models.SET_NULL, 
-        null=True
+        null=True,
     )
 
     def age(self):
@@ -149,10 +150,7 @@ class MatrimonyProfile(models.Model):
 
 
 class User(models.Model):
-    name = models.CharField(_("Name of User"), blank=True, 
-        max_length=255, 
-        verbose_name=(_("Person in-charge"))
-    )
+    name = models.CharField(_("Name of User"), blank=True, max_length=255)
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
