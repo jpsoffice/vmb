@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+# from djmoney.models.fields import MoneyField
 
 GENDER_CHOICES = (("M", "Male"), ("F", "Female"), ("O", "Others"))
 
@@ -118,7 +119,7 @@ class MatrimonyProfile(models.Model):
         null=True, 
         help_text= 'Surgeon, Computer Application Engineer, etc.',
     )
-    annual_income = models.PositiveIntegerField(help_text='Enter income in a year')
+    annual_income = models.PositiveIntegerField(max_digits=14, decimal_places=2, default_currency='USD')
     marital_status = models.CharField(
         max_length=3, choices=M_STATUS, help_text='Single, Divorced etc.'
     )
@@ -131,7 +132,7 @@ class MatrimonyProfile(models.Model):
     expectations = models.TextField(max_length=300, null=True)
     
     #Admins
-    user = ForeignKey(
+    user = models.ForeignKey(
         on_delete=models.SET_NULL, 
         null=True
     )
@@ -148,7 +149,7 @@ class MatrimonyProfile(models.Model):
 
 
 class User(models.Model):
-    name = CharField(_("Name of User"), blank=True, 
+    name = models.CharField(_("Name of User"), blank=True, 
         max_length=255, 
         verbose_name=(_("Person in-charge"))
     )
