@@ -22,11 +22,11 @@ COMPLEXION_CHOICES = (
 )
 # Create your models here.
 M_STATUS = (
-    ("SGL", "Single"),
+    ("UM", "Unmarried"),
     ("ENG", "Engaged"),
     ("SEP", "Separated"),
     ("DIV", "Divorced"),
-    ("WID", "Widow")
+    ("WID", "Widowed")
 )
 
 class MatrimonyProfile(models.Model):
@@ -52,11 +52,13 @@ class MatrimonyProfile(models.Model):
     
     dob = models.DateField(
         help_text= 'Enter birth date as YYYY-MM-DD', 
-        verbose_name=_("Birth Date")
+        verbose_name=_("Birth Date"),
+        null = True,
     )
     tob = models.TimeField(
         help_text='Enter time HH:MM:SS in 24hr format', 
         verbose_name=_("Birth Time"),
+        null = True,
     )
 
     #Birth details
@@ -64,9 +66,10 @@ class MatrimonyProfile(models.Model):
     birth_city = models.CharField(
         max_length=200,
         verbose_name=_('City'),
-        help_text='Enter birth village/town/city'
+        help_text='Enter birth village/town/city',
+        null=True,
     )
-    birth_state = models.CharField(max_length=200, verbose_name=_('State'))
+    birth_state = models.CharField(max_length=200, verbose_name=_('State'), null=True)
     birth_country = models.ForeignKey(
         'Country', 
         on_delete=models.SET_NULL, 
@@ -80,9 +83,10 @@ class MatrimonyProfile(models.Model):
     current_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
-        help_text='Enter current village/town/city'
+        help_text='Enter current village/town/city',
+        null=True,
     )
-    current_state = models.CharField(max_length=200, verbose_name=_('State'))
+    current_state = models.CharField(max_length=200, verbose_name=_('State'), null = True,)
     current_country = models.ForeignKey(
         'Country', 
         on_delete=models.SET_NULL, 
@@ -99,12 +103,14 @@ class MatrimonyProfile(models.Model):
         decimal_places=2, 
         help_text='Height in cms', 
         blank=True,
+        null = True,
     )
     complexion = models.CharField(
         max_length=3, 
         help_text= 'Enter your complexion',
         choices=COMPLEXION_CHOICES,
-        blank=True,        
+        blank=True, 
+        null = True,       
     )
 
     degree = models.ForeignKey(
@@ -121,12 +127,12 @@ class MatrimonyProfile(models.Model):
     )
     annual_income = models.PositiveIntegerField()
     marital_status = models.CharField(
-        max_length=3, choices=M_STATUS, help_text='Single, Divorced etc.'
+        max_length=3, choices=M_STATUS, help_text='Single, Divorced etc.',null = True,
     )
     
     email_id = models.EmailField(blank=True, null=True, verbose_name=_("Email"))
     phone = models.CharField(
-        max_length=17, verbose_name=_("Phone number"),
+        max_length=17, verbose_name=_("Phone number"), null = True,
     )
     
     expectations = models.TextField(max_length=300, null=True)
