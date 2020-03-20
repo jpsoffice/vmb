@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from vmb.users.models import User
 # from djmoney.models.fields import MoneyField
 
 GENDER_CHOICES = (("M", "Male"), ("F", "Female"), ("O", "Others"))
@@ -138,11 +139,7 @@ class MatrimonyProfile(models.Model):
     expectations = models.TextField(max_length=300, null=True)
     
     #Admins
-    user = models.ForeignKey(
-        'User',
-        on_delete=models.SET_NULL, 
-        null=True,
-    )
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def age(self):
         if self.dob:
@@ -153,13 +150,6 @@ class MatrimonyProfile(models.Model):
 
     class Meta:
         db_table = "matrimony_profile"
-
-
-class User(models.Model):
-    name = models.CharField(_("Name of User"), blank=True, max_length=255)
-
-    def get_absolute_url(self):
-        return reverse("users:detail", kwargs={"username": self.username})
 
 
 class Guru(models.Model):
