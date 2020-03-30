@@ -1,0 +1,1474 @@
+[
+    {
+      "model": "matrimony.language",
+      "pk": 1,
+      "fields": {
+        "name": "Afar",
+        "code": "aa"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 2,
+      "fields": {
+        "name": "Abkhazian",
+        "code": "ab"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 3,
+      "fields": {
+        "name": "Avestan",
+        "code": "ae"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 4,
+      "fields": {
+        "name": "Afrikaans",
+        "code": "af"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 5,
+      "fields": {
+        "name": "Akan",
+        "code": "ak"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 6,
+      "fields": {
+        "name": "Amharic",
+        "code": "am"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 7,
+      "fields": {
+        "name": "Aragonese",
+        "code": "an"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 8,
+      "fields": {
+        "name": "Arabic",
+        "code": "ar"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 9,
+      "fields": {
+        "name": "Assamese",
+        "code": "as"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 10,
+      "fields": {
+        "name": "Avaric",
+        "code": "av"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 11,
+      "fields": {
+        "name": "Aymara",
+        "code": "ay"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 12,
+      "fields": {
+        "name": "Azerbaijani",
+        "code": "az"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 13,
+      "fields": {
+        "name": "Bashkir",
+        "code": "ba"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 14,
+      "fields": {
+        "name": "Belarusian",
+        "code": "be"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 15,
+      "fields": {
+        "name": "Bulgarian",
+        "code": "bg"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 16,
+      "fields": {
+        "name": "Bihari languages",
+        "code": "bh"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 17,
+      "fields": {
+        "name": "Bislama",
+        "code": "bi"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 18,
+      "fields": {
+        "name": "Bambara",
+        "code": "bm"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 19,
+      "fields": {
+        "name": "Bengali",
+        "code": "bn"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 20,
+      "fields": {
+        "name": "Tibetan",
+        "code": "bo"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 21,
+      "fields": {
+        "name": "Breton",
+        "code": "br"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 22,
+      "fields": {
+        "name": "Bosnian",
+        "code": "bs"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 23,
+      "fields": {
+        "name": "Catalan; Valencian",
+        "code": "ca"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 24,
+      "fields": {
+        "name": "Chechen",
+        "code": "ce"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 25,
+      "fields": {
+        "name": "Chamorro",
+        "code": "ch"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 26,
+      "fields": {
+        "name": "Corsican",
+        "code": "co"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 27,
+      "fields": {
+        "name": "Cree",
+        "code": "cr"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 28,
+      "fields": {
+        "name": "Czech",
+        "code": "cs"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 29,
+      "fields": {
+        "name": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic",
+        "code": "cu"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 30,
+      "fields": {
+        "name": "Chuvash",
+        "code": "cv"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 31,
+      "fields": {
+        "name": "Welsh",
+        "code": "cy"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 32,
+      "fields": {
+        "name": "Danish",
+        "code": "da"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 33,
+      "fields": {
+        "name": "German",
+        "code": "de"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 34,
+      "fields": {
+        "name": "Divehi; Dhivehi; Maldivian",
+        "code": "dv"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 35,
+      "fields": {
+        "name": "Dzongkha",
+        "code": "dz"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 36,
+      "fields": {
+        "name": "Ewe",
+        "code": "ee"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 37,
+      "fields": {
+        "name": "Greek, Modern (1453-)",
+        "code": "el"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 38,
+      "fields": {
+        "name": "English",
+        "code": "en"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 39,
+      "fields": {
+        "name": "Esperanto",
+        "code": "eo"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 40,
+      "fields": {
+        "name": "Spanish; Castilian",
+        "code": "es"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 41,
+      "fields": {
+        "name": "Estonian",
+        "code": "et"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 42,
+      "fields": {
+        "name": "Basque",
+        "code": "eu"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 43,
+      "fields": {
+        "name": "Persian",
+        "code": "fa"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 44,
+      "fields": {
+        "name": "Fulah",
+        "code": "ff"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 45,
+      "fields": {
+        "name": "Finnish",
+        "code": "fi"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 46,
+      "fields": {
+        "name": "Fijian",
+        "code": "fj"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 47,
+      "fields": {
+        "name": "Faroese",
+        "code": "fo"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 48,
+      "fields": {
+        "name": "French",
+        "code": "fr"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 49,
+      "fields": {
+        "name": "Western Frisian",
+        "code": "fy"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 50,
+      "fields": {
+        "name": "Irish",
+        "code": "ga"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 51,
+      "fields": {
+        "name": "Gaelic; Scottish Gaelic",
+        "code": "gd"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 52,
+      "fields": {
+        "name": "Galician",
+        "code": "gl"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 53,
+      "fields": {
+        "name": "Guarani",
+        "code": "gn"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 54,
+      "fields": {
+        "name": "Gujarati",
+        "code": "gu"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 55,
+      "fields": {
+        "name": "Manx",
+        "code": "gv"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 56,
+      "fields": {
+        "name": "Hausa",
+        "code": "ha"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 57,
+      "fields": {
+        "name": "Hebrew",
+        "code": "he"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 58,
+      "fields": {
+        "name": "Hindi",
+        "code": "hi"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 59,
+      "fields": {
+        "name": "Hiri Motu",
+        "code": "ho"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 60,
+      "fields": {
+        "name": "Croatian",
+        "code": "hr"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 61,
+      "fields": {
+        "name": "Haitian; Haitian Creole",
+        "code": "ht"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 62,
+      "fields": {
+        "name": "Hungarian",
+        "code": "hu"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 63,
+      "fields": {
+        "name": "Armenian",
+        "code": "hy"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 64,
+      "fields": {
+        "name": "Herero",
+        "code": "hz"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 65,
+      "fields": {
+        "name": "Interlingua (International Auxiliary Language Association)",
+        "code": "ia"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 66,
+      "fields": {
+        "name": "Indonesian",
+        "code": "id"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 67,
+      "fields": {
+        "name": "Interlingue; Occidental",
+        "code": "ie"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 68,
+      "fields": {
+        "name": "Igbo",
+        "code": "ig"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 69,
+      "fields": {
+        "name": "Sichuan Yi; Nuosu",
+        "code": "ii"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 70,
+      "fields": {
+        "name": "Inupiaq",
+        "code": "ik"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 71,
+      "fields": {
+        "name": "Ido",
+        "code": "io"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 72,
+      "fields": {
+        "name": "Icelandic",
+        "code": "is"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 73,
+      "fields": {
+        "name": "Italian",
+        "code": "it"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 74,
+      "fields": {
+        "name": "Inuktitut",
+        "code": "iu"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 75,
+      "fields": {
+        "name": "Japanese",
+        "code": "ja"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 76,
+      "fields": {
+        "name": "Javanese",
+        "code": "jv"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 77,
+      "fields": {
+        "name": "Georgian",
+        "code": "ka"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 78,
+      "fields": {
+        "name": "Kongo",
+        "code": "kg"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 79,
+      "fields": {
+        "name": "Kikuyu; Gikuyu",
+        "code": "ki"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 80,
+      "fields": {
+        "name": "Kuanyama; Kwanyama",
+        "code": "kj"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 81,
+      "fields": {
+        "name": "Kazakh",
+        "code": "kk"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 82,
+      "fields": {
+        "name": "Kalaallisut; Greenlandic",
+        "code": "kl"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 83,
+      "fields": {
+        "name": "Central Khmer",
+        "code": "km"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 84,
+      "fields": {
+        "name": "Kannada",
+        "code": "kn"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 85,
+      "fields": {
+        "name": "Korean",
+        "code": "ko"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 86,
+      "fields": {
+        "name": "Kanuri",
+        "code": "kr"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 87,
+      "fields": {
+        "name": "Kashmiri",
+        "code": "ks"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 88,
+      "fields": {
+        "name": "Kurdish",
+        "code": "ku"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 89,
+      "fields": {
+        "name": "Komi",
+        "code": "kv"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 90,
+      "fields": {
+        "name": "Cornish",
+        "code": "kw"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 91,
+      "fields": {
+        "name": "Kirghiz; Kyrgyz",
+        "code": "ky"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 92,
+      "fields": {
+        "name": "Latin",
+        "code": "la"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 93,
+      "fields": {
+        "name": "Luxembourgish; Letzeburgesch",
+        "code": "lb"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 94,
+      "fields": {
+        "name": "Ganda",
+        "code": "lg"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 95,
+      "fields": {
+        "name": "Limburgan; Limburger; Limburgish",
+        "code": "li"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 96,
+      "fields": {
+        "name": "Lingala",
+        "code": "ln"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 97,
+      "fields": {
+        "name": "Lao",
+        "code": "lo"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 98,
+      "fields": {
+        "name": "Lithuanian",
+        "code": "lt"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 99,
+      "fields": {
+        "name": "Luba-Katanga",
+        "code": "lu"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 100,
+      "fields": {
+        "name": "Latvian",
+        "code": "lv"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 101,
+      "fields": {
+        "name": "Malagasy",
+        "code": "mg"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 102,
+      "fields": {
+        "name": "Marshallese",
+        "code": "mh"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 103,
+      "fields": {
+        "name": "Maori",
+        "code": "mi"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 104,
+      "fields": {
+        "name": "Macedonian",
+        "code": "mk"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 105,
+      "fields": {
+        "name": "Malayalam",
+        "code": "ml"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 106,
+      "fields": {
+        "name": "Mongolian",
+        "code": "mn"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 107,
+      "fields": {
+        "name": "Marathi",
+        "code": "mr"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 108,
+      "fields": {
+        "name": "Malay",
+        "code": "ms"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 109,
+      "fields": {
+        "name": "Maltese",
+        "code": "mt"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 110,
+      "fields": {
+        "name": "Burmese",
+        "code": "my"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 111,
+      "fields": {
+        "name": "Nauru",
+        "code": "na"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 112,
+      "fields": {
+        "name": "Bokm\u00e5l, Norwegian; Norwegian Bokm\u00e5l",
+        "code": "nb"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 113,
+      "fields": {
+        "name": "Ndebele, North; North Ndebele",
+        "code": "nd"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 114,
+      "fields": {
+        "name": "Nepali",
+        "code": "ne"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 115,
+      "fields": {
+        "name": "Ndonga",
+        "code": "ng"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 116,
+      "fields": {
+        "name": "Dutch; Flemish",
+        "code": "nl"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 117,
+      "fields": {
+        "name": "Norwegian Nynorsk; Nynorsk, Norwegian",
+        "code": "nn"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 118,
+      "fields": {
+        "name": "Norwegian",
+        "code": "no"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 119,
+      "fields": {
+        "name": "Ndebele, South; South Ndebele",
+        "code": "nr"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 120,
+      "fields": {
+        "name": "Navajo; Navaho",
+        "code": "nv"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 121,
+      "fields": {
+        "name": "Chichewa; Chewa; Nyanja",
+        "code": "ny"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 122,
+      "fields": {
+        "name": "Occitan (post 1500); Proven\u00e7al",
+        "code": "oc"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 123,
+      "fields": {
+        "name": "Ojibwa",
+        "code": "oj"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 124,
+      "fields": {
+        "name": "Oromo",
+        "code": "om"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 125,
+      "fields": {
+        "name": "Oriya",
+        "code": "or"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 126,
+      "fields": {
+        "name": "Ossetian; Ossetic",
+        "code": "os"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 127,
+      "fields": {
+        "name": "Panjabi; Punjabi",
+        "code": "pa"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 128,
+      "fields": {
+        "name": "Pali",
+        "code": "pi"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 129,
+      "fields": {
+        "name": "Polish",
+        "code": "pl"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 130,
+      "fields": {
+        "name": "Pushto; Pashto",
+        "code": "ps"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 131,
+      "fields": {
+        "name": "Portuguese",
+        "code": "pt"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 132,
+      "fields": {
+        "name": "Quechua",
+        "code": "qu"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 133,
+      "fields": {
+        "name": "Romansh",
+        "code": "rm"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 134,
+      "fields": {
+        "name": "Rundi",
+        "code": "rn"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 135,
+      "fields": {
+        "name": "Romanian; Moldavian; Moldovan",
+        "code": "ro"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 136,
+      "fields": {
+        "name": "Russian",
+        "code": "ru"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 137,
+      "fields": {
+        "name": "Kinyarwanda",
+        "code": "rw"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 138,
+      "fields": {
+        "name": "Sanskrit",
+        "code": "sa"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 139,
+      "fields": {
+        "name": "Sardinian",
+        "code": "sc"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 140,
+      "fields": {
+        "name": "Sindhi",
+        "code": "sd"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 141,
+      "fields": {
+        "name": "Northern Sami",
+        "code": "se"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 142,
+      "fields": {
+        "name": "Sango",
+        "code": "sg"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 143,
+      "fields": {
+        "name": "Sinhala; Sinhalese",
+        "code": "si"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 144,
+      "fields": {
+        "name": "Slovak",
+        "code": "sk"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 145,
+      "fields": {
+        "name": "Slovenian",
+        "code": "sl"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 146,
+      "fields": {
+        "name": "Samoan",
+        "code": "sm"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 147,
+      "fields": {
+        "name": "Shona",
+        "code": "sn"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 148,
+      "fields": {
+        "name": "Somali",
+        "code": "so"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 149,
+      "fields": {
+        "name": "Albanian",
+        "code": "sq"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 150,
+      "fields": {
+        "name": "Serbian",
+        "code": "sr"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 151,
+      "fields": {
+        "name": "Swati",
+        "code": "ss"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 152,
+      "fields": {
+        "name": "Sotho, Southern",
+        "code": "st"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 153,
+      "fields": {
+        "name": "Sundanese",
+        "code": "su"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 154,
+      "fields": {
+        "name": "Swedish",
+        "code": "sv"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 155,
+      "fields": {
+        "name": "Swahili",
+        "code": "sw"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 156,
+      "fields": {
+        "name": "Tamil",
+        "code": "ta"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 157,
+      "fields": {
+        "name": "Telugu",
+        "code": "te"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 158,
+      "fields": {
+        "name": "Tajik",
+        "code": "tg"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 159,
+      "fields": {
+        "name": "Thai",
+        "code": "th"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 160,
+      "fields": {
+        "name": "Tigrinya",
+        "code": "ti"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 161,
+      "fields": {
+        "name": "Turkmen",
+        "code": "tk"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 162,
+      "fields": {
+        "name": "Tagalog",
+        "code": "tl"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 163,
+      "fields": {
+        "name": "Tswana",
+        "code": "tn"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 164,
+      "fields": {
+        "name": "Tonga (Tonga Islands)",
+        "code": "to"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 165,
+      "fields": {
+        "name": "Turkish",
+        "code": "tr"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 166,
+      "fields": {
+        "name": "Tsonga",
+        "code": "ts"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 167,
+      "fields": {
+        "name": "Tatar",
+        "code": "tt"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 168,
+      "fields": {
+        "name": "Twi",
+        "code": "tw"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 169,
+      "fields": {
+        "name": "Tahitian",
+        "code": "ty"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 170,
+      "fields": {
+        "name": "Uighur; Uyghur",
+        "code": "ug"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 171,
+      "fields": {
+        "name": "Ukrainian",
+        "code": "uk"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 172,
+      "fields": {
+        "name": "Urdu",
+        "code": "ur"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 173,
+      "fields": {
+        "name": "Uzbek",
+        "code": "uz"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 174,
+      "fields": {
+        "name": "Venda",
+        "code": "ve"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 175,
+      "fields": {
+        "name": "Vietnamese",
+        "code": "vi"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 176,
+      "fields": {
+        "name": "Volap\u00fck",
+        "code": "vo"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 177,
+      "fields": {
+        "name": "Walloon",
+        "code": "wa"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 178,
+      "fields": {
+        "name": "Wolof",
+        "code": "wo"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 179,
+      "fields": {
+        "name": "Xhosa",
+        "code": "xh"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 180,
+      "fields": {
+        "name": "Yiddish",
+        "code": "yi"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 181,
+      "fields": {
+        "name": "Yoruba",
+        "code": "yo"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 182,
+      "fields": {
+        "name": "Zhuang; Chuang",
+        "code": "za"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 183,
+      "fields": {
+        "name": "Chinese",
+        "code": "zh"
+      }
+    },
+    {
+      "model": "matrimony.language",
+      "pk": 184,
+      "fields": {
+        "name": "Zulu",
+        "code": "zu"
+      }
+    }
+]
