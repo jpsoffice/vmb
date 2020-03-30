@@ -75,6 +75,7 @@ LOCAL_APPS = [
     "vmb.users.apps.UsersConfig",
     # Your stuff: custom apps go here
     "matrimony",
+    # "djmoney.apps.MoneyConfig",
   
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

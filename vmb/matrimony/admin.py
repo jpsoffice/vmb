@@ -19,13 +19,13 @@ class MatrimonyProfileAdmin(admin.ModelAdmin):
         ('BIRTH DETAILS', {'fields': [('dob','tob'),'birth_country',('birth_state','birth_city')]}),
         ('CURRENT LOCATION', {'fields': ['current_country',('current_state','current_city')]}),
         ('PHYSICAL APPEARANCE', {'fields': [('height','complexion')]}),            
-        ('QUALIFICATON', {'fields': ['degree', ('occupation', 'annual_income')]}),
+        ('QUALIFICATON', {'fields': ['degree', ('occupation', 'monthly_income')]}),
         ('CONTACT INFORMATION', {'fields': [('phone', 'email_id')]}),
     ]
     inlines = [MatrimonyProfileInline]
-    list_display = ('name','age','dob','current_country','current_city','occupation','annual_income','phone','email_id')
-    list_filter = ('current_state','current_city','annual_income','gender')
-    search_fields = ['name','current_country__name','current_state','current_city','occupation__occupation','annual_income','phone','email_id']
+    list_display = ('name','age','dob','current_country','current_city','occupation','monthly_income','phone','email_id')
+    list_filter = ('current_state','current_city','monthly_income','gender')
+    search_fields = ['name','current_country__name','current_state','current_city','occupation__occupation','monthly_income','phone','email_id']
 
 
 # Register the admin class with associated model 
