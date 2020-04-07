@@ -61,8 +61,10 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
+    "admin_numeric_filter",
     "django.contrib.admin",    
 ]
+
 THIRD_PARTY_APPS = [
     "crispy_forms",
     "allauth",
@@ -76,8 +78,8 @@ LOCAL_APPS = [
     # Your stuff: custom apps go here
     "matrimony",
     # "djmoney.apps.MoneyConfig",
-  
 ]
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
