@@ -126,7 +126,7 @@ class MatrimonyProfile(models.Model):
         null=True, 
         help_text= 'Surgeon, Computer Application Engineer, etc.',
     )
-    monthly_income = models.PositiveIntegerField()
+    annual_income = models.PositiveIntegerField()
     marital_status = models.CharField(
         max_length=3, choices=M_STATUS, help_text='Single, Divorced etc.',null = True,
     )
@@ -141,9 +141,9 @@ class MatrimonyProfile(models.Model):
     #Admins
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
-    # def age(self):
-    #     if self.dob:
-    #         return int((datetime.datetime.now().date() - self.dob).days / 365.25)
+    def age(self):
+        if self.dob:
+            return int((datetime.datetime.now().date() - self.dob).days / 365.25)
 
     def __str__(self):
         return self.name
