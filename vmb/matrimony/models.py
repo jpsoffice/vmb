@@ -141,9 +141,9 @@ class MatrimonyProfile(models.Model):
     #Admins
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
-    # def age(self):
-    #     if self.dob:
-    #         return int((datetime.datetime.now().date() - self.dob).days / 365.25)
+    def age(self):
+        if self.dob:
+            return int((datetime.datetime.now().date() - self.dob).days / 365.25)
 
     def __str__(self):
         return self.name
