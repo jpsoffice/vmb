@@ -12,7 +12,11 @@ class MatrimonyProfileInline(admin.TabularInline):
     verbose_name = 'Language'
     verbose_name_plural = 'Languages Known'
 
+<<<<<<< HEAD
 class MatrimonyProfileAdmin(admin.ModelAdmin):
+=======
+class MatrimonyProfileAdmin(NumericFilterModelAdmin):
+>>>>>>> new
     fieldsets = [
         (None, {'fields': ['name',('gender','marital_status')]}),
         ('SPIRITUAL QUOTIENT', {'fields': ['rounds_chanting',('s_status','guru')]}),
@@ -23,10 +27,16 @@ class MatrimonyProfileAdmin(admin.ModelAdmin):
         ('CONTACT INFORMATION', {'fields': [('phone', 'email_id')]}),
     ]
     inlines = [MatrimonyProfileInline]
+<<<<<<< HEAD
     list_display = ('name','age','dob','current_country','current_city','occupation','annual_income','phone','email_id')
     list_filter = ('current_state','current_city','annual_income','gender')
     search_fields = ['name','current_country__name','current_state','current_city','occupation__occupation','annual_income','phone','email_id']
 
+=======
+    list_display = ('name','age','dob','current_country','current_city','occupation','monthly_income','phone','email_id')
+    list_filter = ('current_state','current_city',('monthly_income', RangeNumericFilter),'gender')
+    search_fields = ['name','current_country__name','current_state','current_city','occupation__occupation','monthly_income','phone','email_id']
+>>>>>>> new
 
 # Register the admin class with associated model 
 admin.site.register(MatrimonyProfile, MatrimonyProfileAdmin)
