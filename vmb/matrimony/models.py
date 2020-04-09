@@ -2,7 +2,7 @@ import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from vmb.users.models import User
-# from djmoney.models.fields import MoneyField
+from djmoney.models.fields import MoneyField
 
 GENDER_CHOICES = (("M", "Male"), ("F", "Female"), ("O", "Others"))
 
@@ -126,7 +126,7 @@ class MatrimonyProfile(models.Model):
         null=True, 
         help_text= 'Surgeon, Computer Application Engineer, etc.',
     )
-    annual_income = models.PositiveIntegerField()
+    monthly_income = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='INR')
     marital_status = models.CharField(
         max_length=3, choices=M_STATUS, help_text='Single, Divorced etc.',null = True,
     )
