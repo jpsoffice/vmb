@@ -36,7 +36,7 @@ def run(file_path):
         mp = MatrimonyProfile(name=row[0], gender=row[1], rounds_chanting=row[2], 
             s_status=row[3], guru=g, dob=row[5], tob=row[6], birth_city=row[7], 
             current_city=row[10], height=row[14], degree=d, occupation=o,
-            annual_income=row[18], marital_status=row[19], email_id=row[20], phone=row[21], 
+            monthly_income=row[18], marital_status=row[19], email_id=row[20], phone=row[21], 
             expectations=row[22])
         mp.save()
 
