@@ -62,8 +62,9 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
     "admin_numeric_filter",
+
     "django.contrib.admin",
-    "djmoney"    
+    "djmoney",
 ]
 
 THIRD_PARTY_APPS = [
