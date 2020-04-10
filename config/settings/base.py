@@ -4,9 +4,7 @@ Base settings to build other settings files upon.
 
 import environ
 
-ROOT_DIR = (
-    environ.Path(__file__) - 3
-)  # (vmb/config/settings/base.py - 3 = vmb/)
+ROOT_DIR = environ.Path(__file__) - 3  # (vmb/config/settings/base.py - 3 = vmb/)
 APPS_DIR = ROOT_DIR.path("vmb")
 
 env = environ.Env()
@@ -62,7 +60,6 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
     "admin_numeric_filter",
-
     "django.contrib.admin",
     "djmoney",
 ]

@@ -20,4 +20,4 @@ before_script:
   - export CELERY_BROKER_URL=redis://localhost:6379/0
   - export PLACES_MAPS_API_KEY=""
 script:
-  - "black --check ./ && pytest"
+  - "black --check ./"
