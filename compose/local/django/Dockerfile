@@ -16,6 +16,7 @@ RUN apk update \
   && apk add postgresql-client
 
 # Requirements are installed here to ensure they will be cached.
+RUN pip install faster
 COPY ./requirements /requirements
 RUN pip install -r /requirements/local.txt
 
