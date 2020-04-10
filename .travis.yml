@@ -1,0 +1,23 @@
+dist: xenial
+services:
+  - postgresql
+  - redis
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq build-essential gettext python-dev zlib1g-dev libpq-dev xvfb
+  - sudo apt-get install -qq libjpeg8-dev libfreetype6-dev libwebp-dev
+  - sudo apt-get install -qq graphviz-dev python-setuptools python3-dev python-virtualenv python-pip
+  - sudo apt-get install -qq firefox automake libtool libreadline6 libreadline6-dev libreadline-dev
+  - sudo apt-get install -qq libsqlite3-dev libxml2 libxml2-dev libssl-dev libbz2-dev wget curl llvm
+language: python
+python:
+  - "3.6"
+install:
+  - pip install -r requirements/local.txt
+before_script:
+  - export DATABASE_URL=postgres://postgres:@localhost:5432/travisci
+  - export REDIS_URL=redis://localhost:6379/0
+  - export CELERY_BROKER_URL=redis://localhost:6379/0
+  - export PLACES_MAPS_API_KEY=""
+script:
+  - "black --check ./ && pytest"
