@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM rtnpro/vmb-base:latest
 
 ENV PYTHONUNBUFFERED 1
 
