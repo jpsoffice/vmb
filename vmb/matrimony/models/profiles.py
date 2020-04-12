@@ -147,7 +147,7 @@ class MatrimonyProfile(BaseModel):
     expectations = models.TextField(max_length=300, null=True)
 
     user = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="profiles"
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
     )
 
     # Staff users
@@ -168,3 +168,25 @@ class MatrimonyProfile(BaseModel):
 
     class Meta:
         db_table = "matrimony_profiles"
+
+
+class MaleManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(gender='M')
+
+
+class Male(MatrimonyProfile):
+    objects = MaleManager()
+    class Meta:
+        proxy = True
+
+
+class FemaleManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(gender='F')
+
+
+class Female(MatrimonyProfile):
+    objects = FemaleManager()
+    class Meta:
+        proxy = True
