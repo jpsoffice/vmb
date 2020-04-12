@@ -70,15 +70,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
 
-    def save(self, *args, **kwargs):
-        self.gender = "M"
-        super().save(*args, **kwargs)
-
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-
-    def save(self, *args, **kwargs):
-        self.gender = "F"
-        super().save(*args, **kwargs)

@@ -85,4 +85,4 @@ class Occupation(BaseModel):
         db_table = "occupations"
 
     def __str__(self):
-        return f"{self.occupation}"
+        return f"{self.name}"
