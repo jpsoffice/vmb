@@ -17,12 +17,11 @@ SPIRITUAL_STATUS_CHOICES = (
 )
 
 COMPLEXION_CHOICES = (
-    ("I", "Light, Pale White"),
-    ("II", "White, Fair"),
-    ("III", "Medium, White to light brown"),
-    ("IV", "Olive, moderate brown"),
-    ("V", "Brown, dark brown"),
-    ("VI", "Very dark brown to black"),
+    ("FAI", _("Fair")),
+    ("VFA", _("Very fair")),
+    ("WHT", _("Wheatish")),
+    ("WHB", _("Wheatish brown")),
+    ("DAR", _("Dark")),
 )
 # Create your models here.
 MARITAL_STATUS = (
