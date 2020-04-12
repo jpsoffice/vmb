@@ -6,7 +6,7 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
 )
 from django.contrib import admin
-from .models import Male, Female, Guru, Language, Qualification, Occupation
+from .models import Male, Female, Guru, Language, Qualification, Occupation, Country
 
 
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
