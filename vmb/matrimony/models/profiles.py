@@ -172,21 +172,23 @@ class MatrimonyProfile(BaseModel):
 
 class MaleManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(gender='M')
+        return super().get_queryset().filter(gender="M")
 
 
 class Male(MatrimonyProfile):
     objects = MaleManager()
+
     class Meta:
         proxy = True
 
 
 class FemaleManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(gender='F')
+        return super().get_queryset().filter(gender="F")
 
 
 class Female(MatrimonyProfile):
     objects = FemaleManager()
+
     class Meta:
         proxy = True
