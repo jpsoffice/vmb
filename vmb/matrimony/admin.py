@@ -89,6 +89,3 @@ admin.site.register(Language)
 admin.site.register(Qualification)
 admin.site.register(Country)
 admin.site.register(Occupation)
-
-
-
