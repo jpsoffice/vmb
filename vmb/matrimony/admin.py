@@ -6,7 +6,8 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
 )
 from django.contrib import admin
-from .models import Male, Female, Guru, Language, Qualification, Occupation
+from django.contrib.contenttypes.admin import GenericTabularInline
+from .models import Male, Female, Guru, Language, Qualification, Occupation, Match
 
 
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
@@ -66,11 +67,40 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     ]
 
 
+class MatchInline(admin.TabularInline):
+    model = Match
+    extra = 1
+    can_delete = True
+
+    raw_id_fields = ["male", "female"]
+
+    verbose_name = "Matche"
+    verbose_name_plural = "Matches"
+
+
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
+    inlines = [MatchInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
+    inlines = [MatchInline]
+
+
+@admin.register(Match)
+class MatchAdmin(admin.ModelAdmin):
+    model = Match
+    list_display = (
+        "status",
+        "assignee",
+        "male",
+        "male_response",
+        "female",
+        "female_response",
+        "male_response_updated_at",
+        "female_response_updated_at",
+    )
+    raw_id_fields = ("male", "female")

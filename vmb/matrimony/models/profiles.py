@@ -146,6 +146,10 @@ class MatrimonyProfile(BaseModel):
 
     expectations = models.TextField(max_length=300, null=True)
 
+    matches = models.ManyToManyField(
+        "self", through="Match", blank=True, symmetrical=False
+    )
+
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
     )
@@ -200,3 +204,55 @@ class Female(MatrimonyProfile):
     def save(self, *args, **kwargs):
         self.gender = "F"
         super().save(*args, **kwargs)
+
+
+MATCH_RESPONSE_CHOICES = (("", _("")), ("ACP", _("Accepted")), ("REJ", _("Rejected")))
+MATCH_STATUS_CHOICES = (
+    ("", _("")),
+    ("SUG", _("Suggested")),
+    ("FOL", _("Follow up")),
+    ("PRD", _("Parties discussing")),
+    ("MRC", _("Marriage cancelled")),
+    ("MRF", _("Marriage finalized")),
+    ("MRD", _("Married")),
+)
+
+
+class Match(BaseModel):
+    male = models.ForeignKey(
+        Male,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="female_matches",
+    )
+    male_response = models.CharField(
+        max_length=3, choices=MATCH_RESPONSE_CHOICES, blank=True, default=""
+    )
+    male_response_updated_at = models.DateTimeField(auto_now=True, blank=True)
+
+    female = models.ForeignKey(
+        Female,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="male_matches",
+    )
+    female_response = models.CharField(
+        max_length=3, choices=MATCH_RESPONSE_CHOICES, blank=True, default=""
+    )
+    female_response_updated_at = models.DateTimeField(auto_now=True, blank=True)
+
+    status = models.CharField(
+        max_length=3, choices=MATCH_STATUS_CHOICES, blank=True, default=""
+    )
+    assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.male}/{self.female}"
+
+    class Meta:
+        db_table = "matrimony_matches"
+
+        verbose_name = "Matche"
+        verbose_name_plural = "Matches"
