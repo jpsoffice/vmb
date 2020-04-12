@@ -17,12 +17,11 @@ SPIRITUAL_STATUS_CHOICES = (
 )
 
 COMPLEXION_CHOICES = (
-    ("I", "Light, Pale White"),
-    ("II", "White, Fair"),
-    ("III", "Medium, White to light brown"),
-    ("IV", "Olive, moderate brown"),
-    ("V", "Brown, dark brown"),
-    ("VI", "Very dark brown to black"),
+    ("FAI", _("Fair")),
+    ("VFA", _("Very fair")),
+    ("WHT", _("Wheatish")),
+    ("WHB", _("Wheatish brown")),
+    ("DAR", _("Dark")),
 )
 # Create your models here.
 MARITAL_STATUS = (
@@ -148,7 +147,7 @@ class MatrimonyProfile(BaseModel):
     expectations = models.TextField(max_length=300, null=True)
 
     user = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="profiles"
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
     )
 
     # Staff users
@@ -169,3 +168,27 @@ class MatrimonyProfile(BaseModel):
 
     class Meta:
         db_table = "matrimony_profiles"
+
+
+class MaleManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(gender="M")
+
+
+class Male(MatrimonyProfile):
+    objects = MaleManager()
+
+    class Meta:
+        proxy = True
+
+
+class FemaleManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(gender="F")
+
+
+class Female(MatrimonyProfile):
+    objects = FemaleManager()
+
+    class Meta:
+        proxy = True

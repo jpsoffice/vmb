@@ -6,27 +6,15 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
 )
 from django.contrib import admin
-from .models import MatrimonyProfile, Guru, Language, Qualification, Occupation
+from .models import Male, Female, Guru, Language, Qualification, Occupation
 
 
-# Register your models here.
-
-# Define admin class
-
-
-class MatrimonyProfileInline(admin.TabularInline):
-    model = MatrimonyProfile.languages_known.through
-    extra = 1
-    verbose_name = "Language"
-    verbose_name_plural = "Languages Known"
-
-
-class MatrimonyProfileAdmin(NumericFilterModelAdmin):
+class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     fieldsets = [
-        (None, {"fields": ["name", ("gender", "marital_status")]}),
+        (None, {"fields": ["name", ("marital_status", "languages_known")]}),
         (
             "SPIRITUAL QUOTIENT",
-            {"fields": ["rounds_chanting", ("spiiritual_status", "guru")]},
+            {"fields": ["rounds_chanting", ("spiritual_status", "guru")]},
         ),
         (
             "BIRTH DETAILS",
@@ -49,7 +37,6 @@ class MatrimonyProfileAdmin(NumericFilterModelAdmin):
         ),
         ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
     ]
-    inlines = [MatrimonyProfileInline]
     list_display = (
         "name",
         "age",
@@ -64,7 +51,7 @@ class MatrimonyProfileAdmin(NumericFilterModelAdmin):
     list_filter = (
         "current_state",
         "current_city",
-        ("monthly_income", RangeNumericFilter),
+        ("annual_income", RangeNumericFilter),
         "gender",
     )
     search_fields = [
@@ -73,11 +60,25 @@ class MatrimonyProfileAdmin(NumericFilterModelAdmin):
         "current_state",
         "current_city",
         "occupation__occupation",
-        "monthly_income",
+        "annual_income",
         "phone",
-        "email_id",
+        "email",
     ]
 
 
-# Register the admin class with associated model
-admin.site.register(MatrimonyProfile, MatrimonyProfileAdmin)
+@admin.register(Male)
+class MaleAdmin(BaseMatrimonyProfileAdmin):
+    model = Male
+
+    def save(self, *args, **kwargs):
+        self.gender = "M"
+        super().save(*args, **kwargs)
+
+
+@admin.register(Female)
+class FemalAdmin(BaseMatrimonyProfileAdmin):
+    model = Female
+
+    def save(self, *args, **kwargs):
+        self.gender = "F"
+        super().save(*args, **kwargs)
