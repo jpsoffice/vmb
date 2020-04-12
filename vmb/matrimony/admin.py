@@ -76,9 +76,17 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
 
 
 @admin.register(Female)
-class FemalAdmin(BaseMatrimonyProfileAdmin):
+class FemaleAdmin(BaseMatrimonyProfileAdmin):
     model = Female
 
     def save(self, *args, **kwargs):
         self.gender = "F"
         super().save(*args, **kwargs)
+
+
+admin.site.register(Guru)
+admin.site.register(Language)
+admin.site.register(Qualification)
+admin.site.register(Country)
+
+
