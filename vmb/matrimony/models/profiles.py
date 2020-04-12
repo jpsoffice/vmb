@@ -105,7 +105,7 @@ class MatrimonyProfile(BaseModel):
         "Language", help_text="Add the language you know"
     )
     height = models.DecimalField(
-        max_digits=3,
+        max_digits=5,
         decimal_places=2,
         help_text="Height in cms",
         blank=True,
@@ -181,6 +181,10 @@ class Male(MatrimonyProfile):
     class Meta:
         proxy = True
 
+    def save(self, *args, **kwargs):
+        self.gender = "M"
+        super().save(*args, **kwargs)
+
 
 class FemaleManager(models.Manager):
     def get_queryset(self):
@@ -192,3 +196,7 @@ class Female(MatrimonyProfile):
 
     class Meta:
         proxy = True
+
+    def save(self, *args, **kwargs):
+        self.gender = "F"
+        super().save(*args, **kwargs)
