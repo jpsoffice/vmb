@@ -19,6 +19,51 @@ from .models import (
 )
 
 
+class RoundsFilter(admin.SimpleListFilter):
+    # Human-readable title which will be displayed in the
+    # right admin sidebar just above the filter options.
+    title = "rounds of chanting"
+
+    # Parameter for the filter that will be used in the URL query.
+    parameter_name = "rounds_chanting"
+
+    def lookups(self, request, model_admin):
+        """
+        Returns a list of tuples. The first element in each
+        tuple is the coded value for the option that will
+        appear in the URL query. The second element is the
+        human-readable name for the option that will appear
+        in the right sidebar.
+        """
+        return (
+            ("16", (">=16")),
+            ("8-16", (">=8 and <16")),
+            ("1-8", (">=1 and <8")),
+            ("0", ("0")),
+        )
+
+    def queryset(self, request, queryset):
+        """
+        Returns the filtered queryset based on the value
+        provided in the query string and retrievable via
+        `self.value()`.
+        """
+        # Compare the requested value (either '80s' or '90s')
+        # to decide how to filter the queryset.
+        if self.value() == "16":
+            return queryset.filter(rounds_chanting__gte=int(16))
+        if self.value() == "8-16":
+            return queryset.filter(
+                rounds_chanting__lt=int(16), rounds_chanting__gte=int(8)
+            )
+        if self.value() == "1-8":
+            return queryset.filter(
+                rounds_chanting__lt=int(8), rounds_chanting__gte=int(1)
+            )
+        if self.value() == "0":
+            return queryset.filter(rounds_chanting__et=int(0))
+
+
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     fieldsets = [
         (None, {"fields": ["name", ("marital_status", "languages_known")]}),
@@ -59,10 +104,16 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "email",
     )
     list_filter = (
-        "current_state",
-        "current_city",
+        "current_country",
         ("annual_income", RangeNumericFilter),
-        "gender",
+        "languages_known",
+        "marital_status",
+        RoundsFilter,
+        "occupation",
+        "qualification",
+        "guru",
+        ("height", RangeNumericFilter),
+        "spiritual_status",
     )
     search_fields = [
         "name",
