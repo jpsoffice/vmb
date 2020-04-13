@@ -7,7 +7,16 @@ from admin_numeric_filter.admin import (
 )
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
-from .models import Male, Female, Guru, Language, Qualification, Occupation, Match
+from .models import (
+    Male,
+    Female,
+    Guru,
+    Language,
+    Qualification,
+    Occupation,
+    Match,
+    Country,
+)
 
 
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
@@ -104,3 +113,10 @@ class MatchAdmin(admin.ModelAdmin):
         "female_response_updated_at",
     )
     raw_id_fields = ("male", "female")
+
+
+admin.site.register(Guru)
+admin.site.register(Language)
+admin.site.register(Qualification)
+admin.site.register(Country)
+admin.site.register(Occupation)
