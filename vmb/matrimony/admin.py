@@ -6,7 +6,8 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
 )
 from django.contrib import admin
-from .models import Male, Female, Guru, Language, Qualification, Occupation, Country
+from django.contrib.contenttypes.admin import GenericTabularInline
+from .models import Male, Female, Guru, Language, Qualification, Occupation, Match, Country
 
 
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
@@ -66,24 +67,45 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     ]
 
 
+class MatchInline(admin.TabularInline):
+    model = Match
+    extra = 1
+    can_delete = True
+
+    raw_id_fields = ["male", "female"]
+
+    verbose_name = "Matche"
+    verbose_name_plural = "Matches"
+
+
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-
-    def save(self, *args, **kwargs):
-        self.gender = "M"
-        super().save(*args, **kwargs)
-
+    inlines = [MatchInline]
+    
 
 @admin.register(Female)
-class FemaleAdmin(BaseMatrimonyProfileAdmin):
+class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
+    inlines = [MatchInline]
+    
 
-    def save(self, *args, **kwargs):
-        self.gender = "F"
-        super().save(*args, **kwargs)
+@admin.register(Match)
+class MatchAdmin(admin.ModelAdmin):
+    model = Match
+    list_display = (
+        "status",
+        "assignee",
+        "male",
+        "male_response",
+        "female",
+        "female_response",
+        "male_response_updated_at",
+        "female_response_updated_at",
+    )
+    raw_id_fields = ("male", "female")
 
-
+    
 admin.site.register(Guru)
 admin.site.register(Language)
 admin.site.register(Qualification)
