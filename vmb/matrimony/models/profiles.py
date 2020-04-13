@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
+from djmoney.models.managers import money_manager
 
 from .base import BaseModel
 from .relations import Occupation, Qualification, Guru, Language, Country
@@ -180,7 +181,7 @@ class MaleManager(models.Manager):
 
 
 class Male(MatrimonyProfile):
-    objects = MaleManager()
+    objects = money_manager(MaleManager())
 
     class Meta:
         proxy = True
@@ -196,7 +197,7 @@ class FemaleManager(models.Manager):
 
 
 class Female(MatrimonyProfile):
-    objects = FemaleManager()
+    objects = money_manager(FemaleManager())
 
     class Meta:
         proxy = True
