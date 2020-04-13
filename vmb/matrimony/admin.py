@@ -22,10 +22,10 @@ from .models import (
 class RoundsFilter(admin.SimpleListFilter):
     # Human-readable title which will be displayed in the
     # right admin sidebar just above the filter options.
-    title = ('rounds of chanting')
+    title = "rounds of chanting"
 
     # Parameter for the filter that will be used in the URL query.
-    parameter_name = 'rounds_chanting'
+    parameter_name = "rounds_chanting"
 
     def lookups(self, request, model_admin):
         """
@@ -36,10 +36,10 @@ class RoundsFilter(admin.SimpleListFilter):
         in the right sidebar.
         """
         return (
-            ('16', ('>=16')),
-            ('8-16', ('>=8 and <16')),
-            ('1-8', ('>=1 and <8')),
-            ('0', ('0')),
+            ("16", (">=16")),
+            ("8-16", (">=8 and <16")),
+            ("1-8", (">=1 and <8")),
+            ("0", ("0")),
         )
 
     def queryset(self, request, queryset):
@@ -50,16 +50,18 @@ class RoundsFilter(admin.SimpleListFilter):
         """
         # Compare the requested value (either '80s' or '90s')
         # to decide how to filter the queryset.
-        if self.value() == '16':
+        if self.value() == "16":
             return queryset.filter(rounds_chanting__gte=int(16))
-        if self.value() == '8-16':
-            return queryset.filter(rounds_chanting__lt=int(16),
-                                    rounds_chanting__gte=int(8))
-        if self.value() == '1-8':
-            return queryset.filter(rounds_chanting__lt=int(8),
-                                    rounds_chanting__gte=int(1))    
-        if self.value() == '0':
-            return queryset.filter(rounds_chanting__et=int(0))                                        
+        if self.value() == "8-16":
+            return queryset.filter(
+                rounds_chanting__lt=int(16), rounds_chanting__gte=int(8)
+            )
+        if self.value() == "1-8":
+            return queryset.filter(
+                rounds_chanting__lt=int(8), rounds_chanting__gte=int(1)
+            )
+        if self.value() == "0":
+            return queryset.filter(rounds_chanting__et=int(0))
 
 
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
