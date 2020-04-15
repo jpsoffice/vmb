@@ -58,7 +58,7 @@ class MatrimonyProfile(BaseModel):
     # Birth details
     dob = models.DateField(
         help_text="Enter birth date as YYYY-MM-DD",
-        verbose_name=_("Birth Date"),
+        verbose_name=_("date of birth"),
         null=True,
     )
     tob = models.TimeField(

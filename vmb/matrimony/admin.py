@@ -7,6 +7,7 @@ from admin_numeric_filter.admin import (
 )
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
+from rangefilter.filter import DateRangeFilter
 from .models import (
     Male,
     Female,
@@ -105,6 +106,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     )
     list_filter = (
         "current_country",
+        ("dob", DateRangeFilter),
         ("annual_income", RangeNumericFilter),
         "languages_known",
         "marital_status",
