@@ -41,7 +41,7 @@ class MatrimonyProfile(BaseModel):
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
 
     # Spiritual details
-    rounds_chanting = models.PositiveIntegerField(
+    rounds_chanting = models.IntegerField(
         verbose_name=_("Rounds"),
         help_text="How many rounds are you chanting?",
         default=0,

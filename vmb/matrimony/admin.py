@@ -38,9 +38,9 @@ class RoundsFilter(admin.SimpleListFilter):
         """
         return (
             ("16", (">=16")),
-            ("8-16", (">=8 and <16")),
-            ("1-8", (">=1 and <8")),
-            ("0", ("0")),
+            ("8-16", ("8-16")),
+            ("1-8", ("1-8")),
+            ("0", ("Does not chant")),
         )
 
     def queryset(self, request, queryset):
@@ -62,7 +62,7 @@ class RoundsFilter(admin.SimpleListFilter):
                 rounds_chanting__lt=int(8), rounds_chanting__gte=int(1)
             )
         if self.value() == "0":
-            return queryset.filter(rounds_chanting__et=int(0))
+            return queryset.filter(rounds_chanting__lte=int(0))
 
 
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
@@ -108,6 +108,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "current_country",
         ("dob", DateRangeFilter),
         ("annual_income", RangeNumericFilter),
+        ("age", AgeFilter),
         "languages_known",
         "marital_status",
         RoundsFilter,
@@ -167,6 +168,25 @@ class MatchAdmin(admin.ModelAdmin):
     )
     raw_id_fields = ("male", "female")
 
+
+class IsVeryBenevolentFilter(admin.SimpleListFilter):
+    title = 'is_very_benevolent'
+    parameter_name = 'is_very_benevolent'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('Yes', 'Yes'),
+            ('No', 'No'),
+        )
+
+    def queryset(self, request, queryset):
+        value = self.value()
+        if value == 'Yes':
+            return queryset.filter(benevolence_factor__gt=75)
+        elif value == 'No':
+            return queryset.exclude(benevolence_factor__gt=75)
+        return queryset
+        
 
 admin.site.register(Guru)
 admin.site.register(Language)
