@@ -6,9 +6,9 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
 )
 from django_admin_listfilter_dropdown.filters import (
-    DropdownFilter, 
-    ChoiceDropdownFilter, 
-    RelatedDropdownFilter
+    DropdownFilter,
+    ChoiceDropdownFilter,
+    RelatedDropdownFilter,
 )
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
@@ -174,23 +174,23 @@ class MatchAdmin(admin.ModelAdmin):
 
 
 class IsVeryBenevolentFilter(admin.SimpleListFilter):
-    title = 'is_very_benevolent'
-    parameter_name = 'is_very_benevolent'
+    title = "is_very_benevolent"
+    parameter_name = "is_very_benevolent"
 
     def lookups(self, request, model_admin):
         return (
-            ('Yes', 'Yes'),
-            ('No', 'No'),
+            ("Yes", "Yes"),
+            ("No", "No"),
         )
 
     def queryset(self, request, queryset):
         value = self.value()
-        if value == 'Yes':
+        if value == "Yes":
             return queryset.filter(benevolence_factor__gt=75)
-        elif value == 'No':
+        elif value == "No":
             return queryset.exclude(benevolence_factor__gt=75)
         return queryset
-        
+
 
 admin.site.register(Guru)
 admin.site.register(Language)
