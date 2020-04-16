@@ -164,6 +164,7 @@ class MatrimonyProfile(BaseModel):
         related_name="assigned_profiles",
     )
 
+    @property
     def age(self):
         if self.dob:
             return int((datetime.datetime.now().date() - self.dob).days / 365.25)

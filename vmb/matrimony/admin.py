@@ -5,6 +5,11 @@ from admin_numeric_filter.admin import (
     RangeNumericFilter,
     SliderNumericFilter,
 )
+from django_admin_listfilter_dropdown.filters import (
+    DropdownFilter, 
+    ChoiceDropdownFilter, 
+    RelatedDropdownFilter
+)
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from rangefilter.filter import DateRangeFilter
@@ -105,16 +110,15 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "email",
     )
     list_filter = (
-        "current_country",
+        ("current_country", RelatedDropdownFilter),
         ("dob", DateRangeFilter),
         ("annual_income", RangeNumericFilter),
-        ("age", AgeFilter),
-        "languages_known",
+        ("languages_known", RelatedDropdownFilter),
         "marital_status",
         RoundsFilter,
-        "occupation",
-        "qualification",
-        "guru",
+        ("occupation", RelatedDropdownFilter),
+        ("qualification", RelatedDropdownFilter),
+        ("guru", RelatedDropdownFilter),
         ("height", RangeNumericFilter),
         "spiritual_status",
     )

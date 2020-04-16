@@ -63,6 +63,7 @@ DJANGO_APPS = [
     "django.contrib.admin",
     "djmoney",
     "rangefilter",
+    "django_admin_listfilter_dropdown",
 ]
 
 THIRD_PARTY_APPS = [
