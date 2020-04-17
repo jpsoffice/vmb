@@ -7,6 +7,11 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
     RangeNumericForm,
 )
+from django_admin_listfilter_dropdown.filters import (
+    DropdownFilter,
+    ChoiceDropdownFilter,
+    RelatedDropdownFilter,
+)
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.fields import DateField
@@ -41,9 +46,9 @@ class RoundsFilter(admin.SimpleListFilter):
         """
         return (
             ("16", (">=16")),
-            ("8-16", (">=8 and <16")),
-            ("1-8", (">=1 and <8")),
-            ("0", ("0")),
+            ("8-16", ("8-16")),
+            ("1-8", ("1-8")),
+            ("0", ("Does not chant")),
         )
 
     def queryset(self, request, queryset):
@@ -65,7 +70,7 @@ class RoundsFilter(admin.SimpleListFilter):
                 rounds_chanting__lt=int(8), rounds_chanting__gte=int(1)
             )
         if self.value() == "0":
-            return queryset.filter(rounds_chanting__et=int(0))
+            return queryset.filter(rounds_chanting__lte=int(0))
 
 
 class AgeRangeFilter(admin.SimpleListFilter):
@@ -203,9 +208,11 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "current_country",
         "languages_known",
         "marital_status",
-        "occupation",
-        "qualification",
-        "guru",
+        ("current_country", RelatedDropdownFilter),
+        ("languages_known", RelatedDropdownFilter),
+        ("occupation", RelatedDropdownFilter),
+        ("qualification", RelatedDropdownFilter),
+        ("guru", RelatedDropdownFilter),
     )
     search_fields = [
         "name",
@@ -256,6 +263,25 @@ class MatchAdmin(admin.ModelAdmin):
         "female_response_updated_at",
     )
     raw_id_fields = ("male", "female")
+
+
+class IsVeryBenevolentFilter(admin.SimpleListFilter):
+    title = "is_very_benevolent"
+    parameter_name = "is_very_benevolent"
+
+    def lookups(self, request, model_admin):
+        return (
+            ("Yes", "Yes"),
+            ("No", "No"),
+        )
+
+    def queryset(self, request, queryset):
+        value = self.value()
+        if value == "Yes":
+            return queryset.filter(benevolence_factor__gt=75)
+        elif value == "No":
+            return queryset.exclude(benevolence_factor__gt=75)
+        return queryset
 
 
 admin.site.register(Guru)
