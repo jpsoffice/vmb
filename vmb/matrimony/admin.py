@@ -1,9 +1,11 @@
 import datetime
+from dateutil.relativedelta import relativedelta
 from admin_numeric_filter.admin import (
     NumericFilterModelAdmin,
     SingleNumericFilter,
     RangeNumericFilter,
     SliderNumericFilter,
+    RangeNumericForm,
 )
 from django_admin_listfilter_dropdown.filters import (
     DropdownFilter,
@@ -12,7 +14,8 @@ from django_admin_listfilter_dropdown.filters import (
 )
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
-from rangefilter.filter import DateRangeFilter
+from django.db.models.fields import DateField
+from django.utils import timezone
 from .models import (
     Male,
     Female,
@@ -70,6 +73,93 @@ class RoundsFilter(admin.SimpleListFilter):
             return queryset.filter(rounds_chanting__lte=int(0))
 
 
+class AgeRangeFilter(admin.SimpleListFilter):
+    title = "age"
+    request = None
+    parameter_name = "age"
+    field_name = "dob"
+    template = "admin/filter_numeric_range.html"
+
+    def __init__(self, request, params, model, model_admin):
+        super().__init__(request, params, model, model_admin)
+
+        self.request = request
+
+        if self.parameter_name + "_from" in params:
+            value = params.pop(self.parameter_name + "_from")
+            to_date = (timezone.localdate() - relativedelta(years=int(value))).strftime(
+                "%Y-%m-%d"
+            )
+            self.used_parameters[self.parameter_name + "_from"] = value
+            self.used_parameters[self.field_name + "_to"] = to_date
+
+        if self.parameter_name + "_to" in params:
+            value = params.pop(self.parameter_name + "_to")
+            from_date = (
+                timezone.localdate() - relativedelta(years=int(value))
+            ).strftime("%Y-%m-%d")
+            self.used_parameters[self.parameter_name + "_to"] = value
+            self.used_parameters[self.field_name + "_from"] = from_date
+
+    def queryset(self, request, queryset):
+        filters = {}
+
+        value_from = self.used_parameters.get(self.field_name + "_from", None)
+        if value_from is not None and value_from != "":
+            filters.update(
+                {
+                    self.field_name
+                    + "__gte": self.used_parameters.get(
+                        self.field_name + "_from", None
+                    ),
+                }
+            )
+
+        value_to = self.used_parameters.get(self.field_name + "_to", None)
+        if value_to is not None and value_to != "":
+            filters.update(
+                {
+                    self.field_name
+                    + "__lte": self.used_parameters.get(self.field_name + "_to", None),
+                }
+            )
+
+        return queryset.filter(**filters)
+
+    def lookups(self, request, model_admin):
+        return []
+
+    def has_output(self):
+        return True
+
+    def expected_parameters(self):
+        return [
+            "{}_from".format(self.parameter_name),
+            "{}_to".format(self.parameter_name),
+        ]
+
+    def choices(self, changelist):
+        return (
+            {
+                "request": self.request,
+                "parameter_name": self.parameter_name,
+                "form": RangeNumericForm(
+                    name=self.parameter_name,
+                    data={
+                        self.parameter_name
+                        + "_from": self.used_parameters.get(
+                            self.parameter_name + "_from", None
+                        ),
+                        self.parameter_name
+                        + "_to": self.used_parameters.get(
+                            self.parameter_name + "_to", None
+                        ),
+                    },
+                ),
+            },
+        )
+
+
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     fieldsets = [
         (None, {"fields": ["name", ("marital_status", "languages_known")]}),
@@ -110,17 +200,19 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "email",
     )
     list_filter = (
-        ("current_country", RelatedDropdownFilter),
-        ("dob", DateRangeFilter),
+        AgeRangeFilter,
         ("annual_income", RangeNumericFilter),
-        ("languages_known", RelatedDropdownFilter),
-        "marital_status",
         RoundsFilter,
+        ("height", RangeNumericFilter),
+        "spiritual_status",
+        "current_country",
+        "languages_known",
+        "marital_status",
+        ("current_country", RelatedDropdownFilter),
+        ("languages_known", RelatedDropdownFilter),
         ("occupation", RelatedDropdownFilter),
         ("qualification", RelatedDropdownFilter),
         ("guru", RelatedDropdownFilter),
-        ("height", RangeNumericFilter),
-        "spiritual_status",
     )
     search_fields = [
         "name",
