@@ -205,8 +205,6 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         RoundsFilter,
         ("height", RangeNumericFilter),
         "spiritual_status",
-        "current_country",
-        "languages_known",
         "marital_status",
         ("current_country", RelatedDropdownFilter),
         ("languages_known", RelatedDropdownFilter),
