@@ -26,6 +26,7 @@ from .models import (
     Match,
     Country,
 )
+from djmoney.money import Money
 
 
 class RoundsFilter(admin.SimpleListFilter):
@@ -72,6 +73,126 @@ class RoundsFilter(admin.SimpleListFilter):
         if self.value() == "0":
             return queryset.filter(rounds_chanting__lte=int(0))
 
+class AnnualIncomeFilter(admin.SimpleListFilter):
+    # Human-readable title which will be displayed in the
+    # right admin sidebar just above the filter options.
+    title = "Annual Income"
+
+    # Parameter for the filter that will be used in the URL query.
+    parameter_name = "annual_income"
+
+    def lookups(self, request, model_admin):
+        """
+        Returns a list of tuples. The first element in each
+        tuple is the coded value for the option that will
+        appear in the URL query. The second element is the
+        human-readable name for the option that will appear
+        in the right sidebar.
+        """
+        return (
+            (("INR", ("INR")),
+            ("USD", ("USD")),
+            ("EUR", ("EURO")),)
+        )
+
+    def queryset(self, request, queryset):
+        """
+        Returns the filtered queryset based on the value
+        provided in the query string and retrievable via
+        `self.value()`.
+        """
+        # Compare the requested value (either '80s' or '90s')
+        # to decide how to filter the queryset.
+        if self.value() == "INR":
+            return queryset.filter(annual_income__gte=Money(1, 'INR'))
+        if self.value() == "USD":
+            return queryset.filter(
+                annual_income__gte=Money(1, 'USD')
+            )
+        if self.value() == "EUR":
+            return queryset.filter(
+                annual_income__gte=Money(1, 'EUR')
+            )
+
+
+class AnnualIncomeRangeFilter(admin.SimpleListFilter):
+    title = "Annual Income"
+    request = None
+    parameter_name = "currency"
+    field_name = "annual_income"
+    template = "admin/filter_numeric_range.html"
+
+    def __init__(self, request, params, model, model_admin):
+        super().__init__(request, params, model, model_admin)
+
+        self.request = request
+
+        if self.parameter_name + "_from" in params:
+            value = (params.pop(self.parameter_name + "_from")).split()
+            from_income = value[0]
+            from_currency = value[1]
+            self.used_parameters[self.field_name + "_from"] = from_income
+            self.used_parameters[self.parameter_name + "_from"] = from_currency
+
+        if self.parameter_name + "_to" in params:
+            value = (params.pop(self.parameter_name + "_to")).split()
+            to_income = value[0]
+            to_currency = value[1]
+            self.used_parameters[self.field_name + "_to"] = to_income
+            self.used_parameters[self.parameter_name + "_to"] = to_currency
+
+    def queryset(self, request, queryset):
+        filters = {}
+
+        value_from = self.used_parameters.get(self.field_name + "_from", None)
+        currency_from = self.used_parameters.get(self.parameter_name + "_from", None)
+        if value_from is not None and value_from != "":
+            filters.update(
+                {
+                    self.field_name + "_gte": Money(value_from, currency_from),
+                }
+            )
+
+        value_to = self.used_parameters.get(self.field_name + "_to", None)
+        currency_to = self.used_parameters.get(self.parameter_name + "_to", None)
+
+        if value_to is not None and value_to != "":
+            filters.update(
+                {
+                    self.field_name + "__gte": Money(value_to, currency_to),
+                }
+            )
+        return queryset.filter(**filters)
+        
+    def lookups(self, request, model_admin):
+        return []
+    def has_output(self):
+        return True
+    def expected_parameters(self):
+        return [
+            "{}_from".format(self.parameter_name),
+            "{}_to".format(self.parameter_name),
+        ]
+    def choices(self, changelist):
+        return (
+            {
+                "request": self.request,
+                "parameter_name": self.parameter_name,
+                "form": RangeNumericForm(
+                    name=self.parameter_name,
+                    data={
+                        self.parameter_name
+                        + "_from": self.used_parameters.get(
+                            self.parameter_name + "_from", None
+                        ),
+                        self.parameter_name
+                        + "_to": self.used_parameters.get(
+                            self.parameter_name + "_to", None
+                        ),
+                    },
+                ),
+            },
+        )
 
 class AgeRangeFilter(admin.SimpleListFilter):
     title = "age"
@@ -109,9 +230,7 @@ class AgeRangeFilter(admin.SimpleListFilter):
             filters.update(
                 {
                     self.field_name
-                    + "__gte": self.used_parameters.get(
-                        self.field_name + "_from", None
-                    ),
+                    + "__gte": value_from,
                 }
             )
 
@@ -120,7 +239,7 @@ class AgeRangeFilter(admin.SimpleListFilter):
             filters.update(
                 {
                     self.field_name
-                    + "__lte": self.used_parameters.get(self.field_name + "_to", None),
+                    + "__lte": value_to,
                 }
             )
 
@@ -201,8 +320,9 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     )
     list_filter = (
         AgeRangeFilter,
-        ("annual_income", RangeNumericFilter),
+        AnnualIncomeRangeFilter,
         RoundsFilter,
+        AnnualIncomeFilter,
         ("height", RangeNumericFilter),
         "spiritual_status",
         "marital_status",
@@ -261,25 +381,6 @@ class MatchAdmin(admin.ModelAdmin):
         "female_response_updated_at",
     )
     raw_id_fields = ("male", "female")
-
-
-class IsVeryBenevolentFilter(admin.SimpleListFilter):
-    title = "is_very_benevolent"
-    parameter_name = "is_very_benevolent"
-
-    def lookups(self, request, model_admin):
-        return (
-            ("Yes", "Yes"),
-            ("No", "No"),
-        )
-
-    def queryset(self, request, queryset):
-        value = self.value()
-        if value == "Yes":
-            return queryset.filter(benevolence_factor__gt=75)
-        elif value == "No":
-            return queryset.exclude(benevolence_factor__gt=75)
-        return queryset
 
 
 admin.site.register(Guru)
