@@ -27,6 +27,7 @@ from .models import (
     Country,
 )
 from djmoney.money import Money
+from .forms import TextRangeForm
 
 
 class RoundsFilter(admin.SimpleListFilter):
@@ -71,56 +72,35 @@ class RoundsFilter(admin.SimpleListFilter):
                 rounds_chanting__lt=int(8), rounds_chanting__gte=int(1)
             )
         if self.value() == "0":
+
             return queryset.filter(rounds_chanting__lte=int(0))
 
-class AnnualIncomeFilter(admin.SimpleListFilter):
-    # Human-readable title which will be displayed in the
-    # right admin sidebar just above the filter options.
-    title = "Annual Income"
 
-    # Parameter for the filter that will be used in the URL query.
-    parameter_name = "annual_income"
+class InputFilter(admin.SimpleListFilter):
+    template = 'admin/input_filter.html'
 
     def lookups(self, request, model_admin):
-        """
-        Returns a list of tuples. The first element in each
-        tuple is the coded value for the option that will
-        appear in the URL query. The second element is the
-        human-readable name for the option that will appear
-        in the right sidebar.
-        """
-        return (
-            (("INR", ("INR")),
-            ("USD", ("USD")),
-            ("EUR", ("EURO")),)
+        # Dummy, required to show the filter.
+        return ((),)
+
+    def choices(self, changelist):
+        # Grab only the "all" option.
+        all_choice = next(super().choices(changelist))
+        all_choice['query_parts'] = (
+            (k, v)
+            for k, v in changelist.get_filters_params().items()
+            if k != self.parameter_name
         )
-
-    def queryset(self, request, queryset):
-        """
-        Returns the filtered queryset based on the value
-        provided in the query string and retrievable via
-        `self.value()`.
-        """
-        # Compare the requested value (either '80s' or '90s')
-        # to decide how to filter the queryset.
-        if self.value() == "INR":
-            return queryset.filter(annual_income__gte=Money(1, 'INR'))
-        if self.value() == "USD":
-            return queryset.filter(
-                annual_income__gte=Money(1, 'USD')
-            )
-        if self.value() == "EUR":
-            return queryset.filter(
-                annual_income__gte=Money(1, 'EUR')
-            )
+        yield all_choice
 
 
-class AnnualIncomeRangeFilter(admin.SimpleListFilter):
+class AnnualIncomeFilter(InputFilter):
     title = "Annual Income"
     request = None
     parameter_name = "currency"
     field_name = "annual_income"
-    template = "admin/filter_numeric_range.html"
+    template = "admin/input_filter.html"
+    
 
     def __init__(self, request, params, model, model_admin):
         super().__init__(request, params, model, model_admin)
@@ -149,7 +129,7 @@ class AnnualIncomeRangeFilter(admin.SimpleListFilter):
         if value_from is not None and value_from != "":
             filters.update(
                 {
-                    self.field_name + "_gte": Money(value_from, currency_from),
+                    self.field_name + "__gte": Money(value_from, currency_from),
                 }
             )
 
@@ -159,7 +139,7 @@ class AnnualIncomeRangeFilter(admin.SimpleListFilter):
         if value_to is not None and value_to != "":
             filters.update(
                 {
-                    self.field_name + "__gte": Money(value_to, currency_to),
+                    self.field_name + "__lte": Money(value_to, currency_to),
                 }
             )
         return queryset.filter(**filters)
@@ -178,7 +158,7 @@ class AnnualIncomeRangeFilter(admin.SimpleListFilter):
             {
                 "request": self.request,
                 "parameter_name": self.parameter_name,
-                "form": RangeNumericForm(
+                "form": TextRangeForm(
                     name=self.parameter_name,
                     data={
                         self.parameter_name
@@ -193,7 +173,7 @@ class AnnualIncomeRangeFilter(admin.SimpleListFilter):
                 ),
             },
         )
-
+ 
 class AgeRangeFilter(admin.SimpleListFilter):
     title = "age"
     request = None
@@ -320,7 +300,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     )
     list_filter = (
         AgeRangeFilter,
-        AnnualIncomeRangeFilter,
+        # AnnualIncomeRangeFilter,
         RoundsFilter,
         AnnualIncomeFilter,
         ("height", RangeNumericFilter),
