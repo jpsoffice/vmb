@@ -77,7 +77,7 @@ class RoundsFilter(admin.SimpleListFilter):
 
 
 class InputFilter(admin.SimpleListFilter):
-    template = 'admin/input_filter.html'
+    template = "admin/input_filter.html"
 
     def lookups(self, request, model_admin):
         # Dummy, required to show the filter.
@@ -86,7 +86,7 @@ class InputFilter(admin.SimpleListFilter):
     def choices(self, changelist):
         # Grab only the "all" option.
         all_choice = next(super().choices(changelist))
-        all_choice['query_parts'] = (
+        all_choice["query_parts"] = (
             (k, v)
             for k, v in changelist.get_filters_params().items()
             if k != self.parameter_name
@@ -94,13 +94,12 @@ class InputFilter(admin.SimpleListFilter):
         yield all_choice
 
 
-class AnnualIncomeFilter(InputFilter):
+class AnnualIncomeRangeFilter(InputFilter):
     title = "Annual Income"
     request = None
     parameter_name = "currency"
     field_name = "annual_income"
     template = "admin/input_filter.html"
-    
 
     def __init__(self, request, params, model, model_admin):
         super().__init__(request, params, model, model_admin)
@@ -128,9 +127,7 @@ class AnnualIncomeFilter(InputFilter):
         currency_from = self.used_parameters.get(self.parameter_name + "_from", None)
         if value_from is not None and value_from != "":
             filters.update(
-                {
-                    self.field_name + "__gte": Money(value_from, currency_from),
-                }
+                {self.field_name + "__gte": Money(value_from, currency_from),}
             )
 
         value_to = self.used_parameters.get(self.field_name + "_to", None)
@@ -138,21 +135,22 @@ class AnnualIncomeFilter(InputFilter):
 
         if value_to is not None and value_to != "":
             filters.update(
-                {
-                    self.field_name + "__lte": Money(value_to, currency_to),
-                }
+                {self.field_name + "__lte": Money(value_to, currency_to),}
             )
         return queryset.filter(**filters)
-        
+
     def lookups(self, request, model_admin):
         return []
+
     def has_output(self):
         return True
+
     def expected_parameters(self):
         return [
             "{}_from".format(self.parameter_name),
             "{}_to".format(self.parameter_name),
         ]
+
     def choices(self, changelist):
         return (
             {
@@ -173,7 +171,8 @@ class AnnualIncomeFilter(InputFilter):
                 ),
             },
         )
- 
+
+
 class AgeRangeFilter(admin.SimpleListFilter):
     title = "age"
     request = None
@@ -208,19 +207,13 @@ class AgeRangeFilter(admin.SimpleListFilter):
         value_from = self.used_parameters.get(self.field_name + "_from", None)
         if value_from is not None and value_from != "":
             filters.update(
-                {
-                    self.field_name
-                    + "__gte": value_from,
-                }
+                {self.field_name + "__gte": value_from,}
             )
 
         value_to = self.used_parameters.get(self.field_name + "_to", None)
         if value_to is not None and value_to != "":
             filters.update(
-                {
-                    self.field_name
-                    + "__lte": value_to,
-                }
+                {self.field_name + "__lte": value_to,}
             )
 
         return queryset.filter(**filters)
@@ -300,9 +293,8 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     )
     list_filter = (
         AgeRangeFilter,
-        # AnnualIncomeRangeFilter,
+        AnnualIncomeRangeFilter,
         RoundsFilter,
-        AnnualIncomeFilter,
         ("height", RangeNumericFilter),
         "spiritual_status",
         "marital_status",
