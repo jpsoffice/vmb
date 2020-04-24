@@ -28,6 +28,9 @@ from .models import (
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
+from moneyed.classes import CurrencyDoesNotExist
+from decimal import InvalidOperation
+from builtins import IndexError
 
 
 class RoundsFilter(admin.SimpleListFilter):
@@ -76,25 +79,7 @@ class RoundsFilter(admin.SimpleListFilter):
             return queryset.filter(rounds_chanting__lte=int(0))
 
 
-class InputFilter(admin.SimpleListFilter):
-    template = "admin/input_filter.html"
-
-    def lookups(self, request, model_admin):
-        # Dummy, required to show the filter.
-        return ((),)
-
-    def choices(self, changelist):
-        # Grab only the "all" option.
-        all_choice = next(super().choices(changelist))
-        all_choice["query_parts"] = (
-            (k, v)
-            for k, v in changelist.get_filters_params().items()
-            if k != self.parameter_name
-        )
-        yield all_choice
-
-
-class AnnualIncomeRangeFilter(InputFilter):
+class AnnualIncomeRangeFilter(admin.SimpleListFilter):
     title = "Annual Income"
     request = None
     parameter_name = "currency"
@@ -105,20 +90,23 @@ class AnnualIncomeRangeFilter(InputFilter):
         super().__init__(request, params, model, model_admin)
 
         self.request = request
-
         if self.parameter_name + "_from" in params:
-            value = (params.pop(self.parameter_name + "_from")).split()
-            from_income = value[0]
-            from_currency = value[1]
-            self.used_parameters[self.field_name + "_from"] = from_income
-            self.used_parameters[self.parameter_name + "_from"] = from_currency
+            value = params.pop(self.parameter_name + "_from")
+            value = value.split()
+            if len(value) == 2:
+                from_income = value[0]
+                from_currency = value[1]
+                self.used_parameters[self.field_name + "_from"] = from_income
+                self.used_parameters[self.parameter_name + "_from"] = from_currency
 
         if self.parameter_name + "_to" in params:
-            value = (params.pop(self.parameter_name + "_to")).split()
-            to_income = value[0]
-            to_currency = value[1]
-            self.used_parameters[self.field_name + "_to"] = to_income
-            self.used_parameters[self.parameter_name + "_to"] = to_currency
+            value = params.pop(self.parameter_name + "_to")
+            value = value.split()
+            if len(value) == 2:
+                to_income = value[0]
+                to_currency = value[1]
+                self.used_parameters[self.field_name + "_to"] = to_income
+                self.used_parameters[self.parameter_name + "_to"] = to_currency
 
     def queryset(self, request, queryset):
         filters = {}
@@ -126,17 +114,23 @@ class AnnualIncomeRangeFilter(InputFilter):
         value_from = self.used_parameters.get(self.field_name + "_from", None)
         currency_from = self.used_parameters.get(self.parameter_name + "_from", None)
         if value_from is not None and value_from != "":
-            filters.update(
-                {self.field_name + "__gte": Money(value_from, currency_from),}
-            )
+            try:
+                filters.update(
+                    {self.field_name + "__gte": Money(value_from, currency_from),}
+                )
+            except (CurrencyDoesNotExist, InvalidOperation):
+                print("Please enter valid currency code")
 
         value_to = self.used_parameters.get(self.field_name + "_to", None)
         currency_to = self.used_parameters.get(self.parameter_name + "_to", None)
-
         if value_to is not None and value_to != "":
-            filters.update(
-                {self.field_name + "__lte": Money(value_to, currency_to),}
-            )
+            try:
+                filters.update(
+                    {self.field_name + "__lte": Money(value_to, currency_to),}
+                )
+            except (CurrencyDoesNotExist, InvalidOperation):
+                print("Please enter valid currency code")
+
         return queryset.filter(**filters)
 
     def lookups(self, request, model_admin):
