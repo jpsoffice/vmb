@@ -92,21 +92,21 @@ class AnnualIncomeRangeFilter(admin.SimpleListFilter):
         self.request = request
         if self.parameter_name + "_from" in params:
             value = params.pop(self.parameter_name + "_from")
-            value = value.split()
-            if len(value) == 2:
-                from_income = value[0]
-                from_currency = value[1]
+            value_list = value.split()
+            if len(value_list) == 2:
+                from_income = value_list[0]
+                from_currency = value_list[1]
                 self.used_parameters[self.field_name + "_from"] = from_income
-                self.used_parameters[self.parameter_name + "_from"] = from_currency
+                self.used_parameters[self.parameter_name + "_from"] = value
 
         if self.parameter_name + "_to" in params:
             value = params.pop(self.parameter_name + "_to")
-            value = value.split()
-            if len(value) == 2:
-                to_income = value[0]
-                to_currency = value[1]
+            value_list = value.split()
+            if len(value_list) == 2:
+                to_income = value_list[0]
+                to_currency = value_list[1]
                 self.used_parameters[self.field_name + "_to"] = to_income
-                self.used_parameters[self.parameter_name + "_to"] = to_currency
+                self.used_parameters[self.parameter_name + "_to"] = value
 
     def queryset(self, request, queryset):
         filters = {}
