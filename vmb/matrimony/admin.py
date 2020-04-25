@@ -96,7 +96,9 @@ class AnnualIncomeRangeFilter(admin.SimpleListFilter):
             if len(value_list) == 2:
                 from_income = value_list[0]
                 from_currency = value_list[1]
-                self.used_parameters[self.field_name + "_from"] = from_income
+                self.used_parameters[self.field_name + "_from"] = Money(
+                    from_income, from_currency
+                )
                 self.used_parameters[self.parameter_name + "_from"] = value
 
         if self.parameter_name + "_to" in params:
@@ -105,28 +107,26 @@ class AnnualIncomeRangeFilter(admin.SimpleListFilter):
             if len(value_list) == 2:
                 to_income = value_list[0]
                 to_currency = value_list[1]
-                self.used_parameters[self.field_name + "_to"] = to_income
+                self.used_parameters[self.field_name + "_to"] = Money(
+                    to_income, to_currency
+                )
                 self.used_parameters[self.parameter_name + "_to"] = value
 
     def queryset(self, request, queryset):
         filters = {}
 
         value_from = self.used_parameters.get(self.field_name + "_from", None)
-        currency_from = self.used_parameters.get(self.parameter_name + "_from", None)
-        if value_from is not None and value_from != "":
+        if value_from is not None:
             try:
-                filters.update(
-                    {self.field_name + "__gte": Money(value_from, currency_from),}
-                )
+                filters.update({self.field_name + "__gte": value_from})
             except (CurrencyDoesNotExist, InvalidOperation):
                 print("Please enter valid currency code")
 
         value_to = self.used_parameters.get(self.field_name + "_to", None)
-        currency_to = self.used_parameters.get(self.parameter_name + "_to", None)
         if value_to is not None and value_to != "":
             try:
                 filters.update(
-                    {self.field_name + "__lte": Money(value_to, currency_to),}
+                    {self.field_name + "__lte": value_to,}
                 )
             except (CurrencyDoesNotExist, InvalidOperation):
                 print("Please enter valid currency code")
