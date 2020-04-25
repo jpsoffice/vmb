@@ -26,6 +26,11 @@ from .models import (
     Match,
     Country,
 )
+from djmoney.money import Money
+from .forms import TextRangeForm
+from moneyed.classes import CurrencyDoesNotExist
+from decimal import InvalidOperation
+from builtins import IndexError
 
 
 class RoundsFilter(admin.SimpleListFilter):
@@ -70,7 +75,96 @@ class RoundsFilter(admin.SimpleListFilter):
                 rounds_chanting__lt=int(8), rounds_chanting__gte=int(1)
             )
         if self.value() == "0":
+
             return queryset.filter(rounds_chanting__lte=int(0))
+
+
+class AnnualIncomeRangeFilter(admin.SimpleListFilter):
+    title = "Annual Income"
+    request = None
+    parameter_name = "currency"
+    field_name = "annual_income"
+    template = "admin/input_filter.html"
+
+    def __init__(self, request, params, model, model_admin):
+        super().__init__(request, params, model, model_admin)
+
+        self.request = request
+        if self.parameter_name + "_from" in params:
+            value = params.pop(self.parameter_name + "_from")
+            value_list = value.split()
+            if len(value_list) == 2:
+                from_income = value_list[0]
+                from_currency = value_list[1]
+                self.used_parameters[self.field_name + "_from"] = Money(
+                    from_income, from_currency
+                )
+                self.used_parameters[self.parameter_name + "_from"] = value
+
+        if self.parameter_name + "_to" in params:
+            value = params.pop(self.parameter_name + "_to")
+            value_list = value.split()
+            if len(value_list) == 2:
+                to_income = value_list[0]
+                to_currency = value_list[1]
+                self.used_parameters[self.field_name + "_to"] = Money(
+                    to_income, to_currency
+                )
+                self.used_parameters[self.parameter_name + "_to"] = value
+
+    def queryset(self, request, queryset):
+        filters = {}
+
+        value_from = self.used_parameters.get(self.field_name + "_from", None)
+        if value_from is not None:
+            try:
+                filters.update({self.field_name + "__gte": value_from})
+            except (CurrencyDoesNotExist, InvalidOperation):
+                pass
+
+        value_to = self.used_parameters.get(self.field_name + "_to", None)
+        if value_to is not None and value_to != "":
+            try:
+                filters.update(
+                    {self.field_name + "__lte": value_to,}
+                )
+            except (CurrencyDoesNotExist, InvalidOperation):
+                pass
+
+        return queryset.filter(**filters)
+
+    def lookups(self, request, model_admin):
+        return []
+
+    def has_output(self):
+        return True
+
+    def expected_parameters(self):
+        return [
+            "{}_from".format(self.parameter_name),
+            "{}_to".format(self.parameter_name),
+        ]
+
+    def choices(self, changelist):
+        return (
+            {
+                "request": self.request,
+                "parameter_name": self.parameter_name,
+                "form": TextRangeForm(
+                    name=self.parameter_name,
+                    data={
+                        self.parameter_name
+                        + "_from": self.used_parameters.get(
+                            self.parameter_name + "_from", None
+                        ),
+                        self.parameter_name
+                        + "_to": self.used_parameters.get(
+                            self.parameter_name + "_to", None
+                        ),
+                    },
+                ),
+            },
+        )
 
 
 class AgeRangeFilter(admin.SimpleListFilter):
@@ -107,21 +201,13 @@ class AgeRangeFilter(admin.SimpleListFilter):
         value_from = self.used_parameters.get(self.field_name + "_from", None)
         if value_from is not None and value_from != "":
             filters.update(
-                {
-                    self.field_name
-                    + "__gte": self.used_parameters.get(
-                        self.field_name + "_from", None
-                    ),
-                }
+                {self.field_name + "__gte": value_from,}
             )
 
         value_to = self.used_parameters.get(self.field_name + "_to", None)
         if value_to is not None and value_to != "":
             filters.update(
-                {
-                    self.field_name
-                    + "__lte": self.used_parameters.get(self.field_name + "_to", None),
-                }
+                {self.field_name + "__lte": value_to,}
             )
 
         return queryset.filter(**filters)
@@ -201,7 +287,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     )
     list_filter = (
         AgeRangeFilter,
-        ("annual_income", RangeNumericFilter),
+        AnnualIncomeRangeFilter,
         RoundsFilter,
         ("height", RangeNumericFilter),
         "spiritual_status",
@@ -261,25 +347,6 @@ class MatchAdmin(admin.ModelAdmin):
         "female_response_updated_at",
     )
     raw_id_fields = ("male", "female")
-
-
-class IsVeryBenevolentFilter(admin.SimpleListFilter):
-    title = "is_very_benevolent"
-    parameter_name = "is_very_benevolent"
-
-    def lookups(self, request, model_admin):
-        return (
-            ("Yes", "Yes"),
-            ("No", "No"),
-        )
-
-    def queryset(self, request, queryset):
-        value = self.value()
-        if value == "Yes":
-            return queryset.filter(benevolence_factor__gt=75)
-        elif value == "No":
-            return queryset.exclude(benevolence_factor__gt=75)
-        return queryset
 
 
 admin.site.register(Guru)
