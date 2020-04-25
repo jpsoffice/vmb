@@ -120,7 +120,7 @@ class AnnualIncomeRangeFilter(admin.SimpleListFilter):
             try:
                 filters.update({self.field_name + "__gte": value_from})
             except (CurrencyDoesNotExist, InvalidOperation):
-                print("Please enter valid currency code")
+                pass
 
         value_to = self.used_parameters.get(self.field_name + "_to", None)
         if value_to is not None and value_to != "":
@@ -129,7 +129,7 @@ class AnnualIncomeRangeFilter(admin.SimpleListFilter):
                     {self.field_name + "__lte": value_to,}
                 )
             except (CurrencyDoesNotExist, InvalidOperation):
-                print("Please enter valid currency code")
+                pass
 
         return queryset.filter(**filters)
 
