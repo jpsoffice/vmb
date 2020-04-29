@@ -8,6 +8,14 @@ from djmoney.models.managers import money_manager
 from .base import BaseModel
 from .relations import Occupation, Qualification, Guru, Language, Country
 
+BODY_TYPE = (
+    ("SLM", "Slim"),
+    ("AVG", "Average"),
+    ("MUS", "Muscular"),
+    ("HEA", "Heavy"),
+    
+)
+
 GENDER_CHOICES = (("M", "Male"), ("F", "Female"), ("O", "Others"))
 
 SPIRITUAL_STATUS_CHOICES = (
@@ -102,6 +110,7 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Personal details
+    mother_tongue = models.ForeignKey("Language", on_delete=models.SET_NULL, null=True, blank=True)
     languages_known = models.ManyToManyField(
         "Language", help_text="Add the language you know"
     )
@@ -112,6 +121,7 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         null=True,
     )
+    body_type = models.CharField(max_length=3, choices=BODY_TYPE, blank=True, null=True, )
     complexion = models.CharField(
         max_length=3,
         help_text="Enter your complexion",
