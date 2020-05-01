@@ -1,10 +1,10 @@
 import datetime
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from vmb.users.models import User
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
-
+from vmb.users.models import User
 from .base import BaseModel
 from .relations import Occupation, Qualification, Guru, Language, Country
 
@@ -249,7 +249,7 @@ class Match(BaseModel):
         max_length=3, choices=MATCH_STATUS_CHOICES, blank=True, default=""
     )
     assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
-
+          
     def __str__(self):
         return f"{self.male}/{self.female}"
 

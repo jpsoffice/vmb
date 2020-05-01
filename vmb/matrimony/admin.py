@@ -12,8 +12,10 @@ from django_admin_listfilter_dropdown.filters import (
     ChoiceDropdownFilter,
     RelatedDropdownFilter,
 )
+from django.conf import settings
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
+from django.core.mail import send_mail
 from django.db.models.fields import DateField
 from django.utils import timezone
 from .models import (
@@ -332,6 +334,20 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
     inlines = [MatchInline]
 
+def notification(modeladmin, request, queryset): 
+    male_recipients = []
+    female_recipients = []
+    for i in queryset:
+        male_recipients.append(i.male.email) 
+        female_recipients.append(i.female.email) 
+    recipients = male_recipients + female_recipients + [settings.EMAIL_HOST_USER]
+    send_mail(
+        subject="Hare Krishna",
+        message="All glories to Srila Prabhupad",
+        from_email= settings.EMAIL_HOST_USER,
+        recipient_list= recipients,
+        fail_silently=False,
+    )  
 
 @admin.register(Match)
 class MatchAdmin(admin.ModelAdmin):
@@ -345,8 +361,12 @@ class MatchAdmin(admin.ModelAdmin):
         "female_response",
         "male_response_updated_at",
         "female_response_updated_at",
+        # "notification"
     )
     raw_id_fields = ("male", "female")
+    # change_list_template = "admin/match/match_change_list"
+    actions = [notification]
+
 
 
 admin.site.register(Guru)
