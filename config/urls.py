@@ -44,4 +44,5 @@ if settings.DEBUG:
 
         urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
 
+urlpatterns += [path("photologue/", include("photologue.urls", namespace="photologue"))]
 # urlpatterns += [path('matrimony/', include('matrimony.urls'))]

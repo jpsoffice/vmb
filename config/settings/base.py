@@ -82,6 +82,8 @@ DJANGO_APPS = [
     "djmoney",
     "rangefilter",
     "django_admin_listfilter_dropdown",
+    "photologue",
+    "sortedm2m",
 ]
 
 THIRD_PARTY_APPS = [
