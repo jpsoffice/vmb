@@ -249,7 +249,7 @@ class Match(BaseModel):
         max_length=3, choices=MATCH_STATUS_CHOICES, blank=True, default=""
     )
     assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
-          
+
     def __str__(self):
         return f"{self.male}/{self.female}"
 

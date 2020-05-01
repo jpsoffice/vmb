@@ -334,20 +334,22 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
     inlines = [MatchInline]
 
-def notification(modeladmin, request, queryset): 
+
+def notification(modeladmin, request, queryset):
     male_recipients = []
     female_recipients = []
     for i in queryset:
-        male_recipients.append(i.male.email) 
-        female_recipients.append(i.female.email) 
+        male_recipients.append(i.male.email)
+        female_recipients.append(i.female.email)
     recipients = male_recipients + female_recipients + [settings.EMAIL_HOST_USER]
     send_mail(
         subject="Hare Krishna",
         message="All glories to Srila Prabhupad",
-        from_email= settings.EMAIL_HOST_USER,
-        recipient_list= recipients,
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=recipients,
         fail_silently=False,
-    )  
+    )
+
 
 @admin.register(Match)
 class MatchAdmin(admin.ModelAdmin):
@@ -366,7 +368,6 @@ class MatchAdmin(admin.ModelAdmin):
     raw_id_fields = ("male", "female")
     # change_list_template = "admin/match/match_change_list"
     actions = [notification]
-
 
 
 admin.site.register(Guru)
