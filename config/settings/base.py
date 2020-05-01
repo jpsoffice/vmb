@@ -1,6 +1,24 @@
+from .email_info import (
+    EMAIL_HOST,
+    EMAIL_HOST_PASSWORD,
+    EMAIL_HOST_USER,
+    EMAIL_PORT,
+    EMAIL_USE_TLS,
+    EMAIL_HOST_NAME,
+    EMAIL_USE_SSL,
+)
+
 """
 Base settings to build other settings files upon.
 """
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_USE_SSL = EMAIL_USE_SSL
+EMAIL_HOST = EMAIL_HOST
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_PORT = EMAIL_PORT
+ADMINS = (EMAIL_HOST_NAME, EMAIL_HOST_USER)
 
 import environ
 

@@ -1,10 +1,10 @@
 import datetime
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from vmb.users.models import User
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
-
+from vmb.users.models import User
 from .base import BaseModel
 from .relations import Occupation, Qualification, Guru, Language, Country
 
