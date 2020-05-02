@@ -212,6 +212,8 @@ MATCH_RESPONSE_CHOICES = (("", _("")), ("ACP", _("Accepted")), ("REJ", _("Reject
 MATCH_STATUS_CHOICES = (
     ("", _("")),
     ("SUG", _("Suggested")),
+    ("TON", _("To notify")),
+    ("NTF", _("Notified")),
     ("FOL", _("Follow up")),
     ("PRD", _("Parties discussing")),
     ("MRC", _("Marriage cancelled")),
