@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
+from photologue.models import Photo
 from vmb.users.models import User
 from .base import BaseModel
 from .relations import Occupation, Qualification, Guru, Language, Country
@@ -163,6 +164,8 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         related_name="assigned_profiles",
     )
+
+    image = models.ManyToManyField(Photo, blank=True)
 
     @property
     def age(self):

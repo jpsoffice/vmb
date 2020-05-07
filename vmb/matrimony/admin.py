@@ -250,7 +250,7 @@ class AgeRangeFilter(admin.SimpleListFilter):
 
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     fieldsets = [
-        (None, {"fields": ["name", ("marital_status", "languages_known")]}),
+        (None, {"fields": ["name", ("marital_status", "languages_known"), "image"]}),
         (
             "SPIRITUAL QUOTIENT",
             {"fields": ["rounds_chanting", ("spiritual_status", "guru")]},
