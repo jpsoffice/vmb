@@ -139,3 +139,5 @@ tags
 # Ignore all local history of files
 .history
 config/settings/email_info.py
+.ipython
+vmb/media

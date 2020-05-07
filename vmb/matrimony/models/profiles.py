@@ -1,6 +1,7 @@
 import datetime
 from django.conf import settings
 from django.db import models
+from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
@@ -166,6 +167,17 @@ class MatrimonyProfile(BaseModel):
     )
 
     image = models.ManyToManyField(Photo, blank=True)
+
+    def primary_image(self):
+        if self.image is not None and self.image != "":
+            try:
+                return format_html('<img src ="{}" style="width:30px; \
+                                    height: 30px"/>'.format(self.image.get(id=1).image.url)
+                                )
+            except:
+                return "NoImage"
+                pass
+    primary_image.short_description = "Thumbnail"
 
     @property
     def age(self):

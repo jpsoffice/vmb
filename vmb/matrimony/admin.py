@@ -278,6 +278,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     ]
     list_display = (
         "name",
+        "primary_image",
         "age",
         "dob",
         "current_country",
