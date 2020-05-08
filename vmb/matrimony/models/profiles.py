@@ -166,17 +166,21 @@ class MatrimonyProfile(BaseModel):
         related_name="assigned_profiles",
     )
 
-    image = models.ManyToManyField(Photo, blank=True)
+    image = models.ManyToManyField(Photo, through="Image", blank=True)
 
     def primary_image(self):
         if self.image is not None and self.image != "":
             try:
-                return format_html('<img src ="{}" style="width:30px; \
-                                    height: 30px"/>'.format(self.image.get(id=1).image.url)
-                                )
+                return format_html(
+                    '<img src ="{}" style="width:30px; \
+                                    height: 30px"/>'.format(
+                        self.image.get(id=1).image.url
+                    )
+                )
             except:
-                return "NoImage"
+                return "No Image"
                 pass
+
     primary_image.short_description = "Thumbnail"
 
     @property
@@ -233,6 +237,37 @@ MATCH_STATUS_CHOICES = (
     ("MRF", _("Marriage finalized")),
     ("MRD", _("Married")),
 )
+
+
+class Image(BaseModel):
+    entry = models.ForeignKey(
+        Photo,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="image_entries",
+    )
+
+    male = models.ForeignKey(
+        Male,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="male_images",
+    )
+    female = models.ForeignKey(
+        Female,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="female_images",
+    )
+
+    class Meta:
+        db_table = "matrimony_images"
+
+        verbose_name = "Image"
+        verbose_name_plural = "Images"
 
 
 class Match(BaseModel):

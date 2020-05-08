@@ -19,6 +19,7 @@ from django.core.mail import send_mail
 from django.db.models.fields import DateField
 from django.utils import timezone
 from .models import (
+    Image,
     Male,
     Female,
     Guru,
@@ -250,7 +251,7 @@ class AgeRangeFilter(admin.SimpleListFilter):
 
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     fieldsets = [
-        (None, {"fields": ["name", ("marital_status", "languages_known"), "image"]}),
+        (None, {"fields": ["name", ("marital_status", "languages_known"),]}),
         (
             "SPIRITUAL QUOTIENT",
             {"fields": ["rounds_chanting", ("spiritual_status", "guru")]},
@@ -313,6 +314,17 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     ]
 
 
+class ImageInline(admin.TabularInline):
+    model = Image
+    extra = 1
+    can_delete = True
+
+    raw_id_fields = ("male", "female")
+
+    verbose_name = "Image"
+    verbose_name_plural = "Images"
+
+
 class MatchInline(admin.TabularInline):
     model = Match
     extra = 1
@@ -327,13 +339,13 @@ class MatchInline(admin.TabularInline):
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MatchInline]
+    inlines = [MatchInline, ImageInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MatchInline]
+    inlines = [MatchInline, ImageInline]
 
 
 def notification(modeladmin, request, queryset):
