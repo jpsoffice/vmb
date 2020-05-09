@@ -175,6 +175,9 @@ class MatrimonyProfile(BaseModel):
     class Meta:
         db_table = "matrimony_profiles"
 
+    def send_batch_matches_email(self):
+        pass
+
 
 class MaleManager(models.Manager):
     def get_queryset(self):
@@ -260,3 +263,9 @@ class Match(BaseModel):
 
         verbose_name = "Matche"
         verbose_name_plural = "Matches"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.status == 'TON' and self.male_email_sent and self.female_email_sent:
+            self.status = 'NOT'
+        self.save()
