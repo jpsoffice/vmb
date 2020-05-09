@@ -1,16 +1,39 @@
 from config import celery_app
 
-from .models import Match, Male, Female
+from django.core.mail import send_mail
+from django.utils import timezone
 
 
 @celery_app.task()
-def send_batch_match_emails():
-    for male_id in Match.objects.filter(status='TON').values_list('male', flat=True).distinct():
+def send_batch_matches_emails():
+    from .models import Match, Male, Female
+
+    for male_id in (
+        Match.objects.filter(status="TON").values_list("male", flat=True).distinct()
+    ):
         male = Male.objects.get(id=male_id)
         male.send_batch_matches_email()
-        male.female_matches.filter(status='TON').update(status='NOT')
+        male.female_matches.filter(status="TON").update(status="NTF")
 
-    for female_id in Match.objects.filter(status='TON').values_list('female', flat=True).distinct():
+    for female_id in (
+        Match.objects.filter(status="TON").values_list("female", flat=True).distinct()
+    ):
         female = Female.objects.get(id=female_id)
         female.send_batch_matches_email()
-        female.male_matches.filter(status='TON').update(status='NOT')
+        female.male_matches.filter(status="TON").update(status="NTF")
+
+
+@celery_app.task()
+def send_email(email_message_id):
+    from .models import EmailMessage
+
+    email_message = EmailMessage.objects.get(id=email_message_id)
+    send_mail(
+        email_message.subject,
+        email_message.body,
+        email_message.sender,
+        [email_message.to],
+    )
+    email_message.status = "SNT"
+    email_message.sent_at = timezone.now()
+    email_message.save()
