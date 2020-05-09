@@ -1,6 +1,8 @@
 import datetime
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.template import loader, Context
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
@@ -175,6 +177,30 @@ class MatrimonyProfile(BaseModel):
     class Meta:
         db_table = "matrimony_profiles"
 
+    def send_batch_matches_email(self):
+        body = self.get_batch_matches_email_body()
+        subject = _("Matches for you")
+        email_message = self.email_messages.create(
+            sender=settings.MATRIMONY_SENDER_EMAIL,
+            body=body,
+            to=self.email,
+            category="DMD",
+            status="NEW",
+        )
+        email_message.send()
+
+    def get_batch_matches_email_body(self):
+        matches = []
+        if self.gender == "M":
+            for m in self.female_matches.all():
+                matches.append(m.female)
+        else:
+            for m in self.male_matches.all():
+                matches.append(m.male)
+        return loader.get_template("matrimony/emails/matches.html").render(
+            {"matches": matches}
+        )
+
 
 class MaleManager(models.Manager):
     def get_queryset(self):
@@ -212,6 +238,8 @@ MATCH_RESPONSE_CHOICES = (("", _("")), ("ACP", _("Accepted")), ("REJ", _("Reject
 MATCH_STATUS_CHOICES = (
     ("", _("")),
     ("SUG", _("Suggested")),
+    ("TON", _("To notify")),
+    ("NTF", _("Notified")),
     ("FOL", _("Follow up")),
     ("PRD", _("Parties discussing")),
     ("MRC", _("Marriage cancelled")),
@@ -258,3 +286,43 @@ class Match(BaseModel):
 
         verbose_name = "Matche"
         verbose_name_plural = "Matches"
+
+
+EMAIL_MESSAGE_STATUS_CHOICES = (
+    ("NEW", _("New")),
+    ("SNT", _("Sent")),
+    ("FLD", _("Failed")),
+)
+
+EMAIL_MESSAGE_CATEGORY_CHOICES = (
+    ("DMD", _("Daily matches digest")),
+    ("MAN", _("Manual")),
+)
+
+
+class EmailMessage(BaseModel):
+    profile = models.ForeignKey(
+        MatrimonyProfile,
+        related_name="email_messages",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+    sender = models.EmailField()
+    subject = models.CharField(max_length=100)
+    body = models.TextField(max_length=2000)
+    to = models.EmailField()
+    status = models.CharField(
+        max_length=3, choices=EMAIL_MESSAGE_STATUS_CHOICES, default="NEW"
+    )
+    category = models.CharField(
+        max_length=3, choices=EMAIL_MESSAGE_CATEGORY_CHOICES, default="MAN"
+    )
+    sent_at = models.DateTimeField(default=None, null=True, blank=True)
+
+    def send(self):
+        from vmb.matrimony.tasks import send_email
+
+        send_email.apply_async(args=[self.id])
+
+    class Meta:
+        db_table = "matrimony_email_messages"

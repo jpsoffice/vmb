@@ -337,12 +337,12 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
 class MatchAdmin(admin.ModelAdmin):
     model = Match
     list_display = (
-        "status",
-        "assignee",
         "male",
         "male_response",
         "female",
         "female_response",
+        "status",
+        "assignee",
         "male_response_updated_at",
         "female_response_updated_at",
     )

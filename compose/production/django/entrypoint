@@ -4,8 +4,7 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-
-
+export CELERY_BROKER_URL="${REDIS_URL}"
 
 if [ -z "${POSTGRES_USER}" ]; then
     base_postgres_image_default_user='postgres'
