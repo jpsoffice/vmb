@@ -25,7 +25,7 @@ from .models import (
     Occupation,
     Match,
     Country,
-    Image
+    Image,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
