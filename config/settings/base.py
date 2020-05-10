@@ -73,6 +73,8 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "rest_framework",
     "django_celery_beat",
+    "photologue",
+    "sortedm2m",
 ]
 
 LOCAL_APPS = [

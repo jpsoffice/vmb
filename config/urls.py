@@ -15,6 +15,7 @@ urlpatterns = [
     # User management
     path("users/", include("vmb.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    path("photologue/", include("photologue.urls", namespace='photologue')),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
