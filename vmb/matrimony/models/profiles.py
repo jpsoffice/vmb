@@ -42,6 +42,8 @@ class MatrimonyProfile(BaseModel):
     name = models.CharField(max_length=200, verbose_name=_("Name"),)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
 
+    images = models.ManyToManyField("photologue.Photo", through="Image", blank=True)
+
     # Spiritual details
     rounds_chanting = models.IntegerField(
         verbose_name=_("Rounds"),
@@ -326,3 +328,28 @@ class EmailMessage(BaseModel):
 
     class Meta:
         db_table = "matrimony_email_messages"
+
+
+class Image(BaseModel):
+    profile = models.ForeignKey(MatrimonyProfile, on_delete=models.CASCADE)
+    photo = models.ForeignKey(
+        "photologue.Photo", on_delete=models.CASCADE, related_name="+"
+    )
+
+    primary = models.BooleanField(default=False, blank=True)
+
+    @property
+    def thumbnail(self):
+        from django.utils.html import mark_safe
+
+        if not self.photo:
+            return ""
+        return mark_safe(
+            f"""
+<a href="{self.photo.image.url}">
+    <img src="{self.photo.get_thumbnail_url()}" alt="{self.photo.title}">
+</a>"""
+        )
+
+    class Meta:
+        db_table = "matrimony_images"
