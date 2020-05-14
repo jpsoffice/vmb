@@ -26,13 +26,18 @@ COMPLEXION_CHOICES = (
     ("WHB", _("Wheatish brown")),
     ("DAR", _("Dark")),
 )
-# Create your models here.
+
 MARITAL_STATUS = (
     ("UMR", "Unmarried"),
     ("ENG", "Engaged"),
     ("SEP", "Separated"),
     ("DIV", "Divorced"),
     ("WID", "Widowed"),
+)
+
+WANT_CHILDREN = (
+    ("Y", "Yes"),
+    ("N", "No"),
 )
 
 
@@ -107,12 +112,24 @@ class MatrimonyProfile(BaseModel):
 
     # Personal details
     languages_known = models.ManyToManyField(
-        "Language", help_text="Add the language you know"
+        "Language", help_text="Languages you know", related_name="languages_known",
+    )
+    languages_read_write = models.ManyToManyField(
+        "Language",
+        verbose_name="Languages known to read and write",
+        related_name="languages_read_write",
     )
     height = models.DecimalField(
         max_digits=5,
         decimal_places=2,
         help_text="Height in cms",
+        blank=True,
+        null=True,
+    )
+    weight = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        help_text="Weight in kgs",
         blank=True,
         null=True,
     )
@@ -144,6 +161,54 @@ class MatrimonyProfile(BaseModel):
         help_text="Single, Divorced etc.",
         null=True,
     )
+    recreational_activities = models.CharField(
+        max_length=250,
+        verbose_name="List your favorite recreational activities",
+        blank=True,
+        null=True,
+    )
+    devotional_services = models.CharField(
+        max_length=250,
+        verbose_name="List your favorite devotional service",
+        blank=True,
+        null=True,
+    )
+    personality = models.CharField(
+        max_length=250, verbose_name="Describe your personality", blank=True, null=True,
+    )
+
+    # Mentors and their details
+    mentor1 = models.CharField(
+        max_length=250,
+        verbose_name="Reference 1",
+        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 1",
+        blank=True,
+        null=True,
+    )
+    mentor2 = models.CharField(
+        max_length=250,
+        verbose_name="Reference 2",
+        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 2",
+        blank=True,
+        null=True,
+    )
+    children = models.CharField(
+        max_length=1,
+        choices=WANT_CHILDREN,
+        verbose_name="Do you want Children",
+        blank=True,
+        null=True,
+    )
+    medical_history = models.CharField(max_length=250, blank=True, null=True,)
+
+    # Family Details
+    religion = models.CharField(
+        max_length=100,
+        verbose_name="Religious Background of family",
+        blank=True,
+        null=True,
+    )
+    family_details = models.CharField(max_length=250, blank=True, null=True,)
 
     # Contact details
     email = models.EmailField(blank=True, null=True, verbose_name=_("Email"))
