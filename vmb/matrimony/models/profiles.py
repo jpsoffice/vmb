@@ -189,7 +189,10 @@ class MatrimonyProfile(BaseModel):
             category="DMD",
             status="NEW",
         )
-        email_message.send()
+        if email_message.sent_at == datetime.datetime.now().date():
+            return
+        else:
+            email_message.send()
 
     def get_batch_matches_email_body(self):
         matches = []
