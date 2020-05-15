@@ -1,19 +1,23 @@
 import datetime
+
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template import loader, Context
+
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
 
 from .base import BaseModel
-from .relations import Occupation, Qualification, Guru, Language, Country
+from .relations import (
+    Occupation, Qualification, Guru, Language, Country, Religion, Caste, Subcaste
+)
 
 BODY_TYPE = (
     ("SLM", "Slim"),
     ("AVG", "Average"),
-    ("MUS", "Muscular"),
+    ("ATH", "Athelete"),
     ("HEA", "Heavy"),
     
 )
@@ -212,10 +216,19 @@ class MatrimonyProfile(BaseModel):
     medical_history = models.CharField(max_length=250, blank=True, null=True,)
 
     # Family Details
-    religion = models.CharField(
-        max_length=100,
-        verbose_name="Religious Background of family",
-        blank=True,
+    religion = models.ForeignKey(
+        Religion,
+        on_delete=models.SET_NULL
+        null=True,
+    )
+    caste = models.ForeignKey(
+        Caste,
+        on_delete=models.SET_NULL
+        null=True,
+    )
+    subcaste = models.ForeignKey(
+        Subcaste,
+        on_delete=models.SET_NULL
         null=True,
     )
     family_details = models.CharField(max_length=250, blank=True, null=True,)

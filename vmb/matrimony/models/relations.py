@@ -87,3 +87,42 @@ class Occupation(BaseModel):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class Religion(BaseModel):
+    """Model representing Religion(e.g. Hinduism, Christianity etc)"""
+
+    name = models.CharField(max_length=20)
+
+    class Meta: 
+        ordering = ["name"]
+        db_table = "religion"
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+class Caste(BaseModel):
+    """Model representing Caste(e.g. Marwari, Gujarati etc)"""
+
+    name = models.CharField(max_length=20)
+
+    class Meta: 
+        ordering = ["name"]
+        db_table = "caste"
+
+    def __str__(self):
+        return f"{self.name}"
+
+class Subcaste(BaseModel):
+    """Model representing Subcaste(e.g. Brahmin, Kayastha etc)"""
+
+    name = models.CharField(max_length=20)
+    caste = models.ForeignKey("Caste", on_delete=models.CASCADE, null=True)
+
+    class Meta: 
+        ordering = ["name"]
+        db_table = "subcaste"
+
+    def __str__(self):
+        return f"{self.name}"
