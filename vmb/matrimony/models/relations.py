@@ -31,6 +31,7 @@ class Country(BaseModel):
     class Meta:
         db_table = "countries"
         ordering = ["name"]
+        verbose_name_plural = "Countries"
 
     def __str__(self):
         return "{} ({})".format(self.name, self.code)

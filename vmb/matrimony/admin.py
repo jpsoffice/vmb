@@ -25,6 +25,7 @@ from .models import (
     Occupation,
     Match,
     Country,
+    Image,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -321,28 +322,38 @@ class MatchInline(admin.TabularInline):
     verbose_name_plural = "Matches"
 
 
+class ImageInline(admin.TabularInline):
+    model = Image
+    extra = 1
+    can_delete = True
+
+    raw_id_fields = ["photo"]
+
+    readonly_fields = ["thumbnail"]
+
+
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MatchInline]
+    inlines = [MatchInline, ImageInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MatchInline]
+    inlines = [MatchInline, ImageInline]
 
 
 @admin.register(Match)
 class MatchAdmin(admin.ModelAdmin):
     model = Match
     list_display = (
-        "status",
-        "assignee",
         "male",
         "male_response",
         "female",
         "female_response",
+        "status",
+        "assignee",
         "male_response_updated_at",
         "female_response_updated_at",
     )

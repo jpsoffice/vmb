@@ -1,6 +1,8 @@
 import datetime
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.template import loader, Context
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
@@ -32,7 +34,7 @@ COMPLEXION_CHOICES = (
     ("WHB", _("Wheatish brown")),
     ("DAR", _("Dark")),
 )
-# Create your models here.
+
 MARITAL_STATUS = (
     ("UMR", "Unmarried"),
     ("ENG", "Engaged"),
@@ -41,12 +43,19 @@ MARITAL_STATUS = (
     ("WID", "Widowed"),
 )
 
+WANT_CHILDREN = (
+    ("Y", "Yes"),
+    ("N", "No"),
+)
+
 
 class MatrimonyProfile(BaseModel):
     """Model representing matrimonial profile of a candidate"""
 
     name = models.CharField(max_length=200, verbose_name=_("Name"),)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
+
+    images = models.ManyToManyField("photologue.Photo", through="Image", blank=True)
 
     # Spiritual details
     rounds_chanting = models.IntegerField(
@@ -112,7 +121,12 @@ class MatrimonyProfile(BaseModel):
     # Personal details
     mother_tongue = models.ForeignKey("Language", on_delete=models.SET_NULL, null=True, blank=True)
     languages_known = models.ManyToManyField(
-        "Language", help_text="Add the language you know"
+        "Language", help_text="Languages you know", related_name="languages_known",
+    )
+    languages_read_write = models.ManyToManyField(
+        "Language",
+        verbose_name="Languages known to read and write",
+        related_name="languages_read_write",
     )
     height = models.DecimalField(
         max_digits=5,
@@ -122,6 +136,13 @@ class MatrimonyProfile(BaseModel):
         null=True,
     )
     body_type = models.CharField(max_length=3, choices=BODY_TYPE, blank=True, null=True, )
+    weight = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        help_text="Weight in kgs",
+        blank=True,
+        null=True,
+    )
     complexion = models.CharField(
         max_length=3,
         help_text="Enter your complexion",
@@ -150,6 +171,54 @@ class MatrimonyProfile(BaseModel):
         help_text="Single, Divorced etc.",
         null=True,
     )
+    recreational_activities = models.CharField(
+        max_length=250,
+        verbose_name="List your favorite recreational activities",
+        blank=True,
+        null=True,
+    )
+    devotional_services = models.CharField(
+        max_length=250,
+        verbose_name="List your favorite devotional service",
+        blank=True,
+        null=True,
+    )
+    personality = models.CharField(
+        max_length=250, verbose_name="Describe your personality", blank=True, null=True,
+    )
+
+    # Mentors and their details
+    mentor1 = models.CharField(
+        max_length=250,
+        verbose_name="Reference 1",
+        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 1",
+        blank=True,
+        null=True,
+    )
+    mentor2 = models.CharField(
+        max_length=250,
+        verbose_name="Reference 2",
+        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 2",
+        blank=True,
+        null=True,
+    )
+    children = models.CharField(
+        max_length=1,
+        choices=WANT_CHILDREN,
+        verbose_name="Do you want Children",
+        blank=True,
+        null=True,
+    )
+    medical_history = models.CharField(max_length=250, blank=True, null=True,)
+
+    # Family Details
+    religion = models.CharField(
+        max_length=100,
+        verbose_name="Religious Background of family",
+        blank=True,
+        null=True,
+    )
+    family_details = models.CharField(max_length=250, blank=True, null=True,)
 
     # Contact details
     email = models.EmailField(blank=True, null=True, verbose_name=_("Email"))
@@ -184,6 +253,30 @@ class MatrimonyProfile(BaseModel):
 
     class Meta:
         db_table = "matrimony_profiles"
+
+    def send_batch_matches_email(self):
+        body = self.get_batch_matches_email_body()
+        subject = _("Matches for you")
+        email_message = self.email_messages.create(
+            sender=settings.MATRIMONY_SENDER_EMAIL,
+            body=body,
+            to=self.email,
+            category="DMD",
+            status="NEW",
+        )
+        email_message.send()
+
+    def get_batch_matches_email_body(self):
+        matches = []
+        if self.gender == "M":
+            for m in self.female_matches.all():
+                matches.append(m.female)
+        else:
+            for m in self.male_matches.all():
+                matches.append(m.male)
+        return loader.get_template("matrimony/emails/matches.html").render(
+            {"matches": matches}
+        )
 
 
 class MaleManager(models.Manager):
@@ -222,6 +315,8 @@ MATCH_RESPONSE_CHOICES = (("", _("")), ("ACP", _("Accepted")), ("REJ", _("Reject
 MATCH_STATUS_CHOICES = (
     ("", _("")),
     ("SUG", _("Suggested")),
+    ("TON", _("To notify")),
+    ("NTF", _("Notified")),
     ("FOL", _("Follow up")),
     ("PRD", _("Parties discussing")),
     ("MRC", _("Marriage cancelled")),
@@ -268,3 +363,68 @@ class Match(BaseModel):
 
         verbose_name = "Matche"
         verbose_name_plural = "Matches"
+
+
+EMAIL_MESSAGE_STATUS_CHOICES = (
+    ("NEW", _("New")),
+    ("SNT", _("Sent")),
+    ("FLD", _("Failed")),
+)
+
+EMAIL_MESSAGE_CATEGORY_CHOICES = (
+    ("DMD", _("Daily matches digest")),
+    ("MAN", _("Manual")),
+)
+
+
+class EmailMessage(BaseModel):
+    profile = models.ForeignKey(
+        MatrimonyProfile,
+        related_name="email_messages",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+    sender = models.EmailField()
+    subject = models.CharField(max_length=100)
+    body = models.TextField(max_length=2000)
+    to = models.EmailField()
+    status = models.CharField(
+        max_length=3, choices=EMAIL_MESSAGE_STATUS_CHOICES, default="NEW"
+    )
+    category = models.CharField(
+        max_length=3, choices=EMAIL_MESSAGE_CATEGORY_CHOICES, default="MAN"
+    )
+    sent_at = models.DateTimeField(default=None, null=True, blank=True)
+
+    def send(self):
+        from vmb.matrimony.tasks import send_email
+
+        send_email.apply_async(args=[self.id])
+
+    class Meta:
+        db_table = "matrimony_email_messages"
+
+
+class Image(BaseModel):
+    profile = models.ForeignKey(MatrimonyProfile, on_delete=models.CASCADE)
+    photo = models.ForeignKey(
+        "photologue.Photo", on_delete=models.CASCADE, related_name="+"
+    )
+
+    primary = models.BooleanField(default=False, blank=True)
+
+    @property
+    def thumbnail(self):
+        from django.utils.html import mark_safe
+
+        if not self.photo:
+            return ""
+        return mark_safe(
+            f"""
+<a href="{self.photo.image.url}">
+    <img src="{self.photo.get_thumbnail_url()}" alt="{self.photo.title}">
+</a>"""
+        )
+
+    class Meta:
+        db_table = "matrimony_images"
