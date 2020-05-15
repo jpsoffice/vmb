@@ -94,7 +94,7 @@ class Religion(BaseModel):
 
     name = models.CharField(max_length=20)
 
-    class Meta: 
+    class Meta:
         ordering = ["name"]
         db_table = "religion"
 
@@ -107,12 +107,13 @@ class Caste(BaseModel):
 
     name = models.CharField(max_length=20)
 
-    class Meta: 
+    class Meta:
         ordering = ["name"]
         db_table = "caste"
 
     def __str__(self):
         return f"{self.name}"
+
 
 class Subcaste(BaseModel):
     """Model representing Subcaste(e.g. Brahmin, Kayastha etc)"""
@@ -120,7 +121,7 @@ class Subcaste(BaseModel):
     name = models.CharField(max_length=20)
     caste = models.ForeignKey("Caste", on_delete=models.CASCADE, null=True)
 
-    class Meta: 
+    class Meta:
         ordering = ["name"]
         db_table = "subcaste"
 

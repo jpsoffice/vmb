@@ -11,7 +11,14 @@ from djmoney.models.managers import money_manager
 
 from .base import BaseModel
 from .relations import (
-    Occupation, Qualification, Guru, Language, Country, Religion, Caste, Subcaste
+    Occupation,
+    Qualification,
+    Guru,
+    Language,
+    Country,
+    Religion,
+    Caste,
+    Subcaste,
 )
 
 BODY_TYPE = (
@@ -19,7 +26,6 @@ BODY_TYPE = (
     ("AVG", "Average"),
     ("ATH", "Athelete"),
     ("HEA", "Heavy"),
-    
 )
 
 GENDER_CHOICES = (("M", "Male"), ("F", "Female"), ("O", "Others"))
@@ -123,7 +129,9 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Personal details
-    mother_tongue = models.ForeignKey("Language", on_delete=models.SET_NULL, null=True, blank=True)
+    mother_tongue = models.ForeignKey(
+        "Language", on_delete=models.SET_NULL, null=True, blank=True
+    )
     languages_known = models.ManyToManyField(
         "Language", help_text="Languages you know", related_name="languages_known",
     )
@@ -139,7 +147,9 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         null=True,
     )
-    body_type = models.CharField(max_length=3, choices=BODY_TYPE, blank=True, null=True, )
+    body_type = models.CharField(
+        max_length=3, choices=BODY_TYPE, blank=True, null=True,
+    )
     weight = models.DecimalField(
         max_digits=5,
         decimal_places=2,
@@ -216,21 +226,9 @@ class MatrimonyProfile(BaseModel):
     medical_history = models.CharField(max_length=250, blank=True, null=True,)
 
     # Family Details
-    religion = models.ForeignKey(
-        Religion,
-        on_delete=models.SET_NULL
-        null=True,
-    )
-    caste = models.ForeignKey(
-        Caste,
-        on_delete=models.SET_NULL
-        null=True,
-    )
-    subcaste = models.ForeignKey(
-        Subcaste,
-        on_delete=models.SET_NULL
-        null=True,
-    )
+    religion = models.ForeignKey(Religion, on_delete=models.SET_NULL, null=True,)
+    caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True,)
+    subcaste = models.ForeignKey(Subcaste, on_delete=models.SET_NULL, null=True,)
     family_details = models.CharField(max_length=250, blank=True, null=True,)
 
     # Contact details
