@@ -2,7 +2,7 @@ from .profiles import Male, Female, Match, EmailMessage, Image
 from .relations import (
     Guru,
     Occupation,
-    Qualification,
+    Education,
     Country,
     Nationality,
     Language,

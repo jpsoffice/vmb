@@ -12,7 +12,7 @@ from djmoney.models.managers import money_manager
 from .base import BaseModel
 from .relations import (
     Occupation,
-    Qualification,
+    Education,
     Guru,
     Language,
     Country,
@@ -164,17 +164,17 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         null=True,
     )
-    qualification = models.ForeignKey(
-        "Qualification",
+    education = models.ForeignKey(
+        "Education",
         on_delete=models.SET_NULL,
         null=True,
-        help_text="H.S., Graduate etc.",
+        help_text="HS, Graduate etc.",
     )
     occupation = models.ForeignKey(
         "Occupation",
         on_delete=models.SET_NULL,
         null=True,
-        help_text="Surgeon, Computer Application Engineer, etc.",
+        help_text="Doctor, Engineer, Entrepreneur etc.",
     )
     annual_income = MoneyField(
         max_digits=10, decimal_places=2, null=True, default_currency="INR"

@@ -21,7 +21,7 @@ from .models import (
     Female,
     Guru,
     Language,
-    Qualification,
+    Education,
     Occupation,
     Match,
     Country,
@@ -269,10 +269,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             {"fields": ["current_country", ("current_state", "current_city")]},
         ),
         ("PHYSICAL APPEARANCE", {"fields": [("height", "complexion")]}),
-        (
-            "QUALIFICATON",
-            {"fields": ["qualification", ("occupation", "annual_income")]},
-        ),
+        ("QUALIFICATON", {"fields": ["education", ("occupation", "annual_income")]},),
         ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
     ]
     list_display = (
@@ -296,7 +293,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ("current_country", RelatedDropdownFilter),
         ("languages_known", RelatedDropdownFilter),
         ("occupation", RelatedDropdownFilter),
-        ("qualification", RelatedDropdownFilter),
+        ("education", RelatedDropdownFilter),
         ("guru", RelatedDropdownFilter),
     )
     search_fields = [
@@ -362,6 +359,6 @@ class MatchAdmin(admin.ModelAdmin):
 
 admin.site.register(Guru)
 admin.site.register(Language)
-admin.site.register(Qualification)
+admin.site.register(Education)
 admin.site.register(Country)
 admin.site.register(Occupation)
