@@ -249,7 +249,16 @@ class AgeRangeFilter(admin.SimpleListFilter):
 
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     fieldsets = [
-        (None, {"fields": ["name", ("marital_status", "languages_known")]}),
+        (
+            None,
+            {
+                "fields": [
+                    "name",
+                    "marital_status",
+                    ("languages_known", "languages_read_write"),
+                ]
+            },
+        ),
         (
             "SPIRITUAL QUOTIENT",
             {"fields": ["rounds_chanting", ("spiritual_status", "guru")]},
@@ -268,9 +277,50 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             "CURRENT LOCATION",
             {"fields": ["current_country", ("current_state", "current_city")]},
         ),
-        ("PHYSICAL APPEARANCE", {"fields": [("height", "complexion")]}),
-        ("PROFESSION", {"fields": ["education", ("occupation", "annual_income")]},),
+        (
+            "PHYSICAL APPEARANCE",
+            {"fields": [("height", "complexion"), ("weight", "body_type")]},
+        ),
+        (
+            "PERSONALITY",
+            {
+                "fields": [
+                    "personality",
+                    ("recreational_activities", "devotional_services"),
+                ]
+            },
+        ),
+        (
+            "PROFESSION",
+            {
+                "fields": [
+                    ("education", "institution"),
+                    "education_details",
+                    "employed_in",
+                    ("occupation", "organization"),
+                    "occupation_details",
+                ]
+            },
+        ),
+        ("RELIGION/CASTE", {"fields": ["religion", ("caste", "subcaste")]}),
+        (
+            "FAMILY DETAILS",
+            {
+                "fields": [
+                    "family_values",
+                    "family_type",
+                    "family_status",
+                    ("father_occupation", "mother_occupation"),
+                    ("brothers", "brothers_married"),
+                    ("sisters", "sisters_married"),
+                    "family_location",
+                    "family_origin",
+                ]
+            },
+        ),
+        ("MEDICAL DETAILS", {"fields": ["children", "medical_history"]}),
         ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
+        ("MENTORS", {"fields": ["mentor1", "mentor2"]}),
     ]
     list_display = (
         "name",

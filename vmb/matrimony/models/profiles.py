@@ -95,9 +95,16 @@ class MatrimonyProfile(BaseModel):
     name = models.CharField(max_length=200, verbose_name=_("Name"),)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
 
+    marital_status = models.CharField(
+        max_length=3,
+        choices=MARITAL_STATUS,
+        help_text="Single, Divorced etc.",
+        null=True,
+    )
+
     images = models.ManyToManyField("photologue.Photo", through="Image", blank=True)
 
-    # Spiritual datails
+    # Spiritual details
     rounds_chanting = models.IntegerField(
         verbose_name=_("Rounds"),
         help_text="How many rounds are you chanting?",
@@ -112,7 +119,7 @@ class MatrimonyProfile(BaseModel):
     )
     guru = models.ForeignKey("Guru", on_delete=models.SET_NULL, null=True, blank=True)
 
-    # Birth datails
+    # Birth details
     dob = models.DateField(
         help_text="Enter birth date as YYYY-MM-DD",
         verbose_name=_("date of birth"),
@@ -139,7 +146,7 @@ class MatrimonyProfile(BaseModel):
         verbose_name=_("Country"),
     )
 
-    # Current location datails
+    # Current location details
     current_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
@@ -158,7 +165,7 @@ class MatrimonyProfile(BaseModel):
         verbose_name=_("Country"),
     )
 
-    # Language datails
+    # Language details
     mother_tongue = models.ForeignKey(
         "Language", on_delete=models.SET_NULL, null=True, blank=True
     )
@@ -171,61 +178,42 @@ class MatrimonyProfile(BaseModel):
         related_name="languages_read_write",
     )
 
-    # Personal datails
+    # Physical appearance
     height = models.DecimalField(
-        max_digits=5,
-        decimal_places=2,
-        help_text="Height in cms",
-        blank=True,
-        null=True,
-    )
-    body_type = models.CharField(
-        max_length=3, choices=BODY_TYPE, blank=True, null=True,
-    )
-    weight = models.DecimalField(
-        max_digits=5,
-        decimal_places=2,
-        help_text="Weight in kgs",
-        blank=True,
-        null=True,
+        max_digits=5, decimal_places=2, help_text="Height in cms", null=True,
     )
     complexion = models.CharField(
         max_length=3,
         help_text="Enter your complexion",
         choices=COMPLEXION_CHOICES,
-        blank=True,
         null=True,
     )
-    marital_status = models.CharField(
-        max_length=3,
-        choices=MARITAL_STATUS,
-        help_text="Single, Divorced etc.",
-        null=True,
+    body_type = models.CharField(max_length=3, choices=BODY_TYPE, null=True,)
+    weight = models.DecimalField(
+        max_digits=5, decimal_places=2, help_text="Weight in kgs", null=True,
+    )
+
+    # Personality
+    personality = models.CharField(
+        max_length=250, verbose_name="Describe yourself", null=True,
     )
     recreational_activities = models.CharField(
         max_length=250,
         verbose_name="List your favorite recreational activities",
-        blank=True,
         null=True,
     )
     devotional_services = models.CharField(
-        max_length=250,
-        verbose_name="List your favorite devotional service",
-        blank=True,
-        null=True,
-    )
-    personality = models.CharField(
-        max_length=250, verbose_name="Describe your personality", blank=True, null=True,
+        max_length=250, verbose_name="List your favorite devotional service", null=True,
     )
 
-    # Professional datails
+    # Professional details
     education = models.ForeignKey(
         "Education",
         on_delete=models.SET_NULL,
         null=True,
         help_text="HS, Graduate etc.",
     )
-    education_detail = models.CharField(
+    education_details = models.CharField(
         max_length=100, null=True, verbose_name="Education in Detail",
     )
     institution = models.CharField(
@@ -243,7 +231,7 @@ class MatrimonyProfile(BaseModel):
         null=True,
         help_text="Doctor, Engineer, Entrepreneur etc.",
     )
-    occupation_detail = models.CharField(
+    occupation_details = models.CharField(
         max_length=100, null=True, verbose_name="Occupation in Detail",
     )
     organization = models.CharField(
@@ -253,36 +241,12 @@ class MatrimonyProfile(BaseModel):
         max_digits=10, decimal_places=2, null=True, default_currency="INR"
     )
 
-    # Mentors and their datails
-    mentor1 = models.CharField(
-        max_length=250,
-        verbose_name="Reference 1",
-        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 1",
-        blank=True,
-        null=True,
-    )
-    mentor2 = models.CharField(
-        max_length=250,
-        verbose_name="Reference 2",
-        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 2",
-        blank=True,
-        null=True,
-    )
-    children = models.CharField(
-        max_length=1,
-        choices=WANT_CHILDREN,
-        verbose_name="Do you want Children",
-        blank=True,
-        null=True,
-    )
-    medical_history = models.CharField(max_length=250, blank=True, null=True,)
-
-    # Religion/Caste datails
+    # Religion/Caste details
     religion = models.ForeignKey(Religion, on_delete=models.SET_NULL, null=True,)
     caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True,)
     subcaste = models.ForeignKey(Subcaste, on_delete=models.SET_NULL, null=True,)
 
-    # Family datails
+    # Family details
     family_values = models.CharField(
         max_length=4, choices=FAMILY_VALUE_CHOICES, null=True,
     )
@@ -320,7 +284,16 @@ class MatrimonyProfile(BaseModel):
         verbose_name="Ancesteral/Family Origin",
     )
 
-    # Contact datails
+    # Medical details
+    children = models.CharField(
+        max_length=1,
+        choices=WANT_CHILDREN,
+        verbose_name="Do you want Children",
+        null=True,
+    )
+    medical_history = models.CharField(max_length=250, null=True,)
+
+    # Contact details
     email = models.EmailField(blank=True, null=True, verbose_name=_("Email"))
     phone = models.CharField(max_length=17, verbose_name=_("Phone number"), null=True,)
 
@@ -332,6 +305,21 @@ class MatrimonyProfile(BaseModel):
 
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
+    )
+
+    # Mentors and their details
+    mentor1 = models.CharField(
+        max_length=250,
+        verbose_name="Reference 1",
+        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 1",
+        null=True,
+    )
+    mentor2 = models.CharField(
+        max_length=250,
+        verbose_name="Reference 2",
+        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 2",
+        blank=True,
+        null=True,
     )
 
     # Staff users
