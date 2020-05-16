@@ -120,7 +120,7 @@ class OccupationCategory(BaseModel):
 
 
 class Religion(BaseModel):
-    """Model representing Religion e.g. Hinduism, Christianity etc"""
+    """Model representing Religion e.g. Hindu, Christian, Jain etc"""
 
     name = models.CharField(max_length=20)
 

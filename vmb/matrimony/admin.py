@@ -269,7 +269,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             {"fields": ["current_country", ("current_state", "current_city")]},
         ),
         ("PHYSICAL APPEARANCE", {"fields": [("height", "complexion")]}),
-        ("QUALIFICATON", {"fields": ["education", ("occupation", "annual_income")]},),
+        ("PROFESSION", {"fields": ["education", ("occupation", "annual_income")]},),
         ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
     ]
     list_display = (
