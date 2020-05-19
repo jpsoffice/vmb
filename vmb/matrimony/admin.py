@@ -22,7 +22,9 @@ from .models import (
     Guru,
     Language,
     Education,
+    EducationCategory,
     Occupation,
+    OccupationCategory,
     Match,
     Country,
     Image,
@@ -412,3 +414,5 @@ admin.site.register(Language)
 admin.site.register(Education)
 admin.site.register(Country)
 admin.site.register(Occupation)
+admin.site.register(EducationCategory)
+admin.site.register(OccupationCategory)

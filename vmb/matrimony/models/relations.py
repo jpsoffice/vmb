@@ -77,6 +77,7 @@ class Education(BaseModel):
     class Meta:
         ordering = ["name"]
         db_table = "education"
+        verbose_name_plural = "Education"
 
 
 class EducationCategory(BaseModel):
@@ -86,6 +87,8 @@ class EducationCategory(BaseModel):
 
     class Meta:
         db_table = "education_category"
+        verbose_name_plural = "Education Categories"
+
 
     def __str__(self):
         return f"{self.name}"
@@ -114,6 +117,7 @@ class OccupationCategory(BaseModel):
 
     class Meta:
         db_table = "occupation_category"
+        verbose_name_plural = "Occupation Categories"
 
     def __str__(self):
         return f"{self.name}"
