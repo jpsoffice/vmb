@@ -89,7 +89,6 @@ class EducationCategory(BaseModel):
         db_table = "education_category"
         verbose_name_plural = "Education Categories"
 
-
     def __str__(self):
         return f"{self.name}"
 
