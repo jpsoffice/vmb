@@ -96,7 +96,7 @@ class EducationCategory(BaseModel):
 class Occupation(BaseModel):
     """Model representing Occupation e.g. Doctor, Engineer, Entrepreneur etc"""
 
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)
     category = models.ForeignKey(
         "OccupationCategory", on_delete=models.SET_NULL, null=True
     )
