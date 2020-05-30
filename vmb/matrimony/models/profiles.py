@@ -49,7 +49,7 @@ EMPLOYED_IN_CHOICES = (
 
 FAMILY_LOCATION_CHOICES = (
     ("SAME", _("Same as my location")),
-    ("DIFFERENT", _("Different Loca4ion")),
+    ("DIFFERENT", _("Different Location")),
 )
 FAMILY_VALUE_CHOICES = (
     ("ORTH", _("Orthodox")),
@@ -64,6 +64,7 @@ FAMILY_TYPE_CHOICES = (
 )
 FAMILY_STATUS_CHOICES = (
     ("LC", _("Lower Class")),
+    ("UC", _("Upper Class")),
     ("MC", _("Upper Middle Class")),
     ("AF", _("Affluent")),
 )
@@ -214,7 +215,7 @@ class MatrimonyProfile(BaseModel):
         help_text="HS, Graduate etc.",
     )
     education_details = models.CharField(
-        max_length=100, null=True, verbose_name="Education in Detail",
+        max_length=100, null=True, verbose_name="Education in Detail", blank=True,
     )
     institution = models.CharField(
         max_length=75,
@@ -232,7 +233,7 @@ class MatrimonyProfile(BaseModel):
         help_text="Doctor, Engineer, Entrepreneur etc.",
     )
     occupation_details = models.CharField(
-        max_length=100, null=True, verbose_name="Occupation in Detail",
+        max_length=100, null=True, verbose_name="Occupation in Detail", blank=True,
     )
     organization = models.CharField(
         max_length=75, null=True, help_text="Enter Organization Name",
@@ -244,7 +245,7 @@ class MatrimonyProfile(BaseModel):
     # Religion/Caste details
     religion = models.ForeignKey(Religion, on_delete=models.SET_NULL, null=True,)
     caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True,)
-    subcaste = models.ForeignKey(Subcaste, on_delete=models.SET_NULL, null=True,)
+    subcaste = models.ForeignKey(Subcaste, on_delete=models.SET_NULL, null=True, blank=True)
 
     # Family details
     family_values = models.CharField(
@@ -291,10 +292,10 @@ class MatrimonyProfile(BaseModel):
         verbose_name="Do you want Children",
         null=True,
     )
-    medical_history = models.CharField(max_length=250, null=True,)
+    medical_history = models.CharField(max_length=250, null=True)
 
     # Contact details
-    email = models.EmailField(blank=True, null=True, verbose_name=_("Email"))
+    email = models.EmailField(null=True, verbose_name=_("Email"))
     phone = models.CharField(max_length=17, verbose_name=_("Phone number"), null=True,)
 
     expectations = models.TextField(max_length=300, null=True)
