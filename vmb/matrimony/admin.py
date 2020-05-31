@@ -31,6 +31,7 @@ from .models import (
     Caste,
     Subcaste,
     Religion,
+    Expectation,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -383,16 +384,28 @@ class ImageInline(admin.TabularInline):
     readonly_fields = ["thumbnail"]
 
 
+class ExpectationInline(admin.StackedInline):
+    model = Expectation
+    extra = 0
+    can_delete = False
+
+    def get_extra(self, request, obj=None, **kwargs):
+        extra = 1
+        if obj:
+            extra = 0
+        return extra
+
+
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MatchInline, ImageInline]
+    inlines = [MatchInline, ImageInline, ExpectationInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MatchInline, ImageInline]
+    inlines = [MatchInline, ImageInline, ExpectationInline]
 
 
 @admin.register(Match)

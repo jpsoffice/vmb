@@ -8,6 +8,7 @@ from django.template import loader, Context
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
+from multiselectfield import MultiSelectField
 
 from .base import BaseModel
 from .relations import (
@@ -94,7 +95,9 @@ class MatrimonyProfile(BaseModel):
     """Model representing matrimonial profile of a candidate"""
 
     name = models.CharField(max_length=200, verbose_name=_("Name"),)
-    spiritual_name = models.CharField(max_length=200, default="", blank=True, verbose_name=_("Spiritual name"))
+    spiritual_name = models.CharField(
+        max_length=200, default="", blank=True, verbose_name=_("Spiritual name")
+    )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
     marital_status = models.CharField(
         max_length=3,
@@ -300,8 +303,6 @@ class MatrimonyProfile(BaseModel):
     )
     medical_history = models.TextField(max_length=250, null=True)
 
-    expectations = models.TextField(max_length=300, null=True)
-
     matches = models.ManyToManyField(
         "self", through="Match", blank=True, symmetrical=False
     )
@@ -368,6 +369,49 @@ class MatrimonyProfile(BaseModel):
         return loader.get_template("matrimony/emails/matches.html").render(
             {"matches": matches}
         )
+
+
+class Expectation(BaseModel):
+    profile = models.OneToOneField(
+        MatrimonyProfile,
+        related_name="expectantions",
+        unique=True,
+        on_delete=models.CASCADE,
+    )
+
+    # Basic preferences
+    age_from = models.PositiveIntegerField(null=True, blank=True)
+    age_to = models.PositiveIntegerField(null=True, blank=True)
+    height_from = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    height_to = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True
+    )
+    marital_status = MultiSelectField(
+        choices=MARITAL_STATUS, max_length=3, null=True, blank=True
+    )
+
+    # Religuous preferences
+    religion = models.ManyToManyField(Religion, blank=True)
+    mother_tongue = models.ManyToManyField(Language, blank=True)
+    caste = models.ManyToManyField(Caste, blank=True)
+    subcaste = models.ManyToManyField(Subcaste, blank=True)
+
+    # Location preferences
+    country = models.ManyToManyField(Country, blank=True)
+
+    # Professional preferences
+    education = models.ManyToManyField(Education, blank=True)
+    occupation = models.ManyToManyField(Occupation, blank=True)
+    employed_in = MultiSelectField(choices=EMPLOYED_IN_CHOICES, max_length=3, null=True, blank=True)
+    annual_income_from = models.PositiveIntegerField(null=True, blank=True)
+    annual_income_to = models.PositiveIntegerField(null=True, blank=True)
+
+    partner_description = models.TextField(max_length=1500, null=True, blank=True)
+
+    class Meta:
+        db_table = "marimony_expectations"
 
 
 class MaleManager(models.Manager):
