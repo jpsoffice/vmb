@@ -1,14 +1,32 @@
 import datetime
+
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template import loader, Context
+
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
 
 from .base import BaseModel
-from .relations import Occupation, Qualification, Guru, Language, Country
+from .relations import (
+    Occupation,
+    Education,
+    Guru,
+    Language,
+    Country,
+    Religion,
+    Caste,
+    Subcaste,
+)
+
+BODY_TYPE = (
+    ("SLM", "Slim"),
+    ("AVG", "Average"),
+    ("ATH", "Athelete"),
+    ("HEA", "Heavy"),
+)
 
 GENDER_CHOICES = (("M", "Male"), ("F", "Female"), ("O", "Others"))
 
@@ -19,6 +37,37 @@ SPIRITUAL_STATUS_CHOICES = (
     ("D2", "Brahmin"),
 )
 
+EMPLOYED_IN_CHOICES = (
+    ("PSU", _("Government/PSU")),
+    ("PVT", _("Private")),
+    ("BUS", _("Business")),
+    ("DEF", _("Defence")),
+    ("SE", _("Self Employed")),
+    ("DEF", _("Defence")),
+    ("NW", _("Not Working")),
+)
+
+FAMILY_LOCATION_CHOICES = (
+    ("SAME", _("Same as my location")),
+    ("DIFFERENT", _("Different Location")),
+)
+FAMILY_VALUE_CHOICES = (
+    ("ORTH", _("Orthodox")),
+    ("TRAD", _("Traditional")),
+    ("MOD", _("Moderate")),
+    ("LIB", _("Liberal")),
+)
+FAMILY_TYPE_CHOICES = (
+    ("JF", _("Joint Family")),
+    ("NF", _("Nuclear Family")),
+    ("OTH", _("Others")),
+)
+FAMILY_STATUS_CHOICES = (
+    ("LC", _("Lower Class")),
+    ("UC", _("Upper Class")),
+    ("MC", _("Upper Middle Class")),
+    ("AF", _("Affluent")),
+)
 COMPLEXION_CHOICES = (
     ("FAI", _("Fair")),
     ("VFA", _("Very fair")),
@@ -46,6 +95,13 @@ class MatrimonyProfile(BaseModel):
 
     name = models.CharField(max_length=200, verbose_name=_("Name"),)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
+
+    marital_status = models.CharField(
+        max_length=3,
+        choices=MARITAL_STATUS,
+        help_text="Single, Divorced etc.",
+        null=True,
+    )
 
     images = models.ManyToManyField("photologue.Photo", through="Image", blank=True)
 
@@ -110,7 +166,10 @@ class MatrimonyProfile(BaseModel):
         verbose_name=_("Country"),
     )
 
-    # Personal details
+    # Language details
+    mother_tongue = models.ForeignKey(
+        "Language", on_delete=models.SET_NULL, null=True, blank=True
+    )
     languages_known = models.ManyToManyField(
         "Language", help_text="Languages you know", related_name="languages_known",
     )
@@ -119,99 +178,126 @@ class MatrimonyProfile(BaseModel):
         verbose_name="Languages known to read and write",
         related_name="languages_read_write",
     )
+
+    # Physical appearance
     height = models.DecimalField(
-        max_digits=5,
-        decimal_places=2,
-        help_text="Height in cms",
-        blank=True,
-        null=True,
-    )
-    weight = models.DecimalField(
-        max_digits=5,
-        decimal_places=2,
-        help_text="Weight in kgs",
-        blank=True,
-        null=True,
+        max_digits=5, decimal_places=2, help_text="Height in cms", null=True,
     )
     complexion = models.CharField(
         max_length=3,
         help_text="Enter your complexion",
         choices=COMPLEXION_CHOICES,
-        blank=True,
         null=True,
     )
-    qualification = models.ForeignKey(
-        "Qualification",
+    body_type = models.CharField(max_length=3, choices=BODY_TYPE, null=True,)
+    weight = models.DecimalField(
+        max_digits=5, decimal_places=2, help_text="Weight in kgs", null=True,
+    )
+
+    # Personality
+    personality = models.CharField(
+        max_length=250, verbose_name="Describe yourself", null=True,
+    )
+    recreational_activities = models.CharField(
+        max_length=250,
+        verbose_name="List your favorite recreational activities",
+        null=True,
+    )
+    devotional_services = models.CharField(
+        max_length=250, verbose_name="List your favorite devotional service", null=True,
+    )
+
+    # Professional details
+    education = models.ForeignKey(
+        "Education",
         on_delete=models.SET_NULL,
         null=True,
-        help_text="H.S., Graduate etc.",
+        help_text="HS, Graduate etc.",
+    )
+    education_details = models.CharField(
+        max_length=100, null=True, verbose_name="Education in Detail", blank=True,
+    )
+    institution = models.CharField(
+        max_length=75,
+        null=True,
+        verbose_name="College/Institution",
+        help_text="Enter College/Institution Name",
+    )
+    employed_in = models.CharField(
+        max_length=3, null=True, choices=EMPLOYED_IN_CHOICES,
     )
     occupation = models.ForeignKey(
         "Occupation",
         on_delete=models.SET_NULL,
         null=True,
-        help_text="Surgeon, Computer Application Engineer, etc.",
+        help_text="Doctor, Engineer, Entrepreneur etc.",
+    )
+    occupation_details = models.CharField(
+        max_length=100, null=True, verbose_name="Occupation in Detail", blank=True,
+    )
+    organization = models.CharField(
+        max_length=75, null=True, help_text="Enter Organization Name",
     )
     annual_income = MoneyField(
         max_digits=10, decimal_places=2, null=True, default_currency="INR"
     )
-    marital_status = models.CharField(
-        max_length=3,
-        choices=MARITAL_STATUS,
-        help_text="Single, Divorced etc.",
-        null=True,
-    )
-    recreational_activities = models.CharField(
-        max_length=250,
-        verbose_name="List your favorite recreational activities",
-        blank=True,
-        null=True,
-    )
-    devotional_services = models.CharField(
-        max_length=250,
-        verbose_name="List your favorite devotional service",
-        blank=True,
-        null=True,
-    )
-    personality = models.CharField(
-        max_length=250, verbose_name="Describe your personality", blank=True, null=True,
+
+    # Religion/Caste details
+    religion = models.ForeignKey(Religion, on_delete=models.SET_NULL, null=True,)
+    caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True,)
+    subcaste = models.ForeignKey(
+        Subcaste, on_delete=models.SET_NULL, null=True, blank=True
     )
 
-    # Mentors and their details
-    mentor1 = models.CharField(
-        max_length=250,
-        verbose_name="Reference 1",
-        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 1",
-        blank=True,
-        null=True,
+    # Family details
+    family_values = models.CharField(
+        max_length=4, choices=FAMILY_VALUE_CHOICES, null=True,
     )
-    mentor2 = models.CharField(
-        max_length=250,
-        verbose_name="Reference 2",
-        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 2",
-        blank=True,
-        null=True,
+    family_type = models.CharField(
+        max_length=3, choices=FAMILY_TYPE_CHOICES, null=True,
     )
+    family_status = models.CharField(
+        max_length=2, choices=FAMILY_STATUS_CHOICES, null=True,
+    )
+    father_occupation = models.ForeignKey(
+        Occupation,
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name=_("Father's Occupation"),
+        related_name="father_occupation",
+    )
+    mother_occupation = models.ForeignKey(
+        Occupation,
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name=_("Mother's Occupation"),
+        related_name="mother_occupation",
+    )
+    brothers = models.IntegerField(null=True, verbose_name="No. of Brothers")
+    sisters = models.IntegerField(null=True, verbose_name="No. of Sisters")
+    brothers_married = models.IntegerField(null=True)
+    sisters_married = models.IntegerField(null=True)
+    family_location = models.CharField(
+        max_length=10, choices=FAMILY_LOCATION_CHOICES, null=True,
+    )
+    family_origin = models.CharField(
+        max_length=50,
+        null=True,
+        help_text="Ancestral origin or father's birth place",
+        verbose_name="Ancesteral/Family Origin",
+    )
+
+    # Medical details
     children = models.CharField(
         max_length=1,
         choices=WANT_CHILDREN,
         verbose_name="Do you want Children",
-        blank=True,
         null=True,
     )
-    medical_history = models.CharField(max_length=250, blank=True, null=True,)
-
-    # Family Details
-    religion = models.CharField(
-        max_length=100,
-        verbose_name="Religious Background of family",
-        blank=True,
-        null=True,
-    )
-    family_details = models.CharField(max_length=250, blank=True, null=True,)
+    medical_history = models.CharField(max_length=250, null=True)
 
     # Contact details
-    email = models.EmailField(blank=True, null=True, verbose_name=_("Email"))
+    email = models.EmailField(null=True, verbose_name=_("Email"))
     phone = models.CharField(max_length=17, verbose_name=_("Phone number"), null=True,)
 
     expectations = models.TextField(max_length=300, null=True)
@@ -222,6 +308,21 @@ class MatrimonyProfile(BaseModel):
 
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
+    )
+
+    # Mentors and their details
+    mentor1 = models.CharField(
+        max_length=250,
+        verbose_name="Reference 1",
+        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 1",
+        null=True,
+    )
+    mentor2 = models.CharField(
+        max_length=250,
+        verbose_name="Reference 2",
+        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 2",
+        blank=True,
+        null=True,
     )
 
     # Staff users

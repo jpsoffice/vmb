@@ -21,11 +21,16 @@ from .models import (
     Female,
     Guru,
     Language,
-    Qualification,
+    Education,
+    EducationCategory,
     Occupation,
+    OccupationCategory,
     Match,
     Country,
     Image,
+    Caste,
+    Subcaste,
+    Religion,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -249,7 +254,16 @@ class AgeRangeFilter(admin.SimpleListFilter):
 
 class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     fieldsets = [
-        (None, {"fields": ["name", ("marital_status", "languages_known")]}),
+        (
+            None,
+            {
+                "fields": [
+                    "name",
+                    "marital_status",
+                    ("languages_known", "languages_read_write"),
+                ]
+            },
+        ),
         (
             "SPIRITUAL QUOTIENT",
             {"fields": ["rounds_chanting", ("spiritual_status", "guru")]},
@@ -268,12 +282,50 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             "CURRENT LOCATION",
             {"fields": ["current_country", ("current_state", "current_city")]},
         ),
-        ("PHYSICAL APPEARANCE", {"fields": [("height", "complexion")]}),
         (
-            "QUALIFICATON",
-            {"fields": ["qualification", ("occupation", "annual_income")]},
+            "PHYSICAL APPEARANCE",
+            {"fields": [("height", "complexion"), ("weight", "body_type")]},
         ),
+        (
+            "PERSONALITY",
+            {
+                "fields": [
+                    "personality",
+                    ("recreational_activities", "devotional_services"),
+                ]
+            },
+        ),
+        (
+            "PROFESSION",
+            {
+                "fields": [
+                    ("education", "institution"),
+                    "education_details",
+                    "employed_in",
+                    ("occupation", "organization"),
+                    "occupation_details",
+                ]
+            },
+        ),
+        ("RELIGION/CASTE", {"fields": ["religion", ("caste", "subcaste")]}),
+        (
+            "FAMILY DETAILS",
+            {
+                "fields": [
+                    "family_values",
+                    "family_type",
+                    "family_status",
+                    ("father_occupation", "mother_occupation"),
+                    ("brothers", "brothers_married"),
+                    ("sisters", "sisters_married"),
+                    "family_location",
+                    "family_origin",
+                ]
+            },
+        ),
+        ("MEDICAL DETAILS", {"fields": ["children", "medical_history"]}),
         ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
+        ("MENTORS", {"fields": ["mentor1", "mentor2"]}),
     ]
     list_display = (
         "name",
@@ -296,7 +348,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ("current_country", RelatedDropdownFilter),
         ("languages_known", RelatedDropdownFilter),
         ("occupation", RelatedDropdownFilter),
-        ("qualification", RelatedDropdownFilter),
+        ("education", RelatedDropdownFilter),
         ("guru", RelatedDropdownFilter),
     )
     search_fields = [
@@ -360,8 +412,14 @@ class MatchAdmin(admin.ModelAdmin):
     raw_id_fields = ("male", "female")
 
 
+admin.site.register(Image)
+admin.site.register(Caste)
+admin.site.register(Subcaste)
+admin.site.register(Religion)
 admin.site.register(Guru)
 admin.site.register(Language)
-admin.site.register(Qualification)
+admin.site.register(Education)
 admin.site.register(Country)
 admin.site.register(Occupation)
+admin.site.register(EducationCategory)
+admin.site.register(OccupationCategory)
