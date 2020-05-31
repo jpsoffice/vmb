@@ -60,6 +60,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
     "admin_numeric_filter",
+    "django_admin_select2",
     "django.contrib.admin",
     "djmoney",
     "rangefilter",
@@ -295,4 +296,5 @@ SOCIALACCOUNT_ADAPTER = "vmb.users.adapters.SocialAccountAdapter"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
 MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.net")
