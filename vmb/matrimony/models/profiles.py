@@ -245,7 +245,9 @@ class MatrimonyProfile(BaseModel):
     # Religion/Caste details
     religion = models.ForeignKey(Religion, on_delete=models.SET_NULL, null=True,)
     caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True,)
-    subcaste = models.ForeignKey(Subcaste, on_delete=models.SET_NULL, null=True, blank=True)
+    subcaste = models.ForeignKey(
+        Subcaste, on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     # Family details
     family_values = models.CharField(

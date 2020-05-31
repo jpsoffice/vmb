@@ -412,7 +412,6 @@ class MatchAdmin(admin.ModelAdmin):
     raw_id_fields = ("male", "female")
 
 
-
 admin.site.register(Image)
 admin.site.register(Caste)
 admin.site.register(Subcaste)
