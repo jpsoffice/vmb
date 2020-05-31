@@ -268,22 +268,22 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ),
         ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
         (
-            "SPIRITUAL QUOTIENT",
-            {"fields": [("rounds_chanting", "spiritual_status", "guru")]},
-        ),
-        (
             "BIRTH DETAILS",
             {
                 "fields": [
                     ("dob", "tob"),
-                    "birth_country",
                     ("birth_state", "birth_city"),
+                    "birth_country",
                 ]
             },
         ),
         (
+            "SPIRITUAL QUOTIENT",
+            {"fields": [("rounds_chanting", "spiritual_status", "guru")]},
+        ),
+        (
             "CURRENT LOCATION",
-            {"fields": ["current_country", ("current_state", "current_city")]},
+            {"fields": [("current_state", "current_city"), "current_country"]},
         ),
         (
             "PHYSICAL APPEARANCE",
