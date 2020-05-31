@@ -258,15 +258,17 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             None,
             {
                 "fields": [
-                    "name",
-                    "marital_status",
+                    ("name", "spiritual_name", "age"),
+                    ("mother_tongue", "marital_status"),
+                    ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
                 ]
             },
         ),
+        ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
         (
             "SPIRITUAL QUOTIENT",
-            {"fields": ["rounds_chanting", ("spiritual_status", "guru")]},
+            {"fields": [("rounds_chanting", "spiritual_status", "guru")]},
         ),
         (
             "BIRTH DETAILS",
@@ -307,24 +309,19 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
                 ]
             },
         ),
-        ("RELIGION/CASTE", {"fields": ["religion", ("caste", "subcaste")]}),
         (
             "FAMILY DETAILS",
             {
                 "fields": [
-                    "family_values",
-                    "family_type",
-                    "family_status",
+                    ("family_values", "family_type", "family_status"),
                     ("father_occupation", "mother_occupation"),
                     ("brothers", "brothers_married"),
                     ("sisters", "sisters_married"),
-                    "family_location",
-                    "family_origin",
+                    ("family_location", "family_origin"),
                 ]
             },
         ),
-        ("MEDICAL DETAILS", {"fields": ["children", "medical_history"]}),
-        ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
+        ("MEDICAL DETAILS", {"fields": ["want_children", "medical_history"]}),
         ("MENTORS", {"fields": ["mentor1", "mentor2"]}),
     ]
     list_display = (
@@ -361,6 +358,8 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "phone",
         "email",
     ]
+
+    readonly_fields = ["age"]
 
 
 class MatchInline(admin.TabularInline):

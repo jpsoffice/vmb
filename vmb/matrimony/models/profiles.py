@@ -94,8 +94,8 @@ class MatrimonyProfile(BaseModel):
     """Model representing matrimonial profile of a candidate"""
 
     name = models.CharField(max_length=200, verbose_name=_("Name"),)
+    spiritual_name = models.CharField(max_length=200, default="", blank=True, verbose_name=_("Spiritual name"))
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
-
     marital_status = models.CharField(
         max_length=3,
         choices=MARITAL_STATUS,
@@ -104,6 +104,10 @@ class MatrimonyProfile(BaseModel):
     )
 
     images = models.ManyToManyField("photologue.Photo", through="Image", blank=True)
+
+    # Contact details
+    email = models.EmailField(null=True, verbose_name=_("Email"))
+    phone = models.CharField(max_length=17, verbose_name=_("Phone number"), null=True,)
 
     # Spiritual details
     rounds_chanting = models.IntegerField(
@@ -115,7 +119,7 @@ class MatrimonyProfile(BaseModel):
         max_length=2,
         help_text="Enter spiritual status (e.g. Aspiring, Shelter etc.)",
         choices=SPIRITUAL_STATUS_CHOICES,
-        verbose_name=_("Siksha Status"),
+        verbose_name=_("Spiritual Status"),
         blank=True,
     )
     guru = models.ForeignKey("Guru", on_delete=models.SET_NULL, null=True, blank=True)
@@ -195,8 +199,8 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Personality
-    personality = models.CharField(
-        max_length=250, verbose_name="Describe yourself", null=True,
+    personality = models.TextField(
+        max_length=1500, verbose_name="Describe yourself", null=True,
     )
     recreational_activities = models.CharField(
         max_length=250,
@@ -214,7 +218,7 @@ class MatrimonyProfile(BaseModel):
         null=True,
         help_text="HS, Graduate etc.",
     )
-    education_details = models.CharField(
+    education_details = models.TextField(
         max_length=100, null=True, verbose_name="Education in Detail", blank=True,
     )
     institution = models.CharField(
@@ -232,7 +236,7 @@ class MatrimonyProfile(BaseModel):
         null=True,
         help_text="Doctor, Engineer, Entrepreneur etc.",
     )
-    occupation_details = models.CharField(
+    occupation_details = models.TextField(
         max_length=100, null=True, verbose_name="Occupation in Detail", blank=True,
     )
     organization = models.CharField(
@@ -288,17 +292,13 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Medical details
-    children = models.CharField(
+    want_children = models.CharField(
         max_length=1,
         choices=WANT_CHILDREN,
         verbose_name="Do you want Children",
         null=True,
     )
-    medical_history = models.CharField(max_length=250, null=True)
-
-    # Contact details
-    email = models.EmailField(null=True, verbose_name=_("Email"))
-    phone = models.CharField(max_length=17, verbose_name=_("Phone number"), null=True,)
+    medical_history = models.TextField(max_length=250, null=True)
 
     expectations = models.TextField(max_length=300, null=True)
 
