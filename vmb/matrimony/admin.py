@@ -31,6 +31,7 @@ from .models import (
     Caste,
     Subcaste,
     Religion,
+    Expectation,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -267,22 +268,22 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ),
         ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
         (
-            "SPIRITUAL QUOTIENT",
-            {"fields": [("rounds_chanting", "spiritual_status", "guru")]},
-        ),
-        (
             "BIRTH DETAILS",
             {
                 "fields": [
                     ("dob", "tob"),
-                    "birth_country",
                     ("birth_state", "birth_city"),
+                    "birth_country",
                 ]
             },
         ),
         (
+            "SPIRITUAL QUOTIENT",
+            {"fields": [("rounds_chanting", "spiritual_status", "guru")]},
+        ),
+        (
             "CURRENT LOCATION",
-            {"fields": ["current_country", ("current_state", "current_city")]},
+            {"fields": [("current_state", "current_city"), "current_country"]},
         ),
         (
             "PHYSICAL APPEARANCE",
@@ -383,16 +384,28 @@ class ImageInline(admin.TabularInline):
     readonly_fields = ["thumbnail"]
 
 
+class ExpectationInline(admin.StackedInline):
+    model = Expectation
+    extra = 0
+    can_delete = False
+
+    def get_extra(self, request, obj=None, **kwargs):
+        extra = 1
+        if obj:
+            extra = 0
+        return extra
+
+
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MatchInline, ImageInline]
+    inlines = [MatchInline, ImageInline, ExpectationInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MatchInline, ImageInline]
+    inlines = [MatchInline, ImageInline, ExpectationInline]
 
 
 @admin.register(Match)
