@@ -176,8 +176,8 @@ class MatrimonyProfile(BaseModel):
         "Language", on_delete=models.SET_NULL, null=True, blank=True
     )
     languages_known = models.ManyToManyField(
-        "Language", 
-        help_text="Languages you know", 
+        "Language",
+        help_text="Languages you know",
         related_name="languages_known",
         blank=True,
     )
@@ -285,22 +285,13 @@ class MatrimonyProfile(BaseModel):
         related_name="mother_occupation",
     )
     brothers = models.IntegerField(
-        null=True, 
-        blank=True, 
-        verbose_name="No. of Brothers"
+        null=True, blank=True, verbose_name="No. of Brothers"
     )
-    sisters = models.IntegerField(
-        null=True, 
-        blank=True, 
-        verbose_name="No. of Sisters"
-    )
+    sisters = models.IntegerField(null=True, blank=True, verbose_name="No. of Sisters")
     brothers_married = models.IntegerField(null=True, blank=True,)
     sisters_married = models.IntegerField(null=True, blank=True,)
     family_location = models.CharField(
-        max_length=10, 
-        choices=FAMILY_LOCATION_CHOICES, 
-        null=True, 
-        blank=True,
+        max_length=10, choices=FAMILY_LOCATION_CHOICES, null=True, blank=True,
     )
     family_origin = models.CharField(
         max_length=50,
