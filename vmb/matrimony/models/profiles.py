@@ -404,7 +404,9 @@ class Expectation(BaseModel):
     # Professional preferences
     education = models.ManyToManyField(Education, blank=True)
     occupation = models.ManyToManyField(Occupation, blank=True)
-    employed_in = MultiSelectField(choices=EMPLOYED_IN_CHOICES, max_length=3, null=True, blank=True)
+    employed_in = MultiSelectField(
+        choices=EMPLOYED_IN_CHOICES, max_length=3, null=True, blank=True
+    )
     annual_income_from = models.PositiveIntegerField(null=True, blank=True)
     annual_income_to = models.PositiveIntegerField(null=True, blank=True)
 
