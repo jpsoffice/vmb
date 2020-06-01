@@ -88,6 +88,7 @@ MARITAL_STATUS = (
 WANT_CHILDREN = (
     ("Y", "Yes"),
     ("N", "No"),
+    ("Mb", "May be"),
 )
 
 
@@ -303,7 +304,7 @@ class MatrimonyProfile(BaseModel):
 
     # Medical details
     want_children = models.CharField(
-        max_length=1,
+        max_length=2,
         choices=WANT_CHILDREN,
         verbose_name="Do you want Children",
         null=True,
