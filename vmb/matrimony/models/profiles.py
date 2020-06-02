@@ -44,7 +44,6 @@ EMPLOYED_IN_CHOICES = (
     ("BUS", _("Business")),
     ("DEF", _("Defence")),
     ("SE", _("Self Employed")),
-    ("DEF", _("Defence")),
     ("NW", _("Not Working")),
 )
 
@@ -388,13 +387,19 @@ class Expectation(BaseModel):
     )
 
     # Basic preferences
-    age_from = models.PositiveIntegerField(null=True, blank=True)
-    age_to = models.PositiveIntegerField(null=True, blank=True)
+    age_from = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name="From age"
+    )
+    age_to = models.PositiveIntegerField(null=True, blank=True, verbose_name="To age")
     height_from = models.DecimalField(
-        max_digits=5, decimal_places=2, null=True, blank=True
+        max_digits=5,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        verbose_name="From height",
     )
     height_to = models.DecimalField(
-        max_digits=5, decimal_places=2, null=True, blank=True
+        max_digits=5, decimal_places=2, null=True, blank=True, verbose_name="To height"
     )
     marital_status = MultiSelectField(
         choices=MARITAL_STATUS, max_length=3, null=True, blank=True
@@ -415,8 +420,12 @@ class Expectation(BaseModel):
     employed_in = MultiSelectField(
         choices=EMPLOYED_IN_CHOICES, max_length=3, null=True, blank=True
     )
-    annual_income_from = models.PositiveIntegerField(null=True, blank=True)
-    annual_income_to = models.PositiveIntegerField(null=True, blank=True)
+    annual_income_from = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name="From annual income"
+    )
+    annual_income_to = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name="To annual income"
+    )
 
     partner_description = models.TextField(max_length=1500, null=True, blank=True)
 
