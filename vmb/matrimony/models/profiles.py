@@ -342,7 +342,7 @@ class MatrimonyProfile(BaseModel):
             return format_html(
                 '<img src ="{}" style="width:30px; \
                 height: 30px"/>'.format(
-                    Image.objects.get(profile=self, primary=True).photo.image.url
+                    self.images.through(primary=True).photo.image.url
                 )
             )
 
