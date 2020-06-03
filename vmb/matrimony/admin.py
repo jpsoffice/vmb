@@ -260,7 +260,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             None,
             {
                 "fields": [
-                    ("primary_image", "name", "spiritual_name"),
+                    ("name", "spiritual_name", "primary_image"),
                     ("age", "mother_tongue", "marital_status"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
