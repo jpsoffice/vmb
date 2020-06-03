@@ -104,6 +104,7 @@ class Occupation(BaseModel):
     class Meta:
         ordering = ["name"]
         db_table = "occupations"
+        unique_together = ["name", "category"]
 
     def __str__(self):
         return f"{self.name}"

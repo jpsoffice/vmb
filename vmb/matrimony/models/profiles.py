@@ -44,7 +44,6 @@ EMPLOYED_IN_CHOICES = (
     ("BUS", _("Business")),
     ("DEF", _("Defence")),
     ("SE", _("Self Employed")),
-    ("DEF", _("Defence")),
     ("NW", _("Not Working")),
 )
 
@@ -88,6 +87,7 @@ MARITAL_STATUS = (
 WANT_CHILDREN = (
     ("Y", "Yes"),
     ("N", "No"),
+    ("Mb", "May be"),
 )
 
 
@@ -149,7 +149,6 @@ class MatrimonyProfile(BaseModel):
         "Country",
         on_delete=models.SET_NULL,
         null=True,
-        blank=True,
         related_name="birthCountry",
         verbose_name=_("Country"),
     )
@@ -168,7 +167,6 @@ class MatrimonyProfile(BaseModel):
         "Country",
         on_delete=models.SET_NULL,
         null=True,
-        blank=True,
         related_name="currentCountry",
         verbose_name=_("Country"),
     )
@@ -178,12 +176,16 @@ class MatrimonyProfile(BaseModel):
         "Language", on_delete=models.SET_NULL, null=True, blank=True
     )
     languages_known = models.ManyToManyField(
-        "Language", help_text="Languages you know", related_name="languages_known",
+        "Language",
+        help_text="Languages you know",
+        related_name="languages_known",
+        blank=True,
     )
     languages_read_write = models.ManyToManyField(
         "Language",
         verbose_name="Languages known to read and write",
         related_name="languages_read_write",
+        blank=True,
     )
 
     # Physical appearance
@@ -258,18 +260,19 @@ class MatrimonyProfile(BaseModel):
 
     # Family details
     family_values = models.CharField(
-        max_length=4, choices=FAMILY_VALUE_CHOICES, null=True,
+        max_length=4, choices=FAMILY_VALUE_CHOICES, null=True, blank=True,
     )
     family_type = models.CharField(
-        max_length=3, choices=FAMILY_TYPE_CHOICES, null=True,
+        max_length=3, choices=FAMILY_TYPE_CHOICES, null=True, blank=True,
     )
     family_status = models.CharField(
-        max_length=2, choices=FAMILY_STATUS_CHOICES, null=True,
+        max_length=2, choices=FAMILY_STATUS_CHOICES, null=True, blank=True,
     )
     father_occupation = models.ForeignKey(
         Occupation,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         verbose_name=_("Father's Occupation"),
         related_name="father_occupation",
     )
@@ -277,18 +280,22 @@ class MatrimonyProfile(BaseModel):
         Occupation,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         verbose_name=_("Mother's Occupation"),
         related_name="mother_occupation",
     )
-    brothers = models.IntegerField(null=True, verbose_name="No. of Brothers")
-    sisters = models.IntegerField(null=True, verbose_name="No. of Sisters")
-    brothers_married = models.IntegerField(null=True)
-    sisters_married = models.IntegerField(null=True)
+    brothers = models.IntegerField(
+        null=True, blank=True, verbose_name="No. of Brothers"
+    )
+    sisters = models.IntegerField(null=True, blank=True, verbose_name="No. of Sisters")
+    brothers_married = models.IntegerField(null=True, blank=True,)
+    sisters_married = models.IntegerField(null=True, blank=True,)
     family_location = models.CharField(
-        max_length=10, choices=FAMILY_LOCATION_CHOICES, null=True,
+        max_length=10, choices=FAMILY_LOCATION_CHOICES, null=True, blank=True,
     )
     family_origin = models.CharField(
         max_length=50,
+        blank=True,
         null=True,
         help_text="Ancestral origin or father's birth place",
         verbose_name="Ancesteral/Family Origin",
@@ -296,7 +303,7 @@ class MatrimonyProfile(BaseModel):
 
     # Medical details
     want_children = models.CharField(
-        max_length=1,
+        max_length=2,
         choices=WANT_CHILDREN,
         verbose_name="Do you want Children",
         null=True,
@@ -380,13 +387,19 @@ class Expectation(BaseModel):
     )
 
     # Basic preferences
-    age_from = models.PositiveIntegerField(null=True, blank=True)
-    age_to = models.PositiveIntegerField(null=True, blank=True)
+    age_from = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name="From age"
+    )
+    age_to = models.PositiveIntegerField(null=True, blank=True, verbose_name="To age")
     height_from = models.DecimalField(
-        max_digits=5, decimal_places=2, null=True, blank=True
+        max_digits=5,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        verbose_name="From height",
     )
     height_to = models.DecimalField(
-        max_digits=5, decimal_places=2, null=True, blank=True
+        max_digits=5, decimal_places=2, null=True, blank=True, verbose_name="To height"
     )
     marital_status = MultiSelectField(
         choices=MARITAL_STATUS, max_length=3, null=True, blank=True
@@ -407,8 +420,12 @@ class Expectation(BaseModel):
     employed_in = MultiSelectField(
         choices=EMPLOYED_IN_CHOICES, max_length=3, null=True, blank=True
     )
-    annual_income_from = models.PositiveIntegerField(null=True, blank=True)
-    annual_income_to = models.PositiveIntegerField(null=True, blank=True)
+    annual_income_from = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name="From annual income"
+    )
+    annual_income_to = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name="To annual income"
+    )
 
     partner_description = models.TextField(max_length=1500, null=True, blank=True)
 
