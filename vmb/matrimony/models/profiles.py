@@ -4,6 +4,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template import loader, Context
+from django.utils.html import format_html
 
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
@@ -341,6 +342,16 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         related_name="assigned_profiles",
     )
+
+    @property
+    def primary_image(self):
+        if self.images is not None and self.images != "":
+            return format_html(
+                '<img src ="{}" style="width:30px; \
+                height: 30px"/>'.format(
+                    Image.objects.get(profile=self, primary=True).photo.image.url
+                )
+            )
 
     @property
     def age(self):

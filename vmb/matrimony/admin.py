@@ -16,6 +16,7 @@ from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.fields import DateField
 from django.utils import timezone
+
 from .models import (
     Male,
     Female,
@@ -259,8 +260,8 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             None,
             {
                 "fields": [
-                    ("name", "spiritual_name", "age"),
-                    ("mother_tongue", "marital_status"),
+                    ("name", "spiritual_name", "primary_image"),
+                    ("age", "mother_tongue", "marital_status"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
                 ]
@@ -327,6 +328,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     ]
     list_display = (
         "name",
+        "primary_image",
         "age",
         "dob",
         "current_country",
@@ -364,7 +366,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "email",
     ]
 
-    readonly_fields = ["age"]
+    readonly_fields = ["age", "primary_image"]
 
 
 class MatchInline(admin.TabularInline):
