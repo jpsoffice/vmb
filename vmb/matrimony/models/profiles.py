@@ -90,6 +90,11 @@ WANT_CHILDREN = (
     ("Mb", "May be"),
 )
 
+DIFF_DIKSHA_GURU = (
+    ("Y", "Yes"),
+    ("N", "No"),
+)
+
 
 class MatrimonyProfile(BaseModel):
     """Model representing matrimonial profile of a candidate"""
@@ -381,7 +386,7 @@ class MatrimonyProfile(BaseModel):
 class Expectation(BaseModel):
     profile = models.OneToOneField(
         MatrimonyProfile,
-        related_name="expectantions",
+        related_name="expectations",
         unique=True,
         on_delete=models.CASCADE,
     )
@@ -426,7 +431,13 @@ class Expectation(BaseModel):
     annual_income_to = models.PositiveIntegerField(
         null=True, blank=True, verbose_name="To annual income"
     )
-
+    diff_diksha_guru = models.CharField(
+        max_length=1,
+        choices=DIFF_DIKSHA_GURU,
+        null=True,
+        blank=True,
+        verbose_name="Can spouse have different diksha guru?",
+    )
     partner_description = models.TextField(max_length=1500, null=True, blank=True)
 
     class Meta:
