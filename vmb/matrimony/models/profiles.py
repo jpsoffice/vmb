@@ -436,7 +436,7 @@ class Expectation(BaseModel):
         choices=DIFF_DIKSHA_GURU,
         null=True,
         blank=True,
-        verbose_name="Can spouse have different diksha guru?",
+        verbose_name="Can the spouse have different a diksha-guru?",
     )
     partner_description = models.TextField(max_length=1500, null=True, blank=True)
 
