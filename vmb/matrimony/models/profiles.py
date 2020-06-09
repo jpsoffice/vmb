@@ -207,6 +207,8 @@ class MatrimonyProfile(BaseModel):
     weight = models.DecimalField(
         max_digits=5, decimal_places=2, help_text="Weight in kgs", null=True,
     )
+    color_of_eyes = models.CharField(max_length=20, null=True, blank=True,)
+    hair_color = models.CharField(max_length=20, null=True, blank=True,)
 
     # Personality
     personality = models.TextField(
@@ -431,6 +433,15 @@ class Expectation(BaseModel):
     annual_income_to = models.PositiveIntegerField(
         null=True, blank=True, verbose_name="To annual income"
     )
+
+    # Spiritual details
+    spiritual_status = models.CharField(
+        max_length=2,
+        help_text="Enter spiritual status (e.g. Aspiring, Shelter etc.)",
+        choices=SPIRITUAL_STATUS_CHOICES,
+        verbose_name=_("Spiritual Status"),
+        blank=True,
+    )
     diff_diksha_guru = models.CharField(
         max_length=1,
         choices=YES_OR_NO,
@@ -452,12 +463,11 @@ class Expectation(BaseModel):
         blank=True,
         verbose_name="Does the spouse have to chant 16 rounds?",
     )
-    color_of_eyes = models.CharField(max_length=20, null=True, blank=True,)
-    hair_color = models.CharField(max_length=20, null=True, blank=True,)
+
     partner_description = models.TextField(max_length=1500, null=True, blank=True)
 
     class Meta:
-        db_table = "marimony_expectations"
+        db_table = "matrimony_expectations"
 
 
 class MaleManager(models.Manager):
