@@ -90,7 +90,7 @@ WANT_CHILDREN = (
     ("Mb", "May be"),
 )
 
-DIFF_DIKSHA_GURU = (
+YES_OR_NO = (
     ("Y", "Yes"),
     ("N", "No"),
 )
@@ -433,11 +433,27 @@ class Expectation(BaseModel):
     )
     diff_diksha_guru = models.CharField(
         max_length=1,
-        choices=DIFF_DIKSHA_GURU,
+        choices=YES_OR_NO,
         null=True,
         blank=True,
         verbose_name="Can the spouse have different a diksha-guru?",
     )
+    four_reg_principles = models.CharField(
+        max_length=1,
+        choices=YES_OR_NO,
+        null=True,
+        blank=True,
+        verbose_name="Does the spouse have to follow four regulative principles?",
+    )
+    chant_16_round = models.CharField(
+        max_length=1,
+        choices=YES_OR_NO,
+        null=True,
+        blank=True,
+        verbose_name="Does the spouse have to chant 16 rounds?",
+    )
+    color_of_eyes = models.CharField(max_length=20, null=True, blank=True,)
+    hair_color = models.CharField(max_length=20, null=True, blank=True,)
     partner_description = models.TextField(max_length=1500, null=True, blank=True)
 
     class Meta:
