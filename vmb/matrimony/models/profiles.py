@@ -430,7 +430,7 @@ class Expectation(BaseModel):
     partner_description = models.TextField(max_length=1500, null=True, blank=True)
 
     class Meta:
-        db_table = "marimony_expectations"
+        db_table = "matrimony_expectations"
 
 
 class MaleManager(models.Manager):
