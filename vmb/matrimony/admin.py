@@ -33,6 +33,7 @@ from .models import (
     Subcaste,
     Religion,
     Expectation,
+    Comment
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -368,6 +369,14 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
 
     readonly_fields = ["age", "primary_image"]
 
+    def save_formset(self, request, form, formset, change):
+        super().save_formset(request, form, formset, change)
+
+        if 'Comment' in str(formset.model):
+            for obj in formset.new_objects + formset.changed_objects:
+                obj.author = request.user
+                obj.save()
+
 
 class MatchInline(admin.TabularInline):
     model = Match
@@ -402,16 +411,22 @@ class ExpectationInline(admin.StackedInline):
         return extra
 
 
+class CommentInline(GenericTabularInline):
+    model = Comment
+    extra = 1
+    can_delete = True
+
+
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MatchInline, ImageInline, ExpectationInline]
+    inlines = [MatchInline, ImageInline, ExpectationInline, CommentInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MatchInline, ImageInline, ExpectationInline]
+    inlines = [MatchInline, ImageInline, ExpectationInline, CommentInline]
 
 
 @admin.register(Match)
@@ -428,6 +443,15 @@ class MatchAdmin(admin.ModelAdmin):
         "female_response_updated_at",
     )
     raw_id_fields = ("male", "female")
+    inlines = [CommentInline]
+
+    def save_formset(self, request, form, formset, change):
+        super().save_formset(request, form, formset, change)
+
+        if 'Comment' in str(formset.model):
+            for obj in formset.new_objects + formset.changed_objects:
+                obj.author = request.user
+                obj.save()
 
 
 admin.site.register(Image)
