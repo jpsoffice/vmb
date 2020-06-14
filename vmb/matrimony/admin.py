@@ -305,6 +305,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             "PROFESSION",
             {
                 "fields": [
+                    "annual_income",
                     ("education", "institution"),
                     "education_details",
                     "employed_in",
