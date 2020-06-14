@@ -33,7 +33,7 @@ from .models import (
     Subcaste,
     Religion,
     Expectation,
-    Comment
+    Comment,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -376,7 +376,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     def save_formset(self, request, form, formset, change):
         super().save_formset(request, form, formset, change)
 
-        if 'Comment' in str(formset.model):
+        if "Comment" in str(formset.model):
             for obj in formset.new_objects + formset.changed_objects:
                 obj.author = request.user
                 obj.save()
@@ -452,7 +452,7 @@ class MatchAdmin(admin.ModelAdmin):
     def save_formset(self, request, form, formset, change):
         super().save_formset(request, form, formset, change)
 
-        if 'Comment' in str(formset.model):
+        if "Comment" in str(formset.model):
             for obj in formset.new_objects + formset.changed_objects:
                 obj.author = request.user
                 obj.save()

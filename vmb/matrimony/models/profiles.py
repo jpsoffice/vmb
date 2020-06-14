@@ -363,7 +363,7 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         related_name="assigned_profiles",
     )
-    comments = GenericRelation('Comment')
+    comments = GenericRelation("Comment")
 
     @property
     def primary_image(self):
@@ -541,7 +541,7 @@ class Match(BaseModel):
         max_length=3, choices=MATCH_STATUS_CHOICES, blank=True, default=""
     )
     assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
-    comments = GenericRelation('Comment')
+    comments = GenericRelation("Comment")
 
     def __str__(self):
         return f"{self.male}/{self.female}"
@@ -619,18 +619,14 @@ class Image(BaseModel):
 
 
 class Comment(BaseModel):
-    message = models.TextField(max_length=2000, default='')
+    message = models.TextField(max_length=2000, default="")
     timestamp = models.DateTimeField(default=timezone.now, blank=True)
     author = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="+",
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
     )
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
+    content_object = GenericForeignKey("content_type", "object_id")
 
     class Meta:
         db_table = "comments"
