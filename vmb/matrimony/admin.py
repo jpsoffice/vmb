@@ -261,7 +261,8 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             None,
             {
                 "fields": [
-                    ("name", "spiritual_name", "primary_image"),
+                    ("name", "spiritual_name", "status"),
+                    "primary_image",
                     ("age", "mother_tongue", "marital_status"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
@@ -330,6 +331,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     list_display = (
         "name",
         "primary_image",
+        "status",
         "age",
         "dob",
         "current_country",
@@ -340,6 +342,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "email",
     )
     list_filter = (
+        "status",
         AgeRangeFilter,
         AnnualIncomeRangeFilter,
         RoundsFilter,

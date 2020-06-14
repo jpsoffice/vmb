@@ -27,6 +27,20 @@ from .relations import (
     Subcaste,
 )
 
+PROFILE_STATUS_CHOICES = (
+    ("00", "New"),
+    ("01", "Acknowledged"),
+    ("02", "Awaiting response"),
+    ("03", "Inactive"),
+    ("04", "Blocked"),
+    ("10", "Active"),
+    ("11", "Backlog"),
+    ("12", "In progress"),
+    ("13", "On hold"),
+    ("20", "Married (outside sources)"),
+    ("30", "Married"),
+)
+
 BODY_TYPE = (
     ("SLM", "Slim"),
     ("AVG", "Average"),
@@ -104,6 +118,9 @@ class MatrimonyProfile(BaseModel):
         max_length=200, default="", blank=True, verbose_name=_("Spiritual name")
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
+    status = models.CharField(
+        max_length=2, choices=PROFILE_STATUS_CHOICES, blank=True, default="00"
+    )
     marital_status = models.CharField(
         max_length=3,
         choices=MARITAL_STATUS,
