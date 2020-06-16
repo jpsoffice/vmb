@@ -17,11 +17,28 @@ from .relations import (
     Guru,
     Language,
     Country,
+    Nationality,
     Religion,
     Caste,
     Subcaste,
 )
 
+COLOR_OF_EYES = (
+    ("AMB", "Amber"),
+    ("BLU", "Blue"),
+    ("BRW", "Brown"),
+    ("GRY", "Gray"),
+    ("GRN", "Green"),
+    ("HAZ", "Hazel"),
+    ("RED", "Red"),
+)
+HAIR_COLOR = (
+    ("BRW", "Brown"),
+    ("BLN", "Blond"),
+    ("BLK", "Black"),
+    ("RED", "Red"),
+    ("WHT", "White"),
+)
 BODY_TYPE = (
     ("SLM", "Slim"),
     ("AVG", "Average"),
@@ -110,6 +127,9 @@ class MatrimonyProfile(BaseModel):
         help_text="Single, Divorced etc.",
         null=True,
     )
+    ethnic_origin = models.ForeignKey(
+        Nationality, on_delete=models.SET_NULL, null=True, related_name="ethnic_origin",
+    )
 
     images = models.ManyToManyField("photologue.Photo", through="Image", blank=True)
 
@@ -130,7 +150,9 @@ class MatrimonyProfile(BaseModel):
         verbose_name=_("Spiritual Status"),
         blank=True,
     )
-    guru = models.ForeignKey("Guru", on_delete=models.SET_NULL, null=True, blank=True)
+    spiritual_master = models.ForeignKey(
+        "Guru", on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     # Birth details
     dob = models.DateField(
@@ -175,6 +197,7 @@ class MatrimonyProfile(BaseModel):
         related_name="currentCountry",
         verbose_name=_("Country"),
     )
+    nationality = models.ForeignKey(Nationality, on_delete=models.SET_NULL, null=True,)
 
     # Language details
     mother_tongue = models.ForeignKey(
@@ -188,7 +211,7 @@ class MatrimonyProfile(BaseModel):
     )
     languages_read_write = models.ManyToManyField(
         "Language",
-        verbose_name="Languages known to read and write",
+        verbose_name="Languages you can read and write",
         related_name="languages_read_write",
         blank=True,
     )
@@ -207,8 +230,12 @@ class MatrimonyProfile(BaseModel):
     weight = models.DecimalField(
         max_digits=5, decimal_places=2, help_text="Weight in kgs", null=True,
     )
-    color_of_eyes = models.CharField(max_length=20, null=True, blank=True,)
-    hair_color = models.CharField(max_length=20, null=True, blank=True,)
+    color_of_eyes = models.CharField(
+        max_length=3, choices=COLOR_OF_EYES, null=True, blank=True,
+    )
+    hair_color = models.CharField(
+        max_length=3, choices=HAIR_COLOR, null=True, blank=True,
+    )
 
     # Personality
     personality = models.TextField(
@@ -235,12 +262,13 @@ class MatrimonyProfile(BaseModel):
     )
     institution = models.CharField(
         max_length=75,
+        blank=True,
         null=True,
         verbose_name="College/Institution",
         help_text="Enter College/Institution Name",
     )
     employed_in = models.CharField(
-        max_length=3, null=True, choices=EMPLOYED_IN_CHOICES,
+        max_length=3, null=True, choices=EMPLOYED_IN_CHOICES, blank=True,
     )
     occupation = models.ForeignKey(
         "Occupation",
@@ -252,7 +280,7 @@ class MatrimonyProfile(BaseModel):
         max_length=100, null=True, verbose_name="Occupation in Detail", blank=True,
     )
     organization = models.CharField(
-        max_length=75, null=True, help_text="Enter Organization Name",
+        max_length=75, null=True, help_text="Enter Organization Name", blank=True,
     )
     annual_income = MoneyField(
         max_digits=10, decimal_places=2, null=True, default_currency="INR"
@@ -307,6 +335,13 @@ class MatrimonyProfile(BaseModel):
         help_text="Ancestral origin or father's birth place",
         verbose_name="Ancesteral/Family Origin",
     )
+    religious_background = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        help_text="Religious background of the family",
+    )
+    family_details = models.TextField(max_length=200, blank=True, null=True,)
 
     # Medical details
     want_children = models.CharField(
@@ -413,25 +448,53 @@ class Expectation(BaseModel):
     )
 
     # Religuous preferences
-    religion = models.ManyToManyField(Religion, blank=True)
-    mother_tongue = models.ManyToManyField(Language, blank=True)
-    caste = models.ManyToManyField(Caste, blank=True)
-    subcaste = models.ManyToManyField(Subcaste, blank=True)
+    religions = models.ManyToManyField(Religion, blank=True,)
+    mother_tongues = models.ManyToManyField(Language, blank=True)
+    castes = models.ManyToManyField(Caste, blank=True)
+    subcastes = models.ManyToManyField(Subcaste, blank=True)
 
     # Location preferences
-    country = models.ManyToManyField(Country, blank=True)
+    countries_living_in = models.ManyToManyField(Country, blank=True)
+    nationalities = models.ManyToManyField(
+        Nationality, related_name="nationalities", blank=True
+    )
+    ethnicities = models.ManyToManyField(
+        Nationality, related_name="ethnicities", blank=True
+    )
+
+    # Language preferences
+    languages_can_speak = models.ManyToManyField(
+        "Language",
+        help_text="Languages the spouse should know to speak",
+        related_name="languages_spouse_know",
+        blank=True,
+    )
+    languages_can_read_write = models.ManyToManyField(
+        "Language",
+        verbose_name="Languages the spouse should know to read and write",
+        related_name="languages_spouse_read_write",
+        blank=True,
+    )
 
     # Professional preferences
     education = models.ManyToManyField(Education, blank=True)
-    occupation = models.ManyToManyField(Occupation, blank=True)
+    occupations = models.ManyToManyField(Occupation, blank=True)
     employed_in = MultiSelectField(
         choices=EMPLOYED_IN_CHOICES, max_length=3, null=True, blank=True
     )
-    annual_income_from = models.PositiveIntegerField(
-        null=True, blank=True, verbose_name="From annual income"
+    annual_income_from = MoneyField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        default_currency="INR",
+        verbose_name="From annual income",
     )
-    annual_income_to = models.PositiveIntegerField(
-        null=True, blank=True, verbose_name="To annual income"
+    annual_income_to = MoneyField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        default_currency="INR",
+        verbose_name="To annual income",
     )
 
     # Spiritual details
@@ -442,13 +505,7 @@ class Expectation(BaseModel):
         verbose_name=_("Spiritual Status"),
         blank=True,
     )
-    diff_diksha_guru = models.CharField(
-        max_length=1,
-        choices=YES_OR_NO,
-        null=True,
-        blank=True,
-        verbose_name="Can the spouse have different a diksha-guru?",
-    )
+    spiritual_masters = models.ManyToManyField(Guru, blank=True,)
     four_reg_principles = models.CharField(
         max_length=1,
         choices=YES_OR_NO,
@@ -456,12 +513,8 @@ class Expectation(BaseModel):
         blank=True,
         verbose_name="Does the spouse have to follow four regulative principles?",
     )
-    chant_16_round = models.CharField(
-        max_length=1,
-        choices=YES_OR_NO,
-        null=True,
-        blank=True,
-        verbose_name="Does the spouse have to chant 16 rounds?",
+    min_rounds_chanting = models.IntegerField(
+        null=True, blank=True, verbose_name="Minimum rounds of japa",
     )
 
     partner_description = models.TextField(max_length=1500, null=True, blank=True)

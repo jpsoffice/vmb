@@ -20,6 +20,7 @@ from .models import (
     Male,
     Female,
     Guru,
+    Nationality,
     Language,
     Education,
     EducationCategory,
@@ -260,7 +261,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             {
                 "fields": [
                     ("name", "spiritual_name", "age"),
-                    ("mother_tongue", "marital_status"),
+                    ("mother_tongue", "ethnic_origin", "marital_status"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
                 ]
@@ -279,15 +280,27 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ),
         (
             "SPIRITUAL QUOTIENT",
-            {"fields": [("rounds_chanting", "spiritual_status", "guru")]},
+            {"fields": [("rounds_chanting", "spiritual_status", "spiritual_master")]},
         ),
         (
             "CURRENT LOCATION",
-            {"fields": [("current_state", "current_city"), "current_country"]},
+            {
+                "fields": [
+                    ("current_state", "current_city"),
+                    "current_country",
+                    "nationality",
+                ]
+            },
         ),
         (
             "PHYSICAL APPEARANCE",
-            {"fields": [("height", "complexion"), ("weight", "body_type")]},
+            {
+                "fields": [
+                    ("height", "complexion"),
+                    ("weight", "body_type"),
+                    ("hair_color", "color_of_eyes"),
+                ]
+            },
         ),
         (
             "PERSONALITY",
@@ -351,7 +364,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ("languages_known", RelatedDropdownFilter),
         ("occupation", RelatedDropdownFilter),
         ("education", RelatedDropdownFilter),
-        ("guru", RelatedDropdownFilter),
+        ("spiritual_master", RelatedDropdownFilter),
     )
     search_fields = [
         "name",
