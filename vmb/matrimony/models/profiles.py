@@ -107,11 +107,6 @@ WANT_CHILDREN = (
     ("Mb", "May be"),
 )
 
-YES_OR_NO = (
-    ("Y", "Yes"),
-    ("N", "No"),
-)
-
 
 class MatrimonyProfile(BaseModel):
     """Model representing matrimonial profile of a candidate"""
@@ -506,9 +501,7 @@ class Expectation(BaseModel):
         blank=True,
     )
     spiritual_masters = models.ManyToManyField(Guru, blank=True,)
-    four_reg_principles = models.CharField(
-        max_length=1,
-        choices=YES_OR_NO,
+    four_reg_principles = models.BooleanField(
         null=True,
         blank=True,
         verbose_name="Does the spouse have to follow four regulative principles?",
