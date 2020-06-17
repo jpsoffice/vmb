@@ -33,16 +33,14 @@ def get_dob(a):
     dt = [int(i) for i in re.split(r"[./-]", a) if i.isdigit()]
     if len(dt) is 3:
         if dt[2] < 100:
-            if dt[2] > 20:
+            if dt[2] > datetime.datetime.now().year - 18 - 2000:
                 dt[2] = 1900 + dt[2]
             else:
                 dt[2] = 2000 + dt[2]
         new_dt = datetime.datetime.strptime(
             f"{dt[0]}-{dt[1]}-{dt[2]}", "%d-%m-%Y"
         ).date()
-    else:
-        new_dt = None
-    return new_dt
+    return new_dt if new_dt else None
 
 
 def get_marital_status(a):
@@ -74,11 +72,12 @@ def get_spiritual_status(a):
 
 
 def get_weight(a):
-    if a != "" or a is not None:
-        wt = re.sub("\D", "", a)
-    else:
-        wt = a
-    return wt
+    try:
+        if a or a != "" or a is not None:
+            wt = re.sub("\D", "", a)
+    except ValueError:
+        pass
+    return wt if wt else 0
 
 
 def get_annual_income(a):
@@ -96,8 +95,8 @@ def get_annual_income(a):
 
 
 def get_spouse_income(a):
-    if a:
-        income = [int(i) for i in a.split() if i.isdigit()]
+    income = [int(i) for i in a.split() if i.isdigit()]
+    if len(income) >= 1:
         if "USD" in a or "usd" in a or "Usd" in a:
             currency = "USD"
         else:
@@ -115,7 +114,7 @@ def get_spouse_income(a):
 
 
 def get_spouse_age(a):
-    age = [int(i) for i in re.split(r"[-/\s]", row[16]) if i.isdigit()]
+    age = [int(i) for i in re.split(r"[-/\s]", a) if i.isdigit()]
     if len(age) == 1:
         age_f = age[0]
         age_t = None
@@ -149,9 +148,7 @@ def run(file_path):
 
     next(reader)
 
-    for obj in MatrimonyProfile.objects.all():
-        if obj.id != 25:
-            obj.delete()
+    MatrimonyProfile.objects.all().delete()
 
     for row in reader:
         print(row)
@@ -175,17 +172,17 @@ def run(file_path):
             medical_history=row[44],
             want_children=get_want_children(row[45]),
         )
-        # print(mp.spiritual_status)
         mp.save()
-        # e = Expectation(
-        #     profile=mp,
-        #     age_from=get_spouse_age(row[16])[0],
-        #     age_to=get_spouse_age(row[16])[1],
-        #     marital_status=get_marital_status(row[19]),
-        #     partner_description=row[28],
-        #     spiritual_status=get_spiritual_status(row[22])
-
-        # annual_income_from=get_spouse_income(row[21])[0],
-        # annual_income_to=get_spouse_income(row[21])[1],
-        # )
-        # e.save()
+        spouse_age = get_spouse_age(row[16])
+        spouse_income = get_spouse_income(row[21])
+        e = Expectation(
+            profile=mp,
+            age_from=spouse_age[0],
+            age_to=spouse_age[1],
+            marital_status=get_marital_status(row[19]),
+            partner_description=row[28],
+            spiritual_status=get_spiritual_status(row[22]),
+            annual_income_from=spouse_income[0],
+            annual_income_to=spouse_income[1],
+        )
+        e.save()
