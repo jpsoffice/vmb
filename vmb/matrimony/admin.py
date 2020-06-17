@@ -16,6 +16,7 @@ from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.fields import DateField
 from django.utils import timezone
+
 from .models import (
     Male,
     Female,
@@ -33,6 +34,7 @@ from .models import (
     Subcaste,
     Religion,
     Expectation,
+    Comment,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -260,8 +262,9 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             None,
             {
                 "fields": [
-                    ("name", "spiritual_name", "age"),
-                    ("mother_tongue", "ethnic_origin", "marital_status"),
+                    ("name", "spiritual_name", "status", "ethnic_origin",),
+                    "primary_image",
+                    ("age", "mother_tongue", "marital_status"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
                 ]
@@ -315,6 +318,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             "PROFESSION",
             {
                 "fields": [
+                    "annual_income",
                     ("education", "institution"),
                     "education_details",
                     "employed_in",
@@ -340,6 +344,8 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
     ]
     list_display = (
         "name",
+        "primary_image",
+        "status",
         "age",
         "dob",
         "current_country",
@@ -350,6 +356,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "email",
     )
     list_filter = (
+        "status",
         AgeRangeFilter,
         AnnualIncomeRangeFilter,
         RoundsFilter,
@@ -377,7 +384,15 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "email",
     ]
 
-    readonly_fields = ["age"]
+    readonly_fields = ["age", "primary_image"]
+
+    def save_formset(self, request, form, formset, change):
+        super().save_formset(request, form, formset, change)
+
+        if "Comment" in str(formset.model):
+            for obj in formset.new_objects + formset.changed_objects:
+                obj.author = request.user
+                obj.save()
 
 
 class MatchInline(admin.TabularInline):
@@ -413,16 +428,22 @@ class ExpectationInline(admin.StackedInline):
         return extra
 
 
+class CommentInline(GenericTabularInline):
+    model = Comment
+    extra = 1
+    can_delete = True
+
+
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MatchInline, ImageInline, ExpectationInline]
+    inlines = [MatchInline, ImageInline, ExpectationInline, CommentInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MatchInline, ImageInline, ExpectationInline]
+    inlines = [MatchInline, ImageInline, ExpectationInline, CommentInline]
 
 
 @admin.register(Match)
@@ -439,6 +460,15 @@ class MatchAdmin(admin.ModelAdmin):
         "female_response_updated_at",
     )
     raw_id_fields = ("male", "female")
+    inlines = [CommentInline]
+
+    def save_formset(self, request, form, formset, change):
+        super().save_formset(request, form, formset, change)
+
+        if "Comment" in str(formset.model):
+            for obj in formset.new_objects + formset.changed_objects:
+                obj.author = request.user
+                obj.save()
 
 
 admin.site.register(Image)

@@ -3,7 +3,12 @@ import datetime
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 from django.template import loader, Context
+from django.utils.html import format_html
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericRelation
 
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
@@ -32,12 +37,27 @@ COLOR_OF_EYES = (
     ("HAZ", "Hazel"),
     ("RED", "Red"),
 )
+
 HAIR_COLOR = (
     ("BRW", "Brown"),
     ("BLN", "Blond"),
     ("BLK", "Black"),
     ("RED", "Red"),
     ("WHT", "White"),
+)
+
+PROFILE_STATUS_CHOICES = (
+    ("00", "New"),
+    ("01", "Acknowledged"),
+    ("02", "Awaiting response"),
+    ("03", "Inactive"),
+    ("04", "Blocked"),
+    ("10", "Active"),
+    ("11", "Backlog"),
+    ("12", "In progress"),
+    ("13", "On hold"),
+    ("20", "Married (outside sources)"),
+    ("30", "Married"),
 )
 BODY_TYPE = (
     ("SLM", "Slim"),
@@ -116,6 +136,9 @@ class MatrimonyProfile(BaseModel):
         max_length=200, default="", blank=True, verbose_name=_("Spiritual name")
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
+    status = models.CharField(
+        max_length=2, choices=PROFILE_STATUS_CHOICES, blank=True, default="00"
+    )
     marital_status = models.CharField(
         max_length=3,
         choices=MARITAL_STATUS,
@@ -378,6 +401,17 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         related_name="assigned_profiles",
     )
+    comments = GenericRelation("Comment")
+
+    @property
+    def primary_image(self):
+        if self.images is not None and self.images != "":
+            return format_html(
+                '<img src ="{}" style="width:30px; \
+                height: 30px"/>'.format(
+                    Image.objects.get(profile=self, primary=True).photo.image.url
+                )
+            )
 
     @property
     def age(self):
@@ -591,6 +625,7 @@ class Match(BaseModel):
         max_length=3, choices=MATCH_STATUS_CHOICES, blank=True, default=""
     )
     assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    comments = GenericRelation("Comment")
 
     def __str__(self):
         return f"{self.male}/{self.female}"
@@ -665,3 +700,17 @@ class Image(BaseModel):
 
     class Meta:
         db_table = "matrimony_images"
+
+
+class Comment(BaseModel):
+    message = models.TextField(max_length=2000, default="")
+    timestamp = models.DateTimeField(default=timezone.now, blank=True)
+    author = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+    )
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey("content_type", "object_id")
+
+    class Meta:
+        db_table = "comments"

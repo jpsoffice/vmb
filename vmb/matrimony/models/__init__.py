@@ -1,4 +1,4 @@
-from .profiles import Male, Female, Match, EmailMessage, Image, Expectation
+from .profiles import Male, Female, Match, EmailMessage, Image, Expectation, Comment
 from .relations import (
     Guru,
     Occupation,

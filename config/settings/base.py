@@ -140,6 +140,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "admin_reorder.middleware.ModelAdminReorder",
 ]
 
 # STATIC
@@ -293,6 +294,37 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_ADAPTER = "vmb.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "vmb.users.adapters.SocialAccountAdapter"
+
+# django-modeladmin-reorder
+# -----------------------------------------------------------------------------
+ADMIN_REORDER = (
+    {
+        "app": "matrimony",
+        "models": ("matrimony.Male", "matrimony.Female", "matrimony.Match",),
+    },
+    {
+        "app": "matrimony",
+        "label": "Profile attributes",
+        "models": (
+            "matrimony.Caste",
+            "matrimony.Country",
+            "matrimony.Education",
+            "matrimony.EducationCategory",
+            "matrimony.Guru",
+            "matrimony.Image",
+            "matrimony.Language",
+            "matrimony.OccupationCategory",
+            "matrimony.Occupation",
+            "matrimony.Religion",
+            "matrimony.Subcaste",
+        ),
+    },
+    "photologue",
+    "sites",
+    "auth",
+    "users",
+    "django_celery_beat",
+)
 
 
 # Your stuff...
