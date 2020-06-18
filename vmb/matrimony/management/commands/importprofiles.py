@@ -81,36 +81,17 @@ def get_weight(a):
 
 
 def get_annual_income(a):
-    income = [int(i) for i in a.split() if i.isdigit()]
-    if len(income) >= 1:
-        if "USD" in income or "usd" in income or "Usd" in income:
+    income = re.sub("\D", "", a)
+    if income:
+        if "usd" in a.lower():
             currency = "USD"
         else:
             currency = "INR"
-        income = income[0] * 12
+        income = int(income) * 12
         the_income = Money(income, currency)
     else:
         the_income = None
     return the_income
-
-
-def get_spouse_income(a):
-    income = [int(i) for i in a.split() if i.isdigit()]
-    if len(income) >= 1:
-        if "USD" in a or "usd" in a or "Usd" in a:
-            currency = "USD"
-        else:
-            currency = "INR"
-        if len(income) == 1:
-            income_f = Money(income[0] * 12, currency)
-            income_t = None
-        if len(income) == 2:
-            income_f = Money(income[0] * 12, currency)
-            income_t = Money(income[1] * 12, currency)
-    else:
-        income_f = None
-        income_t = None
-    return income_f, income_t
 
 
 def get_spouse_age(a):
@@ -174,7 +155,6 @@ def run(file_path):
         )
         mp.save()
         spouse_age = get_spouse_age(row[16])
-        spouse_income = get_spouse_income(row[21])
         e = Expectation(
             profile=mp,
             age_from=spouse_age[0],
@@ -182,7 +162,7 @@ def run(file_path):
             marital_status=get_marital_status(row[19]),
             partner_description=row[28],
             spiritual_status=get_spiritual_status(row[22]),
-            annual_income_from=spouse_income[0],
-            annual_income_to=spouse_income[1],
+            annual_income_from=get_annual_income(row[21]),
+            annual_income_to=None,
         )
         e.save()
