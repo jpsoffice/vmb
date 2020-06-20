@@ -262,8 +262,8 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             None,
             {
                 "fields": [
-                    ("name", "spiritual_name", "status", "ethnic_origin",),
-                    "primary_image",
+                    ("profile_id", "name", "spiritual_name"),
+                    ("status", "ethnic_origin", "primary_image"),
                     ("age", "mother_tongue", "marital_status"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
@@ -343,6 +343,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ("MENTORS", {"fields": ["mentor1", "mentor2"]}),
     ]
     list_display = (
+        "profile_id",
         "name",
         "primary_image",
         "status",

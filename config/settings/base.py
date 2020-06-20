@@ -331,3 +331,4 @@ ADMIN_REORDER = (
 # ------------------------------------------------------------------------------
 ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
 MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.net")
+PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")

@@ -1,4 +1,5 @@
 import datetime
+from hashlib import md5
 
 from django.conf import settings
 from django.db import models
@@ -131,6 +132,7 @@ WANT_CHILDREN = (
 class MatrimonyProfile(BaseModel):
     """Model representing matrimonial profile of a candidate"""
 
+    profile_id = models.CharField(max_length=15, blank=True, unique=True)
     name = models.CharField(max_length=200, verbose_name=_("Name"),)
     spiritual_name = models.CharField(
         max_length=200, default="", blank=True, verbose_name=_("Spiritual name")
@@ -448,6 +450,12 @@ class MatrimonyProfile(BaseModel):
             {"matches": matches}
         )
 
+    def generate_profile_id(self):
+        digest = md5(
+            f"{self.name}-{self.gender}-{self.phone}-{self.email}-{self.dob}-{self.tob}-{self.birth_city}-{self.birth_state}-{self.birth_country}".encode("utf-8")
+        ).hexdigest()[:7].upper()
+        return f"{settings.PROFILE_ID_PREFIX}{digest}"
+
 
 class Expectation(BaseModel):
     profile = models.OneToOneField(
@@ -562,7 +570,9 @@ class Male(MatrimonyProfile):
         proxy = True
 
     def save(self, *args, **kwargs):
-        self.gender = "M"
+        if self.id is None:
+            self.gender = "M"
+            self.profile_id = self.generate_profile_id()
         super().save(*args, **kwargs)
 
 
@@ -578,7 +588,9 @@ class Female(MatrimonyProfile):
         proxy = True
 
     def save(self, *args, **kwargs):
-        self.gender = "F"
+        if self.id is None:
+            self.gender = "F"
+            self.profile_id = self.generate_profile_id()
         super().save(*args, **kwargs)
 
 
