@@ -294,6 +294,7 @@ class MatrimonyProfile(BaseModel):
         "Occupation",
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         help_text="Doctor, Engineer, Entrepreneur etc.",
     )
     occupation_details = models.TextField(
