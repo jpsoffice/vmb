@@ -523,6 +523,7 @@ class Expectation(BaseModel):
         max_digits=10,
         decimal_places=2,
         null=True,
+        blank=True,
         default_currency="INR",
         verbose_name="From annual income",
     )
@@ -530,6 +531,7 @@ class Expectation(BaseModel):
         max_digits=10,
         decimal_places=2,
         null=True,
+        blank=True,
         default_currency="INR",
         verbose_name="To annual income",
     )
