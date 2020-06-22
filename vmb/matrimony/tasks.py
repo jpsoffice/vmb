@@ -30,9 +30,10 @@ def send_email(email_message_id):
     email_message = EmailMessage.objects.get(id=email_message_id)
     send_mail(
         email_message.subject,
-        email_message.body,
+        "",
         email_message.sender,
         [email_message.to],
+        html_message=email_message.body,
     )
     email_message.status = "SNT"
     email_message.sent_at = timezone.now()

@@ -417,6 +417,13 @@ class MatrimonyProfile(BaseModel):
             )
 
     @property
+    def primary_image_url(self):
+        try:
+            return Image.objects.get(profile=self, primary=True).photo.image.url
+        except Image.DoesNotExist:
+            return ""
+
+    @property
     def age(self):
         if self.dob:
             return int((datetime.datetime.now().date() - self.dob).days / 365.25)
@@ -432,6 +439,7 @@ class MatrimonyProfile(BaseModel):
         subject = _("Matches for you")
         email_message = self.email_messages.create(
             sender=settings.MATRIMONY_SENDER_EMAIL,
+            subject="Suggested matches",
             body=body,
             to=self.email,
             category="DMD",
@@ -452,9 +460,15 @@ class MatrimonyProfile(BaseModel):
         )
 
     def generate_profile_id(self):
-        digest = md5(
-            f"{self.name}-{self.gender}-{self.phone}-{self.email}-{self.dob}-{self.tob}-{self.birth_city}-{self.birth_state}-{self.birth_country}".encode("utf-8")
-        ).hexdigest()[:7].upper()
+        digest = (
+            md5(
+                f"{self.name}-{self.gender}-{self.phone}-{self.email}-{self.dob}-{self.tob}-{self.birth_city}-{self.birth_state}-{self.birth_country}".encode(
+                    "utf-8"
+                )
+            )
+            .hexdigest()[:7]
+            .upper()
+        )
         return f"{settings.PROFILE_ID_PREFIX}{digest}"
 
 
