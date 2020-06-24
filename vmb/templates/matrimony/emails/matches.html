@@ -1,16 +1,50 @@
 {% extends "matrimony/emails/base.html" %}
 
 {% block content %}
-  <ul class="list-unstyled">
-  {% for m in matches %}
-    <li class="media">
-      <img class="mr-3" src="..." alt="Generic placeholder image">
-      <div class="media-body">
-        <h5 class="mt-0 mb-1">{{ m.name }}</h5>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-      </div>
-    </li>
-  {% endfor %}
-  </ul>
+  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tbody>
+      {% for m in matches %}
+      <tr>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>
+                <img class="align-self-start mr-3" src="{{ m.primary_image_url }}" alt="">
+              </td>
+            </tr>
+            <tr>
+              <td><strong>{{ m.profile_id }}</strong></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>
+                <h3>
+                  {{ m.name }}{% if m.spiritual_name %}({{ m.spiritual_name }}){% endif %}, {{ m.age }} years, {{ m.height }}cms
+                </h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4>Basic info</h4>
+                <p>
+                  <strong>Marital status:</strong> {{ m.marital_status }},
+                  <strong>Mother tongue:</strong> {{ m.mother_tongue }},
+                  <strong>Religion:</strong> {{ m.religion}},
+                  <strong>Caste</strong>: {{ m.caste }},
+                  <strong>Subcaste:</strong> {{ m.subcaste }},
+                  <strong>Languages known:</strong> {{ m.languages_can_speak }},
+                  <strong>Languages can read/write:</strong> {{ m.languages_read_write}}
+                </p>
+              </td>
+            </tr>
+          </table>
+        </d>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
 

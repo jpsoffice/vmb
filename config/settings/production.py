@@ -136,7 +136,18 @@ ADMIN_URL = env("DJANGO_ADMIN_URL")
 # ------------------------------------------------------------------------------
 # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
 INSTALLED_APPS += ["anymail"]  # noqa F405
-EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+EMAIL_BACKEND = env(
+    "DJANGO_EMAIL_BACKEND", default="anymail.backends.mailgun.EmailBackend"
+)
+
+if EMAIL_BACKEND == "django.core.mail.backends.smtp.EmailBackend":
+    EMAIL_HOST = env("DJANGO_EMAIL_HOST")
+    EMAIL_PORT = env("DJANGO_EMAIL_PORT")
+    EMAIL_HOST_USER = env("DJANGO_EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = env("DJANGO_EMAIL_HOST_PASSWORD")
+    # EMAIL_USE_SSL = env("DJANGO_EMAIL_USE_SSL", default=True)
+    EMAIL_USE_TLS = env("DJANGO_EMAIL_USE_TLS", default=True)
+
 # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
 ANYMAIL = {
     "MAILGUN_API_KEY": env("MAILGUN_API_KEY"),

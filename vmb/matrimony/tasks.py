@@ -13,15 +13,14 @@ def send_batch_matches_emails():
     ):
         male = Male.objects.get(id=male_id)
         male.send_batch_matches_email()
-        male.female_matches.filter(status="TON").update(status="NTF")
 
     for female_id in (
         Match.objects.filter(status="TON").values_list("female", flat=True).distinct()
     ):
         female = Female.objects.get(id=female_id)
         female.send_batch_matches_email()
-        female.male_matches.filter(status="TON").update(status="NTF")
 
+    Match.objects.filter(status="TON").update(status="NTF")
 
 @celery_app.task()
 def send_email(email_message_id):
@@ -30,9 +29,10 @@ def send_email(email_message_id):
     email_message = EmailMessage.objects.get(id=email_message_id)
     send_mail(
         email_message.subject,
-        email_message.body,
+        "",
         email_message.sender,
         [email_message.to],
+        html_message=email_message.body,
     )
     email_message.status = "SNT"
     email_message.sent_at = timezone.now()

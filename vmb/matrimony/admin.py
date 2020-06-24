@@ -21,6 +21,7 @@ from .models import (
     Male,
     Female,
     Guru,
+    Nationality,
     Language,
     Education,
     EducationCategory,
@@ -261,8 +262,8 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             None,
             {
                 "fields": [
-                    ("name", "spiritual_name", "status"),
-                    "primary_image",
+                    ("profile_id", "name", "spiritual_name"),
+                    ("status", "ethnic_origin", "primary_image"),
                     ("age", "mother_tongue", "marital_status"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
@@ -282,15 +283,27 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ),
         (
             "SPIRITUAL QUOTIENT",
-            {"fields": [("rounds_chanting", "spiritual_status", "guru")]},
+            {"fields": [("rounds_chanting", "spiritual_status", "spiritual_master")]},
         ),
         (
             "CURRENT LOCATION",
-            {"fields": [("current_state", "current_city"), "current_country"]},
+            {
+                "fields": [
+                    ("current_state", "current_city"),
+                    "current_country",
+                    "nationality",
+                ]
+            },
         ),
         (
             "PHYSICAL APPEARANCE",
-            {"fields": [("height", "complexion"), ("weight", "body_type")]},
+            {
+                "fields": [
+                    ("height", "complexion"),
+                    ("weight", "body_type"),
+                    ("hair_color", "color_of_eyes"),
+                ]
+            },
         ),
         (
             "PERSONALITY",
@@ -330,6 +343,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ("MENTORS", {"fields": ["mentor1", "mentor2"]}),
     ]
     list_display = (
+        "profile_id",
         "name",
         "primary_image",
         "status",
@@ -358,7 +372,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ("languages_known", RelatedDropdownFilter),
         ("occupation", RelatedDropdownFilter),
         ("education", RelatedDropdownFilter),
-        ("guru", RelatedDropdownFilter),
+        ("spiritual_master", RelatedDropdownFilter),
     )
     search_fields = [
         "name",

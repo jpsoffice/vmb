@@ -62,12 +62,15 @@ def get_rounds_chanting(a):
 
 
 def get_spiritual_status(a):
-    if "First Initiated" in a:
-        s_status = "D1"
-    elif "Second Initiated" in a:
-        s_status = "D2"
+    if a:
+        if "First Initiated" in a:
+            s_status = "D1"
+        elif "Second Initiated" in a:
+            s_status = "D2"
+        else:
+            s_status = a[0].upper()
     else:
-        s_status = a[0].upper()
+        s_status = None
     return s_status
 
 
