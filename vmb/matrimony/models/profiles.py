@@ -426,9 +426,11 @@ class MatrimonyProfile(BaseModel):
     @property
     def primary_image_thumbnail_url(self):
         try:
-            return Image.objects.get(profile=self, primary=True).photo.get_thumbnail_url()
+            return Image.objects.get(
+                profile=self, primary=True
+            ).photo.get_thumbnail_url()
         except Image.DoesNotExist:
-            return ""    
+            return ""
 
     @property
     def age(self):
