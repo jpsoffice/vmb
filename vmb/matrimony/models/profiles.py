@@ -407,6 +407,20 @@ class MatrimonyProfile(BaseModel):
     comments = GenericRelation("Comment")
 
     @property
+    def get_languages_known(self):
+        if self.languages_known is not None:
+            return ", ".join(p.name for p in self.languages_known.all())
+        else:
+            return None
+
+    @property
+    def get_languages_read_write(self):
+        if self.languages_read_write is not None:
+            return ", ".join(p.name for p in self.languages_read_write.all())
+        else:
+            return None
+
+    @property
     def primary_image(self):
         if self.images is not None and self.images != "":
             return format_html(

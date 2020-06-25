@@ -30,16 +30,51 @@
               <td>
                 <h4>Basic info</h4>
                 <p>
-                  <strong>Marital status:</strong> {{ m.marital_status }},
+                  <strong>Marital status:</strong> {{ m.get_marital_status_display }},
                   <strong>Mother tongue:</strong> {{ m.mother_tongue }},
                   <strong>Religion:</strong> {{ m.religion}},
                   <strong>Caste</strong>: {{ m.caste }},
                   <strong>Subcaste:</strong> {{ m.subcaste }},
-                  <strong>Languages known:</strong> {{ m.languages_can_speak }},
-                  <strong>Languages can read/write:</strong> {{ m.languages_read_write}}
+                  <strong>Languages known:</strong> {{ m.get_languages_known }},
+                  <strong>Languages can read/write:</strong> {{ m.get_languages_read_write}}
+                  <strong>Ethnic Origin:</strong> {{m.ethnic_origin}}
                 </p>
               </td>
             </tr>
+            <tr>
+              <td>
+                  <h4>Spiritual Quotient</h4>
+                  <p>
+                    <strong>Regularly chants</strong> {{ m.rounds_chanting }} round(s),
+                    {% if m.spiritual_status %}<strong>Spiritual Status</strong> {{ m.get_spiritual_status_display }},{%endif%}
+                    {% if m.spiritual_master %}<strong>Spiritual Master</strong> {{ m.spiritual_master }},{%endif%}
+
+                  </p>
+              </td>
+            </tr>
+              <tr>
+                <td>
+                  <h4>Birth Details</h4>
+                  <p>
+                    <strong>Birth Date</strong> {{ m.dob }},
+                    <strong>Birth Time</strong> {{ m.tob }},
+                    <strong>Birth City</strong> {{ m.birth_city }},
+                    <strong>Birth State</strong> {{ m.birth_state }},
+                    <strong>Birth Country</strong> {{ m.birth_country }},
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Current Location</h4>
+                  <p>
+                    <strong>City</strong> {{ m.current_city }},
+                    <strong>State</strong> {{ m.current_state }},
+                    <strong>Country</strong> {{ m.current_country }},
+                    <strong>Nationality</strong> {{ m.nationality }},
+                  </p>
+                </td>
+              </tr>
           </table>
         </d>
       </tr>
