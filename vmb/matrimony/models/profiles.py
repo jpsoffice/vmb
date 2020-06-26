@@ -407,6 +407,20 @@ class MatrimonyProfile(BaseModel):
     comments = GenericRelation("Comment")
 
     @property
+    def get_languages_known(self):
+        if self.languages_known is not None:
+            return ", ".join(p.name for p in self.languages_known.all())
+        else:
+            return None
+
+    @property
+    def get_languages_read_write(self):
+        if self.languages_read_write is not None:
+            return ", ".join(p.name for p in self.languages_read_write.all())
+        else:
+            return None
+
+    @property
     def primary_image(self):
         if self.images is not None and self.images != "":
             return format_html(
@@ -420,6 +434,15 @@ class MatrimonyProfile(BaseModel):
     def primary_image_url(self):
         try:
             return Image.objects.get(profile=self, primary=True).photo.image.url
+        except Image.DoesNotExist:
+            return ""
+
+    @property
+    def primary_image_thumbnail_url(self):
+        try:
+            return Image.objects.get(
+                profile=self, primary=True
+            ).photo.get_thumbnail_url()
         except Image.DoesNotExist:
             return ""
 
