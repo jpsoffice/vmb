@@ -354,7 +354,7 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         null=True,
         help_text="Ancestral origin or father's birth place",
-        verbose_name="Ancesteral/Family Origin",
+        verbose_name="Ancestral/Family Origin",
     )
     religious_background = models.CharField(
         max_length=100,
