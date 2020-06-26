@@ -519,7 +519,7 @@ class Expectation(BaseModel):
         max_digits=5, decimal_places=2, null=True, blank=True, verbose_name="To height"
     )
     marital_status = MultiSelectField(
-        choices=MARITAL_STATUS, max_length=3, null=True, blank=True
+        choices=MARITAL_STATUS, max_length=100, null=True, blank=True
     )
 
     # Religuous preferences
@@ -555,7 +555,7 @@ class Expectation(BaseModel):
     education = models.ManyToManyField(Education, blank=True)
     occupations = models.ManyToManyField(Occupation, blank=True)
     employed_in = MultiSelectField(
-        choices=EMPLOYED_IN_CHOICES, max_length=3, null=True, blank=True
+        choices=EMPLOYED_IN_CHOICES, max_length=100, null=True, blank=True
     )
     annual_income_from = MoneyField(
         max_digits=10,
