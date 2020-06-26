@@ -75,6 +75,70 @@
                   </p>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <h4>Physical Appearance</h4>
+                  <p>
+                    <strong>Complexion</strong> {{ m.get_complexion_display }},
+                    <strong>Weight</strong> {{ m.weight }}kgs,
+                    <strong>Body type</strong> {{ m.get_body_type_display }},
+                    {% if m.color_of_eyes %}<strong>Color of eyes</strong> {{ m.color_of_eyes }},{% endif %}
+                    {% if m.hair_color %}<strong>Hair Color</strong> {{ m.hair_color }},{% endif %}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Personality</h4>
+                  <p>
+                    <strong>Description</strong> {{ m.personality }},
+                    <strong>Recreational Activities</strong> {{ m.recreational_activities }},
+                    <strong>Devotional Activities</strong> {{ m.devotional_services }},
+                    {% if m.color_of_eyes %}<strong>Color of eyes</strong> {{ m.color_of_eyes }},{% endif %}
+                    {% if m.hair_color %}<strong>Hair Color</strong> {{ m.hair_color }},{% endif %}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Profession</h4>
+                  <p>
+                    <strong>Annual income</strong> {{ m.annual_income }},
+                    <strong>Education</strong> {{ m.education }},
+                    {% if m.institution %}<strong>Institution</strong> {{ m.institution }},{% endif %}
+                    {% if m.education_details %}<strong>Education in detail</strong> {{ m.education_details }},{% endif %}
+                    {% if m.employed_in %}<strong>Employed in</strong> {{ m.employed_in }},{% endif %}
+                    {% if m.occupation %}<strong>Occupation</strong> {{ m.occupation }},{% endif %}
+                    {% if m.organization %}<strong>Organization</strong> {{ m.organization }},{% endif %}
+                    {% if m.occupation_details %}<strong>Occupation in detail</strong> {{ m.occupation_details }},{% endif %}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Family Details</h4>
+                  <p>
+                    {% if m.family_values %}<strong>Family values</strong> {{ m.family_values }},{% endif %}
+                    {% if m.family_type %}<strong>Family type</strong> {{ m.family_type }},{% endif %}
+                    {% if m.family_status %}<strong>Family status</strong> {{ m.family_status }},{% endif %}
+                    {% if m.father_occupation %}<strong>Father's occupation</strong> {{ m.father_occupation }},{% endif %}
+                    {% if m.mother_occupation %}<strong>Mother's occupation</strong> {{ m.mother_occupation }},{% endif %}
+                    {% if m.brothers %}<strong>No. of Brother(s)</strong> {{ m.brothers }}{% if brothers_married %}/{{m.brothers_married}} married{% endif %},{% endif %}
+                    {% if m.sisters %}<strong>No. of Sister(s)</strong> {{ m.sisters }}{% if brothers_married %}/{{m.brothers_married}} married{% endif %},{% endif %}
+                    {% if m.family_location %}<strong>Family location</strong> {{ m.family_location }},{% endif %}
+                    {% if m.family_origin %}<strong>Ancestral/Family Origin</strong> {{ m.family_origin }},{% endif %}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Medical Details</h4>
+                  <p>
+                    <strong>Wants Children</strong> {{ m.get_want_children_display }},
+                    <strong>Medical History</strong> {{ m.medical_history }},
+                  </p>
+                </td>
+              </tr>
           </table>
         </d>
       </tr>
