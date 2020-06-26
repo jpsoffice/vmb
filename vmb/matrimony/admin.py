@@ -12,6 +12,7 @@ from django_admin_listfilter_dropdown.filters import (
     ChoiceDropdownFilter,
     RelatedDropdownFilter,
 )
+from djangoql.admin import DjangoQLSearchMixin
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.fields import DateField
@@ -256,7 +257,7 @@ class AgeRangeFilter(admin.SimpleListFilter):
         )
 
 
-class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
+class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
     fieldsets = [
         (
             None,
@@ -379,10 +380,17 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "current_country__name",
         "current_state",
         "current_city",
-        "occupation__occupation",
         "annual_income",
         "phone",
         "email",
+        "spiritual_status",
+        "marital_status",
+        "ethnic_origin__nationality",
+        "mother_tongue__name",
+        "caste__name",
+        "spiritual_master__name",
+        "education__name",
+        "occupation__name",
     ]
 
     readonly_fields = ["age", "primary_image"]

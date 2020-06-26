@@ -77,6 +77,7 @@ THIRD_PARTY_APPS = [
     "django_celery_beat",
     "photologue",
     "sortedm2m",
+    "djangoql",
 ]
 
 LOCAL_APPS = [
