@@ -11,4 +11,5 @@ from .relations import (
     Religion,
     Caste,
     Subcaste,
+    Mentor,
 )

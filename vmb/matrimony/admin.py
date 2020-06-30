@@ -438,13 +438,13 @@ class CommentInline(GenericTabularInline):
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MatchInline, ImageInline, ExpectationInline, CommentInline]
+    inlines = [ImageInline, ExpectationInline, MatchInline, CommentInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MatchInline, ImageInline, ExpectationInline, CommentInline]
+    inlines = [ImageInline, ExpectationInline, MatchInline, CommentInline]
 
 
 @admin.register(Match)

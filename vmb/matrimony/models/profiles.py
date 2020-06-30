@@ -27,6 +27,7 @@ from .relations import (
     Religion,
     Caste,
     Subcaste,
+    Mentor,
 )
 
 COLOR_OF_EYES = (
@@ -38,7 +39,6 @@ COLOR_OF_EYES = (
     ("HAZ", "Hazel"),
     ("RED", "Red"),
 )
-
 HAIR_COLOR = (
     ("BRW", "Brown"),
     ("BLN", "Blond"),
@@ -46,7 +46,6 @@ HAIR_COLOR = (
     ("RED", "Red"),
     ("WHT", "White"),
 )
-
 PROFILE_STATUS_CHOICES = (
     ("00", "New"),
     ("01", "Acknowledged"),
@@ -66,16 +65,13 @@ BODY_TYPE = (
     ("ATH", "Athelete"),
     ("HEA", "Heavy"),
 )
-
 GENDER_CHOICES = (("M", "Male"), ("F", "Female"), ("O", "Others"))
-
 SPIRITUAL_STATUS_CHOICES = (
     ("A", "Aspiring"),
     ("S", "Shelter"),
     ("D1", "Harinam"),
     ("D2", "Brahmin"),
 )
-
 EMPLOYED_IN_CHOICES = (
     ("PSU", _("Government/PSU")),
     ("PVT", _("Private")),
@@ -84,7 +80,6 @@ EMPLOYED_IN_CHOICES = (
     ("SE", _("Self Employed")),
     ("NW", _("Not Working")),
 )
-
 FAMILY_LOCATION_CHOICES = (
     ("SAME", _("Same as my location")),
     ("DIFFERENT", _("Different Location")),
@@ -116,18 +111,20 @@ COMPLEXION_CHOICES = (
 
 MARITAL_STATUS = (
     ("UMR", "Unmarried"),
-    ("ENG", "Engaged"),
-    ("SEP", "Separated"),
     ("DIV", "Divorced"),
     ("WID", "Widowed"),
 )
-
 WANT_CHILDREN = (
     ("Y", "Yes"),
     ("N", "No"),
     ("Mb", "May be"),
 )
-
+HAVE_CHILDREN = (
+    (0, "0"),
+    (1, "1"),
+    (2, "2"),
+    (3, "3"),
+)
 
 class MatrimonyProfile(BaseModel):
     """Model representing matrimonial profile of a candidate"""
@@ -144,9 +141,9 @@ class MatrimonyProfile(BaseModel):
     marital_status = models.CharField(
         max_length=3,
         choices=MARITAL_STATUS,
-        help_text="Single, Divorced etc.",
         null=True,
     )
+    have_children = models.PositiveIntegerField(choices=HAVE_CHILDREN, blank=True, null=True)   
     ethnic_origin = models.ForeignKey(
         Nationality, on_delete=models.SET_NULL, null=True, related_name="ethnic_origin",
     )
@@ -199,6 +196,7 @@ class MatrimonyProfile(BaseModel):
         related_name="birthCountry",
         verbose_name=_("Country"),
     )
+    gotra = models.CharField(max_length=25, blank=True, null=True)
 
     # Current location details
     current_city = models.CharField(
@@ -382,19 +380,8 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Mentors and their details
-    mentor1 = models.CharField(
-        max_length=250,
-        verbose_name="Reference 1",
-        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 1",
-        null=True,
-    )
-    mentor2 = models.CharField(
-        max_length=250,
-        verbose_name="Reference 2",
-        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 2",
-        blank=True,
-        null=True,
-    )
+    mentor1 = models.ForeignKey(Mentor, on_delete=models.SET_NULL, null=True)
+    mentor2 = models.ForeignKey(Mentor, on_delete=models.SET_NULL, null=True, blank=True)
 
     # Staff users
     assignee = models.ForeignKey(

@@ -152,7 +152,7 @@ class Caste(BaseModel):
 class Subcaste(BaseModel):
     """Model representing Subcaste e.g. Brahmin, Kayastha etc"""
 
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     caste = models.ForeignKey("Caste", on_delete=models.CASCADE, null=True)
 
     class Meta:
@@ -161,3 +161,19 @@ class Subcaste(BaseModel):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class Mentor(BaseModel):
+    """Model representing Mentors or Spirtual References/Counsellors for users"""
+    
+    name = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=17, null=True, unique=True)
+    email = models.EmailField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["name"]
+        db_table = "mentor"
+
+    def __str__(self):
+        return f"{self.name}"
+        
