@@ -381,8 +381,8 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Mentors and their details
-    mentor1 = models.ForeignKey(Mentor, on_delete=models.SET_NULL, null=True)
-    mentor2 = models.ForeignKey(Mentor, on_delete=models.SET_NULL, null=True, blank=True)
+    mentor1 = models.ForeignKey(Mentor, on_delete=models.SET_NULL, null=True, related_name='mentor1')
+    mentor2 = models.ForeignKey(Mentor, on_delete=models.SET_NULL, null=True, blank=True, related_name='mentor2')
 
     # Staff users
     assignee = models.ForeignKey(
