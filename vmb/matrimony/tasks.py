@@ -22,6 +22,7 @@ def send_batch_matches_emails():
 
     Match.objects.filter(status="TON").update(status="NTF")
 
+
 @celery_app.task()
 def send_email(email_message_id):
     from .models import EmailMessage
