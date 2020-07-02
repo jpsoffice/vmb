@@ -71,6 +71,7 @@ SPIRITUAL_STATUS_CHOICES = (
     ("S", "Shelter"),
     ("D1", "Harinam"),
     ("D2", "Brahmin"),
+    ("NA", "Not Applicable"),
 )
 EMPLOYED_IN_CHOICES = (
     ("PSU", _("Government/PSU")),
@@ -539,12 +540,8 @@ class Expectation(BaseModel):
     )
 
     # Spiritual details
-    spiritual_status = models.CharField(
-        max_length=2,
-        help_text="Enter spiritual status (e.g. Aspiring, Shelter etc.)",
-        choices=SPIRITUAL_STATUS_CHOICES,
-        verbose_name=_("Spiritual Status"),
-        blank=True,
+    spiritual_status = MultiSelectField(
+        choices=SPIRITUAL_STATUS_CHOICES, max_length=5, null=True, blank=True
     )
     spiritual_masters = models.ManyToManyField(Guru, blank=True,)
     four_reg_principles = models.BooleanField(
