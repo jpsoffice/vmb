@@ -544,11 +544,6 @@ class Expectation(BaseModel):
         choices=SPIRITUAL_STATUS_CHOICES, max_length=5, null=True, blank=True
     )
     spiritual_masters = models.ManyToManyField(Guru, blank=True,)
-    four_reg_principles = models.BooleanField(
-        null=True,
-        blank=True,
-        verbose_name="Does the spouse have to follow four regulative principles?",
-    )
     min_rounds_chanting = models.IntegerField(
         null=True, blank=True, verbose_name="Minimum rounds of japa",
     )

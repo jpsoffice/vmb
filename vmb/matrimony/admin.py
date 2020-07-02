@@ -63,7 +63,6 @@ class RoundsFilter(admin.SimpleListFilter):
             ("16", (">=16")),
             ("8-16", ("8-16")),
             ("1-8", ("1-8")),
-            ("0", ("Does not chant")),
         )
 
     def queryset(self, request, queryset):
@@ -84,9 +83,6 @@ class RoundsFilter(admin.SimpleListFilter):
             return queryset.filter(
                 rounds_chanting__lt=int(8), rounds_chanting__gte=int(1)
             )
-        if self.value() == "0":
-
-            return queryset.filter(rounds_chanting__lte=int(0))
 
 
 class AnnualIncomeRangeFilter(admin.SimpleListFilter):
