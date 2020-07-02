@@ -30,6 +30,12 @@ from .relations import (
     Mentor,
 )
 
+ARE_PARENTS_DEV = (
+    ("Y", "Yes"),
+    ("N", "No"),
+    ("OF", "Only Father"),
+    ("OM", "Only Mother"),    
+)
 COLOR_OF_EYES = (
     ("AMB", "Amber"),
     ("BLU", "Blue"),
@@ -115,7 +121,7 @@ MARITAL_STATUS = (
     ("DIV", "Divorced"),
     ("WID", "Widowed"),
 )
-WANT_CHILDREN = (
+Y_N_MAYB = (
     ("Y", "Yes"),
     ("N", "No"),
     ("Mb", "May be"),
@@ -314,6 +320,9 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Family details
+    parents_devotees = models.CharField(
+        max_length = 2, choices=ARE_PARENTS_DEV, null=True, verbose_name="Are you parents devotees?"
+    )
     family_values = models.CharField(
         max_length=4, choices=FAMILY_VALUE_CHOICES, null=True, blank=True,
     )
@@ -366,7 +375,7 @@ class MatrimonyProfile(BaseModel):
     # Medical details
     want_children = models.CharField(
         max_length=2,
-        choices=WANT_CHILDREN,
+        choices=Y_N_MAYB,
         verbose_name="Do you want Children",
         null=True,
     )
@@ -500,6 +509,12 @@ class Expectation(BaseModel):
     )
     ethnicities = models.ManyToManyField(
         Nationality, related_name="ethnicities", blank=True
+    )
+    want_NRI = models.CharField(
+        max_length=2,
+        choices=Y_N_MAYB,
+        verbose_name="Do you want NRI",
+        null=True,
     )
 
     # Language preferences
