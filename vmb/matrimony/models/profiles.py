@@ -515,6 +515,7 @@ class Expectation(BaseModel):
         choices=Y_N_MAYB,
         verbose_name="Do you want NRI",
         null=True,
+        blank=True,
     )
 
     # Language preferences
