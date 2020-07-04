@@ -760,7 +760,7 @@ class Comment(BaseModel):
 
 class Mentor(BaseModel):
     """Model representing Mentors or Spirtual References/Counsellors for users"""
-    
+
     profile = models.ManyToManyField(MatrimonyProfile)
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=17, null=True, unique=True)
