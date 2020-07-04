@@ -18,6 +18,7 @@ from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.fields import DateField
 from django.utils import timezone
 
+from .models.profiles import MatrimonyProfile
 from .models import (
     Male,
     Female,
@@ -36,6 +37,7 @@ from .models import (
     Religion,
     Expectation,
     Comment,
+    Mentor,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -64,7 +66,6 @@ class RoundsFilter(admin.SimpleListFilter):
             ("16", (">=16")),
             ("8-16", ("8-16")),
             ("1-8", ("1-8")),
-            ("0", ("Does not chant")),
         )
 
     def queryset(self, request, queryset):
@@ -85,9 +86,6 @@ class RoundsFilter(admin.SimpleListFilter):
             return queryset.filter(
                 rounds_chanting__lt=int(8), rounds_chanting__gte=int(1)
             )
-        if self.value() == "0":
-
-            return queryset.filter(rounds_chanting__lte=int(0))
 
 
 class AnnualIncomeRangeFilter(admin.SimpleListFilter):
@@ -257,6 +255,15 @@ class AgeRangeFilter(admin.SimpleListFilter):
         )
 
 
+class MentorInline(admin.TabularInline):
+    model = MatrimonyProfile.mentors.through
+    extra = 1
+    can_delete = True
+
+    verbose_name = "Mentor"
+    verbose_name_plural = "Mentors"
+
+
 class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
     fieldsets = [
         (
@@ -265,7 +272,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                 "fields": [
                     ("profile_id", "name", "spiritual_name"),
                     ("status", "ethnic_origin", "primary_image"),
-                    ("age", "mother_tongue", "marital_status"),
+                    ("age", "mother_tongue", "marital_status", "children_count"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
                 ]
@@ -276,7 +283,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             "BIRTH DETAILS",
             {
                 "fields": [
-                    ("dob", "tob"),
+                    ("dob", "tob", "gotra"),
                     ("birth_state", "birth_city"),
                     "birth_country",
                 ]
@@ -332,7 +339,12 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             "FAMILY DETAILS",
             {
                 "fields": [
-                    ("family_values", "family_type", "family_status"),
+                    (
+                        "are_parents_devotees",
+                        "family_values",
+                        "family_type",
+                        "family_status",
+                    ),
                     ("father_occupation", "mother_occupation"),
                     ("brothers", "brothers_married"),
                     ("sisters", "sisters_married"),
@@ -341,7 +353,6 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             },
         ),
         ("MEDICAL DETAILS", {"fields": ["want_children", "medical_history"]}),
-        ("MENTORS", {"fields": ["mentor1", "mentor2"]}),
     ]
     list_display = (
         "profile_id",
@@ -403,6 +414,8 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                 obj.author = request.user
                 obj.save()
 
+    # inlines = [MentorInline]
+
 
 class MatchInline(admin.TabularInline):
     model = Match
@@ -446,13 +459,13 @@ class CommentInline(GenericTabularInline):
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MatchInline, ImageInline, ExpectationInline, CommentInline]
+    inlines = [MentorInline, ImageInline, ExpectationInline, MatchInline, CommentInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MatchInline, ImageInline, ExpectationInline, CommentInline]
+    inlines = [MentorInline, ImageInline, ExpectationInline, MatchInline, CommentInline]
 
 
 @admin.register(Match)
@@ -491,3 +504,4 @@ admin.site.register(Country)
 admin.site.register(Occupation)
 admin.site.register(EducationCategory)
 admin.site.register(OccupationCategory)
+admin.site.register(Nationality)

@@ -27,8 +27,15 @@ from .relations import (
     Religion,
     Caste,
     Subcaste,
+    Gotra,
 )
 
+ARE_PARENTS_DEV = (
+    ("Y", "Yes"),
+    ("N", "No"),
+    ("OF", "Only Father"),
+    ("OM", "Only Mother"),
+)
 COLOR_OF_EYES = (
     ("AMB", "Amber"),
     ("BLU", "Blue"),
@@ -38,7 +45,6 @@ COLOR_OF_EYES = (
     ("HAZ", "Hazel"),
     ("RED", "Red"),
 )
-
 HAIR_COLOR = (
     ("BRW", "Brown"),
     ("BLN", "Blond"),
@@ -46,7 +52,6 @@ HAIR_COLOR = (
     ("RED", "Red"),
     ("WHT", "White"),
 )
-
 PROFILE_STATUS_CHOICES = (
     ("00", "New"),
     ("01", "Acknowledged"),
@@ -66,16 +71,14 @@ BODY_TYPE = (
     ("ATH", "Athelete"),
     ("HEA", "Heavy"),
 )
-
 GENDER_CHOICES = (("M", "Male"), ("F", "Female"), ("O", "Others"))
-
 SPIRITUAL_STATUS_CHOICES = (
     ("A", "Aspiring"),
     ("S", "Shelter"),
     ("D1", "Harinam"),
     ("D2", "Brahmin"),
+    ("NA", "Not Applicable"),
 )
-
 EMPLOYED_IN_CHOICES = (
     ("PSU", _("Government/PSU")),
     ("PVT", _("Private")),
@@ -84,7 +87,6 @@ EMPLOYED_IN_CHOICES = (
     ("SE", _("Self Employed")),
     ("NW", _("Not Working")),
 )
-
 FAMILY_LOCATION_CHOICES = (
     ("SAME", _("Same as my location")),
     ("DIFFERENT", _("Different Location")),
@@ -116,16 +118,19 @@ COMPLEXION_CHOICES = (
 
 MARITAL_STATUS = (
     ("UMR", "Unmarried"),
-    ("ENG", "Engaged"),
-    ("SEP", "Separated"),
     ("DIV", "Divorced"),
     ("WID", "Widowed"),
 )
-
-WANT_CHILDREN = (
+Y_N_MAYB = (
     ("Y", "Yes"),
     ("N", "No"),
     ("Mb", "May be"),
+)
+CHILDREN_COUNT = (
+    (0, "0"),
+    (1, "1"),
+    (2, "2"),
+    (3, "3"),
 )
 
 
@@ -141,11 +146,9 @@ class MatrimonyProfile(BaseModel):
     status = models.CharField(
         max_length=2, choices=PROFILE_STATUS_CHOICES, blank=True, default="00"
     )
-    marital_status = models.CharField(
-        max_length=3,
-        choices=MARITAL_STATUS,
-        help_text="Single, Divorced etc.",
-        null=True,
+    marital_status = models.CharField(max_length=3, choices=MARITAL_STATUS, null=True,)
+    children_count = models.PositiveIntegerField(
+        choices=CHILDREN_COUNT, default=0, blank=True, null=True
     )
     ethnic_origin = models.ForeignKey(
         Nationality, on_delete=models.SET_NULL, null=True, related_name="ethnic_origin",
@@ -199,6 +202,7 @@ class MatrimonyProfile(BaseModel):
         related_name="birthCountry",
         verbose_name=_("Country"),
     )
+    gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Current location details
     current_city = models.CharField(
@@ -315,6 +319,12 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Family details
+    are_parents_devotees = models.CharField(
+        max_length=2,
+        choices=ARE_PARENTS_DEV,
+        null=True,
+        verbose_name="Are you parents devotees?",
+    )
     family_values = models.CharField(
         max_length=4, choices=FAMILY_VALUE_CHOICES, null=True, blank=True,
     )
@@ -354,7 +364,7 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         null=True,
         help_text="Ancestral origin or father's birth place",
-        verbose_name="Ancesteral/Family Origin",
+        verbose_name="Ancestral/Family Origin",
     )
     religious_background = models.CharField(
         max_length=100,
@@ -366,12 +376,11 @@ class MatrimonyProfile(BaseModel):
 
     # Medical details
     want_children = models.CharField(
-        max_length=2,
-        choices=WANT_CHILDREN,
-        verbose_name="Do you want Children",
-        null=True,
+        max_length=2, choices=Y_N_MAYB, verbose_name="Do you want Children", null=True,
     )
     medical_history = models.TextField(max_length=250, null=True)
+
+    mentors = models.ManyToManyField("Mentor")
 
     matches = models.ManyToManyField(
         "self", through="Match", blank=True, symmetrical=False
@@ -379,21 +388,6 @@ class MatrimonyProfile(BaseModel):
 
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
-    )
-
-    # Mentors and their details
-    mentor1 = models.CharField(
-        max_length=250,
-        verbose_name="Reference 1",
-        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 1",
-        null=True,
-    )
-    mentor2 = models.CharField(
-        max_length=250,
-        verbose_name="Reference 2",
-        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 2",
-        blank=True,
-        null=True,
     )
 
     # Staff users
@@ -536,6 +530,13 @@ class Expectation(BaseModel):
     ethnicities = models.ManyToManyField(
         Nationality, related_name="ethnicities", blank=True
     )
+    want_nri = models.CharField(
+        max_length=2,
+        choices=Y_N_MAYB,
+        verbose_name="Do you want NRI",
+        null=True,
+        blank=True,
+    )
 
     # Language preferences
     languages_can_speak = models.ManyToManyField(
@@ -575,19 +576,10 @@ class Expectation(BaseModel):
     )
 
     # Spiritual details
-    spiritual_status = models.CharField(
-        max_length=2,
-        help_text="Enter spiritual status (e.g. Aspiring, Shelter etc.)",
-        choices=SPIRITUAL_STATUS_CHOICES,
-        verbose_name=_("Spiritual Status"),
-        blank=True,
+    spiritual_status = MultiSelectField(
+        choices=SPIRITUAL_STATUS_CHOICES, max_length=5, null=True, blank=True
     )
     spiritual_masters = models.ManyToManyField(Guru, blank=True,)
-    four_reg_principles = models.BooleanField(
-        null=True,
-        blank=True,
-        verbose_name="Does the spouse have to follow four regulative principles?",
-    )
     min_rounds_chanting = models.IntegerField(
         null=True, blank=True, verbose_name="Minimum rounds of japa",
     )
@@ -766,3 +758,18 @@ class Comment(BaseModel):
 
     class Meta:
         db_table = "comments"
+
+
+class Mentor(BaseModel):
+    """Model representing Mentors or Spirtual References/Counsellors for users"""
+
+    name = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=17, null=True, unique=True)
+    email = models.EmailField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["name"]
+        db_table = "mentor"
+
+    def __str__(self):
+        return f"{self.name}"
