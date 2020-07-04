@@ -163,17 +163,14 @@ class Subcaste(BaseModel):
         return f"{self.name}"
 
 
-class Mentor(BaseModel):
-    """Model representing Mentors or Spirtual References/Counsellors for users"""
-    
-    name = models.CharField(max_length=200, null=True)
-    phone = models.CharField(max_length=17, null=True, unique=True)
-    email = models.EmailField(null=True, blank=True)
+class Gotra(BaseModel):
+    """Model representing Gotra"""
+
+    name = models.CharField(max_length=50, null=True)
 
     class Meta:
         ordering = ["name"]
-        db_table = "mentor"
+        db_table = "gotra"
 
     def __str__(self):
         return f"{self.name}"
-        

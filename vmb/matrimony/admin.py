@@ -36,6 +36,7 @@ from .models import (
     Religion,
     Expectation,
     Comment,
+    Mentor,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -253,6 +254,15 @@ class AgeRangeFilter(admin.SimpleListFilter):
         )
 
 
+class MentorInline(admin.TabularInline):
+    model = Mentor
+    extra = 1
+    can_delete = True
+
+    verbose_name = "Mentor"
+    verbose_name_plural = "Mentors"
+
+
 class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
     fieldsets = [
         (
@@ -261,7 +271,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                 "fields": [
                     ("profile_id", "name", "spiritual_name"),
                     ("status", "ethnic_origin", "primary_image"),
-                    ("age", "mother_tongue", "marital_status"),
+                    ("age", "mother_tongue", "marital_status", "children_count"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
                 ]
@@ -272,7 +282,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             "BIRTH DETAILS",
             {
                 "fields": [
-                    ("dob", "tob"),
+                    ("dob", "tob", "gotra"),
                     ("birth_state", "birth_city"),
                     "birth_country",
                 ]
@@ -328,7 +338,12 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             "FAMILY DETAILS",
             {
                 "fields": [
-                    ("family_values", "family_type", "family_status"),
+                    (
+                        "are_parents_devotees",
+                        "family_values",
+                        "family_type",
+                        "family_status",
+                    ),
                     ("father_occupation", "mother_occupation"),
                     ("brothers", "brothers_married"),
                     ("sisters", "sisters_married"),
@@ -337,7 +352,6 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             },
         ),
         ("MEDICAL DETAILS", {"fields": ["want_children", "medical_history"]}),
-        ("MENTORS", {"fields": ["mentor1", "mentor2"]}),
     ]
     list_display = (
         "profile_id",
@@ -398,6 +412,8 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             for obj in formset.new_objects + formset.changed_objects:
                 obj.author = request.user
                 obj.save()
+
+    inlines = [MentorInline]
 
 
 class MatchInline(admin.TabularInline):

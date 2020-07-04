@@ -1,4 +1,4 @@
-from .profiles import Male, Female, Match, EmailMessage, Image, Expectation, Comment
+from .profiles import Male, Female, Match, EmailMessage, Image, Expectation, Comment, Mentor
 from .relations import (
     Guru,
     Occupation,
@@ -11,5 +11,5 @@ from .relations import (
     Religion,
     Caste,
     Subcaste,
-    Mentor,
+    Gotra,
 )

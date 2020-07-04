@@ -27,14 +27,14 @@ from .relations import (
     Religion,
     Caste,
     Subcaste,
-    Mentor,
+    Gotra,
 )
 
 ARE_PARENTS_DEV = (
     ("Y", "Yes"),
     ("N", "No"),
     ("OF", "Only Father"),
-    ("OM", "Only Mother"),    
+    ("OM", "Only Mother"),
 )
 COLOR_OF_EYES = (
     ("AMB", "Amber"),
@@ -126,12 +126,13 @@ Y_N_MAYB = (
     ("N", "No"),
     ("Mb", "May be"),
 )
-HAVE_CHILDREN = (
+CHILDREN_COUNT = (
     (0, "0"),
     (1, "1"),
     (2, "2"),
     (3, "3"),
 )
+
 
 class MatrimonyProfile(BaseModel):
     """Model representing matrimonial profile of a candidate"""
@@ -145,12 +146,10 @@ class MatrimonyProfile(BaseModel):
     status = models.CharField(
         max_length=2, choices=PROFILE_STATUS_CHOICES, blank=True, default="00"
     )
-    marital_status = models.CharField(
-        max_length=3,
-        choices=MARITAL_STATUS,
-        null=True,
+    marital_status = models.CharField(max_length=3, choices=MARITAL_STATUS, null=True,)
+    children_count = models.PositiveIntegerField(
+        choices=CHILDREN_COUNT, default=0, blank=True, null=True
     )
-    have_children = models.PositiveIntegerField(choices=HAVE_CHILDREN, blank=True, null=True)   
     ethnic_origin = models.ForeignKey(
         Nationality, on_delete=models.SET_NULL, null=True, related_name="ethnic_origin",
     )
@@ -203,7 +202,7 @@ class MatrimonyProfile(BaseModel):
         related_name="birthCountry",
         verbose_name=_("Country"),
     )
-    gotra = models.CharField(max_length=25, blank=True, null=True)
+    gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Current location details
     current_city = models.CharField(
@@ -320,8 +319,11 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Family details
-    parents_devotees = models.CharField(
-        max_length = 2, choices=ARE_PARENTS_DEV, null=True, verbose_name="Are you parents devotees?"
+    are_parents_devotees = models.CharField(
+        max_length=2,
+        choices=ARE_PARENTS_DEV,
+        null=True,
+        verbose_name="Are you parents devotees?",
     )
     family_values = models.CharField(
         max_length=4, choices=FAMILY_VALUE_CHOICES, null=True, blank=True,
@@ -374,10 +376,7 @@ class MatrimonyProfile(BaseModel):
 
     # Medical details
     want_children = models.CharField(
-        max_length=2,
-        choices=Y_N_MAYB,
-        verbose_name="Do you want Children",
-        null=True,
+        max_length=2, choices=Y_N_MAYB, verbose_name="Do you want Children", null=True,
     )
     medical_history = models.TextField(max_length=250, null=True)
 
@@ -388,10 +387,6 @@ class MatrimonyProfile(BaseModel):
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
     )
-
-    # Mentors and their details
-    mentor1 = models.ForeignKey(Mentor, on_delete=models.SET_NULL, null=True, related_name='mentor1')
-    mentor2 = models.ForeignKey(Mentor, on_delete=models.SET_NULL, null=True, blank=True, related_name='mentor2')
 
     # Staff users
     assignee = models.ForeignKey(
@@ -533,7 +528,7 @@ class Expectation(BaseModel):
     ethnicities = models.ManyToManyField(
         Nationality, related_name="ethnicities", blank=True
     )
-    want_NRI = models.CharField(
+    want_nri = models.CharField(
         max_length=2,
         choices=Y_N_MAYB,
         verbose_name="Do you want NRI",
@@ -761,3 +756,19 @@ class Comment(BaseModel):
 
     class Meta:
         db_table = "comments"
+
+
+class Mentor(BaseModel):
+    """Model representing Mentors or Spirtual References/Counsellors for users"""
+    
+    profile = models.ManyToManyField(MatrimonyProfile)
+    name = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=17, null=True, unique=True)
+    email = models.EmailField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["name"]
+        db_table = "mentor"
+
+    def __str__(self):
+        return f"{self.name}"
