@@ -18,6 +18,7 @@ from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.fields import DateField
 from django.utils import timezone
 
+from .models.profiles import MatrimonyProfile
 from .models import (
     Male,
     Female,
@@ -255,7 +256,7 @@ class AgeRangeFilter(admin.SimpleListFilter):
 
 
 class MentorInline(admin.TabularInline):
-    model = Mentor
+    model = MatrimonyProfile.mentors.through
     extra = 1
     can_delete = True
 
@@ -413,7 +414,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                 obj.author = request.user
                 obj.save()
 
-    inlines = [MentorInline]
+    # inlines = [MentorInline]
 
 
 class MatchInline(admin.TabularInline):
@@ -458,13 +459,13 @@ class CommentInline(GenericTabularInline):
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [ImageInline, ExpectationInline, MatchInline, CommentInline]
+    inlines = [MentorInline, ImageInline, ExpectationInline, MatchInline, CommentInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [ImageInline, ExpectationInline, MatchInline, CommentInline]
+    inlines = [MentorInline, ImageInline, ExpectationInline, MatchInline, CommentInline]
 
 
 @admin.register(Match)

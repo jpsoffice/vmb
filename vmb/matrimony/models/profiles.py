@@ -380,6 +380,8 @@ class MatrimonyProfile(BaseModel):
     )
     medical_history = models.TextField(max_length=250, null=True)
 
+    mentors = models.ManyToManyField("Mentor")
+
     matches = models.ManyToManyField(
         "self", through="Match", blank=True, symmetrical=False
     )
@@ -761,7 +763,6 @@ class Comment(BaseModel):
 class Mentor(BaseModel):
     """Model representing Mentors or Spirtual References/Counsellors for users"""
 
-    profile = models.ManyToManyField(MatrimonyProfile)
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=17, null=True, unique=True)
     email = models.EmailField(null=True, blank=True)
