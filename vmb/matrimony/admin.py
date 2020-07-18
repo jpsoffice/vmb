@@ -364,7 +364,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
         "current_country",
         "current_city",
         "occupation",
-        "annual_income",
+        "annual_income_in_inr",
         "phone",
         "email",
     )

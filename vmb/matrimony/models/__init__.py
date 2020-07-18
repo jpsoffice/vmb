@@ -21,4 +21,5 @@ from .relations import (
     Caste,
     Subcaste,
     Gotra,
+    CurrencyExchangeRate,
 )

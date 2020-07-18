@@ -13,6 +13,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
+from djmoney.money import Money
 from djmoney.models.managers import money_manager
 from multiselectfield import MultiSelectField
 
@@ -28,6 +29,7 @@ from .relations import (
     Caste,
     Subcaste,
     Gotra,
+    CurrencyExchangeRate,
 )
 
 ARE_PARENTS_DEV = (
@@ -399,6 +401,14 @@ class MatrimonyProfile(BaseModel):
         related_name="assigned_profiles",
     )
     comments = GenericRelation("Comment")
+
+    @property
+    def annual_income_in_inr(self):
+        currency_exchange, created = CurrencyExchangeRate.objects.get_or_create(
+            from_currency=str(self.annual_income.currency)
+        )
+        value = currency_exchange.get_exchange_rate() * self.annual_income.amount
+        return Money(value, "INR")
 
     @property
     def get_languages_known(self):

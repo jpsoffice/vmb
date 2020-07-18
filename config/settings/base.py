@@ -63,6 +63,7 @@ DJANGO_APPS = [
     "django_admin_select2",
     "django.contrib.admin",
     "djmoney",
+    "djmoney.contrib.exchange",
     "rangefilter",
     "django_admin_listfilter_dropdown",
     "multiselectfield",
@@ -333,3 +334,12 @@ ADMIN_REORDER = (
 ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
 MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.net")
 PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")
+
+# DJMONEY EXCHANGE RATES
+# ------------------------------------------------------------------------------
+OPEN_EXCHANGE_RATES_APP_ID = "e4a4bb10d2854f728b54215287c74ef7"
+FIXER_ACCESS_KEY = "4e18a1cdfb9775fc9a1319329972d394"
+EXCHANGE_BACKEND = "djmoney.contrib.exchange.backends.FixerBackend"
+
+OPEN_EXCHANGE_RATES_URL = "https://openexchangerates.org/api/historical/2017-01-01.json"
+FIXER_URL = "http://data.fixer.io/api/2013-12-24"

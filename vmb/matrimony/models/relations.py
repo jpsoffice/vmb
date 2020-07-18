@@ -1,5 +1,9 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from config.settings.base import OPEN_EXCHANGE_RATES_URL
+from djmoney.contrib.exchange.models import get_rate
+
+from djmoney.contrib.exchange.backends import OpenExchangeRatesBackend
 
 from .base import BaseModel
 
@@ -174,3 +178,25 @@ class Gotra(BaseModel):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class CurrencyExchangeRate(BaseModel):
+    from_currency = models.CharField(max_length=3, null=True)
+    to_currency = models.CharField(max_length=3, null=True, default="INR")
+    exchange_rate = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+
+    def get_exchange_rate(self):
+        if self.exchange_rate == None:
+            backend = OpenExchangeRatesBackend(url=OPEN_EXCHANGE_RATES_URL)
+            backend.update_rates(
+                symbols=",".join([self.from_currency, self.to_currency])
+            )
+            self.exchange_rate = get_rate(
+                self.from_currency,
+                self.to_currency,
+                backend=OpenExchangeRatesBackend.name,
+            )
+        return self.exchange_rate
+
+    class Meta:
+        ordering = ["from_currency"]
