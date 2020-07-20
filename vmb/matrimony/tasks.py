@@ -57,3 +57,4 @@ def update_rates():
         obj.exchange_rate = get_rate(
             obj.from_currency, "INR", backend=OpenExchangeRatesBackend.name
         )
+        obj.save()
