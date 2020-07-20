@@ -38,3 +38,22 @@ def send_email(email_message_id):
     email_message.status = "SNT"
     email_message.sent_at = timezone.now()
     email_message.save()
+
+
+@celery_app.task()
+def update_rates():
+    from .models import CurrencyExchangeRate
+
+    existing_currency = ",".join(
+        currency
+        for currency in CurrencyExchangeRate.objects.values_list(
+            "from_currency", flat=True
+        )
+    )
+    backend = OpenExchangeRatesBackend(url=OPEN_EXCHANGE_RATES_URL)
+    backend.update_rates(symbols=existing_currency)
+
+    for obj in CurrencyExchangeRate:
+        obj.exchange_rate = get_rate(
+            obj.from_currency, "INR", backend=OpenExchangeRatesBackend.name
+        )

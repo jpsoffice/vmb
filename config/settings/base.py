@@ -343,3 +343,4 @@ EXCHANGE_BACKEND = "djmoney.contrib.exchange.backends.FixerBackend"
 
 OPEN_EXCHANGE_RATES_URL = "https://openexchangerates.org/api/historical/2017-01-01.json"
 FIXER_URL = "http://data.fixer.io/api/2013-12-24"
+BASE_CURRENCY = "INR"

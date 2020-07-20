@@ -407,8 +407,9 @@ class MatrimonyProfile(BaseModel):
         currency_exchange, created = CurrencyExchangeRate.objects.get_or_create(
             from_currency=str(self.annual_income.currency)
         )
-        value = currency_exchange.get_exchange_rate() * self.annual_income.amount
-        return Money(value, "INR")
+        return Money(
+            currency_exchange.get_exchange_rate() * self.annual_income.amount, "INR"
+        )
 
     @property
     def get_languages_known(self):
