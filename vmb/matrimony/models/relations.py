@@ -196,6 +196,7 @@ class CurrencyExchangeRate(BaseModel):
                 self.to_currency,
                 backend=OpenExchangeRatesBackend.name,
             )
+            self.save()
         return self.exchange_rate
 
     class Meta:
