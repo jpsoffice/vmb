@@ -185,7 +185,7 @@ class CurrencyExchangeRate(BaseModel):
     to_currency = models.CharField(max_length=3, null=True, default="INR")
     exchange_rate = models.DecimalField(max_digits=10, decimal_places=2, null=True)
 
-    def get_exchange_rate(self):
+    def save(self, *args, **kwargs):
         if self.exchange_rate == None:
             backend = OpenExchangeRatesBackend(url=OPEN_EXCHANGE_RATES_URL)
             backend.update_rates(
@@ -196,7 +196,9 @@ class CurrencyExchangeRate(BaseModel):
                 self.to_currency,
                 backend=OpenExchangeRatesBackend.name,
             )
-            self.save()
+        super().save(*args, **kwargs)
+
+    def get_exchange_rate(self):
         return self.exchange_rate
 
     class Meta:
