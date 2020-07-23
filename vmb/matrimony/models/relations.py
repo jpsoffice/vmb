@@ -202,11 +202,14 @@ class CurrencyExchangeRate(BaseModel):
         return self.exchange_rate
 
     def sync():
-        existing_currency = ",".join(
-            currency
-            for currency in CurrencyExchangeRate.objects.values_list(
-                "from_currency", flat=True
+        existing_currency = (
+            ",".join(
+                currency
+                for currency in CurrencyExchangeRate.objects.values_list(
+                    "from_currency", flat=True
+                )
             )
+            + ",INR"
         )
         backend = OpenExchangeRatesBackend(url=OPEN_EXCHANGE_RATES_URL)
         backend.update_rates(symbols=existing_currency)
