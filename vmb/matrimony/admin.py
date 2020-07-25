@@ -326,7 +326,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             "PROFESSION",
             {
                 "fields": [
-                    "annual_income",
+                    ("annual_income", "annual_income_in_base_currency"),
                     ("education", "institution"),
                     "education_details",
                     "employed_in",
@@ -371,7 +371,8 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
     list_filter = (
         "status",
         AgeRangeFilter,
-        AnnualIncomeRangeFilter,
+        # AnnualIncomeRangeFilter,
+        ("annual_income_in_base_currency", RangeNumericFilter),
         RoundsFilter,
         ("height", RangeNumericFilter),
         "spiritual_status",
@@ -391,7 +392,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
         "current_country__name",
         "current_state",
         "current_city",
-        "annual_income",
+        "annual_income_in_base_currency",
         "phone",
         "email",
         "spiritual_status",
@@ -404,7 +405,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
         "occupation__name",
     ]
 
-    readonly_fields = ["age", "primary_image"]
+    readonly_fields = ["age", "primary_image", "annual_income_in_base_currency"]
 
     def save_formset(self, request, form, formset, change):
         super().save_formset(request, form, formset, change)
@@ -442,6 +443,10 @@ class ExpectationInline(admin.StackedInline):
     model = Expectation
     extra = 0
     can_delete = False
+    readonly_fields = (
+        "annual_income_from_in_base_currency",
+        "annual_income_to_in_base_currency",
+    )
 
     def get_extra(self, request, obj=None, **kwargs):
         extra = 1
