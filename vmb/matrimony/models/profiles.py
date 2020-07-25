@@ -310,6 +310,14 @@ class MatrimonyProfile(BaseModel):
     annual_income = MoneyField(
         max_digits=10, decimal_places=2, null=True, default_currency="INR"
     )
+    annual_income_in_base_currency = MoneyField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        default_currency="INR",
+        verbose_name=_("Annual income in {}".format(settings.BASE_CURRENCY)),
+    )
 
     # Religion/Caste details
     religion = models.ForeignKey(Religion, on_delete=models.SET_NULL, null=True,)
@@ -451,6 +459,17 @@ class MatrimonyProfile(BaseModel):
     class Meta:
         db_table = "matrimony_profiles"
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._original_annual_income = self.annual_income
+
+    def save(self, *args, **kwargs):
+        if self.id is None or self._original_annual_income != self.annual_income:
+            self.annual_income_in_base_currency = convert_money(
+                self.annual_income, settings.BASE_CURRENCY
+            )
+        return super().save(*args, **kwargs)
+
     def send_batch_matches_email(self):
         body = self.get_batch_matches_email_body()
         subject = _("Matches for you")
@@ -566,6 +585,14 @@ class Expectation(BaseModel):
         default_currency="INR",
         verbose_name="From annual income",
     )
+    annual_income_from_in_base_currency = MoneyField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        default_currency="INR",
+        verbose_name="From annual income ({})".format(settings.BASE_CURRENCY),
+    )
     annual_income_to = MoneyField(
         max_digits=10,
         decimal_places=2,
@@ -573,6 +600,14 @@ class Expectation(BaseModel):
         blank=True,
         default_currency="INR",
         verbose_name="To annual income",
+    )
+    annual_income_to_in_base_currency = MoneyField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        default_currency="INR",
+        verbose_name="To annual income ({})".format(settings.BASE_CURRENCY),
     )
 
     # Spiritual details
@@ -588,6 +623,25 @@ class Expectation(BaseModel):
 
     class Meta:
         db_table = "matrimony_expectations"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._original_annual_income_from = self.annual_income_from
+        self._original_annual_income_to = self.annual_income_to
+
+    def save(self, *args, **kwargs):
+        if (
+            self.id is None
+            or self._original_annual_income_from != self.annual_income_from
+        ):
+            self.annual_income_from_in_base_currency = convert_money(
+                self.annual_income_from, settings.BASE_CURRENCY
+            )
+        if self.id is None or self._original_annual_income_to != self.annual_income_to:
+            self.annual_income_to_in_base_currency = convert_money(
+                self.annual_income_to, settings.BASE_CURRENCY
+            )
+        return super().save(*args, **kwargs)
 
 
 class MaleManager(models.Manager):

@@ -78,6 +78,7 @@ THIRD_PARTY_APPS = [
     "photologue",
     "sortedm2m",
     "djangoql",
+    "djmoney.contrib.exchange",
 ]
 
 LOCAL_APPS = [
@@ -327,6 +328,11 @@ ADMIN_REORDER = (
     "django_celery_beat",
 )
 
+# djmoney-exchange
+# ------------------------------------------------------------------------------
+EXCHANGE_BACKEND = "djmoney.contrib.exchange.backends.FixerBackend"
+FIXER_ACCESS_KEY = env("DJMONEY_EXCHANGE_FIXER_ACCESS_KEY", default="")
+BASE_CURRENCY = env("DJMONEY_EXCHANGE_BASE_CURRENCY", default="INR")
 
 # Your stuff...
 # ------------------------------------------------------------------------------
