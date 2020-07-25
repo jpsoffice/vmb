@@ -11,6 +11,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from djmoney.contrib.exchange.models import convert_money
+from places.fields import PlacesField
 
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
@@ -203,6 +204,8 @@ class MatrimonyProfile(BaseModel):
         related_name="birthCountry",
         verbose_name=_("Country"),
     )
+    birth_place = PlacesField(null=True, blank=True)
+    birth_tz = models.CharField(max_length=50, blank=True, null=True)
     gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Current location details

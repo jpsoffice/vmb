@@ -339,8 +339,8 @@ BASE_CURRENCY = env("DJMONEY_EXCHANGE_BASE_CURRENCY", default="INR")
 # ------------------------------------------------------------------------------
 PLACES_MAPS_API_KEY = env("PLACES_MAPS_API_KEY", default="")
 PLACES_MAP_WIDGET_HEIGHT = env("PLACES_MAP_WIDGET_HEIGHT", default=400)
-PLACES_MAP_OPTIONS='{"center": { "lat": 38.971584, "lng": -95.235072 }, "zoom": 10}'
-PLACES_MARKER_OPTIONS='{"draggable": true}'
+PLACES_MAP_OPTIONS = '{"center": { "lat": 38.971584, "lng": -95.235072 }, "zoom": 10}'
+PLACES_MARKER_OPTIONS = '{"draggable": true}'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
