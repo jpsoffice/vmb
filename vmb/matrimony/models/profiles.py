@@ -10,6 +10,7 @@ from django.utils.html import format_html
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
+from djmoney.contrib.exchange.models import convert_money
 
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
