@@ -17,7 +17,7 @@ django-crispy-forms==1.8.0  # https://github.com/django-crispy-forms/django-cris
 django-redis==4.10.0  # https://github.com/niwinz/django-redis
 django-photologue==3.11  # https://github.com/richardbarran/django-photologue
 django-modeladmin-reorder==0.3.1  # https://github.com/mishbahr/django-modeladmin-reorder
-dj-places==v4.0.0
+dj-places==3.1.0
 
 # Django REST Framework
 djangorestframework==3.10.3  # https://github.com/encode/django-rest-framework
