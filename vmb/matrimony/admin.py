@@ -38,6 +38,7 @@ from .models import (
     Expectation,
     Comment,
     Mentor,
+    Gotra,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -522,3 +523,4 @@ admin.site.register(Occupation)
 admin.site.register(EducationCategory)
 admin.site.register(OccupationCategory)
 admin.site.register(Nationality)
+admin.site.register(Gotra)
