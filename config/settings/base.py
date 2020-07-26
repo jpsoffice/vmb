@@ -320,6 +320,8 @@ ADMIN_REORDER = (
             "matrimony.Occupation",
             "matrimony.Religion",
             "matrimony.Subcaste",
+            "matrimony.Gotra",
+            "matrimony.Mentor",
         ),
     },
     "photologue",
