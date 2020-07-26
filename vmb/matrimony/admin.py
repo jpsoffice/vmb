@@ -298,6 +298,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             "CURRENT LOCATION",
             {
                 "fields": [
+                    "current_place",
                     ("current_state", "current_city"),
                     "current_country",
                     "nationality",
@@ -406,7 +407,17 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
         "occupation__name",
     ]
 
-    readonly_fields = ["age", "primary_image", "annual_income_in_base_currency"]
+    readonly_fields = [
+        "age",
+        "primary_image",
+        "annual_income_in_base_currency",
+        "current_city",
+        "current_state",
+        "current_country",
+        "birth_city",
+        "birth_state",
+        "birth_country",
+    ]
 
     def save_formset(self, request, form, formset, change):
         super().save_formset(request, form, formset, change)
