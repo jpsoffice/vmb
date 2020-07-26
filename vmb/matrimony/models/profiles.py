@@ -11,6 +11,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from djmoney.contrib.exchange.models import convert_money
+from places.fields import PlacesField
 
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
@@ -194,26 +195,33 @@ class MatrimonyProfile(BaseModel):
         verbose_name=_("City"),
         help_text="Enter birth village/town/city",
         null=True,
+        blank=True,
     )
-    birth_state = models.CharField(max_length=200, verbose_name=_("State"), null=True)
+    birth_state = models.CharField(
+        max_length=200, verbose_name=_("State"), null=True, blank=True
+    )
     birth_country = models.ForeignKey(
         "Country",
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name="birthCountry",
         verbose_name=_("Country"),
     )
+    birth_place = PlacesField(null=True)
     gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Current location details
+    current_place = PlacesField(null=True)
     current_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
         help_text="Enter current village/town/city",
         null=True,
+        blank=True,
     )
     current_state = models.CharField(
-        max_length=200, verbose_name=_("State"), null=True,
+        max_length=200, verbose_name=_("State"), null=True, blank=True,
     )
     current_country = models.ForeignKey(
         "Country",
@@ -221,6 +229,7 @@ class MatrimonyProfile(BaseModel):
         null=True,
         related_name="currentCountry",
         verbose_name=_("Country"),
+        blank=True,
     )
     nationality = models.ForeignKey(Nationality, on_delete=models.SET_NULL, null=True,)
 
@@ -463,12 +472,29 @@ class MatrimonyProfile(BaseModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._original_annual_income = self.annual_income
+        self._original_birth_place = self.birth_place
+        self._original_current_place = self.current_place
 
     def save(self, *args, **kwargs):
         if self.id is None or self._original_annual_income != self.annual_income:
             self.annual_income_in_base_currency = convert_money(
                 self.annual_income, settings.BASE_CURRENCY
             )
+
+        if self.id is None or self._original_birth_place != self.birth_place:
+            self.birth_city, self.birth_state, country = self.birth_place.place.split(
+                ", "
+            )[-3:]
+            self.birth_country = Country.objects.get(name=country)
+
+        if self.id is None or self._original_current_place != self.current_place:
+            (
+                self.current_city,
+                self.current_state,
+                current_country,
+            ) = self.current_place.place.split(", ")[-3:]
+            self.current_country = Country.objects.get(name=current_country)
+
         return super().save(*args, **kwargs)
 
     def send_batch_matches_email(self):
