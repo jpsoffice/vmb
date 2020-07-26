@@ -207,7 +207,6 @@ class MatrimonyProfile(BaseModel):
         verbose_name=_("Country"),
     )
     birth_place = PlacesField(null=True, blank=True)
-    birth_tz = models.CharField(max_length=50, blank=True, null=True)
     gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Current location details
@@ -475,6 +474,7 @@ class MatrimonyProfile(BaseModel):
             self.annual_income_in_base_currency = convert_money(
                 self.annual_income, settings.BASE_CURRENCY
             )
+
         if self.id is None or self._original_birth_place != self.birth_place:
             self.birth_city, self.birth_state, country = self.birth_place.place.split(", ")[-3:]
             self.birth_country = Country.objects.get(name=country)

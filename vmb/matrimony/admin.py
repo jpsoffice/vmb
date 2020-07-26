@@ -286,7 +286,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                     ("dob", "tob", "gotra"),
                     "birth_place",
                     ("birth_state", "birth_city"),
-                    ("birth_country", "birth_tz"),
+                    ("birth_country",),
                 ]
             },
         ),
