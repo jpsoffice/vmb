@@ -398,8 +398,6 @@ class MatrimonyProfile(BaseModel):
     )
     medical_history = models.TextField(max_length=250, null=True)
 
-    mentors = models.ManyToManyField("Mentor")
-
     matches = models.ManyToManyField(
         "self", through="Match", blank=True, symmetrical=False
     )
@@ -845,12 +843,16 @@ class Mentor(BaseModel):
     """Model representing Mentors or Spirtual References/Counsellors for users"""
 
     name = models.CharField(max_length=200, null=True)
-    phone = models.CharField(max_length=17, null=True, unique=True)
+    phone = models.CharField(max_length=17, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
+    profile = models.ForeignKey(
+        MatrimonyProfile, on_delete=models.CASCADE, related_name="mentors", null=True
+    )
 
     class Meta:
         ordering = ["name"]
         db_table = "mentor"
+        unique_together = ("name", "profile")
 
     def __str__(self):
         return f"{self.name}"

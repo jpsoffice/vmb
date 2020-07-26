@@ -257,7 +257,7 @@ class AgeRangeFilter(admin.SimpleListFilter):
 
 
 class MentorInline(admin.TabularInline):
-    model = MatrimonyProfile.mentors.through
+    model = Mentor
     extra = 1
     can_delete = True
 
