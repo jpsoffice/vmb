@@ -494,18 +494,26 @@ class MatrimonyProfile(BaseModel):
             )
 
         if self.id is None or self._original_birth_place != self.birth_place:
-            self.birth_city, self.birth_state, country = self.birth_place.place.split(
-                ", "
-            )[-3:]
-            self.birth_country = Country.objects.get(name=country)
+            if self.birth_place:
+                (
+                    self.birth_city,
+                    self.birth_state,
+                    country,
+                ) = self.birth_place.place.split(", ")[-3:]
+                self.birth_country = Country.objects.get(name=country)
+            else:
+                self.birth_city = self.birth_state = self.birth_country = None
 
         if self.id is None or self._original_current_place != self.current_place:
-            (
-                self.current_city,
-                self.current_state,
-                current_country,
-            ) = self.current_place.place.split(", ")[-3:]
-            self.current_country = Country.objects.get(name=current_country)
+            if self.current_place:
+                (
+                    self.current_city,
+                    self.current_state,
+                    current_country,
+                ) = self.current_place.place.split(", ")[-3:]
+                self.current_country = Country.objects.get(name=current_country)
+            else:
+                self.current_city = self.current_state = self.current_country = None
 
         return super().save(*args, **kwargs)
 
