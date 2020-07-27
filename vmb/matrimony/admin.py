@@ -422,7 +422,6 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
     ]
 
     def all_education(self, obj):
-        print("Hello")
         return obj.education_text
 
     def all_occupations(self, obj):
@@ -471,7 +470,7 @@ class ExpectationInline(admin.StackedInline):
 
     def get_extra(self, request, obj=None, **kwargs):
         extra = 1
-        if obj:
+        if obj and hasattr(obj, "expectations"):
             extra = 0
         return extra
 
