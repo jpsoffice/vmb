@@ -318,10 +318,10 @@ class MatrimonyProfile(BaseModel):
         max_length=75, null=True, help_text="Enter Organization Name", blank=True,
     )
     annual_income = MoneyField(
-        max_digits=10, decimal_places=2, null=True, default_currency="INR"
+        max_digits=20, decimal_places=2, null=True, default_currency="INR"
     )
     annual_income_in_base_currency = MoneyField(
-        max_digits=10,
+        max_digits=20,
         decimal_places=2,
         null=True,
         blank=True,
@@ -605,7 +605,7 @@ class Expectation(BaseModel):
         choices=EMPLOYED_IN_CHOICES, max_length=100, null=True, blank=True
     )
     annual_income_from = MoneyField(
-        max_digits=10,
+        max_digits=20,
         decimal_places=2,
         null=True,
         blank=True,
@@ -613,7 +613,7 @@ class Expectation(BaseModel):
         verbose_name="From annual income",
     )
     annual_income_from_in_base_currency = MoneyField(
-        max_digits=10,
+        max_digits=20,
         decimal_places=2,
         null=True,
         blank=True,
@@ -621,7 +621,7 @@ class Expectation(BaseModel):
         verbose_name="From annual income ({})".format(settings.BASE_CURRENCY),
     )
     annual_income_to = MoneyField(
-        max_digits=10,
+        max_digits=20,
         decimal_places=2,
         null=True,
         blank=True,
@@ -629,7 +629,7 @@ class Expectation(BaseModel):
         verbose_name="To annual income",
     )
     annual_income_to_in_base_currency = MoneyField(
-        max_digits=10,
+        max_digits=20,
         decimal_places=2,
         null=True,
         blank=True,
