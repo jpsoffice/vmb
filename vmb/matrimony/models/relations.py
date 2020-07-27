@@ -72,7 +72,7 @@ class Education(BaseModel):
     )
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name} ({self.category})"
 
     class Meta:
         ordering = ["name"]
@@ -107,7 +107,7 @@ class Occupation(BaseModel):
         unique_together = ["name", "category"]
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name} ({self.category})"
 
 
 class OccupationCategory(BaseModel):
