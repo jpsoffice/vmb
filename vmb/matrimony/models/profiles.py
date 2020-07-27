@@ -294,10 +294,9 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Professional details
-    education = models.ForeignKey(
+    education = models.ManyToManyField(
         "Education",
-        on_delete=models.SET_NULL,
-        null=True,
+        blank=True,
         help_text="HS, Graduate etc.",
     )
     education_details = models.TextField(
@@ -313,10 +312,8 @@ class MatrimonyProfile(BaseModel):
     employed_in = models.CharField(
         max_length=3, null=True, choices=EMPLOYED_IN_CHOICES, blank=True,
     )
-    occupation = models.ForeignKey(
+    occupations = models.ManyToManyField(
         "Occupation",
-        on_delete=models.SET_NULL,
-        null=True,
         blank=True,
         help_text="Doctor, Engineer, Entrepreneur etc.",
     )
@@ -441,6 +438,14 @@ class MatrimonyProfile(BaseModel):
             return ", ".join(p.name for p in self.languages_read_write.all())
         else:
             return None
+
+    @property
+    def education_text(self):
+        return ", ".join([item.name for item in self.education.all()])
+
+    @property
+    def occupations_text(self):
+        return ", ".join([item.name for item in self.occupations.all()])
 
     @property
     def primary_image(self):

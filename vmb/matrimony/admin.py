@@ -333,7 +333,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                     ("education", "institution"),
                     "education_details",
                     "employed_in",
-                    ("occupation", "organization"),
+                    ("occupations", "organization"),
                     "occupation_details",
                 ]
             },
@@ -364,10 +364,11 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
         "status",
         "age",
         "dob",
+        "annual_income",
         "current_country",
         "current_city",
-        "occupation",
-        "annual_income",
+        "all_occupations",
+        "all_education",
         "phone",
         "email",
     )
@@ -386,7 +387,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
         ("subcaste", RelatedDropdownFilter),
         ("current_country", RelatedDropdownFilter),
         ("languages_known", RelatedDropdownFilter),
-        ("occupation", RelatedDropdownFilter),
+        ("occupations", RelatedDropdownFilter),
         ("education", RelatedDropdownFilter),
         ("spiritual_master", RelatedDropdownFilter),
     )
@@ -405,7 +406,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
         "caste__name",
         "spiritual_master__name",
         "education__name",
-        "occupation__name",
+        "occupations__name",
     ]
 
     readonly_fields = [
@@ -419,6 +420,13 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
         "birth_state",
         "birth_country",
     ]
+
+    def all_education(self, obj):
+        print("Hello")
+        return obj.education_text
+
+    def all_occupations(self, obj):
+        return obj.occupations_text
 
     def save_formset(self, request, form, formset, change):
         super().save_formset(request, form, formset, change)
