@@ -474,7 +474,7 @@ class MatrimonyProfile(BaseModel):
         self._original_current_place = self.current_place
 
     def save(self, *args, **kwargs):
-        if self.id is None or self._original_annual_income != self.annual_income:
+        if self.annual_income and (self.id is None or self._original_annual_income != self.annual_income):
             self.annual_income_in_base_currency = convert_money(
                 self.annual_income, settings.BASE_CURRENCY
             )
@@ -655,14 +655,14 @@ class Expectation(BaseModel):
         self._original_annual_income_to = self.annual_income_to
 
     def save(self, *args, **kwargs):
-        if (
+        if self.annual_income_from and (
             self.id is None
             or self._original_annual_income_from != self.annual_income_from
         ):
             self.annual_income_from_in_base_currency = convert_money(
                 self.annual_income_from, settings.BASE_CURRENCY
             )
-        if self.id is None or self._original_annual_income_to != self.annual_income_to:
+        if self.annual_income_to and (self.id is None or self._original_annual_income_to != self.annual_income_to):
             self.annual_income_to_in_base_currency = convert_money(
                 self.annual_income_to, settings.BASE_CURRENCY
             )
