@@ -295,9 +295,7 @@ class MatrimonyProfile(BaseModel):
 
     # Professional details
     education = models.ManyToManyField(
-        "Education",
-        blank=True,
-        help_text="HS, Graduate etc.",
+        "Education", blank=True, help_text="HS, Graduate etc.",
     )
     education_details = models.TextField(
         max_length=100, null=True, verbose_name="Education in Detail", blank=True,
@@ -313,9 +311,7 @@ class MatrimonyProfile(BaseModel):
         max_length=3, null=True, choices=EMPLOYED_IN_CHOICES, blank=True,
     )
     occupations = models.ManyToManyField(
-        "Occupation",
-        blank=True,
-        help_text="Doctor, Engineer, Entrepreneur etc.",
+        "Occupation", blank=True, help_text="Doctor, Engineer, Entrepreneur etc.",
     )
     occupation_details = models.TextField(
         max_length=100, null=True, verbose_name="Occupation in Detail", blank=True,
@@ -403,7 +399,11 @@ class MatrimonyProfile(BaseModel):
 
     # Medical details
     want_children = models.CharField(
-        max_length=2, choices=Y_N_MAYB, verbose_name="Do you want Children", null=True,
+        max_length=2,
+        choices=Y_N_MAYB,
+        verbose_name="Do you want Children",
+        null=True,
+        blank=True,
     )
     medical_history = models.TextField(max_length=250, null=True, blank=True)
 
