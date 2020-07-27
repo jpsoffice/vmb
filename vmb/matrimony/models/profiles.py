@@ -153,7 +153,11 @@ class MatrimonyProfile(BaseModel):
         choices=CHILDREN_COUNT, default=0, blank=True, null=True
     )
     ethnic_origin = models.ForeignKey(
-        Nationality, on_delete=models.SET_NULL, null=True, related_name="ethnic_origin",
+        Nationality,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="ethnic_origin",
+        blank=True,
     )
 
     images = models.ManyToManyField("photologue.Photo", through="Image", blank=True)
@@ -189,6 +193,7 @@ class MatrimonyProfile(BaseModel):
         help_text="Enter time HH:MM:SS in 24hr format",
         verbose_name=_("Birth Time"),
         null=True,
+        blank=True,
     )
     birth_city = models.CharField(
         max_length=200,
@@ -208,7 +213,7 @@ class MatrimonyProfile(BaseModel):
         related_name="birthCountry",
         verbose_name=_("Country"),
     )
-    birth_place = PlacesField(null=True)
+    birth_place = PlacesField(null=True, blank=True)
     gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Current location details
@@ -273,15 +278,19 @@ class MatrimonyProfile(BaseModel):
 
     # Personality
     personality = models.TextField(
-        max_length=1500, verbose_name="Describe yourself", null=True,
+        max_length=1500, verbose_name="Describe yourself", null=True, blank=True
     )
     recreational_activities = models.CharField(
         max_length=250,
         verbose_name="List your favorite recreational activities",
         null=True,
+        blank=True,
     )
     devotional_services = models.CharField(
-        max_length=250, verbose_name="List your favorite devotional service", null=True,
+        max_length=250,
+        verbose_name="List your favorite devotional service",
+        null=True,
+        blank=True,
     )
 
     # Professional details
@@ -318,7 +327,7 @@ class MatrimonyProfile(BaseModel):
         max_length=75, null=True, help_text="Enter Organization Name", blank=True,
     )
     annual_income = MoneyField(
-        max_digits=20, decimal_places=2, null=True, default_currency="INR"
+        max_digits=20, decimal_places=2, null=True, default_currency="INR", blank=True
     )
     annual_income_in_base_currency = MoneyField(
         max_digits=20,
@@ -330,8 +339,10 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Religion/Caste details
-    religion = models.ForeignKey(Religion, on_delete=models.SET_NULL, null=True,)
-    caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True,)
+    religion = models.ForeignKey(
+        Religion, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True, blank=True)
     subcaste = models.ForeignKey(
         Subcaste, on_delete=models.SET_NULL, null=True, blank=True
     )
@@ -341,7 +352,8 @@ class MatrimonyProfile(BaseModel):
         max_length=2,
         choices=ARE_PARENTS_DEV,
         null=True,
-        verbose_name="Are you parents devotees?",
+        blank=True,
+        verbose_name="Are your parents devotees?",
     )
     family_values = models.CharField(
         max_length=4, choices=FAMILY_VALUE_CHOICES, null=True, blank=True,
@@ -396,7 +408,7 @@ class MatrimonyProfile(BaseModel):
     want_children = models.CharField(
         max_length=2, choices=Y_N_MAYB, verbose_name="Do you want Children", null=True,
     )
-    medical_history = models.TextField(max_length=250, null=True)
+    medical_history = models.TextField(max_length=250, null=True, blank=True)
 
     matches = models.ManyToManyField(
         "self", through="Match", blank=True, symmetrical=False
