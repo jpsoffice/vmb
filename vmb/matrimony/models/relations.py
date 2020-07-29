@@ -60,7 +60,7 @@ class Language(BaseModel):
         ordering = ["name"]
 
     def __str__(self):
-        return f"{self.name} {self.code}"
+        return f"{self.name} ({self.code})"
 
 
 class Education(BaseModel):
@@ -72,7 +72,7 @@ class Education(BaseModel):
     )
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name} ({self.category})"
 
     class Meta:
         ordering = ["name"]
@@ -107,7 +107,7 @@ class Occupation(BaseModel):
         unique_together = ["name", "category"]
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name} ({self.category})"
 
 
 class OccupationCategory(BaseModel):
@@ -152,12 +152,25 @@ class Caste(BaseModel):
 class Subcaste(BaseModel):
     """Model representing Subcaste e.g. Brahmin, Kayastha etc"""
 
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     caste = models.ForeignKey("Caste", on_delete=models.CASCADE, null=True)
 
     class Meta:
         ordering = ["name"]
         db_table = "subcaste"
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+class Gotra(BaseModel):
+    """Model representing Gotra"""
+
+    name = models.CharField(max_length=50, null=True)
+
+    class Meta:
+        ordering = ["name"]
+        db_table = "gotra"
 
     def __str__(self):
         return f"{self.name}"

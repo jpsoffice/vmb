@@ -17,13 +17,16 @@ django-crispy-forms==1.8.0  # https://github.com/django-crispy-forms/django-cris
 django-redis==4.10.0  # https://github.com/niwinz/django-redis
 django-photologue==3.11  # https://github.com/richardbarran/django-photologue
 django-modeladmin-reorder==0.3.1  # https://github.com/mishbahr/django-modeladmin-reorder
+dj-places==3.1.0
 
 # Django REST Framework
 djangorestframework==3.10.3  # https://github.com/encode/django-rest-framework
 coreapi==2.3.3  # https://github.com/core-api/python-client
 django-admin-numeric-filter==0.1.6
 django-money==1.1
+django-money[exchange]==0.3.1
 django-admin-rangefilter==0.5.4
 django-admin-list-filter-dropdown==1.0.3
 django-admin-select2==1.0.1
 django-multiselectfield==0.1.12
+djangoql==0.14.0

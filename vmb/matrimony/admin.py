@@ -12,11 +12,13 @@ from django_admin_listfilter_dropdown.filters import (
     ChoiceDropdownFilter,
     RelatedDropdownFilter,
 )
+from djangoql.admin import DjangoQLSearchMixin
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.fields import DateField
 from django.utils import timezone
 
+from .models.profiles import MatrimonyProfile
 from .models import (
     Male,
     Female,
@@ -35,6 +37,8 @@ from .models import (
     Religion,
     Expectation,
     Comment,
+    Mentor,
+    Gotra,
 )
 from djmoney.money import Money
 from .forms import TextRangeForm
@@ -63,7 +67,6 @@ class RoundsFilter(admin.SimpleListFilter):
             ("16", (">=16")),
             ("8-16", ("8-16")),
             ("1-8", ("1-8")),
-            ("0", ("Does not chant")),
         )
 
     def queryset(self, request, queryset):
@@ -84,9 +87,6 @@ class RoundsFilter(admin.SimpleListFilter):
             return queryset.filter(
                 rounds_chanting__lt=int(8), rounds_chanting__gte=int(1)
             )
-        if self.value() == "0":
-
-            return queryset.filter(rounds_chanting__lte=int(0))
 
 
 class AnnualIncomeRangeFilter(admin.SimpleListFilter):
@@ -256,7 +256,16 @@ class AgeRangeFilter(admin.SimpleListFilter):
         )
 
 
-class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
+class MentorInline(admin.TabularInline):
+    model = Mentor
+    extra = 1
+    can_delete = True
+
+    verbose_name = "Mentor"
+    verbose_name_plural = "Mentors"
+
+
+class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
     fieldsets = [
         (
             None,
@@ -264,7 +273,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
                 "fields": [
                     ("profile_id", "name", "spiritual_name"),
                     ("status", "ethnic_origin", "primary_image"),
-                    ("age", "mother_tongue", "marital_status"),
+                    ("age", "mother_tongue", "marital_status", "children_count"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
                 ]
@@ -275,9 +284,10 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             "BIRTH DETAILS",
             {
                 "fields": [
-                    ("dob", "tob"),
+                    ("dob", "tob", "gotra"),
+                    "birth_place",
                     ("birth_state", "birth_city"),
-                    "birth_country",
+                    ("birth_country",),
                 ]
             },
         ),
@@ -289,6 +299,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             "CURRENT LOCATION",
             {
                 "fields": [
+                    "current_place",
                     ("current_state", "current_city"),
                     "current_country",
                     "nationality",
@@ -318,11 +329,11 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             "PROFESSION",
             {
                 "fields": [
-                    "annual_income",
+                    ("annual_income", "annual_income_in_base_currency"),
                     ("education", "institution"),
                     "education_details",
                     "employed_in",
-                    ("occupation", "organization"),
+                    ("occupations", "organization"),
                     "occupation_details",
                 ]
             },
@@ -331,7 +342,12 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             "FAMILY DETAILS",
             {
                 "fields": [
-                    ("family_values", "family_type", "family_status"),
+                    (
+                        "are_parents_devotees",
+                        "family_values",
+                        "family_type",
+                        "family_status",
+                    ),
                     ("father_occupation", "mother_occupation"),
                     ("brothers", "brothers_married"),
                     ("sisters", "sisters_married"),
@@ -340,7 +356,6 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             },
         ),
         ("MEDICAL DETAILS", {"fields": ["want_children", "medical_history"]}),
-        ("MENTORS", {"fields": ["mentor1", "mentor2"]}),
     ]
     list_display = (
         "profile_id",
@@ -349,17 +364,19 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "status",
         "age",
         "dob",
+        "annual_income",
         "current_country",
         "current_city",
-        "occupation",
-        "annual_income",
+        "all_occupations",
+        "all_education",
         "phone",
         "email",
     )
     list_filter = (
         "status",
         AgeRangeFilter,
-        AnnualIncomeRangeFilter,
+        # AnnualIncomeRangeFilter,
+        ("annual_income_in_base_currency", RangeNumericFilter),
         RoundsFilter,
         ("height", RangeNumericFilter),
         "spiritual_status",
@@ -370,7 +387,7 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         ("subcaste", RelatedDropdownFilter),
         ("current_country", RelatedDropdownFilter),
         ("languages_known", RelatedDropdownFilter),
-        ("occupation", RelatedDropdownFilter),
+        ("occupations", RelatedDropdownFilter),
         ("education", RelatedDropdownFilter),
         ("spiritual_master", RelatedDropdownFilter),
     )
@@ -379,13 +396,36 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
         "current_country__name",
         "current_state",
         "current_city",
-        "occupation__occupation",
-        "annual_income",
+        "annual_income_in_base_currency",
         "phone",
         "email",
+        "spiritual_status",
+        "marital_status",
+        "ethnic_origin__nationality",
+        "mother_tongue__name",
+        "caste__name",
+        "spiritual_master__name",
+        "education__name",
+        "occupations__name",
     ]
 
-    readonly_fields = ["age", "primary_image"]
+    readonly_fields = [
+        "age",
+        "primary_image",
+        "annual_income_in_base_currency",
+        "current_city",
+        "current_state",
+        "current_country",
+        "birth_city",
+        "birth_state",
+        "birth_country",
+    ]
+
+    def all_education(self, obj):
+        return obj.education_text
+
+    def all_occupations(self, obj):
+        return obj.occupations_text
 
     def save_formset(self, request, form, formset, change):
         super().save_formset(request, form, formset, change)
@@ -394,6 +434,8 @@ class BaseMatrimonyProfileAdmin(NumericFilterModelAdmin):
             for obj in formset.new_objects + formset.changed_objects:
                 obj.author = request.user
                 obj.save()
+
+    # inlines = [MentorInline]
 
 
 class MatchInline(admin.TabularInline):
@@ -421,10 +463,14 @@ class ExpectationInline(admin.StackedInline):
     model = Expectation
     extra = 0
     can_delete = False
+    readonly_fields = (
+        "annual_income_from_in_base_currency",
+        "annual_income_to_in_base_currency",
+    )
 
     def get_extra(self, request, obj=None, **kwargs):
         extra = 1
-        if obj:
+        if obj and hasattr(obj, "expectations"):
             extra = 0
         return extra
 
@@ -438,13 +484,13 @@ class CommentInline(GenericTabularInline):
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MatchInline, ImageInline, ExpectationInline, CommentInline]
+    inlines = [MentorInline, ImageInline, ExpectationInline, MatchInline, CommentInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MatchInline, ImageInline, ExpectationInline, CommentInline]
+    inlines = [MentorInline, ImageInline, ExpectationInline, MatchInline, CommentInline]
 
 
 @admin.register(Match)
@@ -483,3 +529,5 @@ admin.site.register(Country)
 admin.site.register(Occupation)
 admin.site.register(EducationCategory)
 admin.site.register(OccupationCategory)
+admin.site.register(Nationality)
+admin.site.register(Gotra)

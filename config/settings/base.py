@@ -77,6 +77,9 @@ THIRD_PARTY_APPS = [
     "django_celery_beat",
     "photologue",
     "sortedm2m",
+    "djangoql",
+    "djmoney.contrib.exchange",
+    "places",
 ]
 
 LOCAL_APPS = [
@@ -317,6 +320,8 @@ ADMIN_REORDER = (
             "matrimony.Occupation",
             "matrimony.Religion",
             "matrimony.Subcaste",
+            "matrimony.Gotra",
+            "matrimony.Mentor",
         ),
     },
     "photologue",
@@ -326,6 +331,18 @@ ADMIN_REORDER = (
     "django_celery_beat",
 )
 
+# djmoney-exchange
+# ------------------------------------------------------------------------------
+EXCHANGE_BACKEND = "djmoney.contrib.exchange.backends.FixerBackend"
+FIXER_ACCESS_KEY = env("DJMONEY_EXCHANGE_FIXER_ACCESS_KEY", default="")
+BASE_CURRENCY = env("DJMONEY_EXCHANGE_BASE_CURRENCY", default="INR")
+
+# dj-places
+# ------------------------------------------------------------------------------
+PLACES_MAPS_API_KEY = env("PLACES_MAPS_API_KEY", default="")
+PLACES_MAP_WIDGET_HEIGHT = env("PLACES_MAP_WIDGET_HEIGHT", default=400)
+PLACES_MAP_OPTIONS = '{"center": { "lat": 38.971584, "lng": -95.235072 }, "zoom": 10}'
+PLACES_MARKER_OPTIONS = '{"draggable": true}'
 
 # Your stuff...
 # ------------------------------------------------------------------------------

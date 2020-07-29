@@ -10,6 +10,8 @@ from django.utils.html import format_html
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
+from djmoney.contrib.exchange.models import convert_money
+from places.fields import PlacesField
 
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
@@ -27,8 +29,15 @@ from .relations import (
     Religion,
     Caste,
     Subcaste,
+    Gotra,
 )
 
+ARE_PARENTS_DEV = (
+    ("Y", "Yes"),
+    ("N", "No"),
+    ("OF", "Only Father"),
+    ("OM", "Only Mother"),
+)
 COLOR_OF_EYES = (
     ("AMB", "Amber"),
     ("BLU", "Blue"),
@@ -38,7 +47,6 @@ COLOR_OF_EYES = (
     ("HAZ", "Hazel"),
     ("RED", "Red"),
 )
-
 HAIR_COLOR = (
     ("BRW", "Brown"),
     ("BLN", "Blond"),
@@ -46,7 +54,6 @@ HAIR_COLOR = (
     ("RED", "Red"),
     ("WHT", "White"),
 )
-
 PROFILE_STATUS_CHOICES = (
     ("00", "New"),
     ("01", "Acknowledged"),
@@ -66,16 +73,14 @@ BODY_TYPE = (
     ("ATH", "Athelete"),
     ("HEA", "Heavy"),
 )
-
 GENDER_CHOICES = (("M", "Male"), ("F", "Female"), ("O", "Others"))
-
 SPIRITUAL_STATUS_CHOICES = (
     ("A", "Aspiring"),
     ("S", "Shelter"),
     ("D1", "Harinam"),
     ("D2", "Brahmin"),
+    ("NA", "Not Applicable"),
 )
-
 EMPLOYED_IN_CHOICES = (
     ("PSU", _("Government/PSU")),
     ("PVT", _("Private")),
@@ -84,7 +89,6 @@ EMPLOYED_IN_CHOICES = (
     ("SE", _("Self Employed")),
     ("NW", _("Not Working")),
 )
-
 FAMILY_LOCATION_CHOICES = (
     ("SAME", _("Same as my location")),
     ("DIFFERENT", _("Different Location")),
@@ -116,16 +120,19 @@ COMPLEXION_CHOICES = (
 
 MARITAL_STATUS = (
     ("UMR", "Unmarried"),
-    ("ENG", "Engaged"),
-    ("SEP", "Separated"),
     ("DIV", "Divorced"),
     ("WID", "Widowed"),
 )
-
-WANT_CHILDREN = (
+Y_N_MAYB = (
     ("Y", "Yes"),
     ("N", "No"),
     ("Mb", "May be"),
+)
+CHILDREN_COUNT = (
+    (0, "0"),
+    (1, "1"),
+    (2, "2"),
+    (3, "3"),
 )
 
 
@@ -141,14 +148,16 @@ class MatrimonyProfile(BaseModel):
     status = models.CharField(
         max_length=2, choices=PROFILE_STATUS_CHOICES, blank=True, default="00"
     )
-    marital_status = models.CharField(
-        max_length=3,
-        choices=MARITAL_STATUS,
-        help_text="Single, Divorced etc.",
-        null=True,
+    marital_status = models.CharField(max_length=3, choices=MARITAL_STATUS, null=True,)
+    children_count = models.PositiveIntegerField(
+        choices=CHILDREN_COUNT, default=0, blank=True, null=True
     )
     ethnic_origin = models.ForeignKey(
-        Nationality, on_delete=models.SET_NULL, null=True, related_name="ethnic_origin",
+        Nationality,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="ethnic_origin",
+        blank=True,
     )
 
     images = models.ManyToManyField("photologue.Photo", through="Image", blank=True)
@@ -184,31 +193,40 @@ class MatrimonyProfile(BaseModel):
         help_text="Enter time HH:MM:SS in 24hr format",
         verbose_name=_("Birth Time"),
         null=True,
+        blank=True,
     )
     birth_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
         help_text="Enter birth village/town/city",
         null=True,
+        blank=True,
     )
-    birth_state = models.CharField(max_length=200, verbose_name=_("State"), null=True)
+    birth_state = models.CharField(
+        max_length=200, verbose_name=_("State"), null=True, blank=True
+    )
     birth_country = models.ForeignKey(
         "Country",
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name="birthCountry",
         verbose_name=_("Country"),
     )
+    birth_place = PlacesField(null=True, blank=True)
+    gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Current location details
+    current_place = PlacesField(null=True)
     current_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
         help_text="Enter current village/town/city",
         null=True,
+        blank=True,
     )
     current_state = models.CharField(
-        max_length=200, verbose_name=_("State"), null=True,
+        max_length=200, verbose_name=_("State"), null=True, blank=True,
     )
     current_country = models.ForeignKey(
         "Country",
@@ -216,6 +234,7 @@ class MatrimonyProfile(BaseModel):
         null=True,
         related_name="currentCountry",
         verbose_name=_("Country"),
+        blank=True,
     )
     nationality = models.ForeignKey(Nationality, on_delete=models.SET_NULL, null=True,)
 
@@ -259,23 +278,24 @@ class MatrimonyProfile(BaseModel):
 
     # Personality
     personality = models.TextField(
-        max_length=1500, verbose_name="Describe yourself", null=True,
+        max_length=1500, verbose_name="Describe yourself", null=True, blank=True
     )
     recreational_activities = models.CharField(
         max_length=250,
         verbose_name="List your favorite recreational activities",
         null=True,
+        blank=True,
     )
     devotional_services = models.CharField(
-        max_length=250, verbose_name="List your favorite devotional service", null=True,
+        max_length=250,
+        verbose_name="List your favorite devotional service",
+        null=True,
+        blank=True,
     )
 
     # Professional details
-    education = models.ForeignKey(
-        "Education",
-        on_delete=models.SET_NULL,
-        null=True,
-        help_text="HS, Graduate etc.",
+    education = models.ManyToManyField(
+        "Education", blank=True, help_text="HS, Graduate etc.",
     )
     education_details = models.TextField(
         max_length=100, null=True, verbose_name="Education in Detail", blank=True,
@@ -290,12 +310,8 @@ class MatrimonyProfile(BaseModel):
     employed_in = models.CharField(
         max_length=3, null=True, choices=EMPLOYED_IN_CHOICES, blank=True,
     )
-    occupation = models.ForeignKey(
-        "Occupation",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        help_text="Doctor, Engineer, Entrepreneur etc.",
+    occupations = models.ManyToManyField(
+        "Occupation", blank=True, help_text="Doctor, Engineer, Entrepreneur etc.",
     )
     occupation_details = models.TextField(
         max_length=100, null=True, verbose_name="Occupation in Detail", blank=True,
@@ -304,17 +320,34 @@ class MatrimonyProfile(BaseModel):
         max_length=75, null=True, help_text="Enter Organization Name", blank=True,
     )
     annual_income = MoneyField(
-        max_digits=10, decimal_places=2, null=True, default_currency="INR"
+        max_digits=20, decimal_places=2, null=True, default_currency="INR", blank=True
+    )
+    annual_income_in_base_currency = MoneyField(
+        max_digits=20,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        default_currency="INR",
+        verbose_name=_("Annual income in {}".format(settings.BASE_CURRENCY)),
     )
 
     # Religion/Caste details
-    religion = models.ForeignKey(Religion, on_delete=models.SET_NULL, null=True,)
-    caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True,)
+    religion = models.ForeignKey(
+        Religion, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True, blank=True)
     subcaste = models.ForeignKey(
         Subcaste, on_delete=models.SET_NULL, null=True, blank=True
     )
 
     # Family details
+    are_parents_devotees = models.CharField(
+        max_length=2,
+        choices=ARE_PARENTS_DEV,
+        null=True,
+        blank=True,
+        verbose_name="Are your parents devotees?",
+    )
     family_values = models.CharField(
         max_length=4, choices=FAMILY_VALUE_CHOICES, null=True, blank=True,
     )
@@ -354,7 +387,7 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         null=True,
         help_text="Ancestral origin or father's birth place",
-        verbose_name="Ancesteral/Family Origin",
+        verbose_name="Ancestral/Family Origin",
     )
     religious_background = models.CharField(
         max_length=100,
@@ -367,11 +400,12 @@ class MatrimonyProfile(BaseModel):
     # Medical details
     want_children = models.CharField(
         max_length=2,
-        choices=WANT_CHILDREN,
+        choices=Y_N_MAYB,
         verbose_name="Do you want Children",
         null=True,
+        blank=True,
     )
-    medical_history = models.TextField(max_length=250, null=True)
+    medical_history = models.TextField(max_length=250, null=True, blank=True)
 
     matches = models.ManyToManyField(
         "self", through="Match", blank=True, symmetrical=False
@@ -379,21 +413,6 @@ class MatrimonyProfile(BaseModel):
 
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
-    )
-
-    # Mentors and their details
-    mentor1 = models.CharField(
-        max_length=250,
-        verbose_name="Reference 1",
-        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 1",
-        null=True,
-    )
-    mentor2 = models.CharField(
-        max_length=250,
-        verbose_name="Reference 2",
-        help_text="Name, email and mobile number of your Spiritual Mentor/Counsellor 2",
-        blank=True,
-        null=True,
     )
 
     # Staff users
@@ -405,6 +424,28 @@ class MatrimonyProfile(BaseModel):
         related_name="assigned_profiles",
     )
     comments = GenericRelation("Comment")
+
+    @property
+    def get_languages_known(self):
+        if self.languages_known is not None:
+            return ", ".join(p.name for p in self.languages_known.all())
+        else:
+            return None
+
+    @property
+    def get_languages_read_write(self):
+        if self.languages_read_write is not None:
+            return ", ".join(p.name for p in self.languages_read_write.all())
+        else:
+            return None
+
+    @property
+    def education_text(self):
+        return ", ".join([item.name for item in self.education.all()])
+
+    @property
+    def occupations_text(self):
+        return ", ".join([item.name for item in self.occupations.all()])
 
     @property
     def primary_image(self):
@@ -424,6 +465,15 @@ class MatrimonyProfile(BaseModel):
             return ""
 
     @property
+    def primary_image_thumbnail_url(self):
+        try:
+            return Image.objects.get(
+                profile=self, primary=True
+            ).photo.get_thumbnail_url()
+        except Image.DoesNotExist:
+            return ""
+
+    @property
     def age(self):
         if self.dob:
             return int((datetime.datetime.now().date() - self.dob).days / 365.25)
@@ -433,6 +483,44 @@ class MatrimonyProfile(BaseModel):
 
     class Meta:
         db_table = "matrimony_profiles"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._original_annual_income = self.annual_income
+        self._original_birth_place = self.birth_place
+        self._original_current_place = self.current_place
+
+    def save(self, *args, **kwargs):
+        if self.annual_income and (
+            self.id is None or self._original_annual_income != self.annual_income
+        ):
+            self.annual_income_in_base_currency = convert_money(
+                self.annual_income, settings.BASE_CURRENCY
+            )
+
+        if self.id is None or self._original_birth_place != self.birth_place:
+            if self.birth_place:
+                (
+                    self.birth_city,
+                    self.birth_state,
+                    country,
+                ) = self.birth_place.place.split(", ")[-3:]
+                self.birth_country = Country.objects.get(name=country)
+            else:
+                self.birth_city = self.birth_state = self.birth_country = None
+
+        if self.id is None or self._original_current_place != self.current_place:
+            if self.current_place:
+                (
+                    self.current_city,
+                    self.current_state,
+                    current_country,
+                ) = self.current_place.place.split(", ")[-3:]
+                self.current_country = Country.objects.get(name=current_country)
+            else:
+                self.current_city = self.current_state = self.current_country = None
+
+        return super().save(*args, **kwargs)
 
     def send_batch_matches_email(self):
         body = self.get_batch_matches_email_body()
@@ -496,7 +584,7 @@ class Expectation(BaseModel):
         max_digits=5, decimal_places=2, null=True, blank=True, verbose_name="To height"
     )
     marital_status = MultiSelectField(
-        choices=MARITAL_STATUS, max_length=3, null=True, blank=True
+        choices=MARITAL_STATUS, max_length=100, null=True, blank=True
     )
 
     # Religuous preferences
@@ -512,6 +600,13 @@ class Expectation(BaseModel):
     )
     ethnicities = models.ManyToManyField(
         Nationality, related_name="ethnicities", blank=True
+    )
+    want_nri = models.CharField(
+        max_length=2,
+        choices=Y_N_MAYB,
+        verbose_name="Do you want NRI",
+        null=True,
+        blank=True,
     )
 
     # Language preferences
@@ -532,39 +627,46 @@ class Expectation(BaseModel):
     education = models.ManyToManyField(Education, blank=True)
     occupations = models.ManyToManyField(Occupation, blank=True)
     employed_in = MultiSelectField(
-        choices=EMPLOYED_IN_CHOICES, max_length=3, null=True, blank=True
+        choices=EMPLOYED_IN_CHOICES, max_length=100, null=True, blank=True
     )
     annual_income_from = MoneyField(
-        max_digits=10,
+        max_digits=20,
         decimal_places=2,
         null=True,
         blank=True,
         default_currency="INR",
         verbose_name="From annual income",
     )
+    annual_income_from_in_base_currency = MoneyField(
+        max_digits=20,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        default_currency="INR",
+        verbose_name="From annual income ({})".format(settings.BASE_CURRENCY),
+    )
     annual_income_to = MoneyField(
-        max_digits=10,
+        max_digits=20,
         decimal_places=2,
         null=True,
         blank=True,
         default_currency="INR",
         verbose_name="To annual income",
     )
-
-    # Spiritual details
-    spiritual_status = models.CharField(
-        max_length=2,
-        help_text="Enter spiritual status (e.g. Aspiring, Shelter etc.)",
-        choices=SPIRITUAL_STATUS_CHOICES,
-        verbose_name=_("Spiritual Status"),
-        blank=True,
-    )
-    spiritual_masters = models.ManyToManyField(Guru, blank=True,)
-    four_reg_principles = models.BooleanField(
+    annual_income_to_in_base_currency = MoneyField(
+        max_digits=20,
+        decimal_places=2,
         null=True,
         blank=True,
-        verbose_name="Does the spouse have to follow four regulative principles?",
+        default_currency="INR",
+        verbose_name="To annual income ({})".format(settings.BASE_CURRENCY),
     )
+
+    # Spiritual details
+    spiritual_status = MultiSelectField(
+        choices=SPIRITUAL_STATUS_CHOICES, max_length=5, null=True, blank=True
+    )
+    spiritual_masters = models.ManyToManyField(Guru, blank=True,)
     min_rounds_chanting = models.IntegerField(
         null=True, blank=True, verbose_name="Minimum rounds of japa",
     )
@@ -573,6 +675,27 @@ class Expectation(BaseModel):
 
     class Meta:
         db_table = "matrimony_expectations"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._original_annual_income_from = self.annual_income_from
+        self._original_annual_income_to = self.annual_income_to
+
+    def save(self, *args, **kwargs):
+        if self.annual_income_from and (
+            self.id is None
+            or self._original_annual_income_from != self.annual_income_from
+        ):
+            self.annual_income_from_in_base_currency = convert_money(
+                self.annual_income_from, settings.BASE_CURRENCY
+            )
+        if self.annual_income_to and (
+            self.id is None or self._original_annual_income_to != self.annual_income_to
+        ):
+            self.annual_income_to_in_base_currency = convert_money(
+                self.annual_income_to, settings.BASE_CURRENCY
+            )
+        return super().save(*args, **kwargs)
 
 
 class MaleManager(models.Manager):
@@ -743,3 +866,22 @@ class Comment(BaseModel):
 
     class Meta:
         db_table = "comments"
+
+
+class Mentor(BaseModel):
+    """Model representing Mentors or Spirtual References/Counsellors for users"""
+
+    name = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=17, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    profile = models.ForeignKey(
+        MatrimonyProfile, on_delete=models.CASCADE, related_name="mentors", null=True
+    )
+
+    class Meta:
+        ordering = ["name"]
+        db_table = "mentor"
+        unique_together = ("name", "profile")
+
+    def __str__(self):
+        return f"{self.name}"

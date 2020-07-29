@@ -5,11 +5,11 @@
     <tbody>
       {% for m in matches %}
       <tr>
-        <td>
-          <table border="0" cellspacing="0" cellpadding="0">
+        <td valign="top" >
+          <table border="0" cellspacing="0" cellpadding="0" style="padding-top: 20px; padding-right: 20px;">
             <tr>
               <td>
-                <img class="align-self-start mr-3" src="{{ m.primary_image_url }}" alt="">
+                <img class="align-self-start mr-3" src="{{ m.primary_image_thumbnail_url }}" alt="">
               </td>
             </tr>
             <tr>
@@ -30,16 +30,114 @@
               <td>
                 <h4>Basic info</h4>
                 <p>
-                  <strong>Marital status:</strong> {{ m.marital_status }},
+                  <strong>Marital status:</strong> {{ m.get_marital_status_display }},
                   <strong>Mother tongue:</strong> {{ m.mother_tongue }},
                   <strong>Religion:</strong> {{ m.religion}},
-                  <strong>Caste</strong>: {{ m.caste }},
-                  <strong>Subcaste:</strong> {{ m.subcaste }},
-                  <strong>Languages known:</strong> {{ m.languages_can_speak }},
-                  <strong>Languages can read/write:</strong> {{ m.languages_read_write}}
+                  <strong>Caste:</strong> {{ m.caste }},
+                  <strong>Subcaste:</strong> {{ m.subcaste }},<br>
+                  <strong>Languages known:</strong> {{ m.get_languages_known }}
+                  <strong>Languages can read/write:</strong> {{ m.get_languages_read_write}}
+                  <strong>Ethnic Origin:</strong> {{m.ethnic_origin}}
                 </p>
               </td>
             </tr>
+            <tr>
+              <td>
+                  <h4>Spiritual Quotient</h4>
+                  <p>
+                    <strong>Regularly chants:</strong> {{ m.rounds_chanting }} round(s),
+                    {% if m.spiritual_status %}<strong>Spiritual Status:</strong> {{ m.get_spiritual_status_display }},{%endif%}
+                    {% if m.spiritual_master %}<strong>Spiritual Master:</strong> {{ m.spiritual_master }}{%endif%}
+
+                  </p>
+              </td>
+            </tr>
+              <tr>
+                <td>
+                  <h4>Birth Details</h4>
+                  <p>
+                    <strong>Birth Date:</strong> {{ m.dob }},
+                    <strong>Birth Time:</strong> {{ m.tob }},
+                    <strong>Birth City:</strong> {{ m.birth_city }},
+                    <strong>Birth State:</strong> {{ m.birth_state }},
+                    <strong>Birth Country:</strong> {{ m.birth_country }}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Current Location</h4>
+                  <p>
+                    <strong>City:</strong> {{ m.current_city }},
+                    <strong>State:</strong> {{ m.current_state }},
+                    <strong>Country:</strong> {{ m.current_country }},
+                    <strong>Nationality:</strong> {{ m.nationality }}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Physical Appearance</h4>
+                  <p>
+                    <strong>Complexion:</strong> {{ m.get_complexion_display }},
+                    <strong>Weight:</strong> {{ m.weight }}kgs,
+                    <strong>Body type:</strong> {{ m.get_body_type_display }},
+                    {% if m.color_of_eyes %}<strong>Color of eyes:</strong> {{ m.get_color_of_eyes_display }},{% endif %}
+                    {% if m.hair_color %}<strong>Hair Color:</strong> {{ m.get_hair_color_display }}{% endif %}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Personality</h4>
+                  <p>
+                    <strong>Description:</strong> {{ m.personality }}
+                    <br>
+                    <strong>Recreational Activities:</strong> {{ m.recreational_activities }},
+                    <strong>Devotional Activities:</strong> {{ m.devotional_services }}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Profession</h4>
+                  <p>
+                    <strong>Annual income:</strong> {{ m.annual_income }},
+                    <strong>Education:</strong> {{ m.education }},
+                    {% if m.institution %}<strong>Institution:</strong> {{ m.institution }},{% endif %}
+                    {% if m.education_details %}<strong>Education in detail:</strong> {{ m.education_details }},{% endif %}
+                    {% if m.employed_in %}<strong>Employed in:</strong> {{ m.get_employed_in_display }},{% endif %} <br>
+                    {% if m.occupation %}<strong>Occupation:</strong> {{ m.occupation }},{% endif %}
+                    {% if m.organization %}<strong>Organization:</strong> {{ m.organization }},{% endif %}
+                    {% if m.occupation_details %}<strong>Occupation in detail:</strong> {{ m.occupation_details }}{% endif %}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Family Details</h4>
+                  <p>
+                    {% if m.family_values %}<strong>Family values:</strong> {{ m.get_family_values_display }},{% endif %}
+                    {% if m.family_type %}<strong>Family type:</strong> {{ m.get_family_type_display }},{% endif %}
+                    {% if m.family_status %}<strong>Family status:</strong> {{ m.get_family_status_display }},{% endif %} <br>
+                    {% if m.father_occupation %}<strong>Father's occupation:</strong> {{ m.father_occupation }},{% endif %}
+                    {% if m.mother_occupation %}<strong>Mother's occupation:</strong> {{ m.mother_occupation }},{% endif %} <br>
+                    {% if m.brothers %}<strong>Brother(s):</strong> {{ m.brothers }}{% if m.brothers_married %}/{{m.brothers_married}} married{% endif %},{% endif %}
+                    {% if m.sisters %}<strong>Sister(s):</strong> {{ m.sisters }}{% if m.sisters_married %}/{{m.sisters_married}} married{% endif %},{% endif %}
+                    {% if m.family_location %}<strong>Family location:</strong> {{ m.get_family_location_display }},{% endif %}
+                    {% if m.family_origin %}<strong>Ancestral/Family Origin:</strong> {{ m.family_origin }}{% endif %}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Medical Details</h4>
+                  <p>
+                    <strong>Wants Children:</strong> {{ m.get_want_children_display }},
+                    <strong>Medical History:</strong> {{ m.medical_history }}
+                  </p>
+                </td>
+              </tr>
           </table>
         </d>
       </tr>
