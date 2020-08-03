@@ -217,7 +217,7 @@ class MatrimonyProfile(BaseModel):
     gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Current location details
-    current_place = PlacesField(null=True)
+    current_place = PlacesField(null=True, blank=True)
     current_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
