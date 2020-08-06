@@ -3,6 +3,7 @@ from hashlib import md5
 
 from django.conf import settings
 from django.db import models
+from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.template import loader, Context
@@ -505,7 +506,8 @@ class MatrimonyProfile(BaseModel):
                     self.birth_state,
                     country,
                 ) = self.birth_place.place.split(", ")[-3:]
-                self.birth_country = Country.objects.get(name=country)
+                countries = Country.objects.filter(Q(name=country) | Q(code=country))
+                self.birth_country = countries[0] if countries else None
             else:
                 self.birth_city = self.birth_state = self.birth_country = None
 
@@ -516,7 +518,8 @@ class MatrimonyProfile(BaseModel):
                     self.current_state,
                     current_country,
                 ) = self.current_place.place.split(", ")[-3:]
-                self.current_country = Country.objects.get(name=current_country)
+                countries = Country.objects.filter(Q(name=current_country) | Q(code=current_country))
+                self.current_country = countries[0] if countries else None
             else:
                 self.current_city = self.current_state = self.current_country = None
 
