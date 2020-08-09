@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "name": "Andorra",
-      "code": "AD",
+      "code": "AND",
       "nationality": "Andorian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -15,7 +15,7 @@
     "pk": 2,
     "fields": {
       "name": "United Arab Emirates",
-      "code": "AE",
+      "code": "ARE",
       "nationality": "Emirian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -26,7 +26,7 @@
     "pk": 3,
     "fields": {
       "name": "Afghanistan",
-      "code": "AF",
+      "code": "AFG",
       "nationality": "Afghani",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -37,7 +37,7 @@
     "pk": 4,
     "fields": {
       "name": "Anguilla",
-      "code": "AI",
+      "code": "AIA",
       "nationality": "Anguillan",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -48,7 +48,7 @@
     "pk": 5,
     "fields": {
       "name": "Armenia",
-      "code": "AM",
+      "code": "ARM",
       "nationality": "Armenian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -59,7 +59,7 @@
     "pk": 6,
     "fields": {
       "name": "Angola",
-      "code": "AO",
+      "code": "AGO",
       "nationality": "Angolian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -70,7 +70,7 @@
     "pk": 7,
     "fields": {
       "name": "Antarctica",
-      "code": "AQ",
+      "code": "ATA",
       "nationality": "Antarctic",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -81,7 +81,7 @@
     "pk": 8,
     "fields": {
       "name": "Argentina",
-      "code": "AR",
+      "code": "ARG",
       "nationality": "Argentine",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -92,7 +92,7 @@
     "pk": 9,
     "fields": {
       "name": "Austria",
-      "code": "AT",
+      "code": "AUT",
       "nationality": "Austrian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -103,7 +103,7 @@
     "pk": 10,
     "fields": {
       "name": "Australia",
-      "code": "AU",
+      "code": "AUS",
       "nationality": "Australian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -114,7 +114,7 @@
     "pk": 11,
     "fields": {
       "name": "Aruba",
-      "code": "AW",
+      "code": "ABW",
       "nationality": "Arubian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -125,7 +125,7 @@
     "pk": 12,
     "fields": {
       "name": "Bangladesh",
-      "code": "BD",
+      "code": "BGD",
       "nationality": "Bangladeshi",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -136,7 +136,7 @@
     "pk": 13,
     "fields": {
       "name": "Barbados",
-      "code": "BB",
+      "code": "BRB",
       "nationality": "Barbadian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -147,7 +147,7 @@
     "pk": 14,
     "fields": {
       "name": "Belgium",
-      "code": "BE",
+      "code": "BEL",
       "nationality": "Belgian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -158,7 +158,7 @@
     "pk": 15,
     "fields": {
       "name": "Bahrain",
-      "code": "BH",
+      "code": "BHR",
       "nationality": "Bahrainian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -169,7 +169,7 @@
     "pk": 16,
     "fields": {
       "name": "Bermuda",
-      "code": "BM",
+      "code": "BMU",
       "nationality": "Bermuda",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -180,7 +180,7 @@
     "pk": 17,
     "fields": {
       "name": "Bolivia, Plurinational State of",
-      "code": "BO",
+      "code": "BOL",
       "nationality": "Bolivian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -191,7 +191,7 @@
     "pk": 18,
     "fields": {
       "name": "Brazil",
-      "code": "BR",
+      "code": "BRA",
       "nationality": "Brazilian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -202,7 +202,7 @@
     "pk": 19,
     "fields": {
       "name": "Bahamas",
-      "code": "BS",
+      "code": "BHS",
       "nationality": "Bahameese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -213,7 +213,7 @@
     "pk": 20,
     "fields": {
       "name": "Bhutan",
-      "code": "BT",
+      "code": "BTN",
       "nationality": "Bhutanese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -224,7 +224,7 @@
     "pk": 21,
     "fields": {
       "name": "Bulgaria",
-      "code": "BG",
+      "code": "BGR",
       "nationality": "Bulgarian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -235,7 +235,7 @@
     "pk": 22,
     "fields": {
       "name": "Belarus",
-      "code": "BY",
+      "code": "BLR",
       "nationality": "Belarusian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -246,7 +246,7 @@
     "pk": 23,
     "fields": {
       "name": "Belize",
-      "code": "BZ",
+      "code": "BLZ",
       "nationality": "Belizean",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -257,7 +257,7 @@
     "pk": 24,
     "fields": {
       "name": "Canada",
-      "code": "CA",
+      "code": "CAN",
       "nationality": "Canadian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -268,7 +268,7 @@
     "pk": 25,
     "fields": {
       "name": "Congo",
-      "code": "CG",
+      "code": "COG",
       "nationality": "Congolese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -279,7 +279,7 @@
     "pk": 26,
     "fields": {
       "name": "China",
-      "code": "CN",
+      "code": "CHN",
       "nationality": "Chinese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -290,7 +290,7 @@
     "pk": 27,
     "fields": {
       "name": "Switzerland",
-      "code": "CH",
+      "code": "CHE",
       "nationality": "Swiss",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -301,7 +301,7 @@
     "pk": 28,
     "fields": {
       "name": "Chile",
-      "code": "CL",
+      "code": "CHL",
       "nationality": "Chilean",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -312,7 +312,7 @@
     "pk": 29,
     "fields": {
       "name": "Cambodia",
-      "code": "KH",
+      "code": "KHM",
       "nationality": "Cambodian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -323,7 +323,7 @@
     "pk": 30,
     "fields": {
       "name": "Cameroon",
-      "code": "CM",
+      "code": "CMR",
       "nationality": "Cameroonian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -334,7 +334,7 @@
     "pk": 31,
     "fields": {
       "name": "Colombia",
-      "code": "CO",
+      "code": "COL",
       "nationality": "Colombian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -345,7 +345,7 @@
     "pk": 32,
     "fields": {
       "name": "Czech Republic",
-      "code": "CZ",
+      "code": "CZE",
       "nationality": "Czech",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -356,7 +356,7 @@
     "pk": 33,
     "fields": {
       "name": "Costa Rica",
-      "code": "CR",
+      "code": "CRI",
       "nationality": "Costa Rican",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -367,7 +367,7 @@
     "pk": 34,
     "fields": {
       "name": "Cuba",
-      "code": "CU",
+      "code": "CUB",
       "nationality": "Cuban",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -378,7 +378,7 @@
     "pk": 35,
     "fields": {
       "name": "Cyprus",
-      "code": "CY",
+      "code": "CYP",
       "nationality": "Cypriot",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -389,7 +389,7 @@
     "pk": 36,
     "fields": {
       "name": "Germany",
-      "code": "DE",
+      "code": "DEU",
       "nationality": "German",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -400,7 +400,7 @@
     "pk": 37,
     "fields": {
       "name": "Denmark",
-      "code": "DK",
+      "code": "DNK",
       "nationality": "Danish",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -411,7 +411,7 @@
     "pk": 38,
     "fields": {
       "name": "Dominica",
-      "code": "DM",
+      "code": "DMA",
       "nationality": "Dominican",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -422,7 +422,7 @@
     "pk": 39,
     "fields": {
       "name": "Ecuador",
-      "code": "EC",
+      "code": "ECU",
       "nationality": "Ecuadorean",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -433,7 +433,7 @@
     "pk": 40,
     "fields": {
       "name": "Estonia",
-      "code": "EE",
+      "code": "EST",
       "nationality": "Estonian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -444,7 +444,7 @@
     "pk": 41,
     "fields": {
       "name": "Egypt",
-      "code": "EG",
+      "code": "EGY",
       "nationality": "Egyptian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -455,7 +455,7 @@
     "pk": 42,
     "fields": {
       "name": "Ethiopia",
-      "code": "ET",
+      "code": "ETH",
       "nationality": "Ethiopian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -466,7 +466,7 @@
     "pk": 43,
     "fields": {
       "name": "Finland",
-      "code": "FI",
+      "code": "FIN",
       "nationality": "Finnish",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -477,7 +477,7 @@
     "pk": 44,
     "fields": {
       "name": "Fiji",
-      "code": "FJ",
+      "code": "FJI",
       "nationality": "Fijian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -488,7 +488,7 @@
     "pk": 45,
     "fields": {
       "name": "France",
-      "code": "FR",
+      "code": "FRA",
       "nationality": "French",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -499,7 +499,7 @@
     "pk": 46,
     "fields": {
       "name": "United Kingdom",
-      "code": "GB",
+      "code": "GBR",
       "nationality": "British",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -510,7 +510,7 @@
     "pk": 47,
     "fields": {
       "name": "Georgia",
-      "code": "GE",
+      "code": "GEO",
       "nationality": "Georgian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -521,7 +521,7 @@
     "pk": 48,
     "fields": {
       "name": "Ghana",
-      "code": "GH",
+      "code": "GHA",
       "nationality": "Ghanaian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -532,7 +532,7 @@
     "pk": 49,
     "fields": {
       "name": "Guinea",
-      "code": "GN",
+      "code": "GIN",
       "nationality": "Guinean",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -543,7 +543,7 @@
     "pk": 50,
     "fields": {
       "name": "Greece",
-      "code": "GR",
+      "code": "GRC",
       "nationality": "Greek",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -554,7 +554,7 @@
     "pk": 51,
     "fields": {
       "name": "Guyana",
-      "code": "GY",
+      "code": "GUY",
       "nationality": "Guyanese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -565,7 +565,7 @@
     "pk": 52,
     "fields": {
       "name": "Hong Kong",
-      "code": "HK",
+      "code": "HKG",
       "nationality": "Chinese (HK)",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -576,7 +576,7 @@
     "pk": 53,
     "fields": {
       "name": "Croatia",
-      "code": "HR",
+      "code": "HRV",
       "nationality": "Croatian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -587,7 +587,7 @@
     "pk": 54,
     "fields": {
       "name": "Hungary",
-      "code": "HU",
+      "code": "HUN",
       "nationality": "Hungarian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -598,7 +598,7 @@
     "pk": 55,
     "fields": {
       "name": "Indonesia",
-      "code": "ID",
+      "code": "IDN",
       "nationality": "Indonesian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -609,7 +609,7 @@
     "pk": 56,
     "fields": {
       "name": "Ireland",
-      "code": "IE",
+      "code": "IRL",
       "nationality": "Irish",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -620,7 +620,7 @@
     "pk": 57,
     "fields": {
       "name": "India",
-      "code": "IN",
+      "code": "IND",
       "nationality": "Indian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -631,7 +631,7 @@
     "pk": 58,
     "fields": {
       "name": "Iraq",
-      "code": "IQ",
+      "code": "IRQ",
       "nationality": "Iraqi",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -642,7 +642,7 @@
     "pk": 59,
     "fields": {
       "name": "Iran, Islamic Republic of",
-      "code": "IR",
+      "code": "IRN",
       "nationality": "Iranian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -653,7 +653,7 @@
     "pk": 60,
     "fields": {
       "name": "Israel",
-      "code": "IL",
+      "code": "ISR",
       "nationality": "Israeli",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -664,7 +664,7 @@
     "pk": 61,
     "fields": {
       "name": "Iceland",
-      "code": "IS",
+      "code": "ISL",
       "nationality": "Icelander",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -675,7 +675,7 @@
     "pk": 62,
     "fields": {
       "name": "Italy",
-      "code": "IT",
+      "code": "ITA",
       "nationality": "Italian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -686,7 +686,7 @@
     "pk": 63,
     "fields": {
       "name": "Jamaica",
-      "code": "JM",
+      "code": "JAM",
       "nationality": "Jamaican",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -697,7 +697,7 @@
     "pk": 64,
     "fields": {
       "name": "Jordan",
-      "code": "JO",
+      "code": "JOR",
       "nationality": "Jordanian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -708,7 +708,7 @@
     "pk": 65,
     "fields": {
       "name": "Japan",
-      "code": "JP",
+      "code": "JPN",
       "nationality": "Japanese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -719,7 +719,7 @@
     "pk": 66,
     "fields": {
       "name": "Kenya",
-      "code": "KE",
+      "code": "KEN",
       "nationality": "Kenyan",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -729,8 +729,8 @@
     "model": "matrimony.country",
     "pk": 67,
     "fields": {
-      "name": "Korea",
-      "code": "KO",
+      "name": "Korea (Democratic People's Republic of)",
+      "code": "PRK",
       "nationality": "Korean",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -740,8 +740,19 @@
     "model": "matrimony.country",
     "pk": 68,
     "fields": {
+      "name": "KR",
+      "code": "PRK",
+      "nationality": "Korean",
+      "created_at": "2020-04-12 18:01:35",
+      "updated_at": "2020-04-12 18:01:35"
+    }
+  },
+  {
+    "model": "matrimony.country",
+    "pk": 69,
+    "fields": {
       "name": "Kuwait",
-      "code": "KW",
+      "code": "KWT",
       "nationality": "Kuwaiti",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -752,7 +763,7 @@
     "pk": 70,
     "fields": {
       "name": "Kazakhstan",
-      "code": "KZ",
+      "code": "KAZ",
       "nationality": "Kazakhstani",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -763,7 +774,7 @@
     "pk": 71,
     "fields": {
       "name": "Lebanon",
-      "code": "LB",
+      "code": "LBN",
       "nationality": "Lebanese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -774,7 +785,7 @@
     "pk": 72,
     "fields": {
       "name": "Sri Lanka",
-      "code": "LK",
+      "code": "LKA",
       "nationality": "Sri Lankan",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -785,7 +796,7 @@
     "pk": 73,
     "fields": {
       "name": "Lithuania",
-      "code": "LT",
+      "code": "LTU",
       "nationality": "Lithuanian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -796,7 +807,7 @@
     "pk": 74,
     "fields": {
       "name": "Luxembourg",
-      "code": "LU",
+      "code": "LUX",
       "nationality": "Luxembourger",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -807,7 +818,7 @@
     "pk": 75,
     "fields": {
       "name": "Morocco",
-      "code": "MA",
+      "code": "MAR",
       "nationality": "Moroccan",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -818,7 +829,7 @@
     "pk": 76,
     "fields": {
       "name": "Monaco",
-      "code": "MC",
+      "code": "MCO",
       "nationality": "Monacan",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -829,7 +840,7 @@
     "pk": 77,
     "fields": {
       "name": "Mexico",
-      "code": "MX",
+      "code": "MEX",
       "nationality": "Mexican",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -840,7 +851,7 @@
     "pk": 78,
     "fields": {
       "name": "Myanmar",
-      "code": "MM",
+      "code": "MMR",
       "nationality": "Mayanmarese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -851,7 +862,7 @@
     "pk": 79,
     "fields": {
       "name": "Mongolia",
-      "code": "MN",
+      "code": "MNG",
       "nationality": "Mongolian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -862,7 +873,7 @@
     "pk": 80,
     "fields": {
       "name": "Macao",
-      "code": "MO",
+      "code": "MAC",
       "nationality": "Macao",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -873,7 +884,7 @@
     "pk": 81,
     "fields": {
       "name": "Mauritius",
-      "code": "MU",
+      "code": "MUS",
       "nationality": "Mauritian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -884,7 +895,7 @@
     "pk": 82,
     "fields": {
       "name": "Maldives",
-      "code": "MV",
+      "code": "MDV",
       "nationality": "Maldivan",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -895,7 +906,7 @@
     "pk": 83,
     "fields": {
       "name": "Malaysia",
-      "code": "MY",
+      "code": "MYS",
       "nationality": "Malaysian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -906,7 +917,7 @@
     "pk": 84,
     "fields": {
       "name": "Namibia",
-      "code": "NA",
+      "code": "NAM",
       "nationality": "Namibian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -917,7 +928,7 @@
     "pk": 85,
     "fields": {
       "name": "Nigeria",
-      "code": "NG",
+      "code": "NGA",
       "nationality": "Nigerian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -928,7 +939,7 @@
     "pk": 86,
     "fields": {
       "name": "Netherlands",
-      "code": "NL",
+      "code": "NLD",
       "nationality": "Dutch",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -939,7 +950,7 @@
     "pk": 87,
     "fields": {
       "name": "Norway",
-      "code": "NO",
+      "code": "NOR",
       "nationality": "Norwegian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -950,7 +961,7 @@
     "pk": 88,
     "fields": {
       "name": "Nepal",
-      "code": "NP",
+      "code": "NPL",
       "nationality": "Nepalese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -961,7 +972,7 @@
     "pk": 89,
     "fields": {
       "name": "New Zealand",
-      "code": "NZ",
+      "code": "NZL",
       "nationality": "New Zealander",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -972,7 +983,7 @@
     "pk": 90,
     "fields": {
       "name": "Oman",
-      "code": "OM",
+      "code": "OMN",
       "nationality": "Omani",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -983,7 +994,7 @@
     "pk": 91,
     "fields": {
       "name": "Panama",
-      "code": "PA",
+      "code": "PAN",
       "nationality": "Panamanian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -994,7 +1005,7 @@
     "pk": 92,
     "fields": {
       "name": "Peru",
-      "code": "PE",
+      "code": "PER",
       "nationality": "Peruvian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1005,7 +1016,7 @@
     "pk": 93,
     "fields": {
       "name": "Philippines",
-      "code": "PH",
+      "code": "PHL",
       "nationality": "Filipino",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1016,7 +1027,7 @@
     "pk": 94,
     "fields": {
       "name": "Pakistan",
-      "code": "PK",
+      "code": "PAK",
       "nationality": "Pakistani",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1027,7 +1038,7 @@
     "pk": 95,
     "fields": {
       "name": "Poland",
-      "code": "PL",
+      "code": "POL",
       "nationality": "Polish",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1038,7 +1049,7 @@
     "pk": 96,
     "fields": {
       "name": "Portugal",
-      "code": "PT",
+      "code": "PRT",
       "nationality": "Portugees",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1049,7 +1060,7 @@
     "pk": 97,
     "fields": {
       "name": "Paraguay",
-      "code": "PY",
+      "code": "PRY",
       "nationality": "Paraguayan",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1060,7 +1071,7 @@
     "pk": 98,
     "fields": {
       "name": "Qatar",
-      "code": "QA",
+      "code": "QAT",
       "nationality": "Qatari",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1071,7 +1082,7 @@
     "pk": 99,
     "fields": {
       "name": "Romania",
-      "code": "RO",
+      "code": "ROU",
       "nationality": "Romanian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1082,7 +1093,7 @@
     "pk": 100,
     "fields": {
       "name": "Russian Federation",
-      "code": "RU",
+      "code": "RUS",
       "nationality": "Russian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1093,7 +1104,7 @@
     "pk": 101,
     "fields": {
       "name": "Saudi Arabia",
-      "code": "SA",
+      "code": "SAU",
       "nationality": "Saudi Arabian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1104,7 +1115,7 @@
     "pk": 102,
     "fields": {
       "name": "Seychelles",
-      "code": "SC",
+      "code": "SYC",
       "nationality": "Seychellois",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1115,7 +1126,7 @@
     "pk": 103,
     "fields": {
       "name": "Sweden",
-      "code": "SE",
+      "code": "SWE",
       "nationality": "Swedish",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1126,7 +1137,7 @@
     "pk": 104,
     "fields": {
       "name": "Singapore",
-      "code": "SG",
+      "code": "SGP",
       "nationality": "Singaporean",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1137,7 +1148,7 @@
     "pk": 105,
     "fields": {
       "name": "Slovakia",
-      "code": "SK",
+      "code": "SVK",
       "nationality": "Slovakian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1148,7 +1159,7 @@
     "pk": 106,
     "fields": {
       "name": "Senegal",
-      "code": "SN",
+      "code": "SEN",
       "nationality": "Senegalese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1159,7 +1170,7 @@
     "pk": 107,
     "fields": {
       "name": "Somalia",
-      "code": "SO",
+      "code": "SOM",
       "nationality": "Somali",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1170,7 +1181,7 @@
     "pk": 108,
     "fields": {
       "name": "Spain",
-      "code": "ES",
+      "code": "ESP",
       "nationality": "Spanish",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1181,7 +1192,7 @@
     "pk": 109,
     "fields": {
       "name": "Thailand",
-      "code": "TH",
+      "code": "THA",
       "nationality": "Thai",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1192,7 +1203,7 @@
     "pk": 110,
     "fields": {
       "name": "Tunisia",
-      "code": "TN",
+      "code": "TUN",
       "nationality": "Tunisian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1203,7 +1214,7 @@
     "pk": 111,
     "fields": {
       "name": "Turkey",
-      "code": "TR",
+      "code": "TUR",
       "nationality": "Turkish",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1214,7 +1225,7 @@
     "pk": 112,
     "fields": {
       "name": "Taiwan, Province of China",
-      "code": "TW",
+      "code": "TWN",
       "nationality": "Taiwanese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1225,7 +1236,7 @@
     "pk": 113,
     "fields": {
       "name": "Tanzania, United Republic of",
-      "code": "TZ",
+      "code": "TZA",
       "nationality": "Tanzanian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1236,7 +1247,7 @@
     "pk": 114,
     "fields": {
       "name": "Ukraine",
-      "code": "UA",
+      "code": "UKR",
       "nationality": "Ukrainian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1247,7 +1258,7 @@
     "pk": 115,
     "fields": {
       "name": "Uganda",
-      "code": "UG",
+      "code": "UGA",
       "nationality": "Ugandan",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1258,7 +1269,7 @@
     "pk": 116,
     "fields": {
       "name": "United States",
-      "code": "US",
+      "code": "USA",
       "nationality": "American",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1269,7 +1280,7 @@
     "pk": 117,
     "fields": {
       "name": "Uruguay",
-      "code": "UY",
+      "code": "URY",
       "nationality": "Uruguayan",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1280,7 +1291,7 @@
     "pk": 118,
     "fields": {
       "name": "Uzbekistan",
-      "code": "UZ",
+      "code": "UZB",
       "nationality": "Uzbekistani",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1291,7 +1302,7 @@
     "pk": 119,
     "fields": {
       "name": "Venezuela, Bolivarian Republic of",
-      "code": "VE",
+      "code": "VEN",
       "nationality": "Venezuelan",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1302,7 +1313,7 @@
     "pk": 120,
     "fields": {
       "name": "Viet Nam",
-      "code": "VN",
+      "code": "VNM",
       "nationality": "Vietnamese",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1313,7 +1324,7 @@
     "pk": 121,
     "fields": {
       "name": "Yemen",
-      "code": "YE",
+      "code": "YEM",
       "nationality": "Yemeni",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1324,7 +1335,7 @@
     "pk": 122,
     "fields": {
       "name": "South Africa",
-      "code": "ZA",
+      "code": "ZAF",
       "nationality": "South African",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1335,7 +1346,7 @@
     "pk": 123,
     "fields": {
       "name": "Zambia",
-      "code": "ZM",
+      "code": "ZMB",
       "nationality": "Zambian",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
@@ -1346,7 +1357,7 @@
     "pk": 124,
     "fields": {
       "name": "Zimbabwe",
-      "code": "ZW",
+      "code": "ZWE",
       "nationality": "Zimbabwean",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
