@@ -740,8 +740,8 @@
     "model": "matrimony.country",
     "pk": 68,
     "fields": {
-      "name": "KR",
-      "code": "PRK",
+      "name": "Korea, Republic of",
+      "code": "KOR",
       "nationality": "Korean",
       "created_at": "2020-04-12 18:01:35",
       "updated_at": "2020-04-12 18:01:35"
