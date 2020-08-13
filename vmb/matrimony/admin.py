@@ -431,7 +431,12 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
         super().save_formset(request, form, formset, change)
 
         if "Comment" in str(formset.model):
-            for obj in formset.new_objects + formset.changed_objects:
+            for item in formset.new_objects + formset.changed_objects:
+                # This is because formset.changed_objects is a list of tuples
+                if isinstance(item, tuple):
+                    obj = item[0]
+                else:
+                    obj = item
                 obj.author = request.user
                 obj.save()
 
@@ -513,7 +518,12 @@ class MatchAdmin(admin.ModelAdmin):
         super().save_formset(request, form, formset, change)
 
         if "Comment" in str(formset.model):
-            for obj in formset.new_objects + formset.changed_objects:
+            for item in formset.new_objects + formset.changed_objects:
+                # This is because formset.changed_objects is a list of tuples
+                if isinstance(item, tuple):
+                    obj = item[0]
+                else:
+                    obj = item
                 obj.author = request.user
                 obj.save()
 
