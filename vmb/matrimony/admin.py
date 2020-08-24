@@ -348,7 +348,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                         "family_type",
                         "family_status",
                     ),
-                    ("father_occupation", "mother_occupation"),
+                    ("father_status", "mother_status"),
                     ("brothers", "brothers_married"),
                     ("sisters", "sisters_married"),
                     ("family_location", "family_origin"),
