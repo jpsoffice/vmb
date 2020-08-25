@@ -33,6 +33,23 @@ from .relations import (
     Gotra,
 )
 
+FATHER_STATUS_CHOICES = (
+    ("EMP", "Employed"),
+    ("BUS", "Business"),
+    ("PRO", "Professional"),
+    ("RET", "Retired"),
+    ("NMP", "Not Employed"),
+    ("DEC", "Deceased"),
+)
+MOTHER_STATUS_CHOICES = (
+    ("HMK", "Home Maker"),
+    ("EMP", "Employed"),
+    ("BUS", "Business"),
+    ("PRO", "Professional"),
+    ("RET", "Retired"),
+    ("NMP", "Not Employed"),
+    ("DEC", "Deceased"),
+)
 ARE_PARENTS_DEV = (
     ("Y", "Yes"),
     ("N", "No"),
@@ -218,7 +235,7 @@ class MatrimonyProfile(BaseModel):
     gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Current location details
-    current_place = PlacesField(null=True)
+    current_place = PlacesField(null=True, blank=True)
     current_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
@@ -358,21 +375,11 @@ class MatrimonyProfile(BaseModel):
     family_status = models.CharField(
         max_length=2, choices=FAMILY_STATUS_CHOICES, null=True, blank=True,
     )
-    father_occupation = models.ForeignKey(
-        Occupation,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        verbose_name=_("Father's Occupation"),
-        related_name="father_occupation",
+    father_status = models.CharField(
+        max_length=3, choices=FATHER_STATUS_CHOICES, null=True,
     )
-    mother_occupation = models.ForeignKey(
-        Occupation,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        verbose_name=_("Mother's Occupation"),
-        related_name="mother_occupation",
+    mother_status = models.CharField(
+        max_length=3, choices=MOTHER_STATUS_CHOICES, null=True,
     )
     brothers = models.IntegerField(
         null=True, blank=True, verbose_name="No. of Brothers"
@@ -452,8 +459,8 @@ class MatrimonyProfile(BaseModel):
     def primary_image(self):
         if self.images is not None and self.images != "":
             return format_html(
-                '<img src ="{}" style="width:30px; \
-                height: 30px"/>'.format(
+                '<img src ="{}" style="width:90px; \
+                height: 90px"/>'.format(
                     Image.objects.get(profile=self, primary=True).photo.image.url
                 )
             )
@@ -518,7 +525,9 @@ class MatrimonyProfile(BaseModel):
                     self.current_state,
                     current_country,
                 ) = self.current_place.place.split(", ")[-3:]
-                countries = Country.objects.filter(Q(name=current_country) | Q(code=current_country))
+                countries = Country.objects.filter(
+                    Q(name=current_country) | Q(code=current_country)
+                )
                 self.current_country = countries[0] if countries else None
             else:
                 self.current_city = self.current_state = self.current_country = None
