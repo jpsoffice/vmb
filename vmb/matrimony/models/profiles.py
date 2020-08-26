@@ -841,6 +841,11 @@ class Match(BaseModel):
     class Meta:
         db_table = "matrimony_matches"
 
+        indexes = [
+            models.Index(fields=["male"]),
+            models.Index(fields=["female"]),
+        ]
+
         verbose_name = "Match"
         verbose_name_plural = "Matches"
 
@@ -892,6 +897,9 @@ class EmailMessage(BaseModel):
 
     class Meta:
         db_table = "matrimony_email_messages"
+        indexes = [
+            models.Index(fields=["profile"]),
+        ]
 
 
 class Image(BaseModel):
@@ -917,6 +925,9 @@ class Image(BaseModel):
 
     class Meta:
         db_table = "matrimony_images"
+        indexes = [
+            models.Index(fields=["profile"]),
+        ]
 
 
 class Comment(BaseModel):
@@ -931,6 +942,9 @@ class Comment(BaseModel):
 
     class Meta:
         db_table = "comments"
+        indexes = [
+            models.Index(fields=["content_type", "object_id"]),
+        ]
 
 
 class Mentor(BaseModel):
