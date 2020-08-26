@@ -387,10 +387,10 @@ class MatrimonyProfile(BaseModel):
         max_length=2, choices=FAMILY_STATUS_CHOICES, null=True, blank=True,
     )
     father_status = models.CharField(
-        max_length=3, choices=FATHER_STATUS_CHOICES, null=True,
+        max_length=3, choices=FATHER_STATUS_CHOICES, null=True, blank=True,
     )
     mother_status = models.CharField(
-        max_length=3, choices=MOTHER_STATUS_CHOICES, null=True,
+        max_length=3, choices=MOTHER_STATUS_CHOICES, null=True, blank=True,
     )
     brothers = models.IntegerField(
         null=True, blank=True, verbose_name="No. of Brothers"
