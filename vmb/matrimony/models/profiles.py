@@ -588,23 +588,23 @@ class MatrimonyProfile(BaseModel):
             matches_accepted
         ) = matches_rejected = matches_accepted_by = matches_rejected_by = 0
         self_response_field_name = (
-            "male_response" if self.gender == "M" else "femail_response"
+            "male_response" if self.gender == "M" else "female_response"
         )
         response_field_name = (
             "female_response" if self.gender == "M" else "male_response"
         )
         for m in self.matches:
             matches_suggested += 1
-            self.matches_accepted += (
+            matches_accepted += (
                 1 if getattr(m, self_response_field_name) == "ACP" else 0
             )
-            self.matches_rejected += (
+            matches_rejected += (
                 1 if getattr(m, self_response_field_name) == "REJ" else 0
             )
-            self.matches_accepted_by += (
+            matches_accepted_by += (
                 1 if getattr(m, response_field_name) == "ACP" else 0
             )
-            self.matches_rejected_by += (
+            matches_rejected_by += (
                 1 if getattr(m, response_field_name) == "REJ" else 0
             )
         self.stats.matches_suggested = matches_suggested
