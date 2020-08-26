@@ -692,7 +692,7 @@ class Expectation(BaseModel):
         choices=SPIRITUAL_STATUS_CHOICES, max_length=5, null=True, blank=True
     )
     spiritual_masters = models.ManyToManyField(Guru, blank=True,)
-    min_rounds_chanting = models.IntegerField(
+    min_rounds_chanting = models.PositiveIntegerField(
         null=True, blank=True, verbose_name="Minimum rounds of japa",
     )
 
