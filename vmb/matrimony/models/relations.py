@@ -75,7 +75,7 @@ class Education(BaseModel):
     )
 
     def __str__(self):
-        category_suffix = " ({self.category_text})" if self.category_text else ""
+        category_suffix = f" ({self.category_text})" if self.category_text else ""
         return f"{self.name}{category_suffix}"
 
     class Meta:
@@ -118,7 +118,7 @@ class Occupation(BaseModel):
         unique_together = ["name", "category"]
 
     def __str__(self):
-        category_suffix = " ({self.category_text})" if self.category_text else ""
+        category_suffix = f" ({self.category_text})" if self.category_text else ""
         return f"{self.name}{category_suffix}"
 
     def save(self, *args, **kwargs):
