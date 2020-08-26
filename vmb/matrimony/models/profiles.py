@@ -975,3 +975,6 @@ class MatrimonyProfileStats(BaseModel):
     matches_rejected = models.PositiveIntegerField(default=0, blank=True, null=True)
     matches_accepted_by = models.PositiveIntegerField(default=0, blank=True, null=True)
     matches_rejected_by = models.PositiveIntegerField(default=0, blank=True, null=True)
+
+    class Meta:
+        db_table = "matrimony_profile_stats"
