@@ -275,17 +275,28 @@ class MatrimonyProfile(BaseModel):
 
     # Physical appearance
     height = models.DecimalField(
-        max_digits=5, decimal_places=2, help_text="Height in cms", null=True,
+        max_digits=5,
+        decimal_places=2,
+        help_text="Height in cms",
+        null=True,
+        blank=True,
     )
     complexion = models.CharField(
         max_length=3,
         help_text="Enter your complexion",
         choices=COMPLEXION_CHOICES,
         null=True,
+        blank=True,
     )
-    body_type = models.CharField(max_length=3, choices=BODY_TYPE, null=True,)
+    body_type = models.CharField(
+        max_length=3, choices=BODY_TYPE, null=True, blank=True,
+    )
     weight = models.DecimalField(
-        max_digits=5, decimal_places=2, help_text="Weight in kgs", null=True,
+        max_digits=5,
+        decimal_places=2,
+        help_text="Weight in kgs",
+        null=True,
+        blank=True,
     )
     color_of_eyes = models.CharField(
         max_length=3, choices=COLOR_OF_EYES, null=True, blank=True,
