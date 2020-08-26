@@ -22,6 +22,7 @@ from .models.profiles import MatrimonyProfile
 from .models import (
     Male,
     Female,
+    MatrimonyProfileStats,
     Guru,
     Nationality,
     Language,
@@ -265,6 +266,26 @@ class MentorInline(admin.TabularInline):
     verbose_name_plural = "Mentors"
 
 
+class MatrimonyProfileStatsInline(admin.TabularInline):
+    model = MatrimonyProfileStats
+    extra = 0
+    can_delete = False
+
+    readonly_fields = [
+        "matches_suggested",
+        "matches_accepted",
+        "matches_rejected",
+        "matches_accepted_by",
+        "matches_rejected_by",
+    ]
+
+    verbose_name = "Stats"
+    verbose_name_plural = "Stats"
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
 class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
     fieldsets = [
         (
@@ -489,13 +510,27 @@ class CommentInline(GenericTabularInline):
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MentorInline, ImageInline, ExpectationInline, MatchInline, CommentInline]
+    inlines = [
+        MentorInline,
+        ImageInline,
+        ExpectationInline,
+        MatchInline,
+        CommentInline,
+        MatrimonyProfileStatsInline,
+    ]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MentorInline, ImageInline, ExpectationInline, MatchInline, CommentInline]
+    inlines = [
+        MentorInline,
+        ImageInline,
+        ExpectationInline,
+        MatchInline,
+        CommentInline,
+        MatrimonyProfileStatsInline,
+    ]
 
 
 @admin.register(Match)

@@ -486,6 +486,23 @@ class MatrimonyProfile(BaseModel):
         if self.dob:
             return int((datetime.datetime.now().date() - self.dob).days / 365.25)
 
+    @property
+    def matches(self):
+        return (
+            self.female_matches.all() if self.gender == "M" else self.male_matches.all()
+        )
+
+    @property
+    def matching_profiles(self):
+        matches = []
+        if self.gender == "M":
+            for m in self.female_matches.all():
+                matches.append(m.female)
+        else:
+            for m in self.male_matches.all():
+                matches.append(m.male)
+        return matches
+
     def __str__(self):
         return self.name
 
@@ -532,7 +549,8 @@ class MatrimonyProfile(BaseModel):
             else:
                 self.current_city = self.current_state = self.current_country = None
 
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+        _, created = MatrimonyProfileStats.objects.get_or_create(profile=self)
 
     def send_batch_matches_email(self):
         body = self.get_batch_matches_email_body()
@@ -548,15 +566,8 @@ class MatrimonyProfile(BaseModel):
         email_message.send()
 
     def get_batch_matches_email_body(self):
-        matches = []
-        if self.gender == "M":
-            for m in self.female_matches.all():
-                matches.append(m.female)
-        else:
-            for m in self.male_matches.all():
-                matches.append(m.male)
         return loader.get_template("matrimony/emails/matches.html").render(
-            {"matches": matches}
+            {"matches": self.matching_profiles}
         )
 
     def generate_profile_id(self):
@@ -570,6 +581,38 @@ class MatrimonyProfile(BaseModel):
             .upper()
         )
         return f"{settings.PROFILE_ID_PREFIX}{digest}"
+
+    def update_stats(self):
+        _, created = MatrimonyProfileStats.objects.get_or_create(profile=self)
+        matches_suggested = (
+            matches_accepted
+        ) = matches_rejected = matches_accepted_by = matches_rejected_by = 0
+        self_response_field_name = (
+            "male_response" if self.gender == "M" else "femail_response"
+        )
+        response_field_name = (
+            "female_response" if self.gender == "M" else "male_response"
+        )
+        for m in self.matches:
+            matches_suggested += 1
+            self.matches_accepted += (
+                1 if getattr(m, self_response_field_name) == "ACP" else 0
+            )
+            self.matches_rejected += (
+                1 if getattr(m, self_response_field_name) == "REJ" else 0
+            )
+            self.matches_accepted_by += (
+                1 if getattr(m, response_field_name) == "ACP" else 0
+            )
+            self.matches_rejected_by += (
+                1 if getattr(m, response_field_name) == "REJ" else 0
+            )
+        self.stats.matches_suggested = matches_suggested
+        self.stats.matches_accepted = matches_accepted
+        self.stats.matches_rejected = matches_rejected
+        self.stats.matches_accepted_by = matches_accepted_by
+        self.stats.matches_rejected_by = matches_rejected_by
+        self.stats.save()
 
 
 class Expectation(BaseModel):
@@ -791,14 +834,28 @@ class Match(BaseModel):
     assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     comments = GenericRelation("Comment")
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._original_male_response = self.male_response
+        self._original_female_response = self.female_response
+
     def __str__(self):
         return f"{self.male}/{self.female}"
 
     class Meta:
         db_table = "matrimony_matches"
 
-        verbose_name = "Matche"
+        verbose_name = "Match"
         verbose_name_plural = "Matches"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if (
+            self._original_male_response != self.male_response
+            or self._original_female_response != self.female_response
+        ):
+            self.male.update_stats()
+            self.female.update_stats()
 
 
 EMAIL_MESSAGE_STATUS_CHOICES = (
@@ -897,3 +954,14 @@ class Mentor(BaseModel):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class MatrimonyProfileStats(BaseModel):
+    profile = models.OneToOneField(
+        MatrimonyProfile, unique=True, related_name="stats", on_delete=models.CASCADE
+    )
+    matches_suggested = models.PositiveIntegerField(default=0, blank=True, null=True)
+    matches_accepted = models.PositiveIntegerField(default=0, blank=True, null=True)
+    matches_rejected = models.PositiveIntegerField(default=0, blank=True, null=True)
+    matches_accepted_by = models.PositiveIntegerField(default=0, blank=True, null=True)
+    matches_rejected_by = models.PositiveIntegerField(default=0, blank=True, null=True)
