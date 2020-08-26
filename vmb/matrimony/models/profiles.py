@@ -185,7 +185,7 @@ class MatrimonyProfile(BaseModel):
     phone = models.CharField(max_length=17, verbose_name=_("Phone number"), null=True,)
 
     # Spiritual details
-    rounds_chanting = models.IntegerField(
+    rounds_chanting = models.PositiveIntegerField(
         verbose_name=_("Rounds"),
         help_text="How many rounds are you chanting?",
         default=0,
@@ -392,12 +392,14 @@ class MatrimonyProfile(BaseModel):
     mother_status = models.CharField(
         max_length=3, choices=MOTHER_STATUS_CHOICES, null=True, blank=True,
     )
-    brothers = models.IntegerField(
-        null=True, blank=True, verbose_name="No. of Brothers"
+    brothers = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name="No. of Brothers", default=0
     )
-    sisters = models.IntegerField(null=True, blank=True, verbose_name="No. of Sisters")
-    brothers_married = models.IntegerField(null=True, blank=True,)
-    sisters_married = models.IntegerField(null=True, blank=True,)
+    sisters = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name="No. of Sisters", default=0
+    )
+    brothers_married = models.PositiveIntegerField(null=True, blank=True, default=0)
+    sisters_married = models.PositiveIntegerField(null=True, blank=True, default=0)
     family_location = models.CharField(
         max_length=10, choices=FAMILY_LOCATION_CHOICES, null=True, blank=True,
     )
