@@ -601,12 +601,8 @@ class MatrimonyProfile(BaseModel):
             matches_rejected += (
                 1 if getattr(m, self_response_field_name) == "REJ" else 0
             )
-            matches_accepted_by += (
-                1 if getattr(m, response_field_name) == "ACP" else 0
-            )
-            matches_rejected_by += (
-                1 if getattr(m, response_field_name) == "REJ" else 0
-            )
+            matches_accepted_by += 1 if getattr(m, response_field_name) == "ACP" else 0
+            matches_rejected_by += 1 if getattr(m, response_field_name) == "REJ" else 0
         self.stats.matches_suggested = matches_suggested
         self.stats.matches_accepted = matches_accepted
         self.stats.matches_rejected = matches_rejected

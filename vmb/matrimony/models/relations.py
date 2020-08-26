@@ -70,14 +70,22 @@ class Education(BaseModel):
     category = models.ForeignKey(
         "EducationCategory", on_delete=models.SET_NULL, null=True
     )
+    category_text = models.CharField(
+        default="", max_length=75, blank=True, editable=False
+    )
 
     def __str__(self):
-        return f"{self.name} ({self.category})"
+        category_suffix = " ({self.category_text})" if self.category_text else ""
+        return f"{self.name}{category_suffix}"
 
     class Meta:
         ordering = ["name"]
         db_table = "education"
         verbose_name_plural = "Education"
+
+    def save(self, *args, **kwargs):
+        self.category_text = self.category.name or ""
+        super().save(*args, **kwargs)
 
 
 class EducationCategory(BaseModel):
@@ -100,6 +108,9 @@ class Occupation(BaseModel):
     category = models.ForeignKey(
         "OccupationCategory", on_delete=models.SET_NULL, null=True
     )
+    category_text = models.CharField(
+        default="", max_length=75, blank=True, editable=False
+    )
 
     class Meta:
         ordering = ["name"]
@@ -107,7 +118,12 @@ class Occupation(BaseModel):
         unique_together = ["name", "category"]
 
     def __str__(self):
-        return f"{self.name} ({self.category})"
+        category_suffix = " ({self.category_text})" if self.category_text else ""
+        return f"{self.name}{category_suffix}"
+
+    def save(self, *args, **kwargs):
+        self.category_text = self.category.name or ""
+        super().save(*args, **kwargs)
 
 
 class OccupationCategory(BaseModel):
