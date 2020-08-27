@@ -31,7 +31,6 @@ from .models import (
     OccupationCategory,
     Match,
     Country,
-    Image,
     Caste,
     Subcaste,
     Religion,
@@ -272,7 +271,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             {
                 "fields": [
                     ("profile_id", "name", "spiritual_name"),
-                    ("status", "ethnic_origin", "primary_image"),
+                    ("status", "ethnic_origin"),
                     ("age", "mother_tongue", "marital_status", "children_count"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),
@@ -360,7 +359,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
     list_display = (
         "profile_id",
         "name",
-        "primary_image",
+        # "primary_image",
         "status",
         "age",
         "dob",
@@ -412,7 +411,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
     readonly_fields = [
         "profile_id",
         "age",
-        "primary_image",
+        # "primary_image",
         "annual_income_in_base_currency",
         "current_city",
         "current_state",
@@ -455,14 +454,12 @@ class MatchInline(admin.TabularInline):
     verbose_name_plural = "Matches"
 
 
-class ImageInline(admin.TabularInline):
-    model = Image
+class PhotoInline(admin.TabularInline):
+    model = MatrimonyProfile.images.through
     extra = 1
     can_delete = True
 
     raw_id_fields = ["photo"]
-
-    readonly_fields = ["thumbnail"]
 
 
 class ExpectationInline(admin.StackedInline):
@@ -490,13 +487,13 @@ class CommentInline(GenericTabularInline):
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
-    inlines = [MentorInline, ImageInline, ExpectationInline, MatchInline, CommentInline]
+    inlines = [MentorInline, PhotoInline, ExpectationInline, MatchInline, CommentInline]
 
 
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
-    inlines = [MentorInline, ImageInline, ExpectationInline, MatchInline, CommentInline]
+    inlines = [MentorInline, PhotoInline, ExpectationInline, MatchInline, CommentInline]
 
 
 @admin.register(Match)
@@ -529,7 +526,6 @@ class MatchAdmin(admin.ModelAdmin):
                 obj.save()
 
 
-admin.site.register(Image)
 admin.site.register(Caste)
 admin.site.register(Subcaste)
 admin.site.register(Religion)

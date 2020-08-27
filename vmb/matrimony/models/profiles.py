@@ -178,7 +178,7 @@ class MatrimonyProfile(BaseModel):
         blank=True,
     )
 
-    images = models.ManyToManyField("photologue.Photo", through="Image", blank=True)
+    images = models.ManyToManyField("photologue.Photo", blank=True)
 
     # Contact details
     email = models.EmailField(null=True, verbose_name=_("Email"))
@@ -467,32 +467,6 @@ class MatrimonyProfile(BaseModel):
     @property
     def occupations_text(self):
         return ", ".join([item.name for item in self.occupations.all()])
-
-    @property
-    def primary_image(self):
-        if self.images is not None and self.images != "":
-            return format_html(
-                '<img src ="{}" style="width:90px; \
-                height: 90px"/>'.format(
-                    Image.objects.get(profile=self, primary=True).photo.image.url
-                )
-            )
-
-    @property
-    def primary_image_url(self):
-        try:
-            return Image.objects.get(profile=self, primary=True).photo.image.url
-        except Image.DoesNotExist:
-            return ""
-
-    @property
-    def primary_image_thumbnail_url(self):
-        try:
-            return Image.objects.get(
-                profile=self, primary=True
-            ).photo.get_thumbnail_url()
-        except Image.DoesNotExist:
-            return ""
 
     @property
     def age(self):
@@ -852,31 +826,6 @@ class EmailMessage(BaseModel):
 
     class Meta:
         db_table = "matrimony_email_messages"
-
-
-class Image(BaseModel):
-    profile = models.ForeignKey(MatrimonyProfile, on_delete=models.CASCADE)
-    photo = models.ForeignKey(
-        "photologue.Photo", on_delete=models.CASCADE, related_name="+"
-    )
-
-    primary = models.BooleanField(default=False, blank=True)
-
-    @property
-    def thumbnail(self):
-        from django.utils.html import mark_safe
-
-        if not self.photo:
-            return ""
-        return mark_safe(
-            f"""
-<a href="{self.photo.image.url}">
-    <img src="{self.photo.get_thumbnail_url()}" alt="{self.photo.title}">
-</a>"""
-        )
-
-    class Meta:
-        db_table = "matrimony_images"
 
 
 class Comment(BaseModel):
