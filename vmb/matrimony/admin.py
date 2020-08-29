@@ -431,6 +431,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
     ]
 
     readonly_fields = [
+        "profile_id",
         "age",
         "primary_image",
         "annual_income_in_base_currency",

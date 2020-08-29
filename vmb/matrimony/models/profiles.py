@@ -185,7 +185,7 @@ class MatrimonyProfile(BaseModel):
     phone = models.CharField(max_length=17, verbose_name=_("Phone number"), null=True,)
 
     # Spiritual details
-    rounds_chanting = models.IntegerField(
+    rounds_chanting = models.PositiveIntegerField(
         verbose_name=_("Rounds"),
         help_text="How many rounds are you chanting?",
         default=0,
@@ -275,17 +275,28 @@ class MatrimonyProfile(BaseModel):
 
     # Physical appearance
     height = models.DecimalField(
-        max_digits=5, decimal_places=2, help_text="Height in cms", null=True,
+        max_digits=5,
+        decimal_places=2,
+        help_text="Height in cms",
+        null=True,
+        blank=True,
     )
     complexion = models.CharField(
         max_length=3,
         help_text="Enter your complexion",
         choices=COMPLEXION_CHOICES,
         null=True,
+        blank=True,
     )
-    body_type = models.CharField(max_length=3, choices=BODY_TYPE, null=True,)
+    body_type = models.CharField(
+        max_length=3, choices=BODY_TYPE, null=True, blank=True,
+    )
     weight = models.DecimalField(
-        max_digits=5, decimal_places=2, help_text="Weight in kgs", null=True,
+        max_digits=5,
+        decimal_places=2,
+        help_text="Weight in kgs",
+        null=True,
+        blank=True,
     )
     color_of_eyes = models.CharField(
         max_length=3, choices=COLOR_OF_EYES, null=True, blank=True,
@@ -376,17 +387,19 @@ class MatrimonyProfile(BaseModel):
         max_length=2, choices=FAMILY_STATUS_CHOICES, null=True, blank=True,
     )
     father_status = models.CharField(
-        max_length=3, choices=FATHER_STATUS_CHOICES, null=True,
+        max_length=3, choices=FATHER_STATUS_CHOICES, null=True, blank=True,
     )
     mother_status = models.CharField(
-        max_length=3, choices=MOTHER_STATUS_CHOICES, null=True,
+        max_length=3, choices=MOTHER_STATUS_CHOICES, null=True, blank=True,
     )
-    brothers = models.IntegerField(
-        null=True, blank=True, verbose_name="No. of Brothers"
+    brothers = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name="No. of Brothers", default=0
     )
-    sisters = models.IntegerField(null=True, blank=True, verbose_name="No. of Sisters")
-    brothers_married = models.IntegerField(null=True, blank=True,)
-    sisters_married = models.IntegerField(null=True, blank=True,)
+    sisters = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name="No. of Sisters", default=0
+    )
+    brothers_married = models.PositiveIntegerField(null=True, blank=True, default=0)
+    sisters_married = models.PositiveIntegerField(null=True, blank=True, default=0)
     family_location = models.CharField(
         max_length=10, choices=FAMILY_LOCATION_CHOICES, null=True, blank=True,
     )
@@ -718,7 +731,7 @@ class Expectation(BaseModel):
         choices=SPIRITUAL_STATUS_CHOICES, max_length=5, null=True, blank=True
     )
     spiritual_masters = models.ManyToManyField(Guru, blank=True,)
-    min_rounds_chanting = models.IntegerField(
+    min_rounds_chanting = models.PositiveIntegerField(
         null=True, blank=True, verbose_name="Minimum rounds of japa",
     )
 
