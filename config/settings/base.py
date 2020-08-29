@@ -85,6 +85,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "vmb.users.apps.UsersConfig",
     # Your stuff: custom apps go here
+    "vmb.photologue_custom.apps.PhotologueCustomConfig",
     "vmb.matrimony.apps.MatrimonyConfig",
     # "djmoney.apps.MoneyConfig",
 ]
