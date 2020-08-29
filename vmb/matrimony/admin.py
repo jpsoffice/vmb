@@ -192,17 +192,21 @@ class AgeRangeFilter(admin.SimpleListFilter):
 
         if self.parameter_name + "_from" in params:
             value = params.pop(self.parameter_name + "_from")
-            to_date = (timezone.localdate() - relativedelta(years=int(value))).strftime(
-                "%Y-%m-%d"
-            )
+            to_date = ""
+            if value != "":
+                to_date = (
+                    timezone.localdate() - relativedelta(years=int(value))
+                ).strftime("%Y-%m-%d")
             self.used_parameters[self.parameter_name + "_from"] = value
             self.used_parameters[self.field_name + "_to"] = to_date
 
         if self.parameter_name + "_to" in params:
             value = params.pop(self.parameter_name + "_to")
-            from_date = (
-                timezone.localdate() - relativedelta(years=int(value))
-            ).strftime("%Y-%m-%d")
+            from_date = ""
+            if value != "":
+                from_date = (
+                    timezone.localdate() - relativedelta(years=int(value))
+                ).strftime("%Y-%m-%d")
             self.used_parameters[self.parameter_name + "_to"] = value
             self.used_parameters[self.field_name + "_from"] = from_date
 
