@@ -942,6 +942,17 @@ class Photo(BaseModel):
             models.Index(fields=["profile"]),
         ]
 
+    def save(self, *args, **kwargs):
+        if self.primary:
+            try:
+                temp = Photo.objects.get(primary=True)
+                if self != temp:
+                    temp.primary = False
+                    temp.save()
+            except Photo.DoesNotExist:
+                pass
+        super().save(*args, **kwargs)
+
 
 class Comment(BaseModel):
     message = models.TextField(max_length=2000, default="")
