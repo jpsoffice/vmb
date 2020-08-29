@@ -3,7 +3,7 @@ from .profiles import (
     Female,
     Match,
     EmailMessage,
-    Image,
+    Photo,
     Expectation,
     Comment,
     Mentor,

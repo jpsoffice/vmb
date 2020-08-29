@@ -32,7 +32,7 @@ from .models import (
     OccupationCategory,
     Match,
     Country,
-    Image,
+    Photo,
     Caste,
     Subcaste,
     Religion,
@@ -476,8 +476,8 @@ class MatchInline(admin.TabularInline):
     verbose_name_plural = "Matches"
 
 
-class ImageInline(admin.TabularInline):
-    model = Image
+class PhotoInline(admin.TabularInline):
+    model = Photo
     extra = 1
     can_delete = True
 
@@ -513,7 +513,7 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
     inlines = [
         MentorInline,
-        ImageInline,
+        PhotoInline,
         ExpectationInline,
         MatchInline,
         CommentInline,
@@ -526,7 +526,7 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
     inlines = [
         MentorInline,
-        ImageInline,
+        PhotoInline,
         ExpectationInline,
         MatchInline,
         CommentInline,
@@ -564,7 +564,7 @@ class MatchAdmin(admin.ModelAdmin):
                 obj.save()
 
 
-admin.site.register(Image)
+admin.site.register(Photo)
 admin.site.register(Caste)
 admin.site.register(Subcaste)
 admin.site.register(Religion)

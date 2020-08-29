@@ -178,7 +178,7 @@ class MatrimonyProfile(BaseModel):
         blank=True,
     )
 
-    images = models.ManyToManyField("photologue.Photo", through="Image", blank=True)
+    photos = models.ManyToManyField("photologue.Photo", through="Photo", blank=True)
 
     # Contact details
     email = models.EmailField(null=True, verbose_name=_("Email"))
@@ -470,11 +470,11 @@ class MatrimonyProfile(BaseModel):
 
     @property
     def primary_image(self):
-        if self.images is not None and self.images != "":
+        if self.photos is not None and self.photos != "":
             return format_html(
                 '<img src ="{}" style="width:90px; \
                 height: 90px"/>'.format(
-                    Image.objects.get(profile=self, primary=True).photo.image.url
+                    Photo.objects.get(profile=self, primary=True).photo.image.url
                 )
             )
 
@@ -915,7 +915,7 @@ class EmailMessage(BaseModel):
         ]
 
 
-class Image(BaseModel):
+class Photo(BaseModel):
     profile = models.ForeignKey(MatrimonyProfile, on_delete=models.CASCADE)
     photo = models.ForeignKey(
         "photologue.Photo", on_delete=models.CASCADE, related_name="+"
@@ -937,10 +937,21 @@ class Image(BaseModel):
         )
 
     class Meta:
-        db_table = "matrimony_images"
+        db_table = "matrimony_photos"
         indexes = [
             models.Index(fields=["profile"]),
         ]
+
+    def save(self, *args, **kwargs):
+        if self.primary:
+            try:
+                temp = Photo.objects.get(primary=True)
+                if self != temp:
+                    temp.primary = False
+                    temp.save()
+            except Photo.DoesNotExist:
+                pass
+        super().save(*args, **kwargs)
 
 
 class Comment(BaseModel):
