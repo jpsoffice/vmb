@@ -6,6 +6,7 @@ from .profiles import (
     Expectation,
     Comment,
     Mentor,
+    MatrimonyProfileStats,
 )
 from .relations import (
     Guru,
