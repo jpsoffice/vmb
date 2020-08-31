@@ -7,6 +7,7 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
     RangeNumericForm,
 )
+from tabbed_admin import TabbedModelAdmin
 from django_admin_listfilter_dropdown.filters import (
     DropdownFilter,
     ChoiceDropdownFilter,
@@ -290,8 +291,10 @@ class MatrimonyProfileStatsInline(admin.TabularInline):
         return False
 
 
-class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
-    fieldsets = [
+class BaseMatrimonyProfileAdmin(
+    DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
+):
+    tab_overview = [
         (
             None,
             {
@@ -515,6 +518,22 @@ class CommentInline(GenericTabularInline):
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
+    tab_mentor = (MentorInline,)
+    tab_photo = (PhotoInline,)
+    tab_expectation = (ExpectationInline,)
+    tab_match = (
+        MatchInline,
+        MatrimonyProfileStatsInline,
+    )
+    tab_comment = (CommentInline,)
+    tabs = [
+        ("Overview", BaseMatrimonyProfileAdmin.tab_overview),
+        ("Mentor", tab_mentor),
+        ("Photo", tab_photo),
+        ("Expectation", tab_expectation),
+        ("Match", tab_match),
+        ("Comment", tab_comment),
+    ]
     inlines = [
         MentorInline,
         PhotoInline,
@@ -528,6 +547,22 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
+    tab_mentor = (MentorInline,)
+    tab_photo = (PhotoInline,)
+    tab_expectation = (ExpectationInline,)
+    tab_match = (
+        MatchInline,
+        MatrimonyProfileStatsInline,
+    )
+    tab_comment = (CommentInline,)
+    tabs = [
+        ("Overview", BaseMatrimonyProfileAdmin.tab_overview),
+        ("Mentor", tab_mentor),
+        ("Photo", tab_photo),
+        ("Expectation", tab_expectation),
+        ("Match", tab_match),
+        ("Comment", tab_comment),
+    ]
     inlines = [
         MentorInline,
         PhotoInline,
