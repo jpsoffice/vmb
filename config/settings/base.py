@@ -80,6 +80,7 @@ THIRD_PARTY_APPS = [
     "djangoql",
     "djmoney.contrib.exchange",
     "places",
+    "tabbed_admin",
 ]
 
 LOCAL_APPS = [
@@ -350,3 +351,4 @@ PLACES_MARKER_OPTIONS = '{"draggable": true}'
 ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
 MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.net")
 PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")
+TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=False)
