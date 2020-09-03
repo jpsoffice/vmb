@@ -294,7 +294,7 @@ class MatrimonyProfileStatsInline(admin.TabularInline):
 class BaseMatrimonyProfileAdmin(
     DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
 ):
-    tab_overview = [
+    tab_profile = [
         (
             None,
             {
@@ -309,7 +309,13 @@ class BaseMatrimonyProfileAdmin(
         ),
         ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
         (
-            "BIRTH DETAILS",
+            "SPIRITUAL QUOTIENT",
+            {"fields": [("rounds_chanting", "spiritual_status", "spiritual_master")]},
+        ),
+    ]
+    tab_birth_details = [
+        (
+            None,
             {
                 "fields": [
                     ("dob", "tob", "gotra"),
@@ -318,13 +324,11 @@ class BaseMatrimonyProfileAdmin(
                     ("birth_country",),
                 ]
             },
-        ),
+        )
+    ]
+    tab_current_location = [
         (
-            "SPIRITUAL QUOTIENT",
-            {"fields": [("rounds_chanting", "spiritual_status", "spiritual_master")]},
-        ),
-        (
-            "CURRENT LOCATION",
+            None,
             {
                 "fields": [
                     "current_place",
@@ -333,7 +337,9 @@ class BaseMatrimonyProfileAdmin(
                     "nationality",
                 ]
             },
-        ),
+        )
+    ]
+    tab_personal_details = [
         (
             "PHYSICAL APPEARANCE",
             {
@@ -353,8 +359,11 @@ class BaseMatrimonyProfileAdmin(
                 ]
             },
         ),
+        ("MEDICAL DETAILS", {"fields": ["want_children", "medical_history"]}),
+    ]
+    tab_professional_details = [
         (
-            "PROFESSION",
+            None,
             {
                 "fields": [
                     ("annual_income", "annual_income_in_base_currency"),
@@ -365,9 +374,11 @@ class BaseMatrimonyProfileAdmin(
                     "occupation_details",
                 ]
             },
-        ),
+        )
+    ]
+    tab_family_details = [
         (
-            "FAMILY DETAILS",
+            None,
             {
                 "fields": [
                     (
@@ -382,8 +393,7 @@ class BaseMatrimonyProfileAdmin(
                     ("family_location", "family_origin"),
                 ]
             },
-        ),
-        ("MEDICAL DETAILS", {"fields": ["want_children", "medical_history"]}),
+        )
     ]
     list_display = (
         "profile_id",
@@ -527,7 +537,12 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
     )
     tab_comment = (CommentInline,)
     tabs = [
-        ("Overview", BaseMatrimonyProfileAdmin.tab_overview),
+        ("Profile", BaseMatrimonyProfileAdmin.tab_profile),
+        ("Birth Details", BaseMatrimonyProfileAdmin.tab_birth_details),
+        ("Current Location", BaseMatrimonyProfileAdmin.tab_current_location),
+        ("Personal Details", BaseMatrimonyProfileAdmin.tab_personal_details),
+        ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
+        ("Family Details", BaseMatrimonyProfileAdmin.tab_family_details),
         ("Mentor", tab_mentor),
         ("Photo", tab_photo),
         ("Expectation", tab_expectation),
@@ -556,7 +571,12 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
     )
     tab_comment = (CommentInline,)
     tabs = [
-        ("Overview", BaseMatrimonyProfileAdmin.tab_overview),
+        ("Profile", BaseMatrimonyProfileAdmin.tab_profile),
+        ("Birth Details", BaseMatrimonyProfileAdmin.tab_birth_details),
+        ("Current Location", BaseMatrimonyProfileAdmin.tab_current_location),
+        ("Personal Details", BaseMatrimonyProfileAdmin.tab_personal_details),
+        ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
+        ("Family Details", BaseMatrimonyProfileAdmin.tab_family_details),
         ("Mentor", tab_mentor),
         ("Photo", tab_photo),
         ("Expectation", tab_expectation),
