@@ -481,17 +481,17 @@ class MatrimonyProfile(BaseModel):
     @property
     def primary_image_url(self):
         try:
-            return Image.objects.get(profile=self, primary=True).photo.image.url
-        except Image.DoesNotExist:
+            return Photo.objects.get(profile=self, primary=True).photo.image.url
+        except Photo.DoesNotExist:
             return ""
 
     @property
     def primary_image_thumbnail_url(self):
         try:
-            return Image.objects.get(
+            return Photo.objects.get(
                 profile=self, primary=True
             ).photo.get_thumbnail_url()
-        except Image.DoesNotExist:
+        except Photo.DoesNotExist:
             return ""
 
     @property
