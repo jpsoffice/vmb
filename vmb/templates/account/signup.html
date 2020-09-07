@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load crispy_forms_tags %}
+{% load crispy_forms_field %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
@@ -19,5 +20,99 @@
   <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
 </form>
 
+{% endblock %}
+
+{% block content %}
+<div class="col-lg-5">
+    <div class="card">
+        <!-- Logo-->
+        <div class="card-header pt-4 pb-4 text-center bg-primary">
+            <a href="index.html">
+                <span><img src="assets/images/logo.png" alt="" height="18"></span>
+            </a>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="text-center w-75 m-auto">
+                <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Free Sign Up</h4>
+                <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute </p>
+            </div>
+
+            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="is-invalid" style="display:none"></div>
+                    {% for error in form.non_field_errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+                <div class="form-group">
+                    <label for="{{form.email.id_for_label}}">Email address</label>
+                    {% crispy_field form.email %}
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label}}password">Password</label>
+                    <div class="input-group input-group-merge">
+                        {% crispy_field form.password1 %}
+                        <div class="input-group-append" data-password="false">
+                            <div class="input-group-text">
+                                <span class="password-eye"></span>
+                            </div>
+                        </div>
+                        {% if form.password1.errors %}
+                            {% for error in form.password1.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label}}password">Password (again)</label>
+                    <div class="input-group input-group-merge">
+                        {% crispy_field form.password2 %}
+                        <div class="input-group-append" data-password="false">
+                            <div class="input-group-text">
+                                <span class="password-eye"></span>
+                            </div>
+                        </div>
+                        {% if form.password2.errors %}
+                            {% for error in form.password2.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="checkbox-signup" required>
+                        <label class="custom-control-label" for="checkbox-signup">I accept <a href="#" class="text-muted">Terms and Conditions</a></label>
+                    </div>
+                </div>
+
+                <div class="form-group mb-0 text-center">
+                    <button class="btn btn-primary" type="submit"> Sign Up </button>
+                </div>
+
+            </form>
+        </div> <!-- end card-body -->
+    </div>
+    <!-- end card -->
+
+    <div class="row mt-3">
+        <div class="col-12 text-center">
+            <p class="text-muted">Already have account? <a href="{{ login_url }}" class="text-muted ml-1"><b>Log In</b></a></p>
+        </div> <!-- end col-->
+    </div>
+    <!-- end row -->
+
+</div> <!-- end col -->
 {% endblock %}
 
