@@ -1,0 +1,10 @@
+<h1>Thank you for your response</h1>
+{% if 'M' in gender %}
+<h2>you have {{match.get_male_response_display}} your match with {{match.female.profile_id}}</h2>
+<a href="{% url 'response' match.male.id %}">Edit Response</a>
+
+{% elif 'F' in gender %}
+<h2>you have {{match.get_female_response_display}} your match with {{match.male.profile_id}}}</h2>
+<a href="{% url 'response' match.female.id %}">Edit Response</a>
+{% endif %}
+

@@ -4,6 +4,7 @@ from hashlib import md5
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.template import loader, Context
@@ -481,17 +482,17 @@ class MatrimonyProfile(BaseModel):
     @property
     def primary_image_url(self):
         try:
-            return Image.objects.get(profile=self, primary=True).photo.image.url
-        except Image.DoesNotExist:
+            return Photo.objects.get(profile=self, primary=True).photo.image.url
+        except Photo.DoesNotExist:
             return ""
 
     @property
     def primary_image_thumbnail_url(self):
         try:
-            return Image.objects.get(
+            return Photo.objects.get(
                 profile=self, primary=True
             ).photo.get_thumbnail_url()
-        except Image.DoesNotExist:
+        except Photo.DoesNotExist:
             return ""
 
     @property
@@ -580,7 +581,7 @@ class MatrimonyProfile(BaseModel):
 
     def get_batch_matches_email_body(self):
         return loader.get_template("matrimony/emails/matches.html").render(
-            {"matches": self.matching_profiles}
+            {"profile": self}
         )
 
     def generate_profile_id(self):
