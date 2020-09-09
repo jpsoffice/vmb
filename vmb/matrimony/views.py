@@ -4,24 +4,41 @@ from vmb.matrimony.models import Match
 
 # Create your views here.
 def response(request, id):
-    mp = get_object_or_404(MatrimonyProfile, id=id)
-    context = {
-        "profile": mp,
-    }
-    return render(request, "matrimony/emails/response.html", context)
-
-
-def accept_or_reject(request, id):
-    mp = get_object_or_404(MatrimonyProfile, email=request.user.email)
-    if mp.gender == "M":
-        match = get_object_or_404(Match, male=mp.id, female=id)
-        match.male_response = request.POST["response"]
+    profile_user = get_object_or_404(MatrimonyProfile, email=request.user.email)
+    profile = get_object_or_404(MatrimonyProfile, id=id)
+    gender = profile_user.gender
+    if gender == "M":
+        match = get_object_or_404(Match, male=profile_user, female=profile)
+        print(match.male, match.female)
+        match_with_profile = match.female
+        print(type(match_with_profile))
     else:
-        match = get_object_or_404(Match, male=id, female=mp.id)
+        match = get_object_or_404(Match, male=profile, female=profile_user)
+        match_with_profile = match.male
+    print(match)
+    context = {
+        "match_id": match.id,
+        "m": match_with_profile,
+    }
+    print(context)
+    return render(request, "matrimony/match/response.html", context)
+
+
+def match(request, id):
+    mp = get_object_or_404(MatrimonyProfile, email=request.user.email)
+    match = get_object_or_404(Match, id=id)
+    print(match)
+    if mp.gender == "M":
+        match.male_response = request.POST["response"]
+        response = match.get_male_response_display()
+        profile = match.female
+    else:
         match.female_response = request.POST["response"]
+        response = match.get_female_response_display()
+        profile = match.male
     match.save()
     context = {
-        "match": match,
-        "gender": mp.gender,
+        "match_with_profile": profile,
+        "response": response,
     }
-    return render(request, "matrimony/emails/accept_or_reject.html", context)
+    return render(request, "matrimony/match/match.html", context)

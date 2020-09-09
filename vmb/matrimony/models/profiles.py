@@ -581,7 +581,7 @@ class MatrimonyProfile(BaseModel):
 
     def get_batch_matches_email_body(self):
         return loader.get_template("matrimony/emails/matches.html").render(
-            {"profile": self}
+            {"matches": self.matching_profiles}
         )
 
     def generate_profile_id(self):
