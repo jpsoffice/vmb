@@ -1,10 +1,26 @@
-{% extends "base.html" %}
-{% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
+{% extends "base_minimal.html" %}
+{% block title %}{{ block.super }} - {% block head_title %}{% endblock head_title %}{% endblock title %}
 
-{% block content %}
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    {% block inner %}{% endblock %}
-  </div>
-</div>
-{% endblock %}
+{% block body_class %}loading authentication-bg{% endblock %}
+{% block body_layout_config %}{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}{% endblock %}
+
+{% block body_content %}
+    <div class="account-pages mt-5 mb-5">
+        <div class="container">
+        {% block container %}
+            <div class="row justify-content-center">
+                {% block content %}{% endblock %}
+            </div>
+            <!-- end row -->
+        {% endblock %}
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
+    <footer class="footer footer-alt">
+    {% block footer %}
+    &copy; vaisnavamarriage.com
+    {% endblock %}
+    </footer>
+    <!-- end footer -->
+{% endblock body_content %}
