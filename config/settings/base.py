@@ -299,6 +299,10 @@ ACCOUNT_USERNAME_REQUIRED = False
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ADAPTER = "vmb.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
+ACCOUNT_FORMS = {
+    "signup": "vmb.matrimony.forms.SignupForm",
+}
+# https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "vmb.users.adapters.SocialAccountAdapter"
 
 # django-modeladmin-reorder
