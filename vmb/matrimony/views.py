@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+
 # from django.views.generic import ListView
 from vmb.matrimony.models.profiles import MatrimonyProfile
 from vmb.matrimony.models import Match
@@ -10,7 +11,7 @@ def match_response(request, id):
     profile = get_object_or_404(MatrimonyProfile, id=id)
 
     if profile_user.gender == "M":
-        match = get_object_or_404(Match, male=profile_user, female=profile)        
+        match = get_object_or_404(Match, male=profile_user, female=profile)
         if request.POST:
             match.male_response = request.POST["response"]
             match.save()
