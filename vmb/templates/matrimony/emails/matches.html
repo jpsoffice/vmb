@@ -142,7 +142,7 @@
                 <td>
                   <p>
                     {% block response %}
-                      <form action="{% url 'response' m.id %}" method="get">
+                      <form action="{% url 'match_response' m.id %}" method="get">
                           <input type = "submit" value="Respond">
                       </form>
                     {% endblock %}

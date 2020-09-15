@@ -1,4 +1,3 @@
-{% extends "matrimony/emails/base.html" %}
 
 {% block content %}
   <table border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -141,10 +140,18 @@
                 <td>
                   <p>
                     {% block response %}
-                    <form action="{% url 'match' match_id %}" method="post">
+                    <form action="#" method="post">
                         {% csrf_token %}
-                        <button type = "submit" name="response" value="ACP">Accept</button>&emsp;&emsp;
-                        <button type = "submit" name="response" value="REJ">Reject</button>
+                        {% if not response %}
+                          <button type = "submit" name="response" value="ACP">Accept</button>&emsp;&emsp;
+                          <button type = "submit" name="response" value="REJ">Reject</button>
+                        {% elif "ACP" in response %}
+                          <button type = "submit" name="response" value="ACP" disabled>Accept</button>&emsp;&emsp;
+                          <button type = "submit" name="response" value="REJ">Reject</button>
+                        {% elif "REJ" in response %}
+                          <button type = "submit" name="response" value="ACP" >Accept</button>&emsp;&emsp;
+                          <button type = "submit" name="response" value="REJ" disabled>Reject</button>
+                        {% endif %}
                     </form>
                     {% endblock %}
                   </p>
