@@ -182,8 +182,8 @@ class MatrimonyProfile(BaseModel):
     photos = models.ManyToManyField("photologue.Photo", through="Photo", blank=True)
 
     # Contact details
-    email = models.EmailField(null=True, verbose_name=_("Email"))
-    phone = models.CharField(max_length=17, verbose_name=_("Phone number"), null=True,)
+    email = models.EmailField(null=True, unique=True, verbose_name=_("Email"))
+    phone = models.CharField(max_length=17, unique=True, verbose_name=_("Phone number"))
 
     # Spiritual details
     rounds_chanting = models.PositiveIntegerField(
@@ -255,7 +255,9 @@ class MatrimonyProfile(BaseModel):
         verbose_name=_("Country"),
         blank=True,
     )
-    nationality = models.ForeignKey(Nationality, on_delete=models.SET_NULL, null=True,)
+    nationality = models.ForeignKey(
+        Nationality, on_delete=models.SET_NULL, blank=True, null=True,
+    )
 
     # Language details
     mother_tongue = models.ForeignKey(
@@ -433,8 +435,8 @@ class MatrimonyProfile(BaseModel):
         "self", through="Match", blank=True, symmetrical=False
     )
 
-    user = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
+    user = models.OneToOneField(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="profile"
     )
 
     # Staff users
@@ -530,6 +532,8 @@ class MatrimonyProfile(BaseModel):
         self._original_current_place = self.current_place
 
     def save(self, *args, **kwargs):
+        if self.id is None:
+            self.profile_id = self.generate_profile_id()
         if self.annual_income and (
             self.id is None or self._original_annual_income != self.annual_income
         ):
@@ -587,7 +591,7 @@ class MatrimonyProfile(BaseModel):
     def generate_profile_id(self):
         digest = (
             md5(
-                f"{self.name}-{self.gender}-{self.phone}-{self.email}-{self.dob}-{self.tob}-{self.birth_city}-{self.birth_state}-{self.birth_country}".encode(
+                f"{self.name}-{self.gender}-{self.phone}-{self.email}-{self.dob}-{self.phone}".encode(
                     "utf-8"
                 )
             )
@@ -777,7 +781,6 @@ class Male(MatrimonyProfile):
     def save(self, *args, **kwargs):
         if self.id is None:
             self.gender = "M"
-            self.profile_id = self.generate_profile_id()
         super().save(*args, **kwargs)
 
 
@@ -795,7 +798,6 @@ class Female(MatrimonyProfile):
     def save(self, *args, **kwargs):
         if self.id is None:
             self.gender = "F"
-            self.profile_id = self.generate_profile_id()
         super().save(*args, **kwargs)
 
 
