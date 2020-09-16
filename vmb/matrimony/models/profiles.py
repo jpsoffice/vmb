@@ -152,6 +152,15 @@ CHILDREN_COUNT = (
     (2, "2"),
     (3, "3"),
 )
+PROFILE_MANAGED_BY = (
+    ("SLF", "Self"),
+    ("PRN", "Parent"),
+    ("SIB", "Sibling"),
+    ("REL", "Relative"),
+    ("FRN", "Friend"),
+    ("CON", "Counsellor"),
+    ("OTH", "Other"),
+)
 
 
 class MatrimonyProfile(BaseModel):
@@ -163,6 +172,9 @@ class MatrimonyProfile(BaseModel):
         max_length=200, default="", blank=True, verbose_name=_("Spiritual name")
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
+    profile_managed_by = models.CharField(
+        max_length=3, choices=PROFILE_MANAGED_BY, blank=True, null=True
+    )
     status = models.CharField(
         max_length=2, choices=PROFILE_STATUS_CHOICES, blank=True, default="00"
     )
@@ -181,6 +193,7 @@ class MatrimonyProfile(BaseModel):
     photos = models.ManyToManyField("photologue.Photo", through="Photo", blank=True)
 
     # Contact details
+    contact_person_name = models.CharField(max_length=50, null=True, blank=True)
     email = models.EmailField(null=True, unique=True, verbose_name=_("Email"))
     phone = models.CharField(max_length=17, unique=True, verbose_name=_("Phone number"))
 
@@ -233,6 +246,7 @@ class MatrimonyProfile(BaseModel):
     )
     birth_place = PlacesField(null=True, blank=True)
     gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
+    gotra_text = models.CharField(max_length=25, null=True, blank=True)
 
     # Current location details
     current_place = PlacesField(null=True, blank=True)
@@ -367,9 +381,11 @@ class MatrimonyProfile(BaseModel):
         Religion, on_delete=models.SET_NULL, null=True, blank=True
     )
     caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True, blank=True)
+    caste_text = models.CharField(max_length=25, null=True, blank=True)
     subcaste = models.ForeignKey(
         Subcaste, on_delete=models.SET_NULL, null=True, blank=True
     )
+    subcaste_text = models.CharField(max_length=25, null=True, blank=True)
 
     # Family details
     are_parents_devotees = models.CharField(
@@ -659,7 +675,9 @@ class Expectation(BaseModel):
     religions = models.ManyToManyField(Religion, blank=True,)
     mother_tongues = models.ManyToManyField(Language, blank=True)
     castes = models.ManyToManyField(Caste, blank=True)
+    castes_text = models.CharField(max_length=200, blank=True, null=True)
     subcastes = models.ManyToManyField(Subcaste, blank=True)
+    subcastes_text = models.CharField(max_length=200, blank=True, null=True)
 
     # Location preferences
     countries_living_in = models.ManyToManyField(Country, blank=True)

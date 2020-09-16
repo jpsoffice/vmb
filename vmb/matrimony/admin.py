@@ -297,19 +297,22 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             {
                 "fields": [
                     ("profile_id", "name", "spiritual_name"),
-                    ("status", "ethnic_origin", "primary_image"),
+                    ("profile_managed_by", "status", "ethnic_origin", "primary_image"),
                     ("age", "mother_tongue", "marital_status", "children_count"),
-                    ("religion", "caste", "subcaste"),
+                    ("religion", "caste_text", "subcaste_text"),
                     ("languages_known", "languages_read_write"),
                 ]
             },
         ),
-        ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
+        (
+            "CONTACT INFORMATION",
+            {"fields": [("contact_person_name", "phone", "email")]},
+        ),
         (
             "BIRTH DETAILS",
             {
                 "fields": [
-                    ("dob", "tob", "gotra"),
+                    ("dob", "tob", "gotra_text"),
                     "birth_place",
                     ("birth_state", "birth_city"),
                     ("birth_country",),
@@ -498,6 +501,7 @@ class ExpectationInline(admin.StackedInline):
         "annual_income_from_in_base_currency",
         "annual_income_to_in_base_currency",
     )
+    exclude = ("castes", "subcastes")
 
     def get_extra(self, request, obj=None, **kwargs):
         extra = 1
