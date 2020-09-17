@@ -1,114 +1,153 @@
-{% load static i18n %}<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}vmb{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% extends "base_minimal.html" %}
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
+{% load static %}
 
-    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+{% block body_layout_config %}{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false, "darkMode":false}{% endblock %}
 
-    {% block css %}
-    
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+{% block body_content %}
+<!-- Begin page -->
+<div class="wrapper">
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left-side-menu">
 
-    <!-- Your stuff: Third-party CSS libraries go here -->
-    
-    <!-- This file stores project-specific CSS -->
-    
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    
-    
-    {% endblock %}
+        <!-- LOGO -->
+        <a href="/" class="logo text-center logo-light">
+            <h3>VMB<h3>
+            {% comment %}
+            <span class="logo-lg">
+                <img src="{% static 'images/logo.png' %}" alt="" height="16">
+            </span>
+            <span class="logo-sm">
+                <img src="{% static 'images/logo_sm.png' %}" alt="" height="16">
+            </span>
+            {% endcomment %}
+        </a>
 
-  </head>
+        <!-- LOGO -->
+        <a href="/" class="logo text-center logo-dark">
+            <span class="logo-lg">
+                <img src="{% static 'images/logo-dark.png' %}" alt="" height="16">
+            </span>
+            <span class="logo-sm">
+                <img src="{% static 'images/logo_sm_dark.png' %}" alt="" height="16">
+            </span>
+        </a>
 
-  <body>
+        <div class="h-100" id="left-side-menu-container" data-simplebar>
 
-    <div class="mb-1">
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'home' %}">vmb</a>
+            <!--- Sidemenu -->
+            <ul class="metismenu side-nav">
+                <li class="side-nav-item">
+                    <a href="{% url 'matrimony:profile-edit' 'basic' %}" class="side-nav-link">
+                        <i class="uil-user"></i>
+                        <span> Profile </span>
+                    </a>
+                </li>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About</a>
-            </li>
-            {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
-              </li>
-            {% else %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-              </li>
-            {% endif %}
-          </ul>
+                {% comment %}
+                <li class="side-nav-item">
+                    <a href="#" class="side-nav-link">
+                        <i class="uil-chart-pie-alt"></i>
+                        <span> Matches </span>
+                    </a>
+                </li>
+                {% endcomment %}
+            </ul>
+            <!-- End Sidebar -->
+
+            <div class="clearfix"></div>
+
         </div>
-      </nav>
+        <!-- Sidebar -left -->
+
+    </div>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+            <!-- Start Content-->
+
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
+                <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                            aria-expanded="false">
+                            <span>
+                                <span class="account-user-name">{{ request.user.username }}</span>
+                                <span class="account-position"></span>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="mdi mdi-logout mr-1"></i>
+                                <span>Logout</span>
+                            </a>
+
+                        </div>
+                    </li>
+
+                </ul>
+                <button class="button-menu-mobile open-left disable-btn">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+            </div>
+            <!-- end Topbar -->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    {% block breadcrumb %}{% endblock %}
+                                </ol>
+                            </div>
+                            <h4 class="page-title">{% block content_title %}{% endblock %}</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+                {% block content %}{% endblock content %}
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        <footer class="footer">
+            {% block footer %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        2018 - 2020 © VaisnavaMarriage - vaisnavamarriage.com
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-md-right footer-links d-none d-md-block">
+                            <a href="{% url 'about' %}">About</a>
+                            <a href="#">Support</a>
+                            <a href="#">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock footer %}
+        </footer>
+        <!-- end Footer -->
 
     </div>
 
-    <div class="container">
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
 
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-          {% endfor %}
-      {% endif %}
-
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
-
-    </div> <!-- /container -->
-
-    {% block modal %}{% endblock modal %}
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    {% block javascript %}
-      
-      <!-- Bootstrap JS and its dependencies-->
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-      <!-- Your stuff: Third-party javascript libraries go here -->
-      
-
-      <!-- place project specific Javascript in this file -->
-      
-      <script src="{% static 'js/project.js' %}"></script>
-      
-
-    {% endblock javascript %}
-  </body>
-</html>
- 
+</div>
+<!-- END wrapper -->
+{% endblock body_content %}

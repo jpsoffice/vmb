@@ -435,7 +435,11 @@ class MatrimonyProfile(BaseModel):
     )
 
     user = models.OneToOneField(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="profile"
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="matrimony_profile",
     )
 
     # Staff users
