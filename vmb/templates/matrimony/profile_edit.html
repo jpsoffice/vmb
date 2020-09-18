@@ -14,21 +14,13 @@
         <div class="card">
             <div class="card-body">
                 <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                    {% for section in sections %}
                     <li class="nav-item">
-                        <a href="{% url 'matrimony:profile-edit' 'basic' %}" aria-expanded="false" class="nav-link rounded-0{% ifequal section 'basic' %} active{% endifequal %}">
-                            <span class="d-md-block">Basic details</span>
+                        <a href="{{ section.path }}" aria-expanded="false" class="nav-link rounded-0{% if section.active %} active{% endif %}">
+                            <span class="d-md-block">{{ section.label }}</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{% url 'matrimony:profile-edit' 'profession' %}" aria-expanded="true" class="nav-link rounded-0{% ifequal section 'profession' %} active{% endifequal %}">
-                            <span class="d-md-block">Profession</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'matrimony:profile-edit' 'religion-and-family' %}" aria-expanded="false" class="nav-link rounded-0{% ifequal section 'religion-and-family' %} active{% endifequal %}">
-                            <span class="d-md-block">Religion & Family</span>
-                        </a>
-                    </li>
+                    {% endfor %}
                 </ul>
                 {% crispy form %}
 

@@ -87,6 +87,7 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
         exclude = ["id"]
 
     def __init__(self, *args, **kwargs):
+        self.wizard = kwargs.pop("wizard", False)
         super().__init__(*args, **kwargs)
         for field in self.Meta.readonly:
             self.fields[field].widget.attrs["readonly"] = True
@@ -218,7 +219,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             ),
             Field("want_children", csss_class="select2", data_toggle="select2"),
             "medical_history",
-            Submit("submit", "Save"),
+            Submit("submit", "Next" if self.wizard else "Save"),
         )
 
 
@@ -358,7 +359,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                 ),
                 "family_details",
             ),
-            Submit("submit", "Save"),
+            Submit("submit", "Submit" if self.wizard else "Save"),
         )
 
 
@@ -405,5 +406,5 @@ class MatrimonyProfileProfessionalInfoForm(BaseMatrimonyProfileForm):
             ),
             Row(Column("institution", css_class="form-group col-md-6 md-3"),),
             "education_details",
-            Submit("submit", "Save"),
+            Submit("submit", "Next" if self.wizard else "Save"),
         )
