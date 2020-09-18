@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content_title %}Profile{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb active">Profile</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                    <li class="nav-item">
+                        <a href="{% url 'matrimony:profile-edit' 'basic' %}" aria-expanded="false" class="nav-link rounded-0{% ifequal section 'basic' %} active{% endifequal %}">
+                            <span class="d-md-block">Basic details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'matrimony:profile-edit' 'profession' %}" aria-expanded="true" class="nav-link rounded-0{% ifequal section 'profession' %} active{% endifequal %}">
+                            <span class="d-md-block">Profession</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'matrimony:profile-edit' 'religion-and-family' %}" aria-expanded="false" class="nav-link rounded-0{% ifequal section 'religion-and-family' %} active{% endifequal %}">
+                            <span class="d-md-block">Religion & Family</span>
+                        </a>
+                    </li>
+                </ul>
+                {% crispy form %}
+
+            </div>
+        </div>
+    </div>
+</div> <!-- end row-->
+{% endblock %}

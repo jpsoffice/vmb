@@ -14,11 +14,11 @@
         <!-- App css -->
         <link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css" />
         <link href="{% static 'css/app.min.css' %}" rel="stylesheet" type="text/css" id="light-style" />
-        <link href="{% static 'css/app-dark.min.css' %}" rel="stylesheet" type="text/css" id="dark-style" />
+        <link href="{% static 'css/app-dark.min.css' %}" rel="stylesheet" type="text/css" id="dark-style" disabled="disabled" />
         {% endblock css %}
 
     </head>
-    <body class="{% block body_class %}{% endblock %}" data-layout-config='{% block body_layout_config %}{% endblock %}'>
+    <body class="{% block body_class %}{% endblock %}" {% block body_attrs %}{% endblock %}'>
         {% block body_content %}{% endblock %}
 
         {% block javascript %}

@@ -1,4 +1,5 @@
 from .profiles import (
+    MatrimonyProfile,
     Male,
     Female,
     Match,
