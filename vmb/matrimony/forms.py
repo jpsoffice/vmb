@@ -285,7 +285,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                     Column("dob", css_class="form-group col-md-6 md-3"),
                     Column(
                         Field(
-                            "tob", data_toggle="timepicker", data_show_meridian="false"
+                            "tob", data_toggle="timepicker", data_show_meridian="false", data_default_time="false"
                         ),
                         css_class="form-group col-md-6 md-3",
                     ),
