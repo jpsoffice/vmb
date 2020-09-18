@@ -62,6 +62,11 @@ class SignupForm(AllAuthSignupForm):
 
     def save(self, *args, **kwargs):
         user = super().save(*args, **kwargs)
+        user.phone = self.cleaned_data["phone"]
+        user.name = self.cleaned_data["name"]
+        user.is_matrimony_candidate = True
+        user.is_matrimony_registration_complete = False
+        user.save()
         profile = MatrimonyProfile(
             user=user,
             email=user.email,
