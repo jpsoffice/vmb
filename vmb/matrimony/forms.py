@@ -285,7 +285,10 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                     Column("dob", css_class="form-group col-md-6 md-3"),
                     Column(
                         Field(
-                            "tob", data_toggle="timepicker", data_show_meridian="false", data_default_time="false"
+                            "tob",
+                            data_toggle="timepicker",
+                            data_show_meridian="false",
+                            data_default_time="false",
                         ),
                         css_class="form-group col-md-6 md-3",
                     ),
@@ -408,3 +411,12 @@ class MatrimonyProfileProfessionalInfoForm(BaseMatrimonyProfileForm):
             "education_details",
             Submit("submit", "Next" if self.wizard else "Save"),
         )
+
+
+class MatrimonyProfilePhotosForm(forms.Form):
+    file = forms.ImageField()
+
+    def __init__(self, *args, **kwargs):
+        self.instance = kwargs.pop("instance")
+        self.wizard = kwargs.pop("wizard")
+        super().__init__(*args, **kwargs)

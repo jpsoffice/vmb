@@ -1,13 +1,19 @@
+import os
+import uuid
+
 from django.contrib.auth.decorators import login_required
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 
-from vmb.matrimony.models import MatrimonyProfile
+from photologue.models import Photo as PhotologuePhoto
+
+from vmb.matrimony.models import MatrimonyProfile, Photo
 from vmb.matrimony.forms import (
     MatrimonyProfileBasicDetailsForm,
     MatrimonyProfileProfessionalInfoForm,
     MatrimonyProfileReligionAndFamilyForm,
+    MatrimonyProfilePhotosForm,
 )
 
 
@@ -39,6 +45,12 @@ def profile_edit(request, section_id):
             "form_class": MatrimonyProfileReligionAndFamilyForm,
             "path": reverse("matrimony:profile-edit", args=["religion-and-family"]),
         },
+        {
+            "id": "photos",
+            "label": "Photos",
+            "form_class": MatrimonyProfilePhotosForm,
+            "path": reverse("matrimony:profile-edit", args=["photos"]),
+        },
     ]
     sections_count = len(sections)
     section_id_index_map = {s["id"]: n for n, s in enumerate(sections)}
@@ -61,6 +73,7 @@ def profile_edit(request, section_id):
     form = section["form_class"](instance=matrimony_profile, wizard=wizard)
 
     if request.method == "POST":
+        print(request.FILES)
         form = section["form_class"](
             instance=matrimony_profile, data=request.POST, wizard=wizard
         )
@@ -80,5 +93,31 @@ def profile_edit(request, section_id):
             s["path"] = "#"
 
     return render(
-        request, "matrimony/profile_edit.html", {"form": form, "sections": sections}
+        request,
+        "matrimony/profile_edit.html",
+        {"form": form, "section_id": section_id, "sections": sections},
     )
+
+
+@login_required
+def profile_photos_ajax(request):
+    if request.POST:
+        title = uuid.uuid5(uuid.uuid1(), str(os.getpid())).hex[:32]
+        photologue_photo = PhotologuePhoto(
+            image=request.FILES["file"], title=title, slug=title, is_public=True
+        )
+        photologue_photo.save()
+        photo = Photo(photo=photologue_photo, profile=request.user.matrimony_profile)
+        photo.save()
+        return JsonResponse(
+            {
+                "error": False,
+                "data": {
+                    "image_url": photo.photo.get_display_url(),
+                    "thumbnail_url": photo.photo.get_thumbnail_url(),
+                    "id": photo.id,
+                    "title": photo.photo.title,
+                    "slug": photo.photo.slug,
+                },
+            }
+        )
