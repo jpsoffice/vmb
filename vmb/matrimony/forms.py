@@ -47,6 +47,7 @@ class SignupForm(AllAuthSignupForm):
     marital_status = forms.ChoiceField(choices=MARITAL_STATUS)
     phone = forms.CharField(min_length=10, max_length=17)
     dob = forms.DateField(
+        label=_("Date of birth"),
         widget=forms.DateInput(
             attrs={"class": "form-control", "data-provide": "datepicker"}
         )
@@ -103,6 +104,7 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
 
 class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
     dob = forms.DateField(
+        label=_("Date of birth"),
         widget=forms.DateInput(format="%m/%d/%Y", attrs={"class": "datepicker"}),
         input_formats=("%m/%d/%Y",),
     )
@@ -249,6 +251,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
 
 class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
     dob = forms.DateField(
+        label=_("Date of birth"),
         widget=forms.DateInput(format="%m/%d/%Y", attrs={"class": "datepicker"}),
         input_formats=("%m/%d/%Y",),
     )
