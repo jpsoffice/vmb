@@ -149,7 +149,11 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "personality",
             "medical_history",
         ]
-        readonly = ["name"]
+        readonly = [
+            "name",
+            "current_city",
+            "current_state"
+        ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
