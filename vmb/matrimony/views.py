@@ -8,12 +8,13 @@ from django.urls import reverse
 
 from photologue.models import Photo as PhotologuePhoto
 
-from vmb.matrimony.models import MatrimonyProfile, Photo
+from vmb.matrimony.models import MatrimonyProfile, Photo, Expectation
 from vmb.matrimony.forms import (
     MatrimonyProfileBasicDetailsForm,
     MatrimonyProfileProfessionalInfoForm,
     MatrimonyProfileReligionAndFamilyForm,
     MatrimonyProfilePhotosForm,
+    MatrimonyProfileExpectationsForm,
 )
 
 
@@ -51,6 +52,12 @@ def profile_edit(request, section_id):
             "form_class": MatrimonyProfilePhotosForm,
             "path": reverse("matrimony:profile-edit", args=["photos"]),
         },
+        {
+            "id": "expectations",
+            "label": "Expectations",
+            "form_class": MatrimonyProfileExpectationsForm,
+            "path": reverse("matrimony:profile-edit", args=["expectations"]),
+        },
     ]
     sections_count = len(sections)
     section_id_index_map = {s["id"]: n for n, s in enumerate(sections)}
@@ -70,22 +77,28 @@ def profile_edit(request, section_id):
     wizard = False
     if not request.user.is_matrimony_registration_complete:
         wizard = True
-    form = section["form_class"](instance=matrimony_profile, wizard=wizard)
+
+    instance = (
+        matrimony_profile.expectations
+        if section_id == "expectations"
+        else matrimony_profile
+    )
+    form = section["form_class"](instance=instance, wizard=wizard)
 
     if request.method == "POST":
-        print(request.FILES)
         form = section["form_class"](
-            instance=matrimony_profile, data=request.POST, wizard=wizard
+            instance=instance, data=request.POST, wizard=wizard
         )
         if form.is_valid():
             form.save()
             next = request.path_info
-            if wizard and section_index + 1 < sections_count:
-                next = sections[section_index + 1]["path"]
-            else:
-                next = "/"
-                request.user.is_matrimony_registration_complete = True
-                request.user.save()
+            if wizard:
+                if section_index + 1 < sections_count:
+                    next = sections[section_index + 1]["path"]
+                else:
+                    next = "/"
+                    request.user.is_matrimony_registration_complete = True
+                    request.user.save()
             return HttpResponseRedirect(next)
 
     if wizard:

@@ -572,6 +572,7 @@ class MatrimonyProfile(BaseModel):
 
         super().save(*args, **kwargs)
         _, created = MatrimonyProfileStats.objects.get_or_create(profile=self)
+        _, created = Expectation.objects.get_or_create(profile=self)
 
     def send_batch_matches_email(self):
         body = self.get_batch_matches_email_body()
@@ -656,7 +657,7 @@ class Expectation(BaseModel):
         max_digits=5, decimal_places=2, null=True, blank=True, verbose_name="To height"
     )
     marital_status = MultiSelectField(
-        choices=MARITAL_STATUS, max_length=100, null=True, blank=True
+        choices=MARITAL_STATUS, max_choices=10, max_length=100, null=True, blank=True
     )
 
     # Religuous preferences
@@ -699,7 +700,11 @@ class Expectation(BaseModel):
     education = models.ManyToManyField(Education, blank=True)
     occupations = models.ManyToManyField(Occupation, blank=True)
     employed_in = MultiSelectField(
-        choices=EMPLOYED_IN_CHOICES, max_length=100, null=True, blank=True
+        choices=EMPLOYED_IN_CHOICES,
+        max_choices=10,
+        max_length=100,
+        null=True,
+        blank=True,
     )
     annual_income_from = MoneyField(
         max_digits=20,
@@ -736,7 +741,11 @@ class Expectation(BaseModel):
 
     # Spiritual details
     spiritual_status = MultiSelectField(
-        choices=SPIRITUAL_STATUS_CHOICES, max_length=5, null=True, blank=True
+        choices=SPIRITUAL_STATUS_CHOICES,
+        max_choices=10,
+        max_length=50,
+        null=True,
+        blank=True,
     )
     spiritual_masters = models.ManyToManyField(Guru, blank=True,)
     min_rounds_chanting = models.PositiveIntegerField(

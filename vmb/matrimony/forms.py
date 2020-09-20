@@ -7,10 +7,14 @@ from allauth.account.forms import SignupForm as AllAuthSignupForm
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column, Fieldset, Field, Submit
 
+from multiselectfield import MultiSelectFormField
+
 from vmb.matrimony.models.profiles import (
     GENDER_CHOICES,
     MARITAL_STATUS,
+    SPIRITUAL_STATUS_CHOICES,
     MatrimonyProfile,
+    Expectation,
 )
 
 
@@ -426,3 +430,149 @@ class MatrimonyProfilePhotosForm(forms.Form):
 
     def save(self, *args, **kwargs):
         pass
+
+
+class MatrimonyProfileExpectationsForm(BaseMatrimonyProfileForm):
+    class Meta:
+        model = Expectation
+        exclude = [
+            "id",
+            "profile",
+            "annual_income_from_in_base_currency",
+            "annual_income_to_in_base_currency",
+        ]
+        readonly = []
+        required = []
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Row(
+                Column("age_from", css_class="form-group col-md-6 md-3"),
+                Column("age_to", css_class="form-group col-md-6 md-3"),
+            ),
+            Row(
+                Column("height_from", css_class="form-group col-md-6 md-3"),
+                Column("height_to", css_class="form-group col-md-6 md-3"),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "religions",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+                Column(
+                    Field(
+                        "mother_tongues",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "castes",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+                Column(
+                    Field(
+                        "subcastes",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "countries_living_in",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+                Column(
+                    Field(
+                        "ethnicities",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+            ),
+            Row(
+                Column("marital_status", css_class="form-group col-md-6 md-3"),
+                Column("want_nri", css_class="form-group col-md-6 md-3"),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "languages_can_speak",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+                Column(
+                    Field(
+                        "languages_can_read_write",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "education",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+                Column(
+                    Field(
+                        "occupations",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+            ),
+            Row(Column("employed_in", css_class="form-group col-md-6 md-3")),
+            "annual_income_from",
+            "annual_income_to",
+            Row(
+                Column("spiritual_status", css_class="form-group col-md-6 md-3"),
+                Column("min_rounds_chanting", css_class="form-group col-md-6 md-3"),
+            ),
+            Field(
+                "spiritual_masters",
+                css_class="select2 form-control select2-multiple",
+                data_toggle="select2",
+                multiple="multiple",
+            ),
+            "partner_description",
+            Submit("submit", "Submit" if self.wizard else "Save"),
+        )
