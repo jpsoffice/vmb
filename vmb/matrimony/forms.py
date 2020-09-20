@@ -229,6 +229,10 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
 
 
 class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
+    dob = forms.DateField(
+        widget=forms.DateInput(format='%m/%d/%Y', attrs={'class': 'datepicker'}),
+        input_formats=('%m/%d/%Y', )
+    )
     mentor_1_name = forms.CharField(max_length=200)
     mentor_1_phone = forms.CharField(
         max_length=17,
@@ -320,7 +324,14 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                     Column("subcaste_other", css_class="form-group col-md-6 md-3"),
                 ),
                 Row(
-                    Column("dob", css_class="form-group col-md-6 md-3"),
+                    Column(
+                        Field(
+                            "dob",
+                            data_provide="datepicker",
+                            data_date_autoclose="true",
+                        ),
+                        css_class="form-group col-md-6 md-3",
+                    ),
                     Column(
                         Field(
                             "tob",
