@@ -1,4 +1,5 @@
 from django import forms
+from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 
@@ -228,6 +229,29 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
 
 
 class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
+    mentor_1_name = forms.CharField(max_length=200)
+    mentor_1_phone = forms.CharField(
+        max_length=17,
+        validators=[
+            RegexValidator(
+                regex=r"^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
+            )
+        ],
+    )
+    mentor_1_email = forms.EmailField(required=False)
+
+    mentor_2_name = forms.CharField(max_length=200, required=False)
+    mentor_2_phone = forms.CharField(
+        max_length=17,
+        validators=[
+            RegexValidator(
+                regex=r"^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
+            )
+        ],
+        required=False,
+    )
+    mentor_2_email = forms.EmailField(required=False)
+
     class Meta:
         model = MatrimonyProfile
         fields = (
@@ -264,12 +288,16 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "sisters_married",
             "family_location",
         ]
-        readonly = [
-            "dob",
-        ]
+        readonly = []
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        for n, mentor in enumerate(
+            self.instance.mentors.all().order_by("created_at")[:2]
+        ):
+            self.fields["mentor_{}_name".format(n + 1)].initial = mentor.name
+            self.fields["mentor_{}_phone".format(n + 1)].initial = mentor.phone
+            self.fields["mentor_{}_email".format(n + 1)].initial = mentor.email
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Fieldset(
@@ -366,8 +394,53 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                 ),
                 "family_details",
             ),
+            Fieldset(
+                "Mentors",
+                "mentor_1_name",
+                Row(
+                    Column("mentor_1_phone", css_class="form-group col-md-6 md-3"),
+                    Column("mentor_1_email", css_class="form-group col-md-6 md-3"),
+                ),
+                "mentor_2_name",
+                Row(
+                    Column("mentor_2_phone", css_class="form-group col-md-6 md-3"),
+                    Column("mentor_2_email", css_class="form-group col-md-6 md-3"),
+                ),
+            ),
             Submit("submit", "Next" if self.wizard else "Save"),
         )
+
+    def save(self, *args, **kwargs):
+        obj = super().save(*args, **kwargs)
+        mentors = obj.mentors.all().order_by("created_at")
+        mentors_count = len(mentors)
+        print("mentors", mentors)
+
+        if mentors_count > 0:
+            mentor = mentors[0]
+            mentor.name = self.cleaned_data["mentor_1_name"]
+            mentor.phone = self.cleaned_data["mentor_1_phone"]
+            mentor.email = self.cleaned_data["mentor_1_email"]
+            mentor.save()
+        else:
+            obj.mentors.create(
+                name=self.cleaned_data["mentor_1_name"],
+                phone=self.cleaned_data["mentor_1_phone"],
+                email=self.cleaned_data["mentor_1_email"],
+            )
+
+        if mentors_count > 1:
+            mentor = mentors[1]
+            mentor.name = self.cleaned_data["mentor_2_name"]
+            mentor.phone = self.cleaned_data["mentor_2_phone"]
+            mentor.email = self.cleaned_data["mentor_2_email"]
+            mentor.save()
+        elif self.cleaned_data.get("mentor_2_name"):
+            obj.mentors.create(
+                name=self.cleaned_data["mentor_2_name"],
+                phone=self.cleaned_data["mentor_2_phone"],
+                email=self.cleaned_data["mentor_2_email"],
+            )
 
 
 class MatrimonyProfileProfessionalInfoForm(BaseMatrimonyProfileForm):
