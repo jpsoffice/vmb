@@ -4,7 +4,9 @@ import uuid
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
+from django.utils.translation import ugettext_lazy as _
 from django.urls import reverse
+from django.contrib import messages
 
 from photologue.models import Photo as PhotologuePhoto
 
@@ -99,6 +101,11 @@ def profile_edit(request, section_id):
                     next = "/"
                     request.user.is_matrimony_registration_complete = True
                     request.user.save()
+                    messages.add_message(
+                        request,
+                        messages.SUCCESS,
+                        _("Thank you! Your registration has been submitted."),
+                    )
             return HttpResponseRedirect(next)
 
     if wizard:
