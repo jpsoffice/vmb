@@ -50,7 +50,7 @@ class SignupForm(AllAuthSignupForm):
         label=_("Date of birth"),
         widget=forms.DateInput(
             attrs={"class": "form-control", "data-provide": "datepicker"}
-        )
+        ),
     )
     rounds_chanting = forms.IntegerField(min_value=1, max_value=192)
 
@@ -202,10 +202,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
                     Field("marital_status", css_class="select2", data_toggle="select2"),
                     css_class="form-group col-md-6 md-3",
                 ),
-                Column(
-                    Field("children_count", css_class="select2", data_toggle="select2"),
-                    css_class="form-group col-md-6 md-3",
-                ),
+                Column("children_count", css_class="form-group col-md-6 md-3"),
             ),
             Row(
                 Column("height", css_class="form-group col-md-6 md-3"),
