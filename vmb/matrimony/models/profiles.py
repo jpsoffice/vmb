@@ -202,11 +202,7 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Birth details
-    dob = models.DateField(
-        help_text="Enter birth date as MM-DD-YYYY",
-        verbose_name=_("date of birth"),
-        null=True,
-    )
+    dob = models.DateField(verbose_name=_("Date of birth"), null=True,)
     tob = models.TimeField(
         help_text="Enter time HH:MM:SS in 24hr format",
         verbose_name=_("Birth Time"),
@@ -215,13 +211,17 @@ class MatrimonyProfile(BaseModel):
     )
     birth_city = models.CharField(
         max_length=200,
-        verbose_name=_("City"),
-        help_text="Enter birth village/town/city",
+        verbose_name=_("City of birth"),
+        help_text="Birth village/town/city (auto populated from map)",
         null=True,
         blank=True,
     )
     birth_state = models.CharField(
-        max_length=200, verbose_name=_("State"), null=True, blank=True
+        max_length=200,
+        verbose_name=_("State of birth"),
+        help_text=_("Auto populated from map"),
+        null=True,
+        blank=True,
     )
     birth_country = models.ForeignKey(
         "Country",
@@ -229,7 +229,7 @@ class MatrimonyProfile(BaseModel):
         null=True,
         blank=True,
         related_name="birthCountry",
-        verbose_name=_("Country"),
+        verbose_name=_("Country of birth"),
     )
     birth_place = PlacesField(null=True, blank=True)
     gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
@@ -239,12 +239,16 @@ class MatrimonyProfile(BaseModel):
     current_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
-        help_text="Enter current village/town/city",
+        help_text="Current village/town/city (auto populated from map)",
         null=True,
         blank=True,
     )
     current_state = models.CharField(
-        max_length=200, verbose_name=_("State"), null=True, blank=True,
+        max_length=200,
+        verbose_name=_("State"),
+        help_text=_("Auto populated from map"),
+        null=True,
+        blank=True,
     )
     current_country = models.ForeignKey(
         "Country",
@@ -367,11 +371,15 @@ class MatrimonyProfile(BaseModel):
         Religion, on_delete=models.SET_NULL, null=True, blank=True
     )
     caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True, blank=True)
-    caste_other = models.CharField(max_length=50, verbose_name="Other caste", blank=True, default="")
+    caste_other = models.CharField(
+        max_length=50, verbose_name="Other caste", blank=True, default=""
+    )
     subcaste = models.ForeignKey(
         Subcaste, on_delete=models.SET_NULL, null=True, blank=True
     )
-    subcaste_other = models.CharField(max_length=50, verbose_name="Other subcaste", blank=True, default="")
+    subcaste_other = models.CharField(
+        max_length=50, verbose_name="Other subcaste", blank=True, default=""
+    )
 
     # Family details
     are_parents_devotees = models.CharField(

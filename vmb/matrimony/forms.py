@@ -103,9 +103,10 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
 
 class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
     dob = forms.DateField(
-        widget=forms.DateInput(format='%m/%d/%Y', attrs={'class': 'datepicker'}),
-        input_formats=('%m/%d/%Y', )
+        widget=forms.DateInput(format="%m/%d/%Y", attrs={"class": "datepicker"}),
+        input_formats=("%m/%d/%Y",),
     )
+
     class Meta:
         model = MatrimonyProfile
         fields = (
@@ -149,11 +150,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "personality",
             "medical_history",
         ]
-        readonly = [
-            "name",
-            "current_city",
-            "current_state"
-        ]
+        readonly = ["name", "current_city", "current_state"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -168,9 +165,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             Row(
                 Column(
                     Field(
-                        "dob",
-                        data_provide="datepicker",
-                        data_date_autoclose="true",
+                        "dob", data_provide="datepicker", data_date_autoclose="true",
                     ),
                     css_class="form-group col-md-6 md-3",
                 ),
@@ -254,8 +249,8 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
 
 class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
     dob = forms.DateField(
-        widget=forms.DateInput(format='%m/%d/%Y', attrs={'class': 'datepicker'}),
-        input_formats=('%m/%d/%Y', )
+        widget=forms.DateInput(format="%m/%d/%Y", attrs={"class": "datepicker"}),
+        input_formats=("%m/%d/%Y",),
     )
     mentor_1_name = forms.CharField(max_length=200)
     mentor_1_phone = forms.CharField(
@@ -290,6 +285,10 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "subcaste_other",
             "dob",
             "tob",
+            "birth_place",
+            "birth_city",
+            "birth_state",
+            "birth_country",
             "are_parents_devotees",
             "family_values",
             "family_type",
@@ -318,7 +317,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "sisters_married",
             "family_location",
         ]
-        readonly = ["dob"]
+        readonly = ["dob", "birth_city", "birth_state"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -359,6 +358,12 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                         css_class="form-group col-md-6 md-3",
                     ),
                 ),
+                Field("birth_place", css_class="form-control"),
+                Row(
+                    Column("birth_city", css_class="form-group col-md-6 md-3"),
+                    Column("birth_state", css_class="form-group col-md-6 md-3"),
+                ),
+                Field("birth_country", css_class="select2", data_toggle="select2"),
                 "religious_background",
             ),
             Fieldset(
