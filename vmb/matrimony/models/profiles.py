@@ -546,11 +546,17 @@ class MatrimonyProfile(BaseModel):
 
         if self.id is None or self._original_birth_place != self.birth_place:
             if self.birth_place:
-                (
-                    self.birth_city,
-                    self.birth_state,
-                    country,
-                ) = self.birth_place.place.split(", ")[-3:]
+                if len(self.birth_place) >= 3:
+                    (
+                        self.birth_city,
+                        self.birth_state,
+                        country,
+                    ) = self.birth_place.place.split(", ")[-3:]
+                else:
+                    (self.birth_state, country,) = self.birth_place.place.split(", ")[
+                        -2:
+                    ]
+                    self.birth_city = self.birth_state
                 countries = Country.objects.filter(Q(name=country) | Q(code=country))
                 self.birth_country = countries[0] if countries else None
             else:
@@ -558,14 +564,18 @@ class MatrimonyProfile(BaseModel):
 
         if self.id is None or self._original_current_place != self.current_place:
             if self.current_place:
-                (
-                    self.current_city,
-                    self.current_state,
-                    current_country,
-                ) = self.current_place.place.split(", ")[-3:]
-                countries = Country.objects.filter(
-                    Q(name=current_country) | Q(code=current_country)
-                )
+                if len(self.current_place) >= 3:
+                    (
+                        self.current_city,
+                        self.current_state,
+                        country,
+                    ) = self.current_place.place.split(", ")[-3:]
+                else:
+                    (self.current_state, country,) = self.current_place.place.split(
+                        ", "
+                    )[-2:]
+                    self.current_city = self.current_state
+                countries = Country.objects.filter(Q(name=country) | Q(code=country))
                 self.current_country = countries[0] if countries else None
             else:
                 self.current_city = self.current_state = self.current_country = None
