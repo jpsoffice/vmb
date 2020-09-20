@@ -149,7 +149,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if self.instance.marital_status == "UMR":
-            self.fields.pop("children_count")
+            self.fields["children_count"].widget = forms.HiddenInput()
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Row(
