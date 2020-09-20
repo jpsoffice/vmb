@@ -367,9 +367,11 @@ class MatrimonyProfile(BaseModel):
         Religion, on_delete=models.SET_NULL, null=True, blank=True
     )
     caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True, blank=True)
+    caste_other = models.CharField(max_length=50, verbose_name="Other caste", blank=True, default="")
     subcaste = models.ForeignKey(
         Subcaste, on_delete=models.SET_NULL, null=True, blank=True
     )
+    subcaste_other = models.CharField(max_length=50, verbose_name="Other subcaste", blank=True, default="")
 
     # Family details
     are_parents_devotees = models.CharField(

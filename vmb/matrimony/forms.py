@@ -257,7 +257,9 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
         fields = (
             "religion",
             "caste",
+            "caste_other",
             "subcaste",
+            "subcaste_other",
             "dob",
             "tob",
             "are_parents_devotees",
@@ -308,10 +310,14 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                         Field("caste", css_class="select2", data_toggle="select2"),
                         css_class="form-group col-md-6 md-3",
                     ),
+                    Column("caste_other", css_class="form-group col-md-6 md-3"),
+                ),
+                Row(
                     Column(
                         Field("subcaste", css_class="select2", data_toggle="select2"),
                         css_class="form-group col-md-6 md-3",
                     ),
+                    Column("subcaste_other", css_class="form-group col-md-6 md-3"),
                 ),
                 Row(
                     Column("dob", css_class="form-group col-md-6 md-3"),
