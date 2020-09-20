@@ -102,11 +102,16 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
 
 
 class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
+    dob = forms.DateField(
+        widget=forms.DateInput(format='%m/%d/%Y', attrs={'class': 'datepicker'}),
+        input_formats=('%m/%d/%Y', )
+    )
     class Meta:
         model = MatrimonyProfile
         fields = (
             "name",
             "spiritual_name",
+            "dob",
             "rounds_chanting",
             "spiritual_status",
             "spiritual_master",
@@ -158,24 +163,39 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             ),
             Row(
                 Column(
-                    Field("ethnic_origin", css_class="select2", data_toggle="select2"),
+                    Field(
+                        "dob",
+                        data_provide="datepicker",
+                        data_date_autoclose="true",
+                    ),
                     css_class="form-group col-md-6 md-3",
                 ),
                 Column(
-                    Field("mother_tongue", css_class="select2", data_toggle="select2"),
+                    Field("ethnic_origin", css_class="select2", data_toggle="select2"),
                     css_class="form-group col-md-6 md-3",
                 ),
             ),
             Row(
+                Column(
+                    Field("mother_tongue", css_class="select2", data_toggle="select2"),
+                    css_class="form-group col-md-6 md-3",
+                ),
                 Column("rounds_chanting", css_class="form-group col-md-6 md-3"),
+            ),
+            Row(
                 Column(
                     Field(
                         "spiritual_status", css_class="select2", data_toggle="select2"
                     ),
                     css_class="form-group col-md-6 md-3",
                 ),
+                Column(
+                    Field(
+                        "spiritual_master", css_class="select2", data_toggle="select2"
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
             ),
-            Field("spiritual_master", css_class="select2", data_toggle="select2"),
             Row(
                 Column(
                     Field("marital_status", css_class="select2", data_toggle="select2"),
@@ -294,7 +314,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "sisters_married",
             "family_location",
         ]
-        readonly = []
+        readonly = ["dob"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -324,14 +344,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                     Column("subcaste_other", css_class="form-group col-md-6 md-3"),
                 ),
                 Row(
-                    Column(
-                        Field(
-                            "dob",
-                            data_provide="datepicker",
-                            data_date_autoclose="true",
-                        ),
-                        css_class="form-group col-md-6 md-3",
-                    ),
+                    Column("dob", css_class="form-group col-md-6 md-3"),
                     Column(
                         Field(
                             "tob",
