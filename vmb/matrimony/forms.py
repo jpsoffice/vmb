@@ -493,7 +493,6 @@ class MatrimonyProfileProfessionalInfoForm(BaseMatrimonyProfileForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout(
-            "annual_income",
             Field(
                 "occupations",
                 css_class="select2 form-control select2-multiple",
@@ -507,6 +506,7 @@ class MatrimonyProfileProfessionalInfoForm(BaseMatrimonyProfileForm):
                 ),
                 Column("organization", css_class="form-group col-md-6 md-3"),
             ),
+            "annual_income",
             "occupation_details",
             Field(
                 "education",
