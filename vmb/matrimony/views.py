@@ -100,7 +100,7 @@ def profile_edit(request, section_id):
 
 
 @login_required
-def profile_photos_ajax(request):
+def profile_photos_add(request):
     if request.POST:
         title = uuid.uuid5(uuid.uuid1(), str(os.getpid())).hex[:32]
         photologue_photo = PhotologuePhoto(
@@ -121,3 +121,25 @@ def profile_photos_ajax(request):
                 },
             }
         )
+
+
+@login_required
+def profile_photo_action(request, photo_id, action):
+    if request.method == "POST":
+        try:
+            photo = request.user.matrimony_profile.photo_set.get(id=photo_id)
+        except Photo.DoesNotExist:
+            return JsonResponse(
+                {"status": "error", "message": "Photo does not exist"}, status=404
+            )
+        if action == "make-primary":
+            photo.primary = True
+            photo.save()
+        elif action == "delete":
+            photo.photo.delete()
+            photo.delete()
+        else:
+            return JsonResponse({}, status=404)
+        return JsonResponse({"status": "success"})
+    else:
+        return JsonResponse({"status": "error"}, status=401)

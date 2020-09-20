@@ -924,7 +924,7 @@ class EmailMessage(BaseModel):
 class Photo(BaseModel):
     profile = models.ForeignKey(MatrimonyProfile, on_delete=models.CASCADE)
     photo = models.ForeignKey(
-        "photologue.Photo", on_delete=models.CASCADE, related_name="+"
+        "photologue.Photo", on_delete=models.CASCADE, related_name="photo_set"
     )
 
     primary = models.BooleanField(default=False, blank=True)

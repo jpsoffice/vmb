@@ -2,6 +2,11 @@
 
 {% load static crispy_forms_tags %}
 
+{% block css %}
+{{ block.super }}
+<link href="{% static 'css/vendor/dropzone.min.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 {% block content_title %}Profile{% endblock %}
 
 {% block breadcrumb %}
@@ -24,50 +29,48 @@
                 </ul>
                 {% ifequal section_id "photos" %}
                 <!-- File Upload -->
-                <form action="{% url 'matrimony:profile-photos-ajax' %}" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
-                    data-upload-preview-template="#uploadPreviewTemplate" data-auto-process-queue="false">
-                    {% csrf_token %}
-                    <div class="fallback">
-                        <input name="file" type="file" multiple />
-                    </div>
-
-                    <div class="dz-message needsclick">
-                        <i class="h1 text-muted dripicons-cloud-upload"></i>
-                        <h3>Drop files here or click to upload.</h3>
-                        <span class="text-muted font-13">(This is just a demo dropzone. Selected files are
-                            <strong>not</strong> actually uploaded.)</span>
-                    </div>
+                <form action="{% url 'matrimony:profile-photos-add' %}" id="photosDropzone" class="dropzone">
+                  {% csrf_token %}
                 </form>
 
-                <!-- Preview -->
-                <div class="dropzone-previews mt-3" id="file-previews"></div>
+                <div class="mt-3 mb-3 d-flex justify-content-center">
+                  <button id="uploadButton" class="btn btn-primary" class="text-center">Upload</button>
+                </div>
 
-                <!-- file preview template -->
-                <div class="d-none" id="uploadPreviewTemplate">
-                    <div class="card mt-1 mb-0 shadow-none border">
-                        <div class="p-2">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
-                                </div>
-                                <div class="col pl-0">
-                                    <a href="javascript:void(0);" class="text-muted font-weight-bold" data-dz-name></a>
-                                    <p class="mb-0" data-dz-size></p>
-                                </div>
-                                <div class="col-auto">
-                                    <!-- Button -->
-                                    <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
-                                        <i class="dripicons-cross"></i>
-                                    </a>
+                <div class="card-deck-wrapper">
+                <div class="card-deck">
+                    {% for photo in form.instance.photo_set.all %}
+                    <!-- <div class="col-md-6 col-lg-3">-->
+                        <div class="card d-block mb-5">
+                            <img class="card-img-top img-fluid rounded" src="{{photo.photo.get_display_url}}" style="height: 100%; object-fit: cover;">
+                            {% if photo.primary %}
+                            <div class="card-img-overlay">
+                                <div class="badge badge-secondary p-1"><i class="dripicons-star"></i></div>
+                            </div>
+                            {% endif %}
+                            <div class="dropdown card-widgets">
+                                <a href="#" class="dropdown-toggle arrow-none" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="dripicons-dots-3"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    {% if not photo.primary %}
+                                    <a href="javascript:void(0);" data-action="{% url 'matrimony:profile-photo-action' photo.id 'make-primary' %}" class="photo-action dropdown-item"><i class="dripicons-star mr-1"></i>Make primary</a>
+                                    {% endif %}
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" data-action="{% url 'matrimony:profile-photo-action' photo.id 'delete' %}" class="photo-action dropdown-item"><i class="mdi mdi-delete mr-1"></i>Delete</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
+                    {% endfor %}
                 </div>
+                </div>
+                    {% if form.wizard %}
+                    {% crispy form %}
+                    {% endif %}
                 {% else %}
-                {% crispy form %}
+                    {% crispy form %}
                 {% endifequal %}
-
             </div>
         </div>
     </div>
@@ -79,7 +82,44 @@
 {% ifequal section_id "photos" %}
 <!-- plugin js -->
 <script src="{% static 'js/vendor/dropzone.min.js' %}"></script>
-<!-- init js -->
-<script src="{% static 'js/ui/component.fileupload.js' %}"></script>
+
+<script type="text/javascript">
+Dropzone.autoDiscover = false;
+$(function(){
+    let photosDropzone = $("#photosDropzone").dropzone({
+      autoQueue: true,
+      autoProcessQueue: false,
+      addRemoveLinks: true,
+      parallelUploads: 20,
+      acceptedFiles: "image/*"
+    })[0].dropzone;
+
+    photosDropzone.on("queuecomplete", function (progress) {
+      location.reload();
+    });
+
+    $("#uploadButton").on("click", function (e) {
+        photosDropzone.processQueue();
+    });
+
+    $(".photo-action").on("click", function (e) {
+        let link = $(this);
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            type: "POST",
+            headers: {
+              'X-CSRFToken': csrftoken
+            },
+            url: link.data("action"),
+            success: function (data) {
+                location.reload();
+            },
+            error: function (err) {
+                console.log("error", err.responseJSON);
+            }
+        })
+    })
+});
+</script>
 {% endifequal %}
 {% endblock %}

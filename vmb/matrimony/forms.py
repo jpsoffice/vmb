@@ -362,7 +362,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                 ),
                 "family_details",
             ),
-            Submit("submit", "Submit" if self.wizard else "Save"),
+            Submit("submit", "Next" if self.wizard else "Save"),
         )
 
 
@@ -414,9 +414,15 @@ class MatrimonyProfileProfessionalInfoForm(BaseMatrimonyProfileForm):
 
 
 class MatrimonyProfilePhotosForm(forms.Form):
-    file = forms.ImageField()
-
     def __init__(self, *args, **kwargs):
         self.instance = kwargs.pop("instance")
         self.wizard = kwargs.pop("wizard")
         super().__init__(*args, **kwargs)
+
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Submit("submit", "Next" if self.wizard else "Save"),
+        )
+
+    def save(self, *args, **kwargs):
+        pass
