@@ -132,7 +132,11 @@ def profile_photos_add(request):
         if Photo.objects.filter(profile=request.user.matrimony_profile).count() == 0:
             primary = True
 
-        photo = Photo(photo=photologue_photo, profile=request.user.matrimony_profile, primary=primary)
+        photo = Photo(
+            photo=photologue_photo,
+            profile=request.user.matrimony_profile,
+            primary=primary,
+        )
         photo.save()
         return JsonResponse(
             {
