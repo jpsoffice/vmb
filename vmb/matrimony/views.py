@@ -127,7 +127,12 @@ def profile_photos_add(request):
             image=request.FILES["file"], title=title, slug=title, is_public=True
         )
         photologue_photo.save()
-        photo = Photo(photo=photologue_photo, profile=request.user.matrimony_profile)
+
+        primary = False
+        if Photo.objects.filter(profile=request.user.matrimony_profile).count() == 0:
+            primary = True
+
+        photo = Photo(photo=photologue_photo, profile=request.user.matrimony_profile, primary=primary)
         photo.save()
         return JsonResponse(
             {
