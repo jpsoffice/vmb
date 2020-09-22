@@ -40,7 +40,7 @@
                 <div class="card-deck-wrapper">
                 <div class="card-deck">
                     {% for photo in form.instance.photo_set.all %}
-                    <!-- <div class="col-md-6 col-lg-3">-->
+                    <div class="col-md-6 col-lg-3">
                         <div class="card d-block mb-5">
                             <img class="card-img-top img-fluid rounded" src="{{photo.photo.get_display_url}}" style="height: 100%; object-fit: cover;">
                             {% if photo.primary %}
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                    <!-- </div> -->
+                    </div>
                     {% endfor %}
                 </div>
                 </div>
