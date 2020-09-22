@@ -30,7 +30,14 @@
                 {% ifequal section_id "photos" %}
                 <!-- File Upload -->
                 <form action="{% url 'matrimony:profile-photos-add' %}" id="photosDropzone" class="dropzone">
-                  {% csrf_token %}
+                    {% csrf_token %}
+                    <div class="dz-message">
+                        <i class="h1 text-muted dripicons-cloud-upload"></i>
+                        <h3>Drop files here or click to upload.</h3>
+                        <span class="text-muted font-13">
+                            (File size should not exceed 2MB. Click <strong>Upload</strong> to upload the selected files.)
+                        </span>
+                    </div>
                 </form>
 
                 <div class="mt-3 mb-3 d-flex justify-content-center">
@@ -89,7 +96,8 @@ $(function(){
       autoProcessQueue: false,
       addRemoveLinks: true,
       parallelUploads: 20,
-      acceptedFiles: "image/*"
+      acceptedFiles: "image/*",
+      maxFilesize: 2
     })[0].dropzone;
 
     photosDropzone.on("queuecomplete", function (progress) {
