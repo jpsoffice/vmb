@@ -142,11 +142,11 @@ def profile_photos_add(request):
             {
                 "error": False,
                 "data": {
-                    "image_url": photologue_photo.get_display_url(),
-                    "thumbnail_url": photologue_photo.get_thumbnail_url(),
+                    "image_url": photo.photo.get_display_url(),
+                    "thumbnail_url": photo.photo.get_thumbnail_url(),
                     "id": photo.id,
-                    "title": photologue_photo.title,
-                    "slug": photologue_photo.slug,
+                    "title": photo.photo.title,
+                    "slug": photo.photo.slug,
                 },
             }
         )
