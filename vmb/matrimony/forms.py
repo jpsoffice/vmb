@@ -57,8 +57,15 @@ class SignupForm(AllAuthSignupForm):
     dob = forms.DateField(
         label=_("Date of birth"),
         widget=forms.DateInput(
-            attrs={"class": "form-control", "data-provide": "datepicker"}
+            format="%b %d, %Y",
+            attrs={
+                "class": "form-control datepicker",
+                "data-provide": "datepicker",
+                "data-date-format": "M dd, yyyy",
+                "data-date-autoclose": "true",
+            },
         ),
+        input_formats=("%b %d, %Y"),
     )
     rounds_chanting = forms.IntegerField(min_value=1, max_value=192)
 

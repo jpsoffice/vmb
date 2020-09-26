@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.name.id_for_label}}">Name</label>
+                    <label for="{{ form.name.id_for_label}}">Legal name</label>
                     {% crispy_field form.name %}
                     {% if form.name.errors %}
                         {% for error in form.name.errors %}
@@ -103,7 +103,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="{{ form.gender.id_for_label}}">Gender</label>
-                        {% crispy_field form.gender %}
+                        {% crispy_field form.gender 'css' 'select2' 'data-toggle' 'select2' %}
                         {% if form.gender.errors %}
                             {% for error in form.gender.errors %}
                                 <div class="invalid-feedback">{{ error }}</div>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="{{ form.marital_status.id_for_label}}">Marital status</label>
-                        {% crispy_field form.marital_status %}
+                        {% crispy_field form.marital_status 'css' 'select2' 'data-toggle' 'select2' %}
                         {% if form.marital_status.errors %}
                             {% for error in form.marital_status.errors %}
                                 <div class="invalid-feedback">{{ error }}</div>
@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.phone.id_for_label}}">Phone</label>
+                    <label for="{{ form.phone.id_for_label}}">Mobile number</label>
                     {% crispy_field form.phone %}
                     {% if form.phone.errors %}
                         {% for error in form.phone.errors %}
