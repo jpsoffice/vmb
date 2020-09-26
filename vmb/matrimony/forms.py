@@ -45,7 +45,15 @@ class SignupForm(AllAuthSignupForm):
     name = forms.CharField(min_length=3, max_length=200, strip=True)
     gender = forms.ChoiceField(choices=GENDER_CHOICES)
     marital_status = forms.ChoiceField(choices=MARITAL_STATUS)
-    phone = forms.CharField(min_length=10, max_length=17)
+    phone = forms.CharField(
+        min_length=10,
+        max_length=17,
+        validators=[
+            RegexValidator(
+                regex=r"^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
+            )
+        ],
+    )
     dob = forms.DateField(
         label=_("Date of birth"),
         widget=forms.DateInput(
