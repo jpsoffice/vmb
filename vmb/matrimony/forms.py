@@ -57,7 +57,7 @@ class SignupForm(AllAuthSignupForm):
     dob = forms.DateField(
         label=_("Date of birth"),
         widget=forms.DateInput(
-            format="%b %d, %Y",
+            format=("%b %d, %Y"),
             attrs={
                 "class": "form-control datepicker",
                 "data-provide": "datepicker",
@@ -65,7 +65,7 @@ class SignupForm(AllAuthSignupForm):
                 "data-date-autoclose": "true",
             },
         ),
-        input_formats=("%b %d, %Y"),
+        input_formats=("%b %d, %Y",),
     )
     rounds_chanting = forms.IntegerField(min_value=1, max_value=192)
 
@@ -120,8 +120,16 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
 class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
     dob = forms.DateField(
         label=_("Date of birth"),
-        widget=forms.DateInput(format="%m/%d/%Y", attrs={"class": "datepicker"}),
-        input_formats=("%m/%d/%Y",),
+        widget=forms.DateInput(
+            format=("%b %d, %Y"),
+            attrs={
+                "class": "form-control datepicker",
+                "data-provide": "datepicker",
+                "data-date-format": "M dd, yyyy",
+                "data-date-autoclose": "true",
+            },
+        ),
+        input_formats=("%b %d, %Y",),
     )
 
     class Meta:
@@ -180,12 +188,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
                 Column("spiritual_name", css_class="form-group col-md-6 md-3"),
             ),
             Row(
-                Column(
-                    Field(
-                        "dob", data_provide="datepicker", data_date_autoclose="true",
-                    ),
-                    css_class="form-group col-md-6 md-3",
-                ),
+                Column("dob", css_class="form-group col-md-6 md-3"),
                 Column(
                     Field("ethnic_origin", css_class="select2", data_toggle="select2"),
                     css_class="form-group col-md-6 md-3",
@@ -264,8 +267,16 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
 class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
     dob = forms.DateField(
         label=_("Date of birth"),
-        widget=forms.DateInput(format="%m/%d/%Y", attrs={"class": "datepicker"}),
-        input_formats=("%m/%d/%Y",),
+        widget=forms.DateInput(
+            format=("%b %d, %Y"),
+            attrs={
+                "class": "form-control datepicker",
+                "data-provide": "datepicker",
+                "data-date-format": "M dd, yyyy",
+                "data-date-autoclose": "true",
+            },
+        ),
+        input_formats=("%b %d, %Y",),
     )
     mentor_1_name = forms.CharField(max_length=200)
     mentor_1_phone = forms.CharField(

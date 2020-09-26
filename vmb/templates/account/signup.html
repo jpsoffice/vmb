@@ -133,7 +133,7 @@
 
                 <div class="form-group">
                     <label for="{{ form.dob.id_for_label}}">Date of birth</label>
-                    {{ form.dob }}
+                    {% crispy_field form.dob %}
                     {% if form.dob.errors %}
                         {% for error in form.dob.errors %}
                             <div class="invalid-feedback">{{ error }}</div>
