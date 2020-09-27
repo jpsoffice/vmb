@@ -1,3 +1,5 @@
+import re
+
 from django import forms
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
@@ -263,6 +265,18 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             Submit("submit", "Next" if self.wizard else "Save"),
         )
 
+    def clean(self):
+        super().clean()
+        current_place = self.cleaned_data["current_place"]
+        print(current_place, type(current_place[1]))
+        if not (
+            len(current_place) == 3
+            and re.match("[\w ]+, [\w ]+(?:, [\w ]+)?", current_place[0])
+            and current_place[1]
+            and current_place[2]
+        ):
+            raise forms.ValidationError(_("Select a valid place from maps"))
+
 
 class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
     dob = forms.DateField(
@@ -332,6 +346,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
         )
         required = [
             "religion",
+            "birth_place",
             "are_parents_devotees",
             "family_type",
             "family_status",
@@ -474,6 +489,18 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             ),
             Submit("submit", "Next" if self.wizard else "Save"),
         )
+
+    def clean(self):
+        super().clean()
+        birth_place = self.cleaned_data["birth_place"]
+        print(birth_place, type(birth_place[1]))
+        if not (
+            len(birth_place) == 3
+            and re.match("[\w ]+, [\w ]+(?:, [\w ]+)?", birth_place[0])
+            and birth_place[1]
+            and birth_place[2]
+        ):
+            raise forms.ValidationError(_("Select a valid place from maps"))
 
     def save(self, *args, **kwargs):
         obj = super().save(*args, **kwargs)
