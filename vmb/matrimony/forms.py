@@ -114,6 +114,7 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.Meta.readonly:
             self.fields[field].widget.attrs["readonly"] = True
+            self.fields[field].widget.attrs["disabled"] = "true"
 
         for field in self.Meta.required:
             self.fields[field].required = True
@@ -177,7 +178,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "personality",
             "medical_history",
         ]
-        readonly = ["name", "current_city", "current_state"]
+        readonly = ["name", "current_city", "current_state", "marital_status"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -218,10 +219,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
                 ),
             ),
             Row(
-                Column(
-                    Field("marital_status", css_class="select2", data_toggle="select2"),
-                    css_class="form-group col-md-6 md-3",
-                ),
+                Column("marital_status", css_class="form-group col-md-6 md-3"),
                 Column("children_count", css_class="form-group col-md-6 md-3"),
             ),
             Row(
