@@ -163,12 +163,12 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "spiritual_master",
             "ethnic_origin",
             "mother_tongue",
-            "marital_status",
             "children_count",
             "height",
             "weight",
             "body_type",
             "complexion",
+            "marital_status",
             "current_place",
             "current_city",
             "current_state",
@@ -185,7 +185,6 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "spiritual_status",
             "ethnic_origin",
             "mother_tongue",
-            "marital_status",
             "height",
             "weight",
             "body_type",
@@ -195,7 +194,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "personality",
             "medical_history",
         ]
-        readonly = ["name", "current_city", "current_state", "marital_status"]
+        readonly = ["name", "current_city", "current_state", "dob", "marital_status", "complexion", "personality"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -516,6 +515,19 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             and birth_place[2]
         ):
             raise forms.ValidationError(_("Select a valid place from maps"))
+        brothers_married = self.cleaned_data["brothers_married"]
+        brothers = self.cleaned_data["brothers"]
+        sisters_married = self.cleaned_data["sisters_married"]
+        sisters = self.cleaned_data["sisters"]
+
+        if not (
+            brothers_married <= brothers
+        ):
+            raise forms.ValidationError(_("Brothers married cannot be greater than no. of brothers"))
+        if not (
+            sisters_married <= sisters
+        ):
+            raise forms.ValidationError(_("Sisters married cannot be greater than no. of sisters"))
 
     def save(self, *args, **kwargs):
         obj = super().save(*args, **kwargs)
