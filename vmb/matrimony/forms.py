@@ -114,7 +114,7 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.Meta.readonly:
             self.fields[field].widget.attrs["readonly"] = True
-            self.fields[field].widget.attrs["disabled"] = "true"
+            self.fields[field].disabled = True
 
         for field in self.Meta.required:
             self.fields[field].required = True
