@@ -72,6 +72,13 @@ HAIR_COLOR = (
     ("RED", "Red"),
     ("WHT", "White"),
 )
+PROFILE_CREATED_BY_CHOICES = (
+    ("SE", "Self"),
+    ("PA", "Parent"),
+    ("SI", "Sibling"),
+    ("CO", "Counselor"),
+    ("FR", "Friend"),
+)
 PROFILE_STATUS_CHOICES = (
     ("00", "New"),
     ("01", "Acknowledged"),
@@ -161,6 +168,12 @@ class MatrimonyProfile(BaseModel):
     name = models.CharField(max_length=200, verbose_name=_("Name"),)
     spiritual_name = models.CharField(
         max_length=200, default="", blank=True, verbose_name=_("Spiritual name")
+    )
+    contact_person_name = models.CharField(
+        max_length=200, verbose_name=_("Contact person name"), default=""
+    )
+    profile_created_by = models.CharField(
+        max_length=2, choices=PROFILE_CREATED_BY_CHOICES, default="SE"
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
     status = models.CharField(

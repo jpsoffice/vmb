@@ -14,6 +14,7 @@ from multiselectfield import MultiSelectFormField
 
 from vmb.matrimony.models.profiles import (
     GENDER_CHOICES,
+    PROFILE_CREATED_BY_CHOICES,
     MARITAL_STATUS,
     SPIRITUAL_STATUS_CHOICES,
     MatrimonyProfile,
@@ -70,6 +71,10 @@ class SignupForm(AllAuthSignupForm):
         input_formats=("%b %d, %Y",),
     )
     rounds_chanting = forms.IntegerField(min_value=1, max_value=192)
+    profile_created_by = forms.ChoiceField(choices=PROFILE_CREATED_BY_CHOICES)
+    contact_person_name = forms.CharField(
+        min_length=3, max_length=200, strip=True, required=False
+    )
 
     def clean_dob(self):
         value = self.cleaned_data["dob"]
@@ -82,6 +87,16 @@ class SignupForm(AllAuthSignupForm):
         if MatrimonyProfile.objects.filter(phone=value):
             raise forms.ValidationError(_("Phone number already exists."))
         return value
+
+    def clean_contact_person_name(self):
+        contact_person_name = self.cleaned_data["contact_person_name"]
+        profile_created_by = self.cleaned_data["profile_created_by"]
+
+        if profile_created_by != "SE" and not contact_person_name:
+            raise forms.ValidationError(_("Contact person name is required"))
+        else:
+            contact_person_name = self.cleaned_data["name"]
+        return contact_person_name
 
     def save(self, *args, **kwargs):
         user = super().save(*args, **kwargs)
@@ -99,6 +114,8 @@ class SignupForm(AllAuthSignupForm):
             phone=self.cleaned_data["phone"],
             dob=self.cleaned_data["dob"],
             rounds_chanting=self.cleaned_data["rounds_chanting"],
+            profile_created_by=self.cleaned_data["profile_created_by"],
+            contact_person_name=self.cleaned_data["contact_person_name"],
         )
         profile.save()
         return user
