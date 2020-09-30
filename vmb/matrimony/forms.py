@@ -525,11 +525,11 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
 
         if brothers_married > brothers:
             raise forms.ValidationError(
-                _("Brothers married cannot be greater than no. of brothers")
+                _("Brothers married cannot be greater than number of brothers")
             )
         if sisters_married > sisters:
             raise forms.ValidationError(
-                _("Sisters married cannot be greater than no. of sisters")
+                _("Sisters married cannot be greater than number of sisters")
             )
 
     def save(self, *args, **kwargs):
