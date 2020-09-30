@@ -69,6 +69,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "cookie_consent",
     "crispy_forms",
     "allauth",
     "allauth.account",
