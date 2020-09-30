@@ -558,6 +558,10 @@ class MatrimonyProfile(BaseModel):
         self._original_birth_place = self.birth_place
         self._original_current_place = self.current_place
 
+    def set_status(self, status_text):
+        d = {v: k for k, v in PROFILE_STATUS_CHOICES}
+        self.status = d.get(status_text)
+
     def save(self, *args, **kwargs):
         if self.id is None:
             self.profile_id = self.generate_profile_id()
