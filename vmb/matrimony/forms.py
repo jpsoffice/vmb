@@ -1,6 +1,7 @@
 import re
 
 from django import forms
+from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
@@ -151,6 +152,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
         ),
         input_formats=("%b %d, %Y",),
     )
+    height = forms.DecimalField(min_value=90.00, max_value=250.00, help_text="in cms")
 
     class Meta:
         model = MatrimonyProfile
@@ -163,12 +165,13 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "spiritual_master",
             "ethnic_origin",
             "mother_tongue",
-            "marital_status",
             "children_count",
             "height",
             "weight",
             "body_type",
             "complexion",
+            "marital_status",
+            "dob",
             "current_place",
             "current_city",
             "current_state",
@@ -185,7 +188,6 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "spiritual_status",
             "ethnic_origin",
             "mother_tongue",
-            "marital_status",
             "height",
             "weight",
             "body_type",
@@ -195,7 +197,15 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "personality",
             "medical_history",
         ]
-        readonly = ["name", "current_city", "current_state", "marital_status"]
+        readonly = [
+            "name",
+            "current_city",
+            "current_state",
+            "dob",
+            "marital_status",
+            "complexion",
+            "personality",
+        ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -516,6 +526,19 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             and birth_place[2]
         ):
             raise forms.ValidationError(_("Select a valid place from maps"))
+        brothers_married = self.cleaned_data["brothers_married"]
+        brothers = self.cleaned_data["brothers"]
+        sisters_married = self.cleaned_data["sisters_married"]
+        sisters = self.cleaned_data["sisters"]
+
+        if brothers_married > brothers:
+            raise forms.ValidationError(
+                _("Brothers married cannot be greater than number of brothers")
+            )
+        if sisters_married > sisters:
+            raise forms.ValidationError(
+                _("Sisters married cannot be greater than number of sisters")
+            )
 
     def save(self, *args, **kwargs):
         obj = super().save(*args, **kwargs)
@@ -607,12 +630,23 @@ class MatrimonyProfilePhotosForm(forms.Form):
         self.helper.layout = Layout(
             Submit("submit", "Next" if self.wizard else "Save"),
         )
+        self.fields.required = True
 
     def save(self, *args, **kwargs):
         pass
 
 
 class MatrimonyProfileExpectationsForm(BaseMatrimonyProfileForm):
+
+    age_from = forms.IntegerField(min_value=18, max_value=50)
+    age_to = forms.IntegerField(min_value=18, max_value=50)
+    height_from = forms.DecimalField(
+        min_value=90.00, max_value=250.00, help_text="in cms"
+    )
+    height_to = forms.DecimalField(
+        min_value=90.00, max_value=250.00, help_text="in cms"
+    )
+
     class Meta:
         model = Expectation
         exclude = [
@@ -756,3 +790,20 @@ class MatrimonyProfileExpectationsForm(BaseMatrimonyProfileForm):
             "partner_description",
             Submit("submit", "Submit" if self.wizard else "Save"),
         )
+
+        def clean_age_from(self):
+            value_from = self.cleaned_data["age_from"]
+            value_to = self.cleaned_data["age_to"]
+            if age_from > age_to:
+                raise forms.ValidationError(_("From age should be less than to age"))
+
+        def clean_height_from(self):
+            value_from = self.cleaned_data["height_from"]
+            value_to = self.cleaned_data["height_to"]
+            if height_from > height_to:
+                raise forms.ValidationError(
+                    _("From height should be less than to height")
+                )
+
+        def save(self, *args, **kwargs):
+            pass
