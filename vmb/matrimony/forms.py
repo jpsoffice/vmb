@@ -152,7 +152,9 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
         ),
         input_formats=("%b %d, %Y",),
     )
-    height = forms.DecimalField(min_value=90.00, max_value=250.00, help_text="in cms")
+    height = forms.DecimalField(
+        min_value=90.00, max_value=250.00, help_text="Height in cms"
+    )
 
     class Meta:
         model = MatrimonyProfile
