@@ -1,0 +1,137 @@
+[
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 0,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.144Z",
+      "updated_at": "2020-05-28T12:48:24.144Z",
+      "name": "Any Bachelors in Engineering / Computers"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 1,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.212Z",
+      "updated_at": "2020-05-28T12:48:24.212Z",
+      "name": "Any Masters in Engineering / Computers"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 2,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.244Z",
+      "updated_at": "2020-05-28T12:48:24.245Z",
+      "name": "Any Bachelors in Arts / Science / Commerce"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 3,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.271Z",
+      "updated_at": "2020-05-28T12:48:24.271Z",
+      "name": "Any Masters in Arts / Science / Commerce"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 4,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.288Z",
+      "updated_at": "2020-05-28T12:48:24.289Z",
+      "name": "Any Bachelors in Management"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 5,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.305Z",
+      "updated_at": "2020-05-28T12:48:24.305Z",
+      "name": "Any Masters in Management"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 6,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.322Z",
+      "updated_at": "2020-05-28T12:48:24.322Z",
+      "name": "Any Bachelors in Medicine in General / Dental / Surgeon"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 7,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.342Z",
+      "updated_at": "2020-05-28T12:48:24.342Z",
+      "name": "Any Masters in Medicine - General / Dental / Surgeon"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 8,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.367Z",
+      "updated_at": "2020-05-28T12:48:24.367Z",
+      "name": "Any Bachelors in Legal"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 9,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.395Z",
+      "updated_at": "2020-05-28T12:48:24.395Z",
+      "name": "Any Masters in Legal"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 10,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.421Z",
+      "updated_at": "2020-05-28T12:48:24.421Z",
+      "name": "Any Financial Qualification - ICWAI / CA / CS/ CFA"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 11,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.439Z",
+      "updated_at": "2020-05-28T12:48:24.439Z",
+      "name": "Service - IAS / IPS / IRS / IES / IFS"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 12,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.467Z",
+      "updated_at": "2020-05-28T12:48:24.467Z",
+      "name": "Ph.D."
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 13,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.483Z",
+      "updated_at": "2020-05-28T12:48:24.483Z",
+      "name": "Any Diploma"
+    }
+  },
+  {
+    "model": "matrimony.educationcategory",
+    "pk": 14,
+    "fields": {
+      "created_at": "2020-05-28T12:48:24.511Z",
+      "updated_at": "2020-05-28T12:48:24.511Z",
+      "name": "Higher Secondary / Secondary"
+    }
+  }
+]
