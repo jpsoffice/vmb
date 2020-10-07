@@ -100,8 +100,8 @@ def profile_edit(request, section_id):
                 else:
                     next = "/"
                     request.user.is_matrimony_registration_complete = True
-                    obj.set_status("Registered")
-                    obj.save()
+                    matrimony_profile.set_status("Registered")
+                    matrimony_profile.save()
                     request.user.save()
                     messages.add_message(
                         request,
