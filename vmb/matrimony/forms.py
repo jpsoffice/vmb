@@ -203,8 +203,6 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "current_state",
             "dob",
             "marital_status",
-            "complexion",
-            "personality",
         ]
 
     def __init__(self, *args, **kwargs):
