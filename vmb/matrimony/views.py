@@ -22,6 +22,14 @@ from vmb.matrimony.forms import (
 
 
 # Create your views here.
+def match_list(request):
+    profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
+    context = {
+        "matches": profile.matching_profiles,
+    }
+    return render(request, "matrimony/match/match_list.html", context)
+
+
 def match_response(request, id):
 
     profile_user = get_object_or_404(MatrimonyProfile, email=request.user.email)
