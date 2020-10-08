@@ -1,8 +1,25 @@
+import os
+import uuid
+
+from django.contrib.auth.decorators import login_required
+from django.http import Http404, HttpResponseRedirect, JsonResponse
+from django.shortcuts import render
+from django.utils.translation import ugettext_lazy as _
+from django.urls import reverse
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 
-# from django.views.generic import ListView
-from vmb.matrimony.models.profiles import MatrimonyProfile
-from vmb.matrimony.models import Match
+from photologue.models import Photo as PhotologuePhoto
+
+from vmb.matrimony.models import MatrimonyProfile, Photo, Expectation, Match
+from vmb.matrimony.forms import (
+    MatrimonyProfileBasicDetailsForm,
+    MatrimonyProfileProfessionalInfoForm,
+    MatrimonyProfileReligionAndFamilyForm,
+    MatrimonyProfilePhotosForm,
+    MatrimonyProfileExpectationsForm,
+)
+
 
 # Create your views here.
 def match_response(request, id):
@@ -29,26 +46,6 @@ def match_response(request, id):
     }
 
     return render(request, "matrimony/match/response.html", context)
-import os
-import uuid
-
-from django.contrib.auth.decorators import login_required
-from django.http import Http404, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
-from django.utils.translation import ugettext_lazy as _
-from django.urls import reverse
-from django.contrib import messages
-
-from photologue.models import Photo as PhotologuePhoto
-
-from vmb.matrimony.models import MatrimonyProfile, Photo, Expectation
-from vmb.matrimony.forms import (
-    MatrimonyProfileBasicDetailsForm,
-    MatrimonyProfileProfessionalInfoForm,
-    MatrimonyProfileReligionAndFamilyForm,
-    MatrimonyProfilePhotosForm,
-    MatrimonyProfileExpectationsForm,
-)
 
 
 def index(request):
