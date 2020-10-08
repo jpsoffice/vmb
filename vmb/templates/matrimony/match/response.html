@@ -5,9 +5,9 @@
         <div class="row">
           <div class="col-md-4">
               <img class="align-self-start mr-3" src="{{ m.primary_image_thumbnail_url }}" alt="">
+              <h4>{{ m.profile_id }}</h4>
           </div>
           <div class="col-md-8">
-              <h3>{{ m.profile_id }}</h3>
               <h3>
                 {{ m.name }}{% if m.spiritual_name %}({{ m.spiritual_name }}){% endif %}
               </h3>
@@ -15,24 +15,24 @@
               <h4>{{ m.height }} cms</h4>
               {% block response %}
                 <form action="#" method="post">
-                    {% csrf_token %}
-                    {% if not response %}
-                      <button class="btn btn-primary" type = "submit" name="response" value="ACP">Accept</button>&emsp;&emsp;
-                      <button class="btn btn-danger" type = "submit" name="response" value="REJ">Reject</button>
-                    {% elif "ACP" in response %}
-                      <button class="btn btn-primary" type = "submit" name="response" value="ACP" disabled>Accept</button>&emsp;&emsp;
-                      <button class="btn btn-danger" type = "submit" name="response" value="REJ">Reject</button>
-                    {% elif "REJ" in response %}
-                      <button class="btn btn-primary" type = "submit" name="response" value="ACP" >Accept</button>&emsp;&emsp;
-                      <button class="btn btn-danger" type = "submit" name="response" value="REJ" disabled>Reject</button>
-                    {% endif %}
+                  {% csrf_token %}
+                  {% if not response %}
+                    <button class="btn btn-primary" type = "submit" name="response" value="ACP">Accept</button>&emsp;&emsp;
+                    <button class="btn btn-danger" type = "submit" name="response" value="REJ">Reject</button>
+                  {% elif "ACP" in response %}
+                    <button class="btn btn-secondary" type = "submit" name="response" value="ACP" disabled>Accept</button>&emsp;&emsp;
+                    <button class="btn btn-danger" type = "submit" name="response" value="REJ">Reject</button>
+                  {% elif "REJ" in response %}
+                    <button class="btn btn-primary" type = "submit" name="response" value="ACP" >Accept</button>&emsp;&emsp;
+                    <button class="btn btn-secondary" type = "submit" name="response" value="REJ" disabled>Reject</button>
+                  {% endif %}
                 </form>
               {% endblock %}
           </div>
         </div>
 
     </div>
-  </div>  
+  
   <table border="0" cellspacing="0" cellpadding="0" width="100%">
     <tbody>
       <tr>
@@ -155,6 +155,7 @@
       </tr>
     </tbody>
   </table>
+</div>  
 {% endblock %}
 
 
