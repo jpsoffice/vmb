@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% load static crispy_forms_tags %}
+
+{% block css %}
+{{ block.super }}
+<link href="{% static 'css/vendor/dropzone.min.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content_title %}Profile{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb active">Profile</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                    {% for section in sections %}
+                    <li class="nav-item">
+                        <a href="{{ section.path }}" aria-expanded="false" class="nav-link rounded-0{% if section.active %} active{% endif %}">
+                            <span class="d-md-block">{{ section.label }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% ifequal section_id "photos" %}
+                <!-- File Upload -->
+                <form action="{% url 'matrimony:profile-photos-add' %}" id="photosDropzone" class="dropzone">
+                    {% csrf_token %}
+                    <div class="dz-message">
+                        <i class="h1 text-muted dripicons-cloud-upload"></i>
+                        <h3>Drop files here or click to upload.</h3>
+                        <span class="text-muted font-13">
+                            (File size should not exceed 5MB. Click <strong>Upload</strong> to upload the selected files.)
+                        </span>
+                    </div>
+                </form>
+
+                <div class="mt-3 mb-3 d-flex justify-content-center">
+                  <button id="uploadButton" class="btn btn-primary" class="text-center">Upload</button>
+                </div>
+
+                <div class="card-deck-wrapper">
+                <div class="card-deck">
+                    {% for photo in form.instance.photo_set.all %}
+                    <div class="card d-block mb-5" style="max-width:400px;">
+                        <img class="card-img-top img-fluid rounded" src="{{photo.photo.get_display_url}}" style="height: 100%; object-fit: cover;">
+                        {% if photo.primary %}
+                        <div class="card-img-overlay">
+                            <div class="badge badge-secondary p-1"><i class="dripicons-star"></i></div>
+                        </div>
+                        {% endif %}
+                        <div class="dropdown card-widgets">
+                            <a href="#" class="dropdown-toggle arrow-none" data-toggle="dropdown" aria-expanded="false">
+                                <i class="dripicons-dots-3"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                {% if not photo.primary %}
+                                <a href="javascript:void(0);" data-action="{% url 'matrimony:profile-photo-action' photo.id 'make-primary' %}" class="photo-action dropdown-item"><i class="dripicons-star mr-1"></i>Make primary</a>
+                                {% endif %}
+                                <!-- item-->
+                                <a href="javascript:void(0);" data-action="{% url 'matrimony:profile-photo-action' photo.id 'delete' %}" class="photo-action dropdown-item"><i class="mdi mdi-delete mr-1"></i>Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+                    {% if form.wizard %}
+                    {% crispy form %}
+                    {% endif %}
+                {% else %}
+                    {% crispy form %}
+                {% endifequal %}
+            </div>
+        </div>
+    </div>
+</div> <!-- end row-->
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+{% ifequal section_id "photos" %}
+<!-- plugin js -->
+<script src="{% static 'js/vendor/dropzone.min.js' %}"></script>
+
+<script type="text/javascript">
+Dropzone.autoDiscover = false;
+$(function(){
+    let photosDropzone = $("#photosDropzone").dropzone({
+      autoQueue: true,
+      autoProcessQueue: false,
+      addRemoveLinks: true,
+      parallelUploads: 20,
+      acceptedFiles: "image/*",
+      maxFilesize: 5
+    })[0].dropzone;
+
+    photosDropzone.on("queuecomplete", function (progress) {
+      location.reload();
+    });
+
+    $("#uploadButton").on("click", function (e) {
+        photosDropzone.processQueue();
+    });
+
+    $(".photo-action").on("click", function (e) {
+        let link = $(this);
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            type: "POST",
+            headers: {
+              'X-CSRFToken': csrftoken
+            },
+            url: link.data("action"),
+            success: function (data) {
+                location.reload();
+            },
+            error: function (err) {
+                console.log("error", err.responseJSON);
+            }
+        })
+    })
+});
+</script>
+{% endifequal %}
+{% endblock %}

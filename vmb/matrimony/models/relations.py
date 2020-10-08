@@ -155,7 +155,7 @@ class Religion(BaseModel):
 class Caste(BaseModel):
     """Model representing Caste e.g. Marwari, Gujarati etc"""
 
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
 
     class Meta:
         ordering = ["name"]

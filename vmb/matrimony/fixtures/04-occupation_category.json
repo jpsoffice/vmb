@@ -1,0 +1,200 @@
+[
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 0,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.622Z",
+      "updated_at": "2020-05-28T12:24:49.622Z",
+      "name": "Administration"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 1,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.680Z",
+      "updated_at": "2020-05-28T12:24:49.680Z",
+      "name": "Agriculture"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 2,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.715Z",
+      "updated_at": "2020-05-28T12:24:49.716Z",
+      "name": "Airline"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 3,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.749Z",
+      "updated_at": "2020-05-28T12:24:49.749Z",
+      "name": "Architecture & design"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 4,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.775Z",
+      "updated_at": "2020-05-28T12:24:49.775Z",
+      "name": "Banking & finance"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 5,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.791Z",
+      "updated_at": "2020-05-28T12:24:49.791Z",
+      "name": "Beauty & fashion"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 6,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.809Z",
+      "updated_at": "2020-05-28T12:24:49.809Z",
+      "name": "Bpo & customer service"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 7,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.825Z",
+      "updated_at": "2020-05-28T12:24:49.825Z",
+      "name": "Civil services"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 8,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.843Z",
+      "updated_at": "2020-05-28T12:24:49.843Z",
+      "name": "Corporate professionals"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 9,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.858Z",
+      "updated_at": "2020-05-28T12:24:49.858Z",
+      "name": "Defence"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 10,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.875Z",
+      "updated_at": "2020-05-28T12:24:49.875Z",
+      "name": "Education & training"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 11,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.892Z",
+      "updated_at": "2020-05-28T12:24:49.892Z",
+      "name": "Engineering"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 12,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.908Z",
+      "updated_at": "2020-05-28T12:24:49.908Z",
+      "name": "Hospitality"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 13,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.925Z",
+      "updated_at": "2020-05-28T12:24:49.925Z",
+      "name": "It & software"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 14,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.942Z",
+      "updated_at": "2020-05-28T12:24:49.942Z",
+      "name": "Legal"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 15,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.959Z",
+      "updated_at": "2020-05-28T12:24:49.959Z",
+      "name": "Law enforcement"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 16,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.975Z",
+      "updated_at": "2020-05-28T12:24:49.975Z",
+      "name": "Medical & healthcare"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 17,
+    "fields": {
+      "created_at": "2020-05-28T12:24:49.994Z",
+      "updated_at": "2020-05-28T12:24:49.994Z",
+      "name": "Media & entertainment"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 18,
+    "fields": {
+      "created_at": "2020-05-28T12:24:50.020Z",
+      "updated_at": "2020-05-28T12:24:50.020Z",
+      "name": "Merchant navy"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 19,
+    "fields": {
+      "created_at": "2020-05-28T12:24:50.037Z",
+      "updated_at": "2020-05-28T12:24:50.037Z",
+      "name": "Scientist"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 20,
+    "fields": {
+      "created_at": "2020-05-28T12:24:50.053Z",
+      "updated_at": "2020-05-28T12:24:50.053Z",
+      "name": "Top management"
+    }
+  },
+  {
+    "model": "matrimony.occupationcategory",
+    "pk": 21,
+    "fields": {
+      "created_at": "2020-05-28T12:24:50.071Z",
+      "updated_at": "2020-05-28T12:24:50.071Z",
+      "name": "Others"
+    }
+  }
+]

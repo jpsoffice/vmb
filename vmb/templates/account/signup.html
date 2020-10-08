@@ -34,7 +34,7 @@
 
         <div class="card-body p-4">
             <div class="text-center w-75 m-auto">
-                <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Free Sign Up</h4>
+                <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Sign Up for Vaisnava Marriage</h4>
                 <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute </p>
             </div>
 
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.name.id_for_label}}">Name</label>
+                    <label for="{{ form.name.id_for_label}}">Legal name</label>
                     {% crispy_field form.name %}
                     {% if form.name.errors %}
                         {% for error in form.name.errors %}
@@ -103,7 +103,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="{{ form.gender.id_for_label}}">Gender</label>
-                        {% crispy_field form.gender %}
+                        {% crispy_field form.gender 'css' 'select2' 'data-toggle' 'select2' %}
                         {% if form.gender.errors %}
                             {% for error in form.gender.errors %}
                                 <div class="invalid-feedback">{{ error }}</div>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="{{ form.marital_status.id_for_label}}">Marital status</label>
-                        {% crispy_field form.marital_status %}
+                        {% crispy_field form.marital_status 'css' 'select2' 'data-toggle' 'select2' %}
                         {% if form.marital_status.errors %}
                             {% for error in form.marital_status.errors %}
                                 <div class="invalid-feedback">{{ error }}</div>
@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.phone.id_for_label}}">Phone</label>
+                    <label for="{{ form.phone.id_for_label}}">Mobile number</label>
                     {% crispy_field form.phone %}
                     {% if form.phone.errors %}
                         {% for error in form.phone.errors %}
@@ -133,7 +133,7 @@
 
                 <div class="form-group">
                     <label for="{{ form.dob.id_for_label}}">Date of birth</label>
-                    {{ form.dob }}
+                    {% crispy_field form.dob %}
                     {% if form.dob.errors %}
                         {% for error in form.dob.errors %}
                             <div class="invalid-feedback">{{ error }}</div>
@@ -146,6 +146,26 @@
                     {% crispy_field form.rounds_chanting %}
                     {% if form.rounds_chanting.errors %}
                         {% for error in form.rounds_chanting.errors %}
+                            <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.profile_created_by.id_for_label}}">Profile created by</label>
+                    {% crispy_field form.profile_created_by 'css' 'select2' 'data-toggle' 'select2' %}
+                    {% if form.profile_created_by.errors %}
+                        {% for error in form.profile_created_by.errors %}
+                            <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.contact_person_name.id_for_label}}">Contact person name</label>
+                    {% crispy_field form.contact_person_name %}
+                    {% if form.contact_person_name.errors %}
+                        {% for error in form.contact_person_name.errors %}
                             <div class="invalid-feedback">{{ error }}</div>
                         {% endfor %}
                     {% endif %}

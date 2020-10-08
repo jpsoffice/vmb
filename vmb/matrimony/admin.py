@@ -298,6 +298,7 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                 "fields": [
                     ("profile_id", "name", "spiritual_name"),
                     ("status", "ethnic_origin", "primary_image"),
+                    ("profile_created_by", "contact_person_name"),
                     ("age", "mother_tongue", "marital_status", "children_count"),
                     ("religion", "caste", "subcaste"),
                     ("languages_known", "languages_read_write"),

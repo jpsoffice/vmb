@@ -9,7 +9,6 @@ from django.views import defaults as default_views
 admin.site.site_header = settings.ADMIN_SITE_HEADER
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
@@ -19,6 +18,7 @@ urlpatterns = [
     path("users/", include("vmb.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     path("photologue/", include("photologue.urls", namespace="photologue")),
+    path("", include("vmb.matrimony.urls", namespace="matrimony")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
