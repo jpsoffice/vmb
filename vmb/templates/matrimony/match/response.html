@@ -12,19 +12,19 @@
                 {{ m.name }}{% if m.spiritual_name %}({{ m.spiritual_name }}){% endif %}
               </h3>
               <h4>{{ m.age }} years</h4>
-              <h4>{{ m.height }}cms</h4>
+              <h4>{{ m.height }} cms</h4>
               {% block response %}
                 <form action="#" method="post">
                     {% csrf_token %}
                     {% if not response %}
-                      <button type = "submit" name="response" value="ACP">Accept</button>&emsp;&emsp;
-                      <button type = "submit" name="response" value="REJ">Reject</button>
+                      <button class="btn btn-primary" type = "submit" name="response" value="ACP">Accept</button>&emsp;&emsp;
+                      <button class="btn btn-danger" type = "submit" name="response" value="REJ">Reject</button>
                     {% elif "ACP" in response %}
-                      <button type = "submit" name="response" value="ACP" disabled>Accept</button>&emsp;&emsp;
-                      <button type = "submit" name="response" value="REJ">Reject</button>
+                      <button class="btn btn-primary" type = "submit" name="response" value="ACP" disabled>Accept</button>&emsp;&emsp;
+                      <button class="btn btn-danger" type = "submit" name="response" value="REJ">Reject</button>
                     {% elif "REJ" in response %}
-                      <button type = "submit" name="response" value="ACP" >Accept</button>&emsp;&emsp;
-                      <button type = "submit" name="response" value="REJ" disabled>Reject</button>
+                      <button class="btn btn-primary" type = "submit" name="response" value="ACP" >Accept</button>&emsp;&emsp;
+                      <button class="btn btn-danger" type = "submit" name="response" value="REJ" disabled>Reject</button>
                     {% endif %}
                 </form>
               {% endblock %}
