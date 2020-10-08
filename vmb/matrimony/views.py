@@ -34,17 +34,16 @@ def match_response(request, id):
 
     profile_user = get_object_or_404(MatrimonyProfile, email=request.user.email)
     profile = get_object_or_404(MatrimonyProfile, id=id)
-
     if profile_user.gender == "M":
         match = get_object_or_404(Match, male=profile_user, female=profile)
         if request.POST:
-            match.male_response = request.POST["response"]
+            match.male_response = request.POST.get("response", match.male_response)
             match.save()
         response = match.male_response
     else:
         match = get_object_or_404(Match, male=profile, female=profile_user)
         if request.POST:
-            match.female_response = request.POST["response"]
+            match.female_response = request.POST.get("response", match.male_response)
             match.save()
         response = match.female_response
 
