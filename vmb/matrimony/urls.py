@@ -10,7 +10,9 @@ from vmb.matrimony.views import (
 
 app_name = "matrimony"
 urlpatterns = [
-    path("match/<int:id>/response", views.match_response, name="match_response"),
+    path(
+        "profile/match/<int:id>/response", views.match_response, name="match_response"
+    ),
     path("", view=index, name="index"),
     path("profile/edit/<slug:section_id>/", view=profile_edit, name="profile-edit"),
     path("profile/photos/add", view=profile_photos_add, name="profile-photos-add"),
