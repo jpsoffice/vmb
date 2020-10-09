@@ -1,0 +1,83 @@
+[
+    {
+        "pk": 1, 
+        "model": "matrimony.religion", 
+        "fields": {
+        "created_at": "2020-09-15T06:10:39.699Z", 
+        "updated_at": "2020-09-15T06:10:39.700Z", 
+        "name": "Hindu"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "matrimony.religion", 
+        "fields": {
+        "created_at": "2020-09-15T06:10:46.771Z", 
+        "updated_at": "2020-09-15T06:10:46.771Z", 
+        "name": "Muslim"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "matrimony.religion", 
+        "fields": {
+        "created_at": "2020-09-15T06:10:54.271Z", 
+        "updated_at": "2020-09-15T06:10:54.271Z", 
+        "name": "Christian"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "matrimony.religion", 
+        "fields": {
+        "created_at": "2020-09-15T06:10:59.751Z", 
+        "updated_at": "2020-09-15T06:10:59.751Z", 
+        "name": "Sikh"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "matrimony.religion", 
+        "fields": {
+        "created_at": "2020-09-15T06:11:04.438Z", 
+        "updated_at": "2020-09-15T06:11:04.438Z", 
+        "name": "Jain"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "matrimony.religion", 
+        "fields": {
+        "created_at": "2020-09-15T06:11:11.262Z", 
+        "updated_at": "2020-09-15T06:11:11.262Z", 
+        "name": "Parsi"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "matrimony.religion", 
+        "fields": {
+        "created_at": "2020-09-15T06:11:21.903Z", 
+        "updated_at": "2020-09-15T06:11:21.903Z", 
+        "name": "Buddhist"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "matrimony.religion", 
+        "fields": {
+        "created_at": "2020-09-15T06:11:27.794Z", 
+        "updated_at": "2020-09-15T06:11:27.794Z", 
+        "name": "Jewish"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "matrimony.religion", 
+        "fields": {
+        "created_at": "2020-09-15T06:11:37.622Z", 
+        "updated_at": "2020-09-15T06:11:37.622Z", 
+        "name": "Inter-Religion"
+        }
+    }
+]

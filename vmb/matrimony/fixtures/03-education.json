@@ -1,0 +1,912 @@
+[
+  {
+    "model": "matrimony.education",
+    "pk": 0,
+    "fields": {
+      "created_at": "2020-06-03T06:46:18.672Z",
+      "updated_at": "2020-06-03T06:46:18.672Z",
+      "name": "Aeronautical Engineering",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 1,
+    "fields": {
+      "created_at": "2020-06-03T06:46:19.033Z",
+      "updated_at": "2020-06-03T06:46:19.033Z",
+      "name": "B.Arch",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 2,
+    "fields": {
+      "created_at": "2020-06-03T06:46:19.405Z",
+      "updated_at": "2020-06-03T06:46:19.405Z",
+      "name": "BCA",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 3,
+    "fields": {
+      "created_at": "2020-06-03T06:46:19.732Z",
+      "updated_at": "2020-06-03T06:46:19.732Z",
+      "name": "BE",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 4,
+    "fields": {
+      "created_at": "2020-06-03T06:46:19.928Z",
+      "updated_at": "2020-06-03T06:46:19.928Z",
+      "name": "B.Plan",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 5,
+    "fields": {
+      "created_at": "2020-06-03T06:46:19.956Z",
+      "updated_at": "2020-06-03T06:46:19.956Z",
+      "name": "B.Sc IT/ Computer Science",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 6,
+    "fields": {
+      "created_at": "2020-06-03T06:46:19.985Z",
+      "updated_at": "2020-06-03T06:46:19.985Z",
+      "name": "B.Tech.",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 7,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.011Z",
+      "updated_at": "2020-06-03T06:46:20.011Z",
+      "name": "Other Bachelor Degree in Engineering / Computers",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 8,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.039Z",
+      "updated_at": "2020-06-03T06:46:20.039Z",
+      "name": "B.S.(Engineering)",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 9,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.066Z",
+      "updated_at": "2020-06-03T06:46:20.067Z",
+      "name": "M.Arch.",
+      "category": 1
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 10,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.096Z",
+      "updated_at": "2020-06-03T06:46:20.096Z",
+      "name": "MCA",
+      "category": 1
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 11,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.121Z",
+      "updated_at": "2020-06-03T06:46:20.121Z",
+      "name": "ME",
+      "category": 1
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 12,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.150Z",
+      "updated_at": "2020-06-03T06:46:20.150Z",
+      "name": "M.Sc. IT / Computer Science",
+      "category": 1
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 13,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.178Z",
+      "updated_at": "2020-06-03T06:46:20.178Z",
+      "name": "M.S.(Engg.)",
+      "category": 1
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 14,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.206Z",
+      "updated_at": "2020-06-03T06:46:20.206Z",
+      "name": "M.Tech.",
+      "category": 1
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 15,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.233Z",
+      "updated_at": "2020-06-03T06:46:20.234Z",
+      "name": "PGDCA",
+      "category": 1
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 16,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.263Z",
+      "updated_at": "2020-06-03T06:46:20.263Z",
+      "name": "Other Masters Degree in Engineering / Computers",
+      "category": 1
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 17,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.290Z",
+      "updated_at": "2020-06-03T06:46:20.290Z",
+      "name": "Aviation Degree",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 18,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.317Z",
+      "updated_at": "2020-06-03T06:46:20.317Z",
+      "name": "B.A.",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 19,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.345Z",
+      "updated_at": "2020-06-03T06:46:20.345Z",
+      "name": "B.Com.",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 20,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.371Z",
+      "updated_at": "2020-06-03T06:46:20.372Z",
+      "name": "B.Ed.",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 21,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.401Z",
+      "updated_at": "2020-06-03T06:46:20.401Z",
+      "name": "BFA",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 22,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.427Z",
+      "updated_at": "2020-06-03T06:46:20.427Z",
+      "name": "BFT",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 23,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.455Z",
+      "updated_at": "2020-06-03T06:46:20.455Z",
+      "name": "BLIS",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 24,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.482Z",
+      "updated_at": "2020-06-03T06:46:20.483Z",
+      "name": "B.M.M.",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 25,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.510Z",
+      "updated_at": "2020-06-03T06:46:20.510Z",
+      "name": "B.Sc.",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 26,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.538Z",
+      "updated_at": "2020-06-03T06:46:20.538Z",
+      "name": "B.S.W",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 27,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.567Z",
+      "updated_at": "2020-06-03T06:46:20.567Z",
+      "name": "B.Phil.",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 28,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.595Z",
+      "updated_at": "2020-06-03T06:46:20.595Z",
+      "name": "Other Bachelor Degree in Arts / Science / Commerce",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 29,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.623Z",
+      "updated_at": "2020-06-03T06:46:20.623Z",
+      "name": "M.A.",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 30,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.650Z",
+      "updated_at": "2020-06-03T06:46:20.650Z",
+      "name": "MCom",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 31,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.677Z",
+      "updated_at": "2020-06-03T06:46:20.677Z",
+      "name": "M.Ed.",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 32,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.698Z",
+      "updated_at": "2020-06-03T06:46:20.698Z",
+      "name": "MFA",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 33,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.718Z",
+      "updated_at": "2020-06-03T06:46:20.718Z",
+      "name": "MLIS",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 34,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.734Z",
+      "updated_at": "2020-06-03T06:46:20.734Z",
+      "name": "M.Sc.",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 35,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.751Z",
+      "updated_at": "2020-06-03T06:46:20.751Z",
+      "name": "MSW",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 36,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.769Z",
+      "updated_at": "2020-06-03T06:46:20.769Z",
+      "name": "M.Phil.",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 37,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.789Z",
+      "updated_at": "2020-06-03T06:46:20.789Z",
+      "name": "Other Master Degree in Arts / Science / Commerce",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 38,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.817Z",
+      "updated_at": "2020-06-03T06:46:20.817Z",
+      "name": "BBA",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 39,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.846Z",
+      "updated_at": "2020-06-03T06:46:20.846Z",
+      "name": "BFM (Financial Management)",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 40,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.873Z",
+      "updated_at": "2020-06-03T06:46:20.873Z",
+      "name": "BHM (Hotel Management)",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 41,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.900Z",
+      "updated_at": "2020-06-03T06:46:20.900Z",
+      "name": "Other Bachelor Degree in Management",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 42,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.924Z",
+      "updated_at": "2020-06-03T06:46:20.924Z",
+      "name": "BHA / BHM (Hospital Administration",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 43,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.940Z",
+      "updated_at": "2020-06-03T06:46:20.940Z",
+      "name": "MBA",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 44,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.955Z",
+      "updated_at": "2020-06-03T06:46:20.955Z",
+      "name": "MFM (Financial Management)",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 45,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.971Z",
+      "updated_at": "2020-06-03T06:46:20.971Z",
+      "name": "MHM  (Hotel Management)",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 46,
+    "fields": {
+      "created_at": "2020-06-03T06:46:20.993Z",
+      "updated_at": "2020-06-03T06:46:20.993Z",
+      "name": "MHRM (Human Resource Management)",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 47,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.023Z",
+      "updated_at": "2020-06-03T06:46:21.023Z",
+      "name": "PGDM",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 48,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.052Z",
+      "updated_at": "2020-06-03T06:46:21.052Z",
+      "name": "Other Master Degree in Management",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 49,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.080Z",
+      "updated_at": "2020-06-03T06:46:21.081Z",
+      "name": "MHA / MHM (Hospital Administration)",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 50,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.107Z",
+      "updated_at": "2020-06-03T06:46:21.107Z",
+      "name": "B.A.M.S.",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 51,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.134Z",
+      "updated_at": "2020-06-03T06:46:21.135Z",
+      "name": "BDS",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 52,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.164Z",
+      "updated_at": "2020-06-03T06:46:21.164Z",
+      "name": "BHMS",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 53,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.190Z",
+      "updated_at": "2020-06-03T06:46:21.190Z",
+      "name": "BSMS",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 54,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.221Z",
+      "updated_at": "2020-06-03T06:46:21.221Z",
+      "name": "BPharm",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 55,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.543Z",
+      "updated_at": "2020-06-03T06:46:21.543Z",
+      "name": "BPT",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 56,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.592Z",
+      "updated_at": "2020-06-03T06:46:21.592Z",
+      "name": "BUMS",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 57,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.618Z",
+      "updated_at": "2020-06-03T06:46:21.618Z",
+      "name": "BVSc",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 58,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.648Z",
+      "updated_at": "2020-06-03T06:46:21.648Z",
+      "name": "MBBS",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 59,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.675Z",
+      "updated_at": "2020-06-03T06:46:21.675Z",
+      "name": "B.Sc. Nursing",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 60,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.703Z",
+      "updated_at": "2020-06-03T06:46:21.704Z",
+      "name": "Other Bachelor Degree in Medicine",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 61,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.729Z",
+      "updated_at": "2020-06-03T06:46:21.730Z",
+      "name": "MDS",
+      "category": 7
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 62,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.752Z",
+      "updated_at": "2020-06-03T06:46:21.752Z",
+      "name": "MD / MS (Medical)",
+      "category": 7
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 63,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.768Z",
+      "updated_at": "2020-06-03T06:46:21.768Z",
+      "name": "M.Pharm",
+      "category": 7
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 64,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.785Z",
+      "updated_at": "2020-06-03T06:46:21.785Z",
+      "name": "MPT",
+      "category": 7
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 65,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.802Z",
+      "updated_at": "2020-06-03T06:46:21.802Z",
+      "name": "MVSc",
+      "category": 7
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 66,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.820Z",
+      "updated_at": "2020-06-03T06:46:21.820Z",
+      "name": "Other Master Degree in Medicine",
+      "category": 7
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 67,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.842Z",
+      "updated_at": "2020-06-03T06:46:21.842Z",
+      "name": "BGL",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 68,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.871Z",
+      "updated_at": "2020-06-03T06:46:21.871Z",
+      "name": "B.L.",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 69,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.899Z",
+      "updated_at": "2020-06-03T06:46:21.899Z",
+      "name": "LL.B.",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 70,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.927Z",
+      "updated_at": "2020-06-03T06:46:21.927Z",
+      "name": "Other Bachelor Degree in Legal",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 71,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.954Z",
+      "updated_at": "2020-06-03T06:46:21.954Z",
+      "name": "LL.M.",
+      "category": 9
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 72,
+    "fields": {
+      "created_at": "2020-06-03T06:46:21.984Z",
+      "updated_at": "2020-06-03T06:46:21.984Z",
+      "name": "M.L.",
+      "category": 9
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 73,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.009Z",
+      "updated_at": "2020-06-03T06:46:22.010Z",
+      "name": "Other Master Degree in  Legal",
+      "category": 9
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 74,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.037Z",
+      "updated_at": "2020-06-03T06:46:22.037Z",
+      "name": "CA",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 75,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.064Z",
+      "updated_at": "2020-06-03T06:46:22.064Z",
+      "name": "CFA (Chartered Financial Analyst)",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 76,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.094Z",
+      "updated_at": "2020-06-03T06:46:22.094Z",
+      "name": "CS",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 77,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.121Z",
+      "updated_at": "2020-06-03T06:46:22.121Z",
+      "name": "ICWA",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 78,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.149Z",
+      "updated_at": "2020-06-03T06:46:22.149Z",
+      "name": "Other Degree in Finance",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 79,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.177Z",
+      "updated_at": "2020-06-03T06:46:22.177Z",
+      "name": "IAS",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 80,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.205Z",
+      "updated_at": "2020-06-03T06:46:22.205Z",
+      "name": "IES",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 81,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.232Z",
+      "updated_at": "2020-06-03T06:46:22.232Z",
+      "name": "IFS",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 82,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.260Z",
+      "updated_at": "2020-06-03T06:46:22.260Z",
+      "name": "IRS",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 83,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.287Z",
+      "updated_at": "2020-06-03T06:46:22.287Z",
+      "name": "IPS",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 84,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.314Z",
+      "updated_at": "2020-06-03T06:46:22.314Z",
+      "name": "Other Degree in Service",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 85,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.344Z",
+      "updated_at": "2020-06-03T06:46:22.344Z",
+      "name": "Ph.D.",
+      "category": 12
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 86,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.371Z",
+      "updated_at": "2020-06-03T06:46:22.371Z",
+      "name": "Diploma",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 87,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.399Z",
+      "updated_at": "2020-06-03T06:46:22.399Z",
+      "name": "Polytechnic",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 88,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.424Z",
+      "updated_at": "2020-06-03T06:46:22.425Z",
+      "name": "Trade School",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 89,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.453Z",
+      "updated_at": "2020-06-03T06:46:22.453Z",
+      "name": "Others in Diploma",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.education",
+    "pk": 90,
+    "fields": {
+      "created_at": "2020-06-03T06:46:22.480Z",
+      "updated_at": "2020-06-03T06:46:22.480Z",
+      "name": "Higher Secondary School / High School",
+      "category": 14
+    }
+  }
+]

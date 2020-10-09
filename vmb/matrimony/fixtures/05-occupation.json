@@ -1,0 +1,1412 @@
+[
+  {
+    "model": "matrimony.occupation",
+    "pk": 0,
+    "fields": {
+      "created_at": "2020-05-28T14:40:47.601Z",
+      "updated_at": "2020-05-28T14:40:47.601Z",
+      "name": "Manager",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 1,
+    "fields": {
+      "created_at": "2020-05-28T14:40:47.743Z",
+      "updated_at": "2020-05-28T14:40:47.743Z",
+      "name": "Supervisor",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 2,
+    "fields": {
+      "created_at": "2020-05-28T14:40:47.774Z",
+      "updated_at": "2020-05-28T14:40:47.774Z",
+      "name": "Officer",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 3,
+    "fields": {
+      "created_at": "2020-05-28T14:40:47.811Z",
+      "updated_at": "2020-05-28T14:40:47.811Z",
+      "name": "Administrative Professional",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 4,
+    "fields": {
+      "created_at": "2020-05-28T14:40:47.835Z",
+      "updated_at": "2020-05-28T14:40:47.835Z",
+      "name": "Executive",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 5,
+    "fields": {
+      "created_at": "2020-05-28T14:40:47.862Z",
+      "updated_at": "2020-05-28T14:40:47.862Z",
+      "name": "Clerk",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 6,
+    "fields": {
+      "created_at": "2020-05-28T14:40:47.891Z",
+      "updated_at": "2020-05-28T14:40:47.891Z",
+      "name": "Human Resources Professional",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 7,
+    "fields": {
+      "created_at": "2020-05-28T14:40:47.918Z",
+      "updated_at": "2020-05-28T14:40:47.918Z",
+      "name": "Secretary / Front Office",
+      "category": 0
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 8,
+    "fields": {
+      "created_at": "2020-05-28T14:40:47.947Z",
+      "updated_at": "2020-05-28T14:40:47.947Z",
+      "name": "Agriculture & Farming Professional",
+      "category": 1
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 9,
+    "fields": {
+      "created_at": "2020-05-28T14:40:47.974Z",
+      "updated_at": "2020-05-28T14:40:47.974Z",
+      "name": "Horticulturist",
+      "category": 1
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 10,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.004Z",
+      "updated_at": "2020-05-28T14:40:48.004Z",
+      "name": "Pilot",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 11,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.028Z",
+      "updated_at": "2020-05-28T14:40:48.028Z",
+      "name": "Air Hostess / Flight Attendant",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 12,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.056Z",
+      "updated_at": "2020-05-28T14:40:48.056Z",
+      "name": "Airline Professional",
+      "category": 2
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 13,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.084Z",
+      "updated_at": "2020-05-28T14:40:48.084Z",
+      "name": "Architect",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 14,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.113Z",
+      "updated_at": "2020-05-28T14:40:48.113Z",
+      "name": "Interior Designer",
+      "category": 3
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 15,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.139Z",
+      "updated_at": "2020-05-28T14:40:48.139Z",
+      "name": "Chartered Accountant",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 16,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.168Z",
+      "updated_at": "2020-05-28T14:40:48.168Z",
+      "name": "Company Secretary",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 17,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.195Z",
+      "updated_at": "2020-05-28T14:40:48.195Z",
+      "name": "Accounts / Finance Professional",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 18,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.225Z",
+      "updated_at": "2020-05-28T14:40:48.225Z",
+      "name": "Banking Professional",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 19,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.253Z",
+      "updated_at": "2020-05-28T14:40:48.253Z",
+      "name": "Auditor",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 20,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.277Z",
+      "updated_at": "2020-05-28T14:40:48.277Z",
+      "name": "Financial Accountant",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 21,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.307Z",
+      "updated_at": "2020-05-28T14:40:48.307Z",
+      "name": "Financial Analyst / Planning",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 22,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.335Z",
+      "updated_at": "2020-05-28T14:40:48.335Z",
+      "name": "Investment Professional",
+      "category": 4
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 23,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.359Z",
+      "updated_at": "2020-05-28T14:40:48.359Z",
+      "name": "Fashion Designer",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 24,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.383Z",
+      "updated_at": "2020-05-28T14:40:48.383Z",
+      "name": "Beautician",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 25,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.402Z",
+      "updated_at": "2020-05-28T14:40:48.402Z",
+      "name": "Hair Stylist",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 26,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.424Z",
+      "updated_at": "2020-05-28T14:40:48.424Z",
+      "name": "Jewellery Designer",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 27,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.453Z",
+      "updated_at": "2020-05-28T14:40:48.454Z",
+      "name": "Designer (Others)",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 28,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.479Z",
+      "updated_at": "2020-05-28T14:40:48.479Z",
+      "name": "Makeup Artist",
+      "category": 5
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 29,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.507Z",
+      "updated_at": "2020-05-28T14:40:48.507Z",
+      "name": "BPO / KPO / ITES Professional",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 30,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.534Z",
+      "updated_at": "2020-05-28T14:40:48.534Z",
+      "name": "Customer Service Professional",
+      "category": 6
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 31,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.563Z",
+      "updated_at": "2020-05-28T14:40:48.563Z",
+      "name": "Civil Services (IAS / IPS / IRS / IES / IFS)",
+      "category": 7
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 32,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.591Z",
+      "updated_at": "2020-05-28T14:40:48.591Z",
+      "name": "Analyst",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 33,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.619Z",
+      "updated_at": "2020-05-28T14:40:48.619Z",
+      "name": "Consultant",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 34,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.645Z",
+      "updated_at": "2020-05-28T14:40:48.645Z",
+      "name": "Corporate Communication",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 35,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.673Z",
+      "updated_at": "2020-05-28T14:40:48.673Z",
+      "name": "Corporate Planning",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 36,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.700Z",
+      "updated_at": "2020-05-28T14:40:48.700Z",
+      "name": "Marketing Professional",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 37,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.731Z",
+      "updated_at": "2020-05-28T14:40:48.731Z",
+      "name": "Operations Management",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 38,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.758Z",
+      "updated_at": "2020-05-28T14:40:48.758Z",
+      "name": "Sales Professional",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 39,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.785Z",
+      "updated_at": "2020-05-28T14:40:48.786Z",
+      "name": "Senior Manager / Manager",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 40,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.813Z",
+      "updated_at": "2020-05-28T14:40:48.813Z",
+      "name": "Subject Matter Expert",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 41,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.841Z",
+      "updated_at": "2020-05-28T14:40:48.841Z",
+      "name": "Business Development Professional",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 42,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.868Z",
+      "updated_at": "2020-05-28T14:40:48.868Z",
+      "name": "Content Writer",
+      "category": 8
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 43,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.896Z",
+      "updated_at": "2020-05-28T14:40:48.896Z",
+      "name": "Army",
+      "category": 9
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 44,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.924Z",
+      "updated_at": "2020-05-28T14:40:48.925Z",
+      "name": "Navy",
+      "category": 9
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 45,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.952Z",
+      "updated_at": "2020-05-28T14:40:48.952Z",
+      "name": "Defence Services (Others)",
+      "category": 9
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 46,
+    "fields": {
+      "created_at": "2020-05-28T14:40:48.980Z",
+      "updated_at": "2020-05-28T14:40:48.980Z",
+      "name": "Air Force",
+      "category": 9
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 47,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.000Z",
+      "updated_at": "2020-05-28T14:40:49.000Z",
+      "name": "Paramilitary",
+      "category": 9
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 48,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.016Z",
+      "updated_at": "2020-05-28T14:40:49.016Z",
+      "name": "Professor / Lecturer",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 49,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.033Z",
+      "updated_at": "2020-05-28T14:40:49.033Z",
+      "name": "Teaching / Academician",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 50,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.056Z",
+      "updated_at": "2020-05-28T14:40:49.056Z",
+      "name": "Education Professional",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 51,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.085Z",
+      "updated_at": "2020-05-28T14:40:49.085Z",
+      "name": "Training Professional",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 52,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.113Z",
+      "updated_at": "2020-05-28T14:40:49.113Z",
+      "name": "Research Assistant",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 53,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.144Z",
+      "updated_at": "2020-05-28T14:40:49.144Z",
+      "name": "Research Scholar",
+      "category": 10
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 54,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.162Z",
+      "updated_at": "2020-05-28T14:40:49.162Z",
+      "name": "Civil Engineer",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 55,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.179Z",
+      "updated_at": "2020-05-28T14:40:49.179Z",
+      "name": "Electronics / Telecom Engineer",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 56,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.195Z",
+      "updated_at": "2020-05-28T14:40:49.196Z",
+      "name": "Mechanical / Production Engineer",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 57,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.212Z",
+      "updated_at": "2020-05-28T14:40:49.213Z",
+      "name": "Quality Assurance Engineer - Non IT",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 58,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.229Z",
+      "updated_at": "2020-05-28T14:40:49.229Z",
+      "name": "Engineer - Non IT",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 59,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.247Z",
+      "updated_at": "2020-05-28T14:40:49.247Z",
+      "name": "Designer",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 60,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.268Z",
+      "updated_at": "2020-05-28T14:40:49.268Z",
+      "name": "Product Manager - Non IT",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 61,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.319Z",
+      "updated_at": "2020-05-28T14:40:49.319Z",
+      "name": "Project Manager - Non IT",
+      "category": 11
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 62,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.348Z",
+      "updated_at": "2020-05-28T14:40:49.348Z",
+      "name": "Hotel / Hospitality Professional",
+      "category": 12
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 63,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.376Z",
+      "updated_at": "2020-05-28T14:40:49.376Z",
+      "name": "Restaurant / Catering Professional",
+      "category": 12
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 64,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.403Z",
+      "updated_at": "2020-05-28T14:40:49.403Z",
+      "name": "Chef / Cook",
+      "category": 12
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 65,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.429Z",
+      "updated_at": "2020-05-28T14:40:49.429Z",
+      "name": "Software Professional",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 66,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.457Z",
+      "updated_at": "2020-05-28T14:40:49.457Z",
+      "name": "Hardware Professional",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 67,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.485Z",
+      "updated_at": "2020-05-28T14:40:49.485Z",
+      "name": "Product Manager",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 68,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.513Z",
+      "updated_at": "2020-05-28T14:40:49.514Z",
+      "name": "Project Manager",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 69,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.540Z",
+      "updated_at": "2020-05-28T14:40:49.540Z",
+      "name": "Program Manager",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 70,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.571Z",
+      "updated_at": "2020-05-28T14:40:49.571Z",
+      "name": "Animator",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 71,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.598Z",
+      "updated_at": "2020-05-28T14:40:49.598Z",
+      "name": "Cyber / Network Security",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 72,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.623Z",
+      "updated_at": "2020-05-28T14:40:49.623Z",
+      "name": "UI / UX Designer",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 73,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.647Z",
+      "updated_at": "2020-05-28T14:40:49.647Z",
+      "name": "Web / Graphic Designer",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 74,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.669Z",
+      "updated_at": "2020-05-28T14:40:49.669Z",
+      "name": "Software Consultant",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 75,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.696Z",
+      "updated_at": "2020-05-28T14:40:49.696Z",
+      "name": "Data Analyst",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 76,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.725Z",
+      "updated_at": "2020-05-28T14:40:49.725Z",
+      "name": "Data Scientist",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 77,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.748Z",
+      "updated_at": "2020-05-28T14:40:49.748Z",
+      "name": "Network Engineer",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 78,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.765Z",
+      "updated_at": "2020-05-28T14:40:49.765Z",
+      "name": "Quality Assurance Engineer",
+      "category": 13
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 79,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.782Z",
+      "updated_at": "2020-05-28T14:40:49.782Z",
+      "name": "Lawyer & Legal Professional",
+      "category": 14
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 80,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.799Z",
+      "updated_at": "2020-05-28T14:40:49.799Z",
+      "name": "Legal Assistant",
+      "category": 14
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 81,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.816Z",
+      "updated_at": "2020-05-28T14:40:49.816Z",
+      "name": "Law Enforcement Officer",
+      "category": 15
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 82,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.832Z",
+      "updated_at": "2020-05-28T14:40:49.832Z",
+      "name": "Police",
+      "category": 15
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 83,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.854Z",
+      "updated_at": "2020-05-28T14:40:49.854Z",
+      "name": "Doctor",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 84,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.883Z",
+      "updated_at": "2020-05-28T14:40:49.884Z",
+      "name": "Healthcare Professional",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 85,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.909Z",
+      "updated_at": "2020-05-28T14:40:49.910Z",
+      "name": "Paramedical Professional",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 86,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.937Z",
+      "updated_at": "2020-05-28T14:40:49.937Z",
+      "name": "Nurse",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 87,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.965Z",
+      "updated_at": "2020-05-28T14:40:49.966Z",
+      "name": "Pharmacist",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 88,
+    "fields": {
+      "created_at": "2020-05-28T14:40:49.994Z",
+      "updated_at": "2020-05-28T14:40:49.994Z",
+      "name": "Physiotherapist",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 89,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.021Z",
+      "updated_at": "2020-05-28T14:40:50.021Z",
+      "name": "Psychologist",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 90,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.048Z",
+      "updated_at": "2020-05-28T14:40:50.049Z",
+      "name": "Veterinary Doctor",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 91,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.077Z",
+      "updated_at": "2020-05-28T14:40:50.077Z",
+      "name": "Dentist",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 92,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.105Z",
+      "updated_at": "2020-05-28T14:40:50.105Z",
+      "name": "Surgeon",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 93,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.132Z",
+      "updated_at": "2020-05-28T14:40:50.132Z",
+      "name": "Therapist",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 94,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.159Z",
+      "updated_at": "2020-05-28T14:40:50.160Z",
+      "name": "Medical Transcriptionist",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 95,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.189Z",
+      "updated_at": "2020-05-28T14:40:50.189Z",
+      "name": "Dietician / Nutritionist",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 96,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.215Z",
+      "updated_at": "2020-05-28T14:40:50.215Z",
+      "name": "Lab Technician",
+      "category": 16
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 97,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.554Z",
+      "updated_at": "2020-05-28T14:40:50.554Z",
+      "name": "Journalist",
+      "category": 17
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 98,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.581Z",
+      "updated_at": "2020-05-28T14:40:50.581Z",
+      "name": "Media Professional",
+      "category": 17
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 99,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.609Z",
+      "updated_at": "2020-05-28T14:40:50.609Z",
+      "name": "Entertainment Professional",
+      "category": 17
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 100,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.637Z",
+      "updated_at": "2020-05-28T14:40:50.638Z",
+      "name": "Event Management Professional",
+      "category": 17
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 101,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.664Z",
+      "updated_at": "2020-05-28T14:40:50.664Z",
+      "name": "Advertising / PR Professional",
+      "category": 17
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 102,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.691Z",
+      "updated_at": "2020-05-28T14:40:50.691Z",
+      "name": "Designer",
+      "category": 17
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 103,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.720Z",
+      "updated_at": "2020-05-28T14:40:50.720Z",
+      "name": "Actor / Model",
+      "category": 17
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 104,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.747Z",
+      "updated_at": "2020-05-28T14:40:50.747Z",
+      "name": "Artist",
+      "category": 17
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 105,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.776Z",
+      "updated_at": "2020-05-28T14:40:50.776Z",
+      "name": "Mariner / Merchant Navy",
+      "category": 18
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 106,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.803Z",
+      "updated_at": "2020-05-28T14:40:50.804Z",
+      "name": "Sailor",
+      "category": 18
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 107,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.825Z",
+      "updated_at": "2020-05-28T14:40:50.825Z",
+      "name": "Scientist / Researcher",
+      "category": 19
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 108,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.841Z",
+      "updated_at": "2020-05-28T14:40:50.841Z",
+      "name": "CXO / President, Director, Chairman",
+      "category": 20
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 109,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.878Z",
+      "updated_at": "2020-05-28T14:40:50.878Z",
+      "name": "VP / AVP / GM / DGM / AGM",
+      "category": 20
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 110,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.912Z",
+      "updated_at": "2020-05-28T14:40:50.912Z",
+      "name": "Technician",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 111,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.937Z",
+      "updated_at": "2020-05-28T14:40:50.937Z",
+      "name": "Arts & Craftsman",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 112,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.965Z",
+      "updated_at": "2020-05-28T14:40:50.965Z",
+      "name": "Librarian",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 113,
+    "fields": {
+      "created_at": "2020-05-28T14:40:50.992Z",
+      "updated_at": "2020-05-28T14:40:50.993Z",
+      "name": "Business Owner / Entrepreneur",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 114,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.020Z",
+      "updated_at": "2020-05-28T14:40:51.020Z",
+      "name": "Retired",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 115,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.048Z",
+      "updated_at": "2020-05-28T14:40:51.048Z",
+      "name": "Transportation / Logistics Professional",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 116,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.076Z",
+      "updated_at": "2020-05-28T14:40:51.076Z",
+      "name": "Agent / Broker / Trader",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 117,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.103Z",
+      "updated_at": "2020-05-28T14:40:51.103Z",
+      "name": "Contractor",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 118,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.132Z",
+      "updated_at": "2020-05-28T14:40:51.132Z",
+      "name": "Fitness Professional",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 119,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.159Z",
+      "updated_at": "2020-05-28T14:40:51.159Z",
+      "name": "Security Professional",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 120,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.187Z",
+      "updated_at": "2020-05-28T14:40:51.187Z",
+      "name": "Social Worker /  Volunteer / NGO",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 121,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.215Z",
+      "updated_at": "2020-05-28T14:40:51.216Z",
+      "name": "Sportsperson",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 122,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.243Z",
+      "updated_at": "2020-05-28T14:40:51.243Z",
+      "name": "Travel Professional",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 123,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.270Z",
+      "updated_at": "2020-05-28T14:40:51.271Z",
+      "name": "Singer",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 124,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.299Z",
+      "updated_at": "2020-05-28T14:40:51.299Z",
+      "name": "Writer",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 125,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.319Z",
+      "updated_at": "2020-05-28T14:40:51.319Z",
+      "name": "Politician",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 126,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.337Z",
+      "updated_at": "2020-05-28T14:40:51.337Z",
+      "name": "Associate",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 127,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.377Z",
+      "updated_at": "2020-05-28T14:40:51.377Z",
+      "name": "Builder",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 128,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.405Z",
+      "updated_at": "2020-05-28T14:40:51.405Z",
+      "name": "Chemist",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 129,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.432Z",
+      "updated_at": "2020-05-28T14:40:51.432Z",
+      "name": "CNC Operator",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 130,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.459Z",
+      "updated_at": "2020-05-28T14:40:51.459Z",
+      "name": "Distributor",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 131,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.487Z",
+      "updated_at": "2020-05-28T14:40:51.487Z",
+      "name": "Driver",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 132,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.515Z",
+      "updated_at": "2020-05-28T14:40:51.516Z",
+      "name": "Freelancer",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 133,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.544Z",
+      "updated_at": "2020-05-28T14:40:51.544Z",
+      "name": "Mechanic",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 134,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.571Z",
+      "updated_at": "2020-05-28T14:40:51.571Z",
+      "name": "Medical Representative",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 135,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.598Z",
+      "updated_at": "2020-05-28T14:40:51.598Z",
+      "name": "Musician",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 136,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.628Z",
+      "updated_at": "2020-05-28T14:40:51.628Z",
+      "name": "Photo / Videographer",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 137,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.654Z",
+      "updated_at": "2020-05-28T14:40:51.654Z",
+      "name": "Surveyor",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 138,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.682Z",
+      "updated_at": "2020-05-28T14:40:51.682Z",
+      "name": "Tailor",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 139,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.709Z",
+      "updated_at": "2020-05-28T14:40:51.710Z",
+      "name": "Others",
+      "category": 21
+    }
+  },
+  {
+    "model": "matrimony.occupation",
+    "pk": 140,
+    "fields": {
+      "created_at": "2020-05-28T14:40:51.709Z",
+      "updated_at": "2020-05-28T14:40:51.710Z",
+      "name": "Homemaker",
+      "category": 21
+    }
+  }
+]

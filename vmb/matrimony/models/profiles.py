@@ -72,18 +72,26 @@ HAIR_COLOR = (
     ("RED", "Red"),
     ("WHT", "White"),
 )
+PROFILE_CREATED_BY_CHOICES = (
+    ("SE", "Self"),
+    ("PA", "Parent"),
+    ("SI", "Sibling"),
+    ("CO", "Counselor"),
+    ("FR", "Friend"),
+)
 PROFILE_STATUS_CHOICES = (
-    ("00", "New"),
-    ("01", "Acknowledged"),
-    ("02", "Awaiting response"),
-    ("03", "Inactive"),
-    ("04", "Blocked"),
-    ("10", "Active"),
-    ("11", "Backlog"),
-    ("12", "In progress"),
-    ("13", "On hold"),
-    ("20", "Married (outside sources)"),
-    ("30", "Married"),
+    ("00", "Signup"),
+    ("01", "Registered"),
+    ("02", "Need more info"),
+    ("10", "Inactive"),
+    ("11", "Blocked"),
+    ("20", "Active"),
+    ("30", "In progress"),
+    ("40", "Matched"),
+    ("50", "QA"),
+    ("60", "Discussions"),
+    ("90", "Married (outside sources)"),
+    ("99", "Married"),
 )
 BODY_TYPE = (
     ("SLM", "Slim"),
@@ -162,6 +170,12 @@ class MatrimonyProfile(BaseModel):
     spiritual_name = models.CharField(
         max_length=200, default="", blank=True, verbose_name=_("Spiritual name")
     )
+    contact_person_name = models.CharField(
+        max_length=200, verbose_name=_("Contact person name"), default=""
+    )
+    profile_created_by = models.CharField(
+        max_length=2, choices=PROFILE_CREATED_BY_CHOICES, default="SE"
+    )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
     status = models.CharField(
         max_length=2, choices=PROFILE_STATUS_CHOICES, blank=True, default="00"
@@ -181,8 +195,8 @@ class MatrimonyProfile(BaseModel):
     photos = models.ManyToManyField("photologue.Photo", through="Photo", blank=True)
 
     # Contact details
-    email = models.EmailField(null=True, verbose_name=_("Email"))
-    phone = models.CharField(max_length=17, verbose_name=_("Phone number"), null=True,)
+    email = models.EmailField(null=True, unique=True, verbose_name=_("Email"))
+    phone = models.CharField(max_length=17, unique=True, verbose_name=_("Phone number"))
 
     # Spiritual details
     rounds_chanting = models.PositiveIntegerField(
@@ -202,11 +216,7 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Birth details
-    dob = models.DateField(
-        help_text="Enter birth date as YYYY-MM-DD",
-        verbose_name=_("date of birth"),
-        null=True,
-    )
+    dob = models.DateField(verbose_name=_("Date of birth"), null=True,)
     tob = models.TimeField(
         help_text="Enter time HH:MM:SS in 24hr format",
         verbose_name=_("Birth Time"),
@@ -215,13 +225,17 @@ class MatrimonyProfile(BaseModel):
     )
     birth_city = models.CharField(
         max_length=200,
-        verbose_name=_("City"),
-        help_text="Enter birth village/town/city",
+        verbose_name=_("City of birth"),
+        help_text="Birth village/town/city (auto populated from map)",
         null=True,
         blank=True,
     )
     birth_state = models.CharField(
-        max_length=200, verbose_name=_("State"), null=True, blank=True
+        max_length=200,
+        verbose_name=_("State of birth"),
+        help_text=_("Auto populated from map"),
+        null=True,
+        blank=True,
     )
     birth_country = models.ForeignKey(
         "Country",
@@ -229,7 +243,7 @@ class MatrimonyProfile(BaseModel):
         null=True,
         blank=True,
         related_name="birthCountry",
-        verbose_name=_("Country"),
+        verbose_name=_("Country of birth"),
     )
     birth_place = PlacesField(null=True, blank=True)
     gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
@@ -239,12 +253,16 @@ class MatrimonyProfile(BaseModel):
     current_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
-        help_text="Enter current village/town/city",
+        help_text="Current village/town/city (auto populated from map)",
         null=True,
         blank=True,
     )
     current_state = models.CharField(
-        max_length=200, verbose_name=_("State"), null=True, blank=True,
+        max_length=200,
+        verbose_name=_("State"),
+        help_text=_("Auto populated from map"),
+        null=True,
+        blank=True,
     )
     current_country = models.ForeignKey(
         "Country",
@@ -254,7 +272,9 @@ class MatrimonyProfile(BaseModel):
         verbose_name=_("Country"),
         blank=True,
     )
-    nationality = models.ForeignKey(Nationality, on_delete=models.SET_NULL, null=True,)
+    nationality = models.ForeignKey(
+        Nationality, on_delete=models.SET_NULL, blank=True, null=True,
+    )
 
     # Language details
     mother_tongue = models.ForeignKey(
@@ -365,8 +385,14 @@ class MatrimonyProfile(BaseModel):
         Religion, on_delete=models.SET_NULL, null=True, blank=True
     )
     caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True, blank=True)
+    caste_other = models.CharField(
+        max_length=50, verbose_name="Other caste", blank=True, default=""
+    )
     subcaste = models.ForeignKey(
         Subcaste, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    subcaste_other = models.CharField(
+        max_length=50, verbose_name="Other subcaste", blank=True, default=""
     )
 
     # Family details
@@ -432,8 +458,12 @@ class MatrimonyProfile(BaseModel):
         "self", through="Match", blank=True, symmetrical=False
     )
 
-    user = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
+    user = models.OneToOneField(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="matrimony_profile",
     )
 
     # Staff users
@@ -528,7 +558,13 @@ class MatrimonyProfile(BaseModel):
         self._original_birth_place = self.birth_place
         self._original_current_place = self.current_place
 
+    def set_status(self, status_text):
+        d = {v: k for k, v in PROFILE_STATUS_CHOICES}
+        self.status = d.get(status_text)
+
     def save(self, *args, **kwargs):
+        if self.id is None:
+            self.profile_id = self.generate_profile_id()
         if self.annual_income and (
             self.id is None or self._original_annual_income != self.annual_income
         ):
@@ -538,32 +574,23 @@ class MatrimonyProfile(BaseModel):
 
         if self.id is None or self._original_birth_place != self.birth_place:
             if self.birth_place:
-                (
-                    self.birth_city,
-                    self.birth_state,
-                    country,
-                ) = self.birth_place.place.split(", ")[-3:]
-                countries = Country.objects.filter(Q(name=country) | Q(code=country))
-                self.birth_country = countries[0] if countries else None
+                tokens = self.birth_place.place.split(", ")[-3:-1]
+                self.birth_city = tokens[0]
+                self.birth_state = tokens[1] if len(tokens) > 1 else tokens[0]
             else:
-                self.birth_city = self.birth_state = self.birth_country = None
+                self.birth_city = self.birth_state = None
 
         if self.id is None or self._original_current_place != self.current_place:
             if self.current_place:
-                (
-                    self.current_city,
-                    self.current_state,
-                    current_country,
-                ) = self.current_place.place.split(", ")[-3:]
-                countries = Country.objects.filter(
-                    Q(name=current_country) | Q(code=current_country)
-                )
-                self.current_country = countries[0] if countries else None
+                tokens = self.current_place.place.split(", ")[-3:-1]
+                self.current_city = tokens[0]
+                self.current_state = tokens[1] if len(tokens) > 1 else tokens[0]
             else:
-                self.current_city = self.current_state = self.current_country = None
+                self.current_city = self.current_state = None
 
         super().save(*args, **kwargs)
         _, created = MatrimonyProfileStats.objects.get_or_create(profile=self)
+        _, created = Expectation.objects.get_or_create(profile=self)
 
     def send_batch_matches_email(self):
         body = self.get_batch_matches_email_body()
@@ -586,7 +613,7 @@ class MatrimonyProfile(BaseModel):
     def generate_profile_id(self):
         digest = (
             md5(
-                f"{self.name}-{self.gender}-{self.phone}-{self.email}-{self.dob}-{self.tob}-{self.birth_city}-{self.birth_state}-{self.birth_country}".encode(
+                f"{self.name}-{self.gender}-{self.phone}-{self.email}-{self.dob}-{self.phone}".encode(
                     "utf-8"
                 )
             )
@@ -648,7 +675,7 @@ class Expectation(BaseModel):
         max_digits=5, decimal_places=2, null=True, blank=True, verbose_name="To height"
     )
     marital_status = MultiSelectField(
-        choices=MARITAL_STATUS, max_length=100, null=True, blank=True
+        choices=MARITAL_STATUS, max_choices=10, max_length=100, null=True, blank=True
     )
 
     # Religuous preferences
@@ -691,7 +718,11 @@ class Expectation(BaseModel):
     education = models.ManyToManyField(Education, blank=True)
     occupations = models.ManyToManyField(Occupation, blank=True)
     employed_in = MultiSelectField(
-        choices=EMPLOYED_IN_CHOICES, max_length=100, null=True, blank=True
+        choices=EMPLOYED_IN_CHOICES,
+        max_choices=10,
+        max_length=100,
+        null=True,
+        blank=True,
     )
     annual_income_from = MoneyField(
         max_digits=20,
@@ -728,7 +759,11 @@ class Expectation(BaseModel):
 
     # Spiritual details
     spiritual_status = MultiSelectField(
-        choices=SPIRITUAL_STATUS_CHOICES, max_length=5, null=True, blank=True
+        choices=SPIRITUAL_STATUS_CHOICES,
+        max_choices=10,
+        max_length=50,
+        null=True,
+        blank=True,
     )
     spiritual_masters = models.ManyToManyField(Guru, blank=True,)
     min_rounds_chanting = models.PositiveIntegerField(
@@ -776,7 +811,6 @@ class Male(MatrimonyProfile):
     def save(self, *args, **kwargs):
         if self.id is None:
             self.gender = "M"
-            self.profile_id = self.generate_profile_id()
         super().save(*args, **kwargs)
 
 
@@ -794,7 +828,6 @@ class Female(MatrimonyProfile):
     def save(self, *args, **kwargs):
         if self.id is None:
             self.gender = "F"
-            self.profile_id = self.generate_profile_id()
         super().save(*args, **kwargs)
 
 
@@ -918,7 +951,7 @@ class EmailMessage(BaseModel):
 class Photo(BaseModel):
     profile = models.ForeignKey(MatrimonyProfile, on_delete=models.CASCADE)
     photo = models.ForeignKey(
-        "photologue.Photo", on_delete=models.CASCADE, related_name="+"
+        "photologue.Photo", on_delete=models.CASCADE, related_name="photo_set"
     )
 
     primary = models.BooleanField(default=False, blank=True)
