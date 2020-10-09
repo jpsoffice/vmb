@@ -295,23 +295,26 @@ class BaseMatrimonyProfileAdmin(
     DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
 ):
     tab_profile = [
-        (
-            None,
-            {
-                "fields": [
-                    ("profile_id", "name", "spiritual_name"),
-                    ("status", "ethnic_origin", "primary_image"),
-                    ("profile_created_by", "contact_person_name"),
-                    ("age", "mother_tongue", "marital_status", "children_count"),
-                    ("religion", "caste", "subcaste"),
-                    ("languages_known", "languages_read_write"),
-                ]
-            },
-        ),
+        (None, {"fields": [("profile_id", "name", "spiritual_name"),]},),
         ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
         (
-            "SPIRITUAL QUOTIENT",
-            {"fields": [("rounds_chanting", "spiritual_status", "spiritual_master")]},
+            "BASIC INFORMATION",
+            {
+                "fields": [
+                    ("dob", "ethnic_origin"),
+                    ("mother_tongue", "rounds_chanting"),
+                    ("spiritual_status", "spiritual_master"),
+                    "marital_status",
+                    ("height", "weight"),
+                    ("body_type", "complexion"),
+                    ("current_place"),
+                    ("current_city", "current_state"),
+                    ("current_country", "nationality"),
+                    ("recreational_activities", "devotional_services"),
+                    ("want_children"),
+                    ("medical_history"),
+                ]
+            },
         ),
     ]
     tab_birth_details = [
@@ -367,34 +370,47 @@ class BaseMatrimonyProfileAdmin(
             None,
             {
                 "fields": [
+                    ("occupations",),
+                    ("employed_in", "organization"),
                     ("annual_income", "annual_income_in_base_currency"),
-                    ("education", "institution"),
-                    "education_details",
-                    "employed_in",
-                    ("occupations", "organization"),
                     "occupation_details",
+                    "education",
+                    "institution",
+                    "education_details",
                 ]
             },
         )
     ]
-    tab_family_details = [
+    tab_religion_and_family = [
         (
-            None,
+            "RELIGIOUS INFORMATION",
             {
                 "fields": [
-                    (
-                        "are_parents_devotees",
-                        "family_values",
-                        "family_type",
-                        "family_status",
-                    ),
+                    ("religion"),
+                    ("caste", "caste_other"),
+                    ("subcaste", "subcaste_other"),
+                    ("dob", "tob"),
+                    ("birth_place"),
+                    ("birth_city", "birth_state"),
+                    ("birth_country"),
+                    ("religious_background"),
+                ]
+            },
+        ),
+        (
+            "FAMILY DETAILS",
+            {
+                "fields": [
+                    ("are_parents_devotees", "family_values"),
+                    ("family_type", "family_status"),
                     ("father_status", "mother_status"),
                     ("brothers", "brothers_married"),
                     ("sisters", "sisters_married"),
                     ("family_location", "family_origin"),
+                    ("family_details"),
                 ]
             },
-        )
+        ),
     ]
     list_display = (
         "profile_id",
@@ -535,20 +551,16 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
     tab_match = (
         MatchInline,
         MatrimonyProfileStatsInline,
+        CommentInline,
     )
-    tab_comment = (CommentInline,)
     tabs = [
         ("Profile", BaseMatrimonyProfileAdmin.tab_profile),
-        ("Birth Details", BaseMatrimonyProfileAdmin.tab_birth_details),
-        ("Current Location", BaseMatrimonyProfileAdmin.tab_current_location),
-        ("Personal Details", BaseMatrimonyProfileAdmin.tab_personal_details),
         ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
-        ("Family Details", BaseMatrimonyProfileAdmin.tab_family_details),
+        ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
         ("Mentor", tab_mentor),
         ("Photo", tab_photo),
         ("Expectation", tab_expectation),
-        ("Match", tab_match),
-        ("Comment", tab_comment),
+        ("Matches & Comments", tab_match),
     ]
     inlines = [
         MentorInline,
@@ -569,20 +581,16 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
     tab_match = (
         MatchInline,
         MatrimonyProfileStatsInline,
+        CommentInline,
     )
-    tab_comment = (CommentInline,)
     tabs = [
         ("Profile", BaseMatrimonyProfileAdmin.tab_profile),
-        ("Birth Details", BaseMatrimonyProfileAdmin.tab_birth_details),
-        ("Current Location", BaseMatrimonyProfileAdmin.tab_current_location),
-        ("Personal Details", BaseMatrimonyProfileAdmin.tab_personal_details),
         ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
-        ("Family Details", BaseMatrimonyProfileAdmin.tab_family_details),
+        ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
         ("Mentor", tab_mentor),
         ("Photo", tab_photo),
         ("Expectation", tab_expectation),
-        ("Match", tab_match),
-        ("Comment", tab_comment),
+        ("Matches & Comments", tab_match),
     ]
     inlines = [
         MentorInline,
