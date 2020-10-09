@@ -4,6 +4,7 @@
     {% for m in matches %}
       <div class="container mt-5">
         <div class="card">
+          <div class="card-body">
           <div class="row">
             <div class="col-md-4">
                 <img class="align-self-start mr-3" src="{{ m.primary_image_thumbnail_url }}" alt="">
@@ -25,6 +26,7 @@
             </div>
           </div>
         </div>  
+      </div>
       </div>
       {% endfor %}      
 {% endblock %}
