@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% for m in matches %}
+    {% for m, r in matches.items %}
       <div class="container mt-5">
         <div class="card">
           <div class="card-body">
@@ -21,12 +21,16 @@
               <h4>{{ m.height }} cms</h4>
               <form action="{% url 'matrimony:match-response' m.id %}" method="post">
                   {% csrf_token %}
-                    <button class="btn btn-primary" type = "submit">View & Respond</button>
+                    {% if r %}<button class="btn btn-primary" type = "submit">Change Response</button>
+                    {% else %}<button class="btn btn-primary" type = "submit">View & Respond</button>{% endif %}
+
                 </form>
             </div>
             <div class="col-md-2">
                 <div class="card text-center">
-                  <strong>m.</strong>
+                  {% if "Accepted" in r %}<h4 style="color:green">{{ r }}</h4> 
+                  {% elif "Rejected" in r %}<h4 style="color:#F00">{{ r }}</h4>
+                  {% endif %}
                 </div>
               </div>
           </div>
