@@ -538,13 +538,13 @@ class MatrimonyProfile(BaseModel):
 
     @property
     def matching_profiles(self):
-        matches = []
+        matches = {}
         if self.gender == "M":
             for m in self.female_matches.all():
-                matches.append(m.female)
+                matches[m.female] = m.male_response
         else:
             for m in self.male_matches.all():
-                matches.append(m.male)
+                matches[m.male] = m.female_response
         return matches
 
     def __str__(self):
