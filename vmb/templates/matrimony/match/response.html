@@ -3,7 +3,7 @@
   <div class="container mt-3">
     <div class="col d-flex justify-content-center">
     <div class="card text-center" style="width: 18rem;">
-        <img class="card-img-top"  src="{{ m.primary_image_thumbnail_url }}" alt="">
+        <img class="card-img-top"  src="{{ m.primary_image_url }}" alt="">
         <div class="card-body">
           <h4 class="card-title">{{ m.profile_id }}</h4>
           {% block response %}
@@ -124,8 +124,6 @@
             </div>
           </div>  
         </div>
-      </div>
-    </div>
     </div>
     <h4>Profession</h4>
     <div class="card">
@@ -173,6 +171,8 @@
     </div>
     </div>  
   </div>
+</div>
+</div>
 {% endblock %}
 
 
