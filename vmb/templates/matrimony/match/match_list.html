@@ -10,7 +10,7 @@
                 <img class="align-self-start mr-3" src="{{ m.primary_image_thumbnail_url }}" alt="">
                 <h4>{{ m.profile_id }}</h4>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
               <h3>
                 {{ m.name }}
               </h3>
@@ -19,7 +19,7 @@
               </h3>
               <h4>{{ m.age }} years</h4>
               <h4>{{ m.height }} cms</h4>
-              <form action="{% url 'matrimony:match-response' m.id %}" method="post">
+              <form action="{% url 'matrimony:match-response' m.id %}" method="post" target="_blank">
                   {% csrf_token %}
                     <button class="btn btn-primary" type = "submit">View & Respond</button>
                 </form>
