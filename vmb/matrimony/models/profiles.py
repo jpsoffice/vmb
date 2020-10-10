@@ -541,10 +541,10 @@ class MatrimonyProfile(BaseModel):
         matches = {}
         if self.gender == "M":
             for m in self.female_matches.all():
-                matches[m.female] = m.male_response
+                matches[m.female] = m.get_male_response_display
         else:
             for m in self.male_matches.all():
-                matches[m.male] = m.female_response
+                matches[m.male] = m.get_female_response_display
         return matches
 
     def __str__(self):

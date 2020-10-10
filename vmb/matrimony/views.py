@@ -43,7 +43,7 @@ def match_response(request, id):
     else:
         match = get_object_or_404(Match, male=profile, female=profile_user)
         if request.POST:
-            match.female_response = request.POST.get("response", match.male_response)
+            match.female_response = request.POST.get("response", match.female_response)
             match.save()
         response = match.female_response
 
