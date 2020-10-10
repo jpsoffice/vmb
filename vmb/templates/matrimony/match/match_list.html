@@ -19,11 +19,16 @@
               </h3>
               <h4>{{ m.age }} years</h4>
               <h4>{{ m.height }} cms</h4>
-              <form action="{% url 'matrimony:match-response' m.id %}" method="post" target="_blank">
+              <form action="{% url 'matrimony:match-response' m.id %}" method="post">
                   {% csrf_token %}
                     <button class="btn btn-primary" type = "submit">View & Respond</button>
                 </form>
             </div>
+            <div class="col-md-2">
+                <div class="card text-center">
+                  <strong>m.</strong>
+                </div>
+              </div>
           </div>
         </div>  
       </div>
