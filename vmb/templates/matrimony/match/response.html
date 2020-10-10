@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "account/base.html" %}
 {% block content %}
   <div class="container mt-3">
     <div class="col d-flex justify-content-center">
@@ -112,13 +112,17 @@
     <h4>Personality</h4>
     <div class="card">
         <div class="card-body">
-      <div class="row">
-        <div class="col-md-6">
-            <strong>Description:</strong> {{ m.personality }}
-        </div>
-        <div class="col-md-6">
-            <strong>Recreational Activities:</strong> {{ m.recreational_activities }}<br>
-            <strong>Devotional Activities:</strong> {{ m.devotional_services }}<br>
+          <div class="row">
+            <div class="col-md-12">
+                <strong>Description:</strong> {{ m.personality }}
+            </div>
+            <div class="col-md-6">
+              {% if m.recreational_activities %}<strong>Recreational Activities:</strong> {{ m.recreational_activities }}<br>{% endif %}
+            </div>
+            <div class="col-md-6">
+              {% if m.devotional_services %}<strong>Devotional Activities:</strong> {{ m.devotional_services }}<br>{% endif %}
+            </div>
+          </div>  
         </div>
       </div>
     </div>
@@ -129,13 +133,13 @@
       <div class="row">
         <div class="col-md-6">
             <strong>Employed in:</strong> {{ m.get_employed_in_display }}<br>
-            {% if m.occupation %}<strong>Occupation:</strong> {{ m.occupation }}<br>{% endif %}
+            {% if m.occupation %}<strong>Occupation:</strong> {{ m.occupation_text }}<br>{% endif %}
             {% if m.organization %}<strong>Organization:</strong> {{ m.organization }}<br>{% endif %}
             {% if m.occupation_details %}<strong>Occupation in detail:</strong> {{ m.occupation_details }}<br>{% endif %}
         </div>
         <div class="col-md-6">
             <strong>Annual income:</strong> {{ m.annual_income }}<br>
-            <strong>Education:</strong> {{ m.education }}<br>
+            <strong>Education:</strong> {{ m.education_text }}<br>
             {% if m.institution %}<strong>Institution:</strong> {{ m.institution }}<br>{% endif %}
             {% if m.education_details %}<strong>Education in detail:</strong> {{ m.education_details }}<br>{% endif %}
         </div>
@@ -148,17 +152,17 @@
       <div class="row">
         <div class="col-md-6">
           <strong>Religion:</strong> {{ m.religion}}<br>
-          <strong>Caste:</strong> {{ m.caste }}<br>
+          {% if m.caste %}<strong>Caste:</strong> {{ m.caste }}<br>{% endif %}
           {% if m.subcaste %}<strong>Subcaste:</strong> {{ m.subcaste }}<br>{% endif %}
           {% if m.religious_background %}<strong>Religious Background of the Family:</strong> {{ m.religious_background }}<br>{% endif %}
-          <strong>Are parents devotees?</strong> {{ m.are_parents_devotees }}<br>
+          <strong>Are parents devotees?</strong> {{ m.get_are_parents_devotees_display }}<br>
           {% if m.family_values %}<strong>Family values:</strong> {{ m.get_family_values_display }}<br>{% endif %}
           <strong>Family type:</strong> {{ m.get_family_type_display }}<br>
         </div>
         <div class="col-md-6">
           <strong>Family status:</strong> {{ m.get_family_status_display }}<br>
-          <strong>Father's status:</strong> {{ m.father_status }}<br>
-          <strong>Mother's status:</strong> {{ m.mother_status }}<br>
+          <strong>Father's status:</strong> {{ m.get_father_status_display }}<br>
+          <strong>Mother's status:</strong> {{ m.get_mother_status_display }}<br>
           {% if m.brothers %}<strong>Brother(s):</strong> {{ m.brothers }}{% if m.brothers_married %}/{{m.brothers_married}} married{% endif %}<br>{% endif %}
           {% if m.sisters %}<strong>Sister(s):</strong> {{ m.sisters }}{% if m.sisters_married %}/{{m.sisters_married}} married{% endif %}<br>{% endif %}
           <strong>Family location:</strong> {{ m.get_family_location_display }}<br>
