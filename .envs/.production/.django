@@ -45,3 +45,7 @@ REDIS_URL=redis://redis:6379/0
 # Flower
 CELERY_FLOWER_USER=celery
 CELERY_FLOWER_PASSWORD=celery
+
+# Tabbed Admin
+# ------------------------------------------------------------------------------
+TABBED_ADMIN_USE_JQUERY_UI=True

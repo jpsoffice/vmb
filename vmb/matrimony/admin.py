@@ -7,6 +7,7 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
     RangeNumericForm,
 )
+from tabbed_admin import TabbedModelAdmin
 from django_admin_listfilter_dropdown.filters import (
     DropdownFilter,
     ChoiceDropdownFilter,
@@ -290,24 +291,35 @@ class MatrimonyProfileStatsInline(admin.TabularInline):
         return False
 
 
-class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
-    fieldsets = [
+class BaseMatrimonyProfileAdmin(
+    DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
+):
+    tab_profile = [
+        (None, {"fields": [("profile_id", "name", "spiritual_name"),]},),
+        ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
         (
-            None,
+            "BASIC INFORMATION",
             {
                 "fields": [
-                    ("profile_id", "name", "spiritual_name"),
-                    ("status", "ethnic_origin", "primary_image"),
-                    ("profile_created_by", "contact_person_name"),
-                    ("age", "mother_tongue", "marital_status", "children_count"),
-                    ("religion", "caste", "subcaste"),
-                    ("languages_known", "languages_read_write"),
+                    ("dob", "ethnic_origin"),
+                    ("mother_tongue", "rounds_chanting"),
+                    ("spiritual_status", "spiritual_master"),
+                    "marital_status",
+                    ("height", "weight"),
+                    ("body_type", "complexion"),
+                    ("current_place"),
+                    ("current_city", "current_state"),
+                    ("current_country", "nationality"),
+                    ("recreational_activities", "devotional_services"),
+                    ("want_children"),
+                    ("medical_history"),
                 ]
             },
         ),
-        ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
+    ]
+    tab_birth_details = [
         (
-            "BIRTH DETAILS",
+            None,
             {
                 "fields": [
                     ("dob", "tob", "gotra"),
@@ -316,13 +328,11 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                     ("birth_country",),
                 ]
             },
-        ),
+        )
+    ]
+    tab_current_location = [
         (
-            "SPIRITUAL QUOTIENT",
-            {"fields": [("rounds_chanting", "spiritual_status", "spiritual_master")]},
-        ),
-        (
-            "CURRENT LOCATION",
+            None,
             {
                 "fields": [
                     "current_place",
@@ -331,7 +341,9 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                     "nationality",
                 ]
             },
-        ),
+        )
+    ]
+    tab_personal_details = [
         (
             "PHYSICAL APPEARANCE",
             {
@@ -351,16 +363,37 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
                 ]
             },
         ),
+        ("MEDICAL DETAILS", {"fields": ["want_children", "medical_history"]}),
+    ]
+    tab_professional_details = [
         (
-            "PROFESSION",
+            None,
             {
                 "fields": [
+                    ("occupations",),
+                    ("employed_in", "organization"),
                     ("annual_income", "annual_income_in_base_currency"),
-                    ("education", "institution"),
-                    "education_details",
-                    "employed_in",
-                    ("occupations", "organization"),
                     "occupation_details",
+                    "education",
+                    "institution",
+                    "education_details",
+                ]
+            },
+        )
+    ]
+    tab_religion_and_family = [
+        (
+            "RELIGIOUS INFORMATION",
+            {
+                "fields": [
+                    ("religion"),
+                    ("caste", "caste_other"),
+                    ("subcaste", "subcaste_other"),
+                    ("dob", "tob"),
+                    ("birth_place"),
+                    ("birth_city", "birth_state"),
+                    ("birth_country"),
+                    ("religious_background"),
                 ]
             },
         ),
@@ -368,20 +401,16 @@ class BaseMatrimonyProfileAdmin(DjangoQLSearchMixin, NumericFilterModelAdmin):
             "FAMILY DETAILS",
             {
                 "fields": [
-                    (
-                        "are_parents_devotees",
-                        "family_values",
-                        "family_type",
-                        "family_status",
-                    ),
+                    ("are_parents_devotees", "family_values"),
+                    ("family_type", "family_status"),
                     ("father_status", "mother_status"),
                     ("brothers", "brothers_married"),
                     ("sisters", "sisters_married"),
                     ("family_location", "family_origin"),
+                    ("family_details"),
                 ]
             },
         ),
-        ("MEDICAL DETAILS", {"fields": ["want_children", "medical_history"]}),
     ]
     list_display = (
         "profile_id",
@@ -516,6 +545,23 @@ class CommentInline(GenericTabularInline):
 @admin.register(Male)
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
+    tab_mentor = (MentorInline,)
+    tab_photo = (PhotoInline,)
+    tab_expectation = (ExpectationInline,)
+    tab_match = (
+        MatchInline,
+        MatrimonyProfileStatsInline,
+        CommentInline,
+    )
+    tabs = [
+        ("Profile", BaseMatrimonyProfileAdmin.tab_profile),
+        ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
+        ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
+        ("Mentor", tab_mentor),
+        ("Photo", tab_photo),
+        ("Expectation", tab_expectation),
+        ("Matches & Comments", tab_match),
+    ]
     inlines = [
         MentorInline,
         PhotoInline,
@@ -529,6 +575,23 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
 @admin.register(Female)
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
+    tab_mentor = (MentorInline,)
+    tab_photo = (PhotoInline,)
+    tab_expectation = (ExpectationInline,)
+    tab_match = (
+        MatchInline,
+        MatrimonyProfileStatsInline,
+        CommentInline,
+    )
+    tabs = [
+        ("Profile", BaseMatrimonyProfileAdmin.tab_profile),
+        ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
+        ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
+        ("Mentor", tab_mentor),
+        ("Photo", tab_photo),
+        ("Expectation", tab_expectation),
+        ("Matches & Comments", tab_match),
+    ]
     inlines = [
         MentorInline,
         PhotoInline,
