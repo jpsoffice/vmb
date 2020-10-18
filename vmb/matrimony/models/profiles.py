@@ -538,13 +538,13 @@ class MatrimonyProfile(BaseModel):
 
     @property
     def matching_profiles(self):
-        matches = {}
+        matches = []
         if self.gender == "M":
             for m in self.female_matches.all():
-                matches[m.female] = m.get_male_response_display
+                matches.append((m.id, m.female, m.male_response))
         else:
             for m in self.male_matches.all():
-                matches[m.male] = m.get_female_response_display
+                matches.append((m.id, m.male, m.female_response))
         return matches
 
     def __str__(self):
@@ -857,7 +857,7 @@ class Match(BaseModel):
     male_response = models.CharField(
         max_length=3, choices=MATCH_RESPONSE_CHOICES, blank=True, default=""
     )
-    male_response_updated_at = models.DateTimeField(auto_now=True, blank=True)
+    male_response_updated_at = models.DateTimeField(blank=True, null=True)
 
     female = models.ForeignKey(
         Female,
@@ -869,7 +869,7 @@ class Match(BaseModel):
     female_response = models.CharField(
         max_length=3, choices=MATCH_RESPONSE_CHOICES, blank=True, default=""
     )
-    female_response_updated_at = models.DateTimeField(auto_now=True, blank=True)
+    female_response_updated_at = models.DateTimeField(blank=True, null=True)
 
     status = models.CharField(
         max_length=3, choices=MATCH_STATUS_CHOICES, blank=True, default=""

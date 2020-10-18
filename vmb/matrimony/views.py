@@ -5,9 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 from django.urls import reverse
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.http import require_http_methods
 
 from photologue.models import Photo as PhotologuePhoto
 
@@ -21,17 +23,17 @@ from vmb.matrimony.forms import (
 )
 
 
-# Create your views here.
-def match_list(request):
+@login_required
+def matches(request):
     profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
     context = {
         "matches": profile.matching_profiles,
     }
-    return render(request, "matrimony/match/match_list.html", context)
+    return render(request, "matrimony/matches.html", context)
 
 
-def match_response(request, id):
-
+@login_required
+def match_details(request, id):
     profile_user = get_object_or_404(MatrimonyProfile, email=request.user.email)
     profile = get_object_or_404(MatrimonyProfile, id=id)
     if profile_user.gender == "M":
@@ -48,11 +50,36 @@ def match_response(request, id):
         response = match.female_response
 
     context = {
-        "m": profile,
+        "profile": profile,
         "response": response,
     }
 
-    return render(request, "matrimony/match/response.html", context)
+    return render(request, "matrimony/match_details.html", context)
+
+
+@require_http_methods(["POST"])
+@login_required
+def match_action(request, id, action):
+    profile = request.user.matrimony_profile
+    matches = profile.matches.filter(id=id)
+    if not matches:
+        return Http404()
+
+    if action not in ("accept", "reject"):
+        return Http404()
+
+    match = matches[0]
+
+    action_code = "ACP" if action == "accept" else "REJ"
+    if profile.gender == "M":
+        match.male_response = action_code
+        match.male_response_updated_at = timezone.now()
+    else:
+        match.female_response = action_code
+        match.female_response_updated_at = timezone.now()
+    match.save()
+
+    return JsonResponse(data={})
 
 
 def index(request):
