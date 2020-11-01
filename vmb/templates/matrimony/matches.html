@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-8 col-lg-9">
                 <div class="card-body">
-                    <h5 class="card-title">{{ profile.name }} {% if profile.spiritual_name %}({{ profile.spiritual_name }}){% endif %}</h5>
+                    <h5 class="card-title"><a href="{% url 'matrimony:match-details' match_id %}" class="text-success stretched-link">{{ profile.name }} {% if profile.spiritual_name %}({{ profile.spiritual_name }}){% endif %}</a></h5>
                     <p class="card-text">
                       <strong>Age: </strong>{{ profile.age }},
                       <strong>Height: </strong>{{ profile.height }} cms,
@@ -26,8 +26,8 @@
                       <strong>Occupation: </strong>{% for occupation in profile.educations.all %}{{ occupation.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}
                     </p>
                     <p class="card-text">
-                        <a href="#" class="btn btn-success btn-sm match-action{% ifequal response 'ACP' %} disabled{% endifequal %}"{% ifequal response 'ACP' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' match_id 'accept' %}"><i class="uil-check"></i> Accept{% ifequal response 'ACP' %}ed{% endifequal %}</a>
-                        <a href="#" class="btn btn-danger btn-sm match-action{% ifequal response 'REJ' %} disabled{% endifequal %}"{% ifequal response 'REJ' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' match_id 'reject' %}"><i class="uil-times"></i> Reject{% ifequal response 'REJ' %}ed{% endifequal %}</a>
+                        <a href="#" class="btn btn-success btn-sm match-action{% ifequal response 'ACP' %} disabled{% endifequal %}"{% ifequal response 'ACP' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' match_id 'accept' %}" style="position:relative; z-index:2;"><i class="uil-check"></i> Accept{% ifequal response 'ACP' %}ed{% endifequal %}</a>
+                        <a href="#" class="btn btn-danger btn-sm match-action{% ifequal response 'REJ' %} disabled{% endifequal %}"{% ifequal response 'REJ' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' match_id 'reject' %}" style="position:relative; z-index:2;"><i class="uil-times"></i> Reject{% ifequal response 'REJ' %}ed{% endifequal %}</a>
                     </p>
                 </div> <!-- end card-body-->
             </div> <!-- end col -->
