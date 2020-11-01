@@ -500,26 +500,25 @@ class MatrimonyProfile(BaseModel):
 
     @property
     def primary_image(self):
-        if self.photos is not None and self.photos != "":
+        if self.photo_set.all():
             return format_html(
                 '<img src ="{}" style="width:90px; \
                 height: 90px"/>'.format(
-                    Photo.objects.get(profile=self, primary=True).photo.image.url
+                    self.photo_set.get(primary=True).photo.image.url
                 )
             )
 
     @property
     def primary_image_url(self):
         try:
-            return self.photos.get(primary=True).photo.image.url
+            return self.photo_set.get(primary=True).photo.image.url
         except Photo.DoesNotExist:
             return ""
 
     @property
     def primary_image_thumbnail_url(self):
         try:
-            return self.photos.get(primary=True
-            ).photo.get_thumbnail_url()
+            return self.photo_set.get(primary=True).photo.get_thumbnail_url()
         except Photo.DoesNotExist:
             return ""
 
@@ -539,10 +538,10 @@ class MatrimonyProfile(BaseModel):
         matches = []
         if self.gender == "M":
             for m in self.female_matches.all():
-                matches.append(m.female)
+                matches.append((m.id, m.female, m.male_response))
         else:
             for m in self.male_matches.all():
-                matches.append(m.male)
+                matches.append((m.id, m.male, m.female_response))
         return matches
 
     def __str__(self):
@@ -855,7 +854,7 @@ class Match(BaseModel):
     male_response = models.CharField(
         max_length=3, choices=MATCH_RESPONSE_CHOICES, blank=True, default=""
     )
-    male_response_updated_at = models.DateTimeField(auto_now=True, blank=True)
+    male_response_updated_at = models.DateTimeField(blank=True, null=True)
 
     female = models.ForeignKey(
         Female,
@@ -867,7 +866,7 @@ class Match(BaseModel):
     female_response = models.CharField(
         max_length=3, choices=MATCH_RESPONSE_CHOICES, blank=True, default=""
     )
-    female_response_updated_at = models.DateTimeField(auto_now=True, blank=True)
+    female_response_updated_at = models.DateTimeField(blank=True, null=True)
 
     status = models.CharField(
         max_length=3, choices=MATCH_STATUS_CHOICES, blank=True, default=""
