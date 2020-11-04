@@ -617,11 +617,10 @@ class MatrimonyProfileProfessionalInfoForm(BaseMatrimonyProfileForm):
             Row(Column("institution", css_class="form-group col-md-6 md-3"),),
             "education_details",
             Submit("submit", "Next" if self.wizard else "Save"),
-        ) 
+        )
 
 
 class MatrimonyProfilePhotosForm(forms.Form):
-
     def __init__(self, *args, **kwargs):
         self.instance = kwargs.pop("instance")
         self.wizard = kwargs.pop("wizard")
@@ -643,9 +642,9 @@ class MatrimonyProfilePhotosForm(forms.Form):
             return
         # if not any(cleaned_data and not cleaned_data.get('DELETE', False)
         #     for cleaned_data in self.cleaned_data):
-        #     raise forms.ValidationError('Complicated')                    
+        #     raise forms.ValidationError('Complicated')
         if not any(self.instance.photo_set.all()):
-            raise forms.ValidationError('At least one photo is required.')
+            raise forms.ValidationError("At least one photo is required.")
 
 
 class MatrimonyProfileExpectationsForm(BaseMatrimonyProfileForm):
