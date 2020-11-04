@@ -640,9 +640,6 @@ class MatrimonyProfilePhotosForm(forms.Form):
         super().clean()
         if any(self.errors):
             return
-        # if not any(cleaned_data and not cleaned_data.get('DELETE', False)
-        #     for cleaned_data in self.cleaned_data):
-        #     raise forms.ValidationError('Complicated')
         if not any(self.instance.photo_set.all()):
             raise forms.ValidationError("At least one photo is required.")
 
