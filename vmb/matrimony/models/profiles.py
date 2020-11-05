@@ -976,7 +976,7 @@ class Photo(BaseModel):
     def save(self, *args, **kwargs):
         if self.primary:
             try:
-                temp = Photo.objects.get(primary=True)
+                temp = Photo.objects.get(primary=True, profile=self.profile)
                 if self != temp:
                     temp.primary = False
                     temp.save()
