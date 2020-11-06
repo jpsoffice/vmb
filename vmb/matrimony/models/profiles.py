@@ -245,11 +245,11 @@ class MatrimonyProfile(BaseModel):
         related_name="birthCountry",
         verbose_name=_("Country of birth"),
     )
-    birth_place = PlacesField(null=True, blank=True)
+    birth_place = PlacesField(null=True)
     gotra = models.ForeignKey(Gotra, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Current location details
-    current_place = PlacesField(null=True, blank=True)
+    current_place = PlacesField(null=True)
     current_city = models.CharField(
         max_length=200,
         verbose_name=_("City"),
