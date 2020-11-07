@@ -544,6 +544,12 @@ class MatrimonyProfile(BaseModel):
                 matches.append((m.id, m.male, m.female_response))
         return matches
 
+    def mentor(self):
+        return Mentor.objects.filter(profile=self)[0]
+
+    def expectations(self):
+        return Expectation.objects.get(self)
+
     def __str__(self):
         return self.name
 
@@ -793,6 +799,62 @@ class Expectation(BaseModel):
                 self.annual_income_to, settings.BASE_CURRENCY
             )
         return super().save(*args, **kwargs)
+
+    # @property
+    # def marital_status_text(self):
+    #     return ", ".join([item for item in self.get_marital_status_display()])
+
+    @property
+    def religions_text(self):
+        return ", ".join([item.name for item in self.religions.all()])
+
+    @property
+    def mother_tongues_text(self):
+        return ", ".join([item.name for item in self.mother_tongues.all()])
+
+    @property
+    def castes_text(self):
+        return ", ".join([item.name for item in self.castes.all()])
+
+    @property
+    def subcastes_text(self):
+        return ", ".join([item.name for item in self.subcastes.all()])
+
+    @property
+    def countries_living_in_text(self):
+        return ", ".join([item.name for item in self.countries_living_in.all()])
+
+    @property
+    def ethnicities_text(self):
+        return ", ".join([item.name for item in self.ethnicities.all()])
+
+    @property
+    def languages_can_speak_text(self):
+        return ", ".join([item.name for item in self.languages_can_speak.all()])
+
+    @property
+    def languages_can_read_write_text(self):
+        return ", ".join([item.name for item in self.languages_can_read_write.all()])
+
+    @property
+    def education_text(self):
+        return ", ".join([item.name for item in self.education.all()])
+
+    @property
+    def occupations_text(self):
+        return ", ".join([item.name for item in self.occupations.all()])
+
+    # @property
+    # def employed_in_text(self):
+    #     return ", ".join([item for item in self.get_employed_in_display()])
+
+    # @property
+    # def spiritual_status_text(self):
+    #     return ", ".join(self.get_spiritual_status_display())
+
+    @property
+    def spiritual_masters_text(self):
+        return ", ".join([item.name for item in self.spiritual_masters.all()])
 
 
 class MaleManager(models.Manager):

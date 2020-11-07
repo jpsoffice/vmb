@@ -224,9 +224,13 @@ def match_details(request, id):
     match_profile = match.female if profile.gender == "M" else match.male
     response = match.male_response if profile.gender == "M" else match.female_response
 
-    return render(request, "matrimony/match_details.html", {
-        "profile": profile,
-        "match": match,
-        "match_profile": match_profile,
-        "response": response,
-    })
+    return render(
+        request,
+        "matrimony/match_details.html",
+        {
+            "profile": profile,
+            "match": match,
+            "match_profile": match_profile,
+            "response": response,
+        },
+    )
