@@ -544,11 +544,21 @@ class MatrimonyProfile(BaseModel):
                 matches.append((m.id, m.male, m.female_response))
         return matches
 
+<<<<<<< HEAD
     def mentor(self):
         return Mentor.objects.filter(profile=self)[0]
 
     def expectations(self):
         return Expectation.objects.get(self)
+=======
+    @property
+    def mentor(self):
+        return self.mentors.all()[0]
+
+    @property
+    def expectations(self):
+        return self.expectations.all()[0]
+>>>>>>> Add the remaining fields in match details page.
 
     def __str__(self):
         return self.name
@@ -800,10 +810,13 @@ class Expectation(BaseModel):
             )
         return super().save(*args, **kwargs)
 
+<<<<<<< HEAD
     # @property
     # def marital_status_text(self):
     #     return ", ".join([item for item in self.get_marital_status_display()])
 
+=======
+>>>>>>> Add the remaining fields in match details page.
     @property
     def religions_text(self):
         return ", ".join([item.name for item in self.religions.all()])
@@ -844,6 +857,7 @@ class Expectation(BaseModel):
     def occupations_text(self):
         return ", ".join([item.name for item in self.occupations.all()])
 
+<<<<<<< HEAD
     # @property
     # def employed_in_text(self):
     #     return ", ".join([item for item in self.get_employed_in_display()])
@@ -852,6 +866,8 @@ class Expectation(BaseModel):
     # def spiritual_status_text(self):
     #     return ", ".join(self.get_spiritual_status_display())
 
+=======
+>>>>>>> Add the remaining fields in match details page.
     @property
     def spiritual_masters_text(self):
         return ", ".join([item.name for item in self.spiritual_masters.all()])
