@@ -349,6 +349,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "subcaste",
             "subcaste_other",
             "dob",
+            "is_tob_unknown",
             "tob",
             "birth_place",
             "birth_city",
@@ -371,6 +372,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
         )
         required = [
             "religion",
+            "is_tob_unknown",
             "birth_place",
             "are_parents_devotees",
             "family_type",
@@ -414,6 +416,9 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                 ),
                 Row(
                     Column("dob", css_class="form-group col-md-6 md-3"),
+                    Column("is_tob_unknown", css_class="form-group col-md-6 md-3"),
+                ),
+                Row(
                     Column(
                         Field(
                             "tob",
@@ -422,7 +427,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                             data_default_time="false",
                         ),
                         css_class="form-group col-md-6 md-3",
-                    ),
+                    )
                 ),
                 Field("birth_place", css_class="form-control"),
                 Row(
@@ -518,6 +523,8 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
     def clean(self):
         super().clean()
         birth_place = self.cleaned_data["birth_place"]
+        is_tob_unknown = self.cleaned_data["is_tob_unknown"]
+        tob = self.cleaned_data["tob"]
         print(birth_place, type(birth_place[1]))
         if not (
             len(birth_place) == 3
@@ -539,6 +546,9 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             raise forms.ValidationError(
                 _("Sisters married cannot be greater than number of sisters")
             )
+
+        if not is_tob_unknown and not tob:
+            raise forms.ValidationError(_("Birth Time is a required field"))
 
     def save(self, *args, **kwargs):
         obj = super().save(*args, **kwargs)
