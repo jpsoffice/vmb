@@ -161,6 +161,11 @@ CHILDREN_COUNT = (
     (3, "3"),
 )
 
+BOOL_YES_NO = (
+    (True, "Yes"),
+    (False, "No"),
+)
+
 
 class MatrimonyProfile(BaseModel):
     """Model representing matrimonial profile of a candidate"""
@@ -217,6 +222,9 @@ class MatrimonyProfile(BaseModel):
 
     # Birth details
     dob = models.DateField(verbose_name=_("Date of birth"), null=True,)
+    is_tob_unknown = models.BooleanField(
+        choices=BOOL_YES_NO, null=True, verbose_name=_("Is Birth Time unknown?")
+    )
     tob = models.TimeField(
         help_text="Enter time HH:MM:SS in 24hr format",
         verbose_name=_("Birth Time"),
