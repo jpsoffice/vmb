@@ -635,6 +635,14 @@ class MatrimonyProfilePhotosForm(forms.Form):
     def save(self, *args, **kwargs):
         pass
 
+    def clean(self):
+        """Check that at least one photo has been entered."""
+        super().clean()
+        if not any(self.instance.photo_set.all()):
+            raise forms.ValidationError(
+                "Please upload at least a single photo to proceed."
+            )
+
 
 class MatrimonyProfileExpectationsForm(BaseMatrimonyProfileForm):
 
