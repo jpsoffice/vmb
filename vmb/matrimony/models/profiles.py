@@ -841,7 +841,7 @@ class Expectation(BaseModel):
     @property
     def occupations_text(self):
         return ", ".join([item.name for item in self.occupations.all()])
-    
+
     @property
     def spiritual_masters_text(self):
         return ", ".join([item.name for item in self.spiritual_masters.all()])
