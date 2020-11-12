@@ -1,0 +1,368 @@
+{% extends "base.html" %}
+
+{% block content_title %}{{ match_profile.name }}{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'matrimony:matches' %}">Matches</a></li>
+<li class="breadcrumb-item active">{{ match_profile.name }}</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 d-flex align-items-stretch">
+        <div id="profilePhotoCarousel" class="carousel slide" data-ride="false" style="max-height: 520px;">
+            <ol class="carousel-indicators" style="z-index: 4;">
+                {% for photo in match_profile.photo_set.all %}
+                    <li data-target="#profilePhotoCarousel" data-slide-to="{{ forloop.counter0 }}"{% if photo.primary %} class="active"{% endif %}></li>
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                {% for photo in match_profile.photo_set.all %}
+                    <div class="carousel-item{% if photo.primary or not match_profile.primary_image_url and forloop.counter0 == 0 %} active{% endif %}">
+                        <img class="d-block img-fluid" src="{{ photo.photo.image.url }}" style="object-fit: cover;">
+                    </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#profilePhotoCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#profilePhotoCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card bg-info">
+            <div class="card-body">
+                <h4 class="header-title mt-0 mb-3 text-white">Overview</h4>
+                <div class="text-left">
+                    <p class="text-white">
+                        <strong>Age:</strong><span class="ml-1 text-white-50">{{ match_profile.age }}</span>,
+                        <strong>Height:</strong><span class="ml-1 text-white-50">{{ match_profile.height }} cms</span>,
+                        <strong>Mother tongue:</strong><span class="ml-1 text-white-50">{{ match_profile.mother_tongue.name }}</span>,
+                        <strong>Current location:</strong><span class="ml-1 text-white-50">{{ match_profile.current_city }}, {{ match_profile.current_state }}, {{ match_profile.current_country.name }}</span>
+                        <strong>Ethnicity:</strong><span class="ml-1 text-white-50">{{ match_profile.ethnic_origin.nationality }}</span>
+                        <strong>Education:</strong><span class="ml-1 text-white-50">{% for education in match_profile.education.all %}{{ education.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
+                        <strong>Occupation:</strong><span class="ml-1 text-white-50">{% for occupation in match_profile.educations.all %}{{ occupation.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
+                        <strong>Languages known:</strong><span class="ml-1 text-white-50">{% for language in match_profile.languages_can_speak %}{{ language.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
+                    </p>
+                    <p class="card-text">
+                        <a href="#" class="btn btn-success btn-sm match-action{% ifequal response 'ACP' %} disabled{% endifequal %}"{% ifequal response 'ACP' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' match.id 'accept' %}" style="position:relative; z-index:2;"><i class="uil-check"></i> Accept{% ifequal response 'ACP' %}ed{% endifequal %}</a>
+                        <a href="#" class="btn btn-danger btn-sm match-action{% ifequal response 'REJ' %} disabled{% endifequal %}"{% ifequal response 'REJ' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' match.id 'reject' %}" style="position:relative; z-index:2;"><i class="uil-times"></i> Reject{% ifequal response 'REJ' %}ed{% endifequal %}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title mt-0 mb-3">In my own words</h4>
+            <p class="text-muted font-13">{{match_profile.personality}}</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="card col-md-12">
+        <div class="card-body">
+            <h4 class="header-title mt-0 mb-3">Basic Info</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-left">
+                        <p class="text-muted">
+                            <strong>Name:</strong><span class="ml-1">{{ match_profile.name }}</span>
+                        </p>
+                        
+                        <p class="text-muted">
+                            <strong>Date of birth:</strong><span class="ml-1">{{ match_profile.dob }}</span>
+                        </p>
+                        
+                        <p class="text-muted">
+                            <strong>Mother tongue:</strong><span class="ml-1">{{ match_profile.mother_tongue.name }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Spiritual status:</strong><span class="ml-1">{{ match_profile.get_spiritual_status_display }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Height:</strong><span class="ml-1">{{ match_profile.height }} cms</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Body Type:</strong><span class="ml-1">{{ match_profile.get_body_type_display  }}</span>
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.hair_color %}<strong>Hair Color:</strong><span class="ml-1">{{ match_profile.get_hair_color_display  }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            <strong>Current Place:</strong><span class="ml-1">{{ match_profile.current_city }}, {{ match_profile.current_state }}, {{ match_profile.current_country.name }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Recreational activities:</strong><span class="ml-1">{{ match_profile.recreational_activities}}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Want Children:</strong><span class="ml-1">{{ match_profile.get_want_children_display}}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-left">
+                        <p class="text-muted">
+                            <strong>Spiritual name:</strong><span class="ml-1">{{ match_profile.spiritual_name }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Ethnic origin:</strong><span class="ml-1">{{ match_profile.ethnic_origin }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Rounds:</strong><span class="ml-1">{{ match_profile.rounds_chanting }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Spiritual master:</strong><span class="ml-1">{{ match_profile.spiritual_master }}</span>
+                        </p>
+                        <p class="text-muted"> 
+                            <strong>Weight:</strong><span class="ml-1">{{ match_profile.weight }} kgs</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Complexion:</strong><span class="ml-1">{{ match_profile.get_complexion_display }}</span>
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.color_of_eyes %}<strong>Color of Eyes:</strong><span class="ml-1">{{ match_profile.get_color_of_eyes_display  }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            <strong>Nationality:</strong><span class="ml-1">{{ match_profile.nationality }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Devotional activities:</strong><span class="ml-1">{{ match_profile.devotional_services}}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Medical History:</strong><span class="ml-1">{{ match_profile.medical_history}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="card col-md-12">
+        <div class="card-body">
+            <h4 class="header-title mt-0 mb-3">Professional Info</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-left">
+                        <p class="text-muted">
+                            {% if match_profile.occupations_text %}<strong>Occupations:</strong><span class="ml-1">{{ match_profile.occupations_text  }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            <strong>Employed In:</strong><span class="ml-1">{{ match_profile.get_employed_in_display }}</span>
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.organization %}<strong>Organization:</strong><span class="ml-1">{{ match_profile.organization }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.occupation_details %}<strong>Occupation in Detail:</strong><span class="ml-1">{{ match_profile.occupation_details}}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.annual_income %}<strong>Annual Income:</strong><span class="ml-1">{{ match_profile.annual_income }}</span>{% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-left"> 
+                        <p class="text-muted">
+                            <strong>Education:</strong><span class="ml-1">{{ match_profile.education_text }}</span>
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.education_details %}<strong>Eudcation in Detail</strong><span class="ml-1">{{ match_profile.education_details }}</span>{% endif %}   
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+<div class="row">
+    <div class="card col-md-12">
+        <div class="card-body">
+            <h4 class="header-title mt-0 mb-3">Religion and Family</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-left">
+                        <p class="text-muted">
+                            <strong>Religion:</strong><span class="ml-1">{{ match_profile.religion }}</span>
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.caste %}<strong>Caste:</strong><span class="ml-1">{{ match_profile.caste }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.caste_other %}<strong>Caste:</strong><span class="ml-1">{{ match_profile.caste_other }}</span>{% endif %}   
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.subcaste %}<strong>Subcaste:</strong><span class="ml-1">{{ match_profile.subcaste }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.subcaste_other %}<strong>Subcaste:</strong><span class="ml-1">{{ match_profile.subcaste_other }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            <strong>Date of Birth:</strong><span class="ml-1">{{ match_profile.dob }}</span>
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.tob %}<strong>Time of Birth:</strong><span class="ml-1">{{ match_profile.tob }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            <strong>Birth Place:</strong><span class="ml-1">{{ match_profile.birth_city }}, {{ match_profile.birth_state }}, {{ match_profile.birth_country.name }}</span>
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.religious_background %}<strong>Religious Background:</strong><span class="ml-1">{{ match_profile.religious_background }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.mentor %}<strong>Mentor's Name:</strong><span class="ml-1">{{ match_profile.mentor.name }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.family_origin %}<strong>Ancestral/Family Origin:</strong><span class="ml-1">{{ match_profile.family_origin }}</span>{% endif %}
+                        </p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-left"> 
+                        
+                        <p class="text-muted">
+                            <strong>Are parents devotees?</strong><span class="ml-1">{{ match_profile.get_are_parents_devotees_display }}</span>
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.family_values %}<strong>Family Values:</strong><span class="ml-1">{{ match_profile.get_family_values_display }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            <strong>Family type:</strong><span class="ml-1">{{ match_profile.get_family_type_display }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Family Status:</strong><span class="ml-1">{{ match_profile.get_family_status_display }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Father's Status:</strong><span class="ml-1">{{ match_profile.get_father_status_display }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Mother's Status:</strong><span class="ml-1">{{ match_profile.get_mother_status_display }}</span>
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.brothers %}<strong>Brothers:</strong><span class="ml-1">{{ match_profile.brothers }}/{{ match_profile.brothers_married }} married</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.sisters %}<strong>Sisters:</strong><span class="ml-1">{{ match_profile.sisters }}/{{ match_profile.sisters_married }} married</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            <strong>Family Location</strong><span class="ml-1">{{ match_profile.get_family_location_display }}</span>
+                        </p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div> 
+</div>
+<div class="row">
+    <div class="card col-md-12">
+        <div class="card-body">
+            <h4 class="header-title mt-0 mb-3">Expectation Summary</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-left">
+                        <p class="text-muted">
+                            <strong>Age:</strong><span class="ml-1">{{ match_profile.expectations.age_from }} to {{ match_profile.expectations.age_to }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Height:</strong><span class="ml-1">{{ match_profile.expectations.height_from }} cms to {{ match_profile.expectations.height_to }} cms</span>
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.religions_text %}<strong>Religions:</strong><span class="ml-1">{{ match_profile.expectations.religions_text }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.mother_tongues_text %}<strong>Mother Tongues:</strong><span class="ml-1">{{ match_profile.expectations.mother_tongues_text }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.castes_text %}<strong>Castes:</strong><span class="ml-1">{{ match_profile.expectations.castes_text }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.subcastes_text %}<strong>Subcastes:</strong><span class="ml-1">{{ match_profile.subcastes_text }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.get_marital_status_display %}<strong>Marital Status:</strong><span class="ml-1">{{ match_profile.expectations.get_marital_status_display }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.employed_in %}<strong>Employed In:</strong><span class="ml-1">{{ match_profile.expectations.get_employed_in_display }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.spiritual_status %}<strong>Spiritual Status:</strong><span class="ml-1">{{ match_profile.expectations.get_spiritual_status_display }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.min_rounds_chanting %}<strong>Minimum rounds of japa:</strong><span class="ml-1">{{ match_profile.expectations.min_rounds_chanting }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.partner_description %}<strong>Partner Description:</strong><span class="ml-1">{{ match_profile.expectations.partner_description }}</span>{% endif %}
+                        </p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-left"> 
+                        <p class="text-muted">
+                            {% if match_profile.expectations.countries_living_in_text %}<strong>Countries Living In:</strong><span class="ml-1">{{ match_profile.expectations.countries_living_in_text }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.ethnicities_text %}<strong>Ethnicities:</strong><span class="ml-1">{{ match_profile.expectations.ethnicities_text }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.want_nri %}<strong>Want NRI?</strong><span class="ml-1">{{ match_profile.expectations.get_want_nri_display }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.languages_can_speak_text %}<strong>Languages can speak:</strong><span class="ml-1">{{ match_profile.expectations.languages_can_speak_text }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.languages_can_read_write_text %}<strong>Languages the spouse should know to read and write:</strong><span class="ml-1">{{ match_profile.expectations.languages_can_read_write_text }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.occupations_text %}<strong>Occupations:</strong><span class="ml-1">{{ match_profile.expectations.occupations_text }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.education_text %}<strong>Education:</strong><span class="ml-1">{{ match_profile.expectations.education_text }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.annual_income_from %}<strong>Annual Income:</strong><span class="ml-1">{{ match_profile.expectations.annual_income_from }} to {{ match_profile.expectations.annual_income_to }}</span>{% endif %}
+                        </p>
+                        <p class="text-muted">
+                            {% if match_profile.expectations.spiritual_masters_text %}<strong>Spiritual masters:</strong><span class="ml-1">{{ match_profile.expectations.spiritual_masters_text }}</span>{% endif %}
+                        </p>
+
+                    </div>
+                </div>
+        </div>
+    </div> 
+</div>
+{% endblock content %}
+
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+  $('.match-action').on('click', function(e){
+    e.preventDefault();
+    actionUrl = $(this).data('action');
+    $.ajax
+    $.ajax({
+      type: "POST",
+      headers: {
+        'X-CSRFToken': "{{ csrf_token }}"
+      },
+      url: actionUrl,
+      success: function (data) {
+          location.reload();
+      },
+      error: function (err) {
+          console.log("error", err.responseJSON);
+      }
+    });
+  });
+});
+</script>
+{% endblock %} 
