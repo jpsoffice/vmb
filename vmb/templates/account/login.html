@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="form-group">
-                    <a href="pages-recoverpw.html" class="text-muted float-right"><small>Forgot your password?</small></a>
+                    <a href="{% url 'account_reset_password' %}" class="text-muted float-right"><small>Forgot your password?</small></a>
                     <label for="password">Password</label>
                     <div class="input-group input-group-merge">
                         {% crispy_field form.password %}
