@@ -25,17 +25,15 @@ OnHostRule = true
   [acme.httpChallenge]
   entryPoint = "http"
 
-[file]
-[backends]
-  [backends.django]
-    [backends.django.servers.server1]
-      url = "http://django:5000"
+[web]
+address = ":5000"
 
-[frontends]
-  [frontends.django]
-    backend = "django"
-    passHostHeader = true
-    [frontends.django.headers]
-      HostsProxyHeaders = ['X-CSRFToken']
-    [frontends.django.routes.dr1]
-      rule = "Host:vaisnavamarriage.com"
+[retry]
+attempts = 3
+maxMem = 3
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "localhost"
+watch = true
+exposedbydefault = false

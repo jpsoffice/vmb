@@ -1,0 +1,24 @@
+version: '3'
+
+volumes:
+  production_traefik: {}
+
+services:
+  traefik:
+    build:
+      context: .
+      dockerfile: ./compose/production/traefik/Dockerfile
+    image: vmb_production_traefik
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - production_traefik:/etc/traefik/acme
+    ports:
+      - "0.0.0.0:80:80"
+      - "0.0.0.0:443:443"
+      - "0.0.0.0:5555:5555"
+    networks:
+      - webgateway
+
+networks:
+  webgateway:
+      driver: bridge
