@@ -8,6 +8,7 @@ from admin_numeric_filter.admin import (
     RangeNumericForm,
 )
 from tabbed_admin import TabbedModelAdmin
+from django import forms
 from django_admin_listfilter_dropdown.filters import (
     DropdownFilter,
     ChoiceDropdownFilter,
@@ -290,10 +291,24 @@ class MatrimonyProfileStatsInline(admin.TabularInline):
     def has_add_permission(self, request, obj=None):
         return False
 
+class MatrimonyProfileForm(forms.ModelForm):
+    class Meta:
+        model = MatrimonyProfile
+        fields = '__all__'
+
+    def clean(self):
+        birth_place = self.cleaned_data.get('birth_place')
+        current_place = self.cleaned_data.get('current_place')
+        if not birth_place:
+            raise forms.ValidationError("Birth place is required.")
+        if not current_place:
+            raise forms.ValidationError("Current place is required.")
+        return self.cleaned_data
 
 class BaseMatrimonyProfileAdmin(
     DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
 ):
+    form = MatrimonyProfileForm
     tab_profile = [
         (None, {"fields": [("profile_id", "name", "spiritual_name"),]},),
         ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
