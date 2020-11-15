@@ -296,13 +296,19 @@ class BaseMatrimonyProfileAdmin(
 ):
     tab_profile = [
         (None, {"fields": [("profile_id", "name", "spiritual_name", "status"),]},),
-        ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
+        (
+            "CONTACT INFORMATION",
+            {
+                "fields": [
+                    ("profile_created_by", "contact_person_name"),
+                    ("phone", "email"),
+                ]
+            },
+        ),
         (
             "BASIC INFORMATION",
             {
                 "fields": [
-                    ("dob", "ethnic_origin"),
-                    ("mother_tongue", "rounds_chanting"),
                     ("spiritual_status", "spiritual_master"),
                     "marital_status",
                     ("height", "weight"),
