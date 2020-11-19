@@ -947,12 +947,8 @@ class Match(BaseModel):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        if (
-            self._original_male_response != self.male_response
-            or self._original_female_response != self.female_response
-        ):
-            self.male.update_stats()
-            self.female.update_stats()
+        self.male.update_stats()
+        self.female.update_stats()
 
 
 EMAIL_MESSAGE_STATUS_CHOICES = (
