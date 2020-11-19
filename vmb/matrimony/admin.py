@@ -295,14 +295,23 @@ class BaseMatrimonyProfileAdmin(
     DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
 ):
     tab_profile = [
-        (None, {"fields": [("profile_id", "name", "spiritual_name"),]},),
-        ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
+        (None, {"fields": [("profile_id", "name", "spiritual_name", "status"),]},),
+        (
+            "CONTACT INFORMATION",
+            {
+                "fields": [
+                    ("profile_created_by", "contact_person_name"),
+                    ("phone", "email"),
+                ]
+            },
+        ),
         (
             "BASIC INFORMATION",
             {
                 "fields": [
-                    ("dob", "ethnic_origin"),
-                    ("mother_tongue", "rounds_chanting"),
+                    ("dob", "ethnic_origin", "mother_tongue"),
+                    ("languages_known", "languages_read_write"),
+                    ("rounds_chanting"),
                     ("spiritual_status", "spiritual_master"),
                     "marital_status",
                     ("height", "weight"),
