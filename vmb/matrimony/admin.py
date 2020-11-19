@@ -471,10 +471,8 @@ class BaseMatrimonyProfileAdmin(
         "annual_income_in_base_currency",
         "current_city",
         "current_state",
-        "current_country",
         "birth_city",
         "birth_state",
-        "birth_country",
     ]
 
     def all_education(self, obj):
