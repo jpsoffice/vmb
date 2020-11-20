@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="row">
-  {% for match_id, profile, response in matches %}
+  {% for match_id, profile, response, profile_response in matches %}
   <div class="col-lg-12">
       <div class="card">
         <div class="row no-gutters">
@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-8 col-lg-9">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="{% url 'matrimony:match-details' match_id %}" class="text-success stretched-link">{{ profile.name }} {% if profile.spiritual_name %}({{ profile.spiritual_name }}){% endif %}</a></h5>
+                    <h5 class="card-title"><a href="{% url 'matrimony:match-details' match_id %}" class="text-success stretched-link">{{ profile.profile_id }}{% ifequal response 'ACP' %}{% ifequal profile_response 'ACP' %} {{ profile.name }} {% if profile.spiritual_name %}({{ profile.spiritual_name }}){% endif %}{% endifequal %}{% endifequal %}</a></h5>
                     <p class="card-text">
                       <strong>Age: </strong>{{ profile.age }},
                       <strong>Height: </strong>{{ profile.height }} cms,
