@@ -1006,6 +1006,13 @@ class Photo(BaseModel):
 
     primary = models.BooleanField(default=False, blank=True)
 
+    photo_visible_to_all_matches = models.BooleanField(
+        default=True,
+        blank=True,
+        null=True,
+        help_text="By default, your photos will be visible to all suggested matches. If you uncheck this option, your photos will only be visible to matches you have accepted.",
+    )
+
     @property
     def thumbnail(self):
         from django.utils.html import mark_safe
