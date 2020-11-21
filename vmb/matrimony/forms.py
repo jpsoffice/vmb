@@ -642,6 +642,10 @@ class MatrimonyProfilePhotosForm(forms.Form):
             raise forms.ValidationError(
                 "Please upload at least a single photo to proceed."
             )
+        if self.instance.photo_set.filter(primary=True).count() > 1:
+            for photo in self.instance.photo_set.filter(primary=True)[1:]:
+                photo.primary = False
+                photo.save()
 
 
 class MatrimonyProfileExpectationsForm(BaseMatrimonyProfileForm):
