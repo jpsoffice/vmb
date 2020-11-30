@@ -193,6 +193,12 @@ class MatrimonyProfile(BaseModel):
     )
 
     photos = models.ManyToManyField("photologue.Photo", through="Photo", blank=True)
+    photos_visible_to_all_matches = models.BooleanField(
+        default=True,
+        blank=True,
+        null=True,
+        help_text="By default, your photos will be visible to all suggested matches. If you uncheck this option, your photos will only be visible to matches you have accepted.",
+    )
 
     # Contact details
     email = models.EmailField(null=True, unique=True, verbose_name=_("Email"))
