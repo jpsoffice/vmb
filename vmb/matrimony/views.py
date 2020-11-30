@@ -169,6 +169,12 @@ def profile_photo_action(request, photo_id, action):
         if action == "make-primary":
             photo.primary = True
             photo.save()
+        elif action == "photo_visible":
+            photo.photo_visible_to_all_matches = True
+            photo.save()
+        elif action == "photo_not_visible":
+            photo.photo_visible_to_all_matches = False
+            photo.save()
         elif action == "delete":
             photo.photo.delete()
             photo.delete()

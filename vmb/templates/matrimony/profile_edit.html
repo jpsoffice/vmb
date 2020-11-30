@@ -49,11 +49,16 @@
                     {% for photo in form.instance.photo_set.all %}
                     <div class="card d-block mb-5" style="max-width:400px;">
                         <img class="card-img-top img-fluid rounded" src="{{photo.photo.get_display_url}}" style="height: 100%; object-fit: cover;">
-                        {% if photo.primary %}
                         <div class="card-img-overlay">
+                            {% if photo.primary %}
                             <div class="badge badge-secondary p-1"><i class="dripicons-star"></i></div>
+                            {% endif %}
+                            {% if photo.photo_visible_to_all_matches %}
+                            <div class="badge badge-secondary p-1"><i class="mdi mdi-eye"></i></div>
+                            {% else %}
+                            <div class="badge badge-secondary p-1"><i class="mdi mdi-eye-off"></i></div>
+                            {% endif %}
                         </div>
-                        {% endif %}
                         <div class="dropdown card-widgets">
                             <a href="#" class="dropdown-toggle arrow-none" data-toggle="dropdown" aria-expanded="false">
                                 <i class="dripicons-dots-3"></i>
@@ -61,6 +66,11 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 {% if not photo.primary %}
                                 <a href="javascript:void(0);" data-action="{% url 'matrimony:profile-photo-action' photo.id 'make-primary' %}" class="photo-action dropdown-item"><i class="dripicons-star mr-1"></i>Make primary</a>
+                                {% endif %}
+                                {% if photo.photo_visible_to_all_matches %}
+                                <a href="javascript:void(0);" data-action="{% url 'matrimony:profile-photo-action' photo.id 'photo_not_visible' %}" class="photo-action dropdown-item"><i class="mdi mdi-eye-off mr-1"></i>Make photo visible only to accepted matches</a>
+                                {% else %}
+                                <a href="javascript:void(0);" data-action="{% url 'matrimony:profile-photo-action' photo.id 'photo_visible' %}" class="photo-action dropdown-item"><i class="mdi mdi-eye mr-1"></i>Make photo visible to all suggested matches</a>
                                 {% endif %}
                                 <!-- item-->
                                 <a href="javascript:void(0);" data-action="{% url 'matrimony:profile-photo-action' photo.id 'delete' %}" class="photo-action dropdown-item"><i class="mdi mdi-delete mr-1"></i>Delete</a>
