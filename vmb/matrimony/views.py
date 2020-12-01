@@ -125,6 +125,19 @@ def profile_edit(request, section_id):
 
 
 @login_required
+def profile_photos_privacy(request, action):
+    if request.method == "POST":
+        if action == "not-visible":
+            request.user.matrimony_profile.photos_visible_to_all_matches = False
+        else:
+            request.user.matrimony_profile.photos_visible_to_all_matches = True
+        request.user.matrimony_profile.save()
+        return JsonResponse({"status": "success"})
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+
+
+@login_required
 def profile_photos_add(request):
     if request.POST:
         title = uuid.uuid5(uuid.uuid1(), str(os.getpid())).hex[:32]

@@ -39,7 +39,21 @@
                         </span>
                     </div>
                 </form>
-
+                <div class="dropdown card-widgets">
+                    <a href="#" class="dropdown-toggle arrow-none" data-toggle="dropdown" aria-expanded="false">
+                        {% if form.instance.photos_visible_to_all_matches %}
+                        <h6>Photo Visibility: <span style="font-weight: normal;">Make photo(s) visible to all <strong>suggested </strong>matches</span></h6>
+                        {% endif %}
+                        {% if not form.instance.photos_visible_to_all_matches %}
+                        <h6>Photo Visibility: <span style="font-weight: normal;">Make photo(s) visible only to <strong>accepted</strong> matches</span></h6>
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="javascript:void(0);" data-action="{% url 'matrimony:profile-photos-privacy' 'visible' %}" class="photo-action dropdown-item"><i class="mdi mdi-eye mr-1"></i>All <strong>suggested</strong> matches</a>
+                        <br>
+                        <a href="javascript:void(0);" data-action="{% url 'matrimony:profile-photos-privacy' 'not-visible' %}" class="photo-action dropdown-item"><i class="mdi mdi-eye-off mr-1"></i>Only <strong>accepted</strong> matches</a>
+                    </div>
+                </div>
                 <div class="mt-3 mb-3 d-flex justify-content-center">
                   <button id="uploadButton" class="btn btn-primary" class="text-center">Upload</button>
                 </div>
