@@ -8,6 +8,7 @@ from admin_numeric_filter.admin import (
     RangeNumericForm,
 )
 from tabbed_admin import TabbedModelAdmin
+from django import forms
 from django_admin_listfilter_dropdown.filters import (
     DropdownFilter,
     ChoiceDropdownFilter,
@@ -291,26 +292,52 @@ class MatrimonyProfileStatsInline(admin.TabularInline):
         return False
 
 
+class MatrimonyProfileForm(forms.ModelForm):
+    class Meta:
+        model = MatrimonyProfile
+        fields = "__all__"
+
+        required = [
+            "birth_place",
+            "current_place",
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.Meta.required:
+            self.fields[field].required = True
+
+
 class BaseMatrimonyProfileAdmin(
     DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
 ):
+    form = MatrimonyProfileForm
     tab_profile = [
         (
             None,
             {
                 "fields": [
                     ("profile_id", "name", "spiritual_name"),
-                    ("registration_date"),
+                    ("registration_date", "status"),
                 ]
             },
         ),
-        ("CONTACT INFORMATION", {"fields": [("phone", "email")]}),
+        (
+            "CONTACT INFORMATION",
+            {
+                "fields": [
+                    ("profile_created_by", "contact_person_name"),
+                    ("phone", "email"),
+                ]
+            },
+        ),
         (
             "BASIC INFORMATION",
             {
                 "fields": [
-                    ("dob", "ethnic_origin"),
-                    ("mother_tongue", "rounds_chanting"),
+                    ("dob", "ethnic_origin", "mother_tongue"),
+                    ("languages_known", "languages_read_write"),
+                    ("rounds_chanting"),
                     ("spiritual_status", "spiritual_master"),
                     "marital_status",
                     ("height", "weight"),
@@ -479,10 +506,8 @@ class BaseMatrimonyProfileAdmin(
         "annual_income_in_base_currency",
         "current_city",
         "current_state",
-        "current_country",
         "birth_city",
         "birth_state",
-        "birth_country",
     ]
 
     def all_education(self, obj):

@@ -943,6 +943,8 @@ class Match(BaseModel):
             models.Index(fields=["female"]),
         ]
 
+        unique_together = [["male", "female"]]
+
         verbose_name = "Match"
         verbose_name_plural = "Matches"
 
