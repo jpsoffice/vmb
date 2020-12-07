@@ -901,7 +901,7 @@ MATCH_STATUS_CHOICES = (
 class Match(BaseModel):
     male = models.ForeignKey(
         Male,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         null=True,
         blank=True,
         related_name="female_matches",
@@ -913,7 +913,7 @@ class Match(BaseModel):
 
     female = models.ForeignKey(
         Female,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         null=True,
         blank=True,
         related_name="male_matches",
