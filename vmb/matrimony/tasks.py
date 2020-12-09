@@ -24,6 +24,23 @@ def send_batch_matches_emails():
 
 
 @celery_app.task()
+def send_batch_reminder_emails():
+    from .models.profiles import MatrimonyProfile
+
+    for mp_id in (
+        MatrimonyProfile.objects.filter(status="00").values_list(flat=True).distinct()
+    ):
+        profile = MatrimonyProfile.objects.get(id=mp_id)
+        profile.send_reminder_for_registration()
+
+    for mp_id in (
+        MatrimonyProfile.objects.filter(status="01").values_list(flat=True).distinct()
+    ):
+        profile = MatrimonyProfile.objects.get(id=mp_id)
+        profile.send_reminder_for_questionnaire()
+
+
+@celery_app.task()
 def send_email(email_message_id):
     from .models import EmailMessage
 

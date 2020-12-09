@@ -616,6 +616,42 @@ class MatrimonyProfile(BaseModel):
             {"matches": self.matching_profiles}
         )
 
+    def send_reminder_for_registration(self):
+        body = self.notify_if_registration_incomplete()
+        subject = _("Questionnaire")
+        email_message = self.email_messages.create(
+            sender=settings.MATRIMONY_SENDER_EMAIL,
+            subject="Complete your registration",
+            body=body,
+            to=self.email,
+            category="DMD",
+            status="NEW",
+        )
+        email_message.send()
+
+    def notify_if_registration_incomplete(self):
+        return loader.get_template("matrimony/emails/after_signup.html").render(
+            {"name": self.name}
+        )
+
+    def send_reminder_for_questionnaire(self):
+        body = self.notify_after_registration_is_successful()
+        subject = _("Questionnaire")
+        email_message = self.email_messages.create(
+            sender=settings.MATRIMONY_SENDER_EMAIL,
+            subject="Activate your account",
+            body=body,
+            to=self.email,
+            category="DMD",
+            status="NEW",
+        )
+        email_message.send()
+
+    def notify_after_registration_is_successful(self):
+        return loader.get_template("matrimony/emails/after_registration.html").render(
+            {"name": self.name}
+        )
+
     def generate_profile_id(self):
         digest = (
             md5(
