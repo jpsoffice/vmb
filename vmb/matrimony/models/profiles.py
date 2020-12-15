@@ -581,7 +581,7 @@ class MatrimonyProfile(BaseModel):
 
         if self.id is None or self._original_birth_place != self.birth_place:
             if self.birth_place:
-                tokens = self.birth_place.place.split(", ")[-3:-1]
+                tokens = self.birth_place.place.split(", ")[0:3]
                 self.birth_city = tokens[0]
                 self.birth_state = tokens[1] if len(tokens) > 1 else tokens[0]
             else:
@@ -589,7 +589,7 @@ class MatrimonyProfile(BaseModel):
 
         if self.id is None or self._original_current_place != self.current_place:
             if self.current_place:
-                tokens = self.current_place.place.split(", ")[-3:-1]
+                tokens = self.current_place.place.split(", ")[0:3]
                 self.current_city = tokens[0]
                 self.current_state = tokens[1] if len(tokens) > 1 else tokens[0]
             else:
