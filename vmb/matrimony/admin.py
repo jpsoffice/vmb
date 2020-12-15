@@ -313,7 +313,15 @@ class BaseMatrimonyProfileAdmin(
 ):
     form = MatrimonyProfileForm
     tab_profile = [
-        (None, {"fields": [("profile_id", "name", "spiritual_name", "status"),]},),
+        (
+            None,
+            {
+                "fields": [
+                    ("profile_id", "name", "spiritual_name"),
+                    ("registration_date", "status"),
+                ]
+            },
+        ),
         (
             "CONTACT INFORMATION",
             {

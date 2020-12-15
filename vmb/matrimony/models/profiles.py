@@ -166,6 +166,7 @@ class MatrimonyProfile(BaseModel):
     """Model representing matrimonial profile of a candidate"""
 
     profile_id = models.CharField(max_length=15, blank=True, unique=True)
+    registration_date = models.DateTimeField(default=timezone.now, blank=True)
     name = models.CharField(max_length=200, verbose_name=_("Name"),)
     spiritual_name = models.CharField(
         max_length=200, default="", blank=True, verbose_name=_("Spiritual name")
