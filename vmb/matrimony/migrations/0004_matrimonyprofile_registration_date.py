@@ -7,7 +7,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('matrimony', '0002_auto_20201018_1538'),
+        ('matrimony', '0003_matrimonyprofile_is_tob_unknown'),
     ]
 
     operations = [

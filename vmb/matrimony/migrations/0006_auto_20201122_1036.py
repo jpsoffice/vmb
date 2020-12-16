@@ -12,7 +12,7 @@ def update_registration_date(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('matrimony', '0003_matrimonyprofile_registration_date'),
+        ('matrimony', '0005_auto_20201119_0737'),
     ]
 
     operations = [

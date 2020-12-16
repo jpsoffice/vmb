@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('matrimony', '0003_matrimonyprofile_is_tob_unknown'),
+        ('matrimony', '0004_matrimonyprofile_registration_date'),
     ]
 
     operations = [
