@@ -1008,6 +1008,16 @@ class Photo(BaseModel):
 
     primary = models.BooleanField(default=False, blank=True)
 
+    class Meta:
+        db_table = "matrimony_photos"
+        indexes = [
+            models.Index(fields=["profile"]),
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._original_primary = self.primary
+
     @property
     def thumbnail(self):
         from django.utils.html import mark_safe
@@ -1021,21 +1031,12 @@ class Photo(BaseModel):
 </a>"""
         )
 
-    class Meta:
-        db_table = "matrimony_photos"
-        indexes = [
-            models.Index(fields=["profile"]),
-        ]
-
     def save(self, *args, **kwargs):
-        if self.primary:
-            try:
-                temp = Photo.objects.get(primary=True, profile=self.profile)
-                if self != temp:
-                    temp.primary = False
-                    temp.save()
-            except Photo.DoesNotExist:
-                pass
+        if self.primary != self._original_primary:
+            if self.primary:
+                Photo.objects.filter(profile_id=self.profile_id, primary=True).update(primary=False)
+            else:
+                self.primary = True
         super().save(*args, **kwargs)
 
 
