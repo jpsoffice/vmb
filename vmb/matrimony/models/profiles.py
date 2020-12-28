@@ -559,6 +559,8 @@ class MatrimonyProfile(BaseModel):
     class Meta:
         db_table = "matrimony_profiles"
 
+        ordering = ["-registration_date"]
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._original_annual_income = self.annual_income
