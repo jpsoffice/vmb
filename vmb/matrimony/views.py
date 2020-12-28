@@ -104,6 +104,7 @@ def profile_edit(request, section_id):
                     next = "/"
                     request.user.is_matrimony_registration_complete = True
                     matrimony_profile.set_status("Registered")
+                    matrimony_profile.registration_date = timezone.now()
                     matrimony_profile.save()
                     request.user.save()
                     messages.add_message(
