@@ -454,7 +454,7 @@ class BaseMatrimonyProfileAdmin(
         "status",
         "age",
         "dob",
-        "annual_income",
+        "annual_income_in_base_currency",
         "current_country",
         "current_city",
         "all_occupations",
