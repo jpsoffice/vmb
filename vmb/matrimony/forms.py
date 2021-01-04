@@ -623,7 +623,6 @@ class MatrimonyProfileProfessionalInfoForm(BaseMatrimonyProfileForm):
 class MatrimonyProfilePhotosForm(forms.Form):
 
     photos_visible_to_all_matches = forms.BooleanField(
-        default=True,
         required=False,
         help_text="By default, your photos will be visible to all suggested matches. If you uncheck this option, your photos will only be visible to matches you have accepted.",
     )
