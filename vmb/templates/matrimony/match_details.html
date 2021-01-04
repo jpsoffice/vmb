@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block content_title %}{{ match_profile.name }}{% endblock %}
+{% block content_title %}{{ match_profile.profile_id }}{% ifequal response 'ACP' %}{% ifequal profile_response 'ACP' %} {{ match_profile.name }}{% endifequal %}{% endifequal %}{% endblock %}
 
 {% block breadcrumb %}
 <li class="breadcrumb-item"><a href="{% url 'matrimony:matches' %}">Matches</a></li>
-<li class="breadcrumb-item active">{{ match_profile.name }}</li>
+<li class="breadcrumb-item active">{{ match_profile.profile_id }}{% ifequal response 'ACP' %}{% ifequal profile_response 'ACP' %} {{ match_profile.name }}{% endifequal %}{% endifequal %}</li>
 {% endblock %}
 
 {% block content %}
@@ -73,7 +73,7 @@
                 <div class="col-md-6">
                     <div class="text-left">
                         <p class="text-muted">
-                            <strong>Name:</strong><span class="ml-1">{{ match_profile.name }}</span>
+                            {% ifequal response 'ACP' %}{% ifequal profile_response 'ACP' %}<strong>Name:</strong><span class="ml-1">{{ match_profile.name }}</span>{% endifequal %}{% endifequal %}
                         </p>
                         
                         <p class="text-muted">
@@ -109,7 +109,7 @@
                 <div class="col-md-6">
                     <div class="text-left">
                         <p class="text-muted">
-                            <strong>Spiritual name:</strong><span class="ml-1">{{ match_profile.spiritual_name }}</span>
+                            {% ifequal response 'ACP' %}{% ifequal profile_response 'ACP' %}<strong>Spiritual name:</strong><span class="ml-1">{{ match_profile.spiritual_name }}</span>{% endifequal %}{% endifequal %}
                         </p>
                         <p class="text-muted">
                             <strong>Ethnic origin:</strong><span class="ml-1">{{ match_profile.ethnic_origin }}</span>
