@@ -7,11 +7,8 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
     RangeNumericForm,
 )
-<<<<<<< HEAD
 from rangefilter.filter import DateTimeRangeFilter
-=======
 from fieldsets_with_inlines import FieldsetsInlineMixin
->>>>>>> Add photos_visible_to_all_matches in admin profile-edit page.
 from tabbed_admin import TabbedModelAdmin
 from django import forms
 from django_admin_listfilter_dropdown.filters import (
@@ -297,7 +294,6 @@ class MatrimonyProfileStatsInline(admin.TabularInline):
         return False
 
 
-<<<<<<< HEAD
 class MatrimonyProfileForm(forms.ModelForm):
     class Meta:
         model = MatrimonyProfile
@@ -312,7 +308,8 @@ class MatrimonyProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.Meta.required:
             self.fields[field].required = True
-=======
+
+            
 class PhotoInline(admin.TabularInline):
     model = Photo
     extra = 1
@@ -321,7 +318,6 @@ class PhotoInline(admin.TabularInline):
     raw_id_fields = ["photo"]
 
     readonly_fields = ["thumbnail"]
->>>>>>> Add photos_visible_to_all_matches in admin profile-edit page.
 
 
 class BaseMatrimonyProfileAdmin(
