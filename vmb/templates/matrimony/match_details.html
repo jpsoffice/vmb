@@ -19,7 +19,7 @@
             <div class="carousel-inner" role="listbox">
                 {% for photo in match_profile.photo_set.all %}
                     <div class="carousel-item{% if photo.primary or not match_profile.primary_image_url and forloop.counter0 == 0 %} active{% endif %}">
-                        <img class="d-block img-fluid" src="{{ photo.photo.image.url }}" style="object-fit: cover;">
+                        <img class="d-block img-fluid" src="{{ photo.photo.image.url }}" style="object-fit: cover;{% if not show_photo %} filter: blur(8px); -webkit-filter: blur(8px);{% endif %}">
                     </div>
                 {% endfor %}
             </div>

@@ -545,10 +545,10 @@ class MatrimonyProfile(BaseModel):
         matches = []
         if self.gender == "M":
             for m in self.female_matches.all():
-                matches.append((m.id, m.female, m.male_response))
+                matches.append((m.id, m.female, m.show_female_photos, m.male_response))
         else:
             for m in self.male_matches.all():
-                matches.append((m.id, m.male, m.female_response))
+                matches.append((m.id, m.male, m.show_male_photos, m.female_response))
         return matches
 
     @property
@@ -915,6 +915,7 @@ class Match(BaseModel):
     male_response = models.CharField(
         max_length=3, choices=MATCH_RESPONSE_CHOICES, blank=True, default=""
     )
+    male_photos_visibility = models.NullBooleanField(blank=True)
     male_response_updated_at = models.DateTimeField(blank=True, null=True)
 
     female = models.ForeignKey(
@@ -927,6 +928,7 @@ class Match(BaseModel):
     female_response = models.CharField(
         max_length=3, choices=MATCH_RESPONSE_CHOICES, blank=True, default=""
     )
+    female_photos_visibility = models.NullBooleanField(blank=True)
     female_response_updated_at = models.DateTimeField(blank=True, null=True)
 
     status = models.CharField(
@@ -955,6 +957,25 @@ class Match(BaseModel):
 
         verbose_name = "Match"
         verbose_name_plural = "Matches"
+
+    @property
+    def show_male_photos(self):
+        if self.male_photos_visibility is not None:
+            return (
+                self.male.photos_visible_to_all_matches and self.male_photos_visibility
+            )
+        return self.male.photos_visible_to_all_matches or self.male_response == "ACP"
+
+    @property
+    def show_female_photos(self):
+        if self.female_photos_visibility is not None:
+            return (
+                self.female.photos_visible_to_all_matches
+                and self.female_photos_visibility
+            )
+        return (
+            self.female.photos_visible_to_all_matches or self.female_response == "ACP"
+        )
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

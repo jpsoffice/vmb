@@ -224,6 +224,9 @@ def match_details(request, id):
         match = get_object_or_404(Match, female_id=profile.id, id=id)
     match_profile = match.female if profile.gender == "M" else match.male
     response = match.male_response if profile.gender == "M" else match.female_response
+    show_photo = (
+        match.show_female_photos if profile.gender == "M" else match.show_male_photos
+    )
 
     return render(
         request,
@@ -233,5 +236,6 @@ def match_details(request, id):
             "match": match,
             "match_profile": match_profile,
             "response": response,
+            "show_photo": show_photo,
         },
     )
