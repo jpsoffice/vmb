@@ -7,6 +7,7 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
     RangeNumericForm,
 )
+from rangefilter.filter import DateTimeRangeFilter
 from tabbed_admin import TabbedModelAdmin
 from django import forms
 from django_admin_listfilter_dropdown.filters import (
@@ -449,6 +450,7 @@ class BaseMatrimonyProfileAdmin(
     ]
     list_display = (
         "profile_id",
+        "registration_date",
         "name",
         "primary_image",
         "status",
@@ -465,8 +467,8 @@ class BaseMatrimonyProfileAdmin(
     list_filter = (
         "status",
         AgeRangeFilter,
-        # AnnualIncomeRangeFilter,
         ("annual_income_in_base_currency", RangeNumericFilter),
+        ("registration_date", DateTimeRangeFilter),
         RoundsFilter,
         ("height", RangeNumericFilter),
         "spiritual_status",
