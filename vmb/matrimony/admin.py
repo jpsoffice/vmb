@@ -8,7 +8,6 @@ from admin_numeric_filter.admin import (
     RangeNumericForm,
 )
 from rangefilter.filter import DateTimeRangeFilter
-from fieldsets_with_inlines import FieldsetsInlineMixin
 from tabbed_admin import TabbedModelAdmin
 from django import forms
 from django_admin_listfilter_dropdown.filters import (
@@ -321,7 +320,7 @@ class PhotoInline(admin.TabularInline):
 
 
 class BaseMatrimonyProfileAdmin(
-    DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin, FieldsetsInlineMixin
+    DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
 ):
     form = MatrimonyProfileForm
     tab_profile = [
