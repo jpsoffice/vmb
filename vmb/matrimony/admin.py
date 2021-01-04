@@ -309,6 +309,16 @@ class MatrimonyProfileForm(forms.ModelForm):
             self.fields[field].required = True
 
 
+class PhotoInline(admin.TabularInline):
+    model = Photo
+    extra = 1
+    can_delete = True
+
+    raw_id_fields = ["photo"]
+
+    readonly_fields = ["thumbnail"]
+
+
 class BaseMatrimonyProfileAdmin(
     DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
 ):
@@ -352,6 +362,10 @@ class BaseMatrimonyProfileAdmin(
                 ]
             },
         ),
+    ]
+    tab_photo = [
+        PhotoInline,
+        (None, {"fields": ["photos_visible_to_all_matches",]},),
     ]
     tab_birth_details = [
         (
@@ -545,16 +559,6 @@ class MatchInline(admin.TabularInline):
     verbose_name_plural = "Matches"
 
 
-class PhotoInline(admin.TabularInline):
-    model = Photo
-    extra = 1
-    can_delete = True
-
-    raw_id_fields = ["photo"]
-
-    readonly_fields = ["thumbnail"]
-
-
 class ExpectationInline(admin.StackedInline):
     model = Expectation
     extra = 0
@@ -581,7 +585,6 @@ class CommentInline(GenericTabularInline):
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
     tab_mentor = (MentorInline,)
-    tab_photo = (PhotoInline,)
     tab_expectation = (ExpectationInline,)
     tab_match = (
         MatchInline,
@@ -593,7 +596,7 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
         ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
         ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
         ("Mentor", tab_mentor),
-        ("Photo", tab_photo),
+        ("Photo", BaseMatrimonyProfileAdmin.tab_photo),
         ("Expectation", tab_expectation),
         ("Matches & Comments", tab_match),
     ]
@@ -611,7 +614,6 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
     tab_mentor = (MentorInline,)
-    tab_photo = (PhotoInline,)
     tab_expectation = (ExpectationInline,)
     tab_match = (
         MatchInline,
@@ -623,7 +625,7 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
         ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
         ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
         ("Mentor", tab_mentor),
-        ("Photo", tab_photo),
+        ("Photo", BaseMatrimonyProfileAdmin.tab_photo),
         ("Expectation", tab_expectation),
         ("Matches & Comments", tab_match),
     ]

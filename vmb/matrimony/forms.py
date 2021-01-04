@@ -621,19 +621,37 @@ class MatrimonyProfileProfessionalInfoForm(BaseMatrimonyProfileForm):
 
 
 class MatrimonyProfilePhotosForm(forms.Form):
+
+    photos_visible_to_all_matches = forms.BooleanField(
+        required=False,
+        help_text="By default, your photos will be visible to all suggested matches. If you uncheck this option, your photos will only be visible to matches you have accepted.",
+    )
+
+    class Meta:
+        model = MatrimonyProfile
+        fields = ("photos_visible_to_all_matches",)
+        readonly = []
+        required = []
+
     def __init__(self, *args, **kwargs):
         self.instance = kwargs.pop("instance")
         self.wizard = kwargs.pop("wizard")
         super().__init__(*args, **kwargs)
-
+        self.fields[
+            "photos_visible_to_all_matches"
+        ].initial = self.instance.photos_visible_to_all_matches
         self.helper = FormHelper()
         self.helper.layout = Layout(
+            "photos_visible_to_all_matches",
             Submit("submit", "Next" if self.wizard else "Save"),
         )
         self.fields.required = True
 
     def save(self, *args, **kwargs):
-        pass
+        self.instance.photos_visible_to_all_matches = self.cleaned_data[
+            "photos_visible_to_all_matches"
+        ]
+        self.instance.save()
 
     def clean(self):
         """Check that at least one photo has been entered."""

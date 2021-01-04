@@ -19,7 +19,7 @@
             <div class="carousel-inner" role="listbox">
                 {% for photo in match_profile.photo_set.all %}
                     <div class="carousel-item{% if photo.primary or not match_profile.primary_image_url and forloop.counter0 == 0 %} active{% endif %}">
-                        <img class="d-block img-fluid" src="{{ photo.photo.image.url }}" style="object-fit: cover;">
+                        <img class="d-block img-fluid" src="{{ photo.photo.image.url }}" style="object-fit: cover;{% if not show_photo %} filter: blur(8px); -webkit-filter: blur(8px);{% endif %}">
                     </div>
                 {% endfor %}
             </div>
@@ -34,8 +34,9 @@
         </div>
     </div>
     <div class="col-md-8">
-        <div class="card bg-info">
+        <div class="card bg-info{% ifequal match_response 'REJ' %} ribbon-box{% endifequal %}">
             <div class="card-body">
+                {% ifequal match_response 'REJ' %}<div class="ribbon ribbon-danger float-right"><span>You got rejected</span></div>{% endifequal %}
                 <h4 class="header-title mt-0 mb-3 text-white">Overview</h4>
                 <div class="text-left">
                     <p class="text-white">
