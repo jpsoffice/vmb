@@ -545,10 +545,26 @@ class MatrimonyProfile(BaseModel):
         matches = []
         if self.gender == "M":
             for m in self.female_matches.all():
-                matches.append((m.id, m.female, m.show_female_photos, m.male_response))
+                matches.append(
+                    (
+                        m.id,
+                        m.female,
+                        m.show_female_photos,
+                        m.female_response,
+                        m.male_response,
+                    )
+                )
         else:
             for m in self.male_matches.all():
-                matches.append((m.id, m.male, m.show_male_photos, m.female_response))
+                matches.append(
+                    (
+                        m.id,
+                        m.male,
+                        m.show_male_photos,
+                        m.male_response,
+                        m.female_response,
+                    )
+                )
         return matches
 
     @property

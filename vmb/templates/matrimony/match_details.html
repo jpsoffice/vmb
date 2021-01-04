@@ -34,8 +34,9 @@
         </div>
     </div>
     <div class="col-md-8">
-        <div class="card bg-info">
+        <div class="card bg-info{% ifequal match_response 'REJ' %} ribbon-box{% endifequal %}">
             <div class="card-body">
+                {% ifequal match_response 'REJ' %}<div class="ribbon ribbon-danger float-right"><span>You got rejected</span></div>{% endifequal %}
                 <h4 class="header-title mt-0 mb-3 text-white">Overview</h4>
                 <div class="text-left">
                     <p class="text-white">
