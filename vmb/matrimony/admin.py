@@ -7,7 +7,11 @@ from admin_numeric_filter.admin import (
     SliderNumericFilter,
     RangeNumericForm,
 )
+<<<<<<< HEAD
 from rangefilter.filter import DateTimeRangeFilter
+=======
+from fieldsets_with_inlines import FieldsetsInlineMixin
+>>>>>>> Add photos_visible_to_all_matches in admin profile-edit page.
 from tabbed_admin import TabbedModelAdmin
 from django import forms
 from django_admin_listfilter_dropdown.filters import (
@@ -293,6 +297,7 @@ class MatrimonyProfileStatsInline(admin.TabularInline):
         return False
 
 
+<<<<<<< HEAD
 class MatrimonyProfileForm(forms.ModelForm):
     class Meta:
         model = MatrimonyProfile
@@ -307,10 +312,20 @@ class MatrimonyProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.Meta.required:
             self.fields[field].required = True
+=======
+class PhotoInline(admin.TabularInline):
+    model = Photo
+    extra = 1
+    can_delete = True
+
+    raw_id_fields = ["photo"]
+
+    readonly_fields = ["thumbnail"]
+>>>>>>> Add photos_visible_to_all_matches in admin profile-edit page.
 
 
 class BaseMatrimonyProfileAdmin(
-    DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
+    DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin, FieldsetsInlineMixin
 ):
     form = MatrimonyProfileForm
     tab_profile = [
@@ -352,6 +367,10 @@ class BaseMatrimonyProfileAdmin(
                 ]
             },
         ),
+    ]
+    tab_photo = [
+        PhotoInline,
+        (None, {"fields": ["photos_visible_to_all_matches",]},),
     ]
     tab_birth_details = [
         (
@@ -512,6 +531,8 @@ class BaseMatrimonyProfileAdmin(
         "birth_state",
     ]
 
+    inlines = [PhotoInline]
+
     def all_education(self, obj):
         return obj.education_text
 
@@ -531,8 +552,6 @@ class BaseMatrimonyProfileAdmin(
                 obj.author = request.user
                 obj.save()
 
-    # inlines = [MentorInline]
-
 
 class MatchInline(admin.TabularInline):
     model = Match
@@ -543,16 +562,6 @@ class MatchInline(admin.TabularInline):
 
     verbose_name = "Matche"
     verbose_name_plural = "Matches"
-
-
-class PhotoInline(admin.TabularInline):
-    model = Photo
-    extra = 1
-    can_delete = True
-
-    raw_id_fields = ["photo"]
-
-    readonly_fields = ["thumbnail"]
 
 
 class ExpectationInline(admin.StackedInline):
@@ -581,7 +590,6 @@ class CommentInline(GenericTabularInline):
 class MaleAdmin(BaseMatrimonyProfileAdmin):
     model = Male
     tab_mentor = (MentorInline,)
-    tab_photo = (PhotoInline,)
     tab_expectation = (ExpectationInline,)
     tab_match = (
         MatchInline,
@@ -593,7 +601,7 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
         ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
         ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
         ("Mentor", tab_mentor),
-        ("Photo", tab_photo),
+        ("Photo", BaseMatrimonyProfileAdmin.tab_photo),
         ("Expectation", tab_expectation),
         ("Matches & Comments", tab_match),
     ]
@@ -611,7 +619,6 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
 class FemalAdmin(BaseMatrimonyProfileAdmin):
     model = Female
     tab_mentor = (MentorInline,)
-    tab_photo = (PhotoInline,)
     tab_expectation = (ExpectationInline,)
     tab_match = (
         MatchInline,
@@ -623,7 +630,7 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
         ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
         ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
         ("Mentor", tab_mentor),
-        ("Photo", tab_photo),
+        ("Photo", BaseMatrimonyProfileAdmin.tab_photo),
         ("Expectation", tab_expectation),
         ("Matches & Comments", tab_match),
     ]
