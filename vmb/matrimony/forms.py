@@ -303,7 +303,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
         print(current_place, type(current_place[1]))
         if not (
             len(current_place) == 3
-            and re.match("[\w ]+, [\w ]+(?:, [\w ]+)?", current_place[0])
+            and current_place[0]
             and current_place[1]
             and current_place[2]
         ):
@@ -531,7 +531,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
         print(birth_place, type(birth_place[1]))
         if not (
             len(birth_place) == 3
-            and re.match("[\w ]+, [\w ]+(?:, [\w ]+)?", birth_place[0])
+            and birth_place[0]
             and birth_place[1]
             and birth_place[2]
         ):

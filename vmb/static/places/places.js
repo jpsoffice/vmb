@@ -4,6 +4,9 @@ function setupDjangoPlaces(mapConfig, markerConfig, childs) {
     var searchBox = new google.maps.places.SearchBox(childs[0]);
     var gmap = new google.maps.Map(childs[3], mapConfig);
     var marker = new google.maps.Marker(markerConfig);
+    // This variable is used to track if a place from Google maps has
+    // been selected after an attempt to edit the place value.
+    var placeSet = false;
   
     if (latInput.value && lngInput.value) {
       var location = {
@@ -15,6 +18,22 @@ function setupDjangoPlaces(mapConfig, markerConfig, childs) {
       gmap.setCenter(location);
       gmap.setZoom(16);
     };
+
+    childs[0].addEventListener("keypress", function(){
+      // Set placeSet to false when place field is edited.
+      placeSet = false;
+    });
+
+    childs[0].addEventListener("focusout", function (){
+      // This is to prevent race between searchBox places_changed event and
+      // focusout event. The searchBox places_changed event sets placeSet to
+      // true.
+      setTimeout(function () {
+        if (!placeSet) {
+          childs[0].value = "";
+        }
+      }, 500);
+    });
   
     searchBox.addListener('places_changed', function () {
       var places = searchBox.getPlaces();
@@ -36,7 +55,8 @@ function setupDjangoPlaces(mapConfig, markerConfig, childs) {
         lngInput.value = place.geometry.location.lng();
         gmap.setCenter(place.geometry.location);
         gmap.setZoom(16);
-        console.log(place);
+        // After place selection from Google maps, set placeSet to true
+        placeSet = true;
         $(document).trigger('placeChanged', [{element: childs[0], place: place}]);
       });
     });
