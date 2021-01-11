@@ -134,6 +134,10 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
             self.fields[field].widget.attrs["readonly"] = True
             self.fields[field].disabled = True
 
+        if hasattr(self.Meta, "client_readonly"):
+            for field in self.Meta.client_readonly:
+                self.fields[field].widget.attrs["readonly"] = True
+
         for field in self.Meta.required:
             self.fields[field].required = True
 
@@ -201,10 +205,13 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
         ]
         readonly = [
             "name",
-            "current_city",
-            "current_state",
             "dob",
             "marital_status",
+        ]
+
+        client_readonly = [
+            "current_city",
+            "current_state",
         ]
 
     def __init__(self, *args, **kwargs):
@@ -296,7 +303,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
         print(current_place, type(current_place[1]))
         if not (
             len(current_place) == 3
-            and re.match("[\w ]+, [\w ]+(?:, [\w ]+)?", current_place[0])
+            and current_place[0]
             and current_place[1]
             and current_place[2]
         ):
@@ -383,7 +390,10 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "sisters_married",
             "family_location",
         ]
-        readonly = ["dob", "birth_city", "birth_state"]
+        readonly = [
+            "dob",
+        ]
+        client_readonly = ["birth_city", "birth_state"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -521,7 +531,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
         print(birth_place, type(birth_place[1]))
         if not (
             len(birth_place) == 3
-            and re.match("[\w ]+, [\w ]+(?:, [\w ]+)?", birth_place[0])
+            and birth_place[0]
             and birth_place[1]
             and birth_place[2]
         ):

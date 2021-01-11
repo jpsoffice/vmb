@@ -323,6 +323,7 @@ class BaseMatrimonyProfileAdmin(
     DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
 ):
     form = MatrimonyProfileForm
+    change_form_template = "admin/matrimony/matrimonyprofile/change_form.html"
     tab_profile = [
         (
             None,
@@ -520,10 +521,6 @@ class BaseMatrimonyProfileAdmin(
         "age",
         "primary_image",
         "annual_income_in_base_currency",
-        "current_city",
-        "current_state",
-        "birth_city",
-        "birth_state",
     ]
 
     def all_education(self, obj):

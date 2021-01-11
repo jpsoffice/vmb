@@ -82,6 +82,7 @@
 
 {% block javascript %}
 {{ block.super }}
+<script type="text/javascript" src="{% static 'places/places_extra.js' %}"></script>
 {% ifequal section_id "photos" %}
 <!-- plugin js -->
 <script src="{% static 'js/vendor/dropzone.min.js' %}"></script>
@@ -122,7 +123,7 @@ $(function(){
                 console.log("error", err.responseJSON);
             }
         })
-    })
+    });
 });
 </script>
 {% endifequal %}
