@@ -7,7 +7,6 @@ celery==4.4.2  # pyup: < 5.0  # https://github.com/celery/celery
 django-celery-beat==2.0.0  # https://github.com/celery/django-celery-beat
 flower==0.9.4  # https://github.com/mher/flower
 pipdeptree
-reverse_geocoder==1.5.1  # https://github.com/thampiman/reverse-geocoder
 
 # Django
 # ------------------------------------------------------------------------------
