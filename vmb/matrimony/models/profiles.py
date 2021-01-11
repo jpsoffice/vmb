@@ -586,8 +586,6 @@ class MatrimonyProfile(BaseModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._original_annual_income = self.annual_income
-        self._original_birth_place = self.birth_place
-        self._original_current_place = self.current_place
 
     def set_status(self, status_text):
         d = {v: k for k, v in PROFILE_STATUS_CHOICES}
@@ -602,22 +600,6 @@ class MatrimonyProfile(BaseModel):
             self.annual_income_in_base_currency = convert_money(
                 self.annual_income, settings.BASE_CURRENCY
             )
-
-        if self.id is None or self._original_birth_place != self.birth_place:
-            if self.birth_place:
-                tokens = self.birth_place.place.split(", ")[-3:-1]
-                self.birth_city = tokens[0]
-                self.birth_state = tokens[1] if len(tokens) > 1 else tokens[0]
-            else:
-                self.birth_city = self.birth_state = None
-
-        if self.id is None or self._original_current_place != self.current_place:
-            if self.current_place:
-                tokens = self.current_place.place.split(", ")[-3:-1]
-                self.current_city = tokens[0]
-                self.current_state = tokens[1] if len(tokens) > 1 else tokens[0]
-            else:
-                self.current_city = self.current_state = None
 
         super().save(*args, **kwargs)
         _, created = MatrimonyProfileStats.objects.get_or_create(profile=self)
