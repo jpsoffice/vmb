@@ -24,4 +24,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: cd $WORKDIR && ./deploy.sh
           envs:
-            WORKDIR: ${{ secrets.WORKDIR }}:
+            WORKDIR: ${{ secrets.WORKDIR }}
