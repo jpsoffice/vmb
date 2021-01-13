@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: production
-    env:
-      WORKDIR: ${{ secrets.WORKDIR }}
     steps:
       - name: Deploy
         uses: appleboy/ssh-action@master
+        env:
+          WORKDIR: ${{ secrets.WORKDIR }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
