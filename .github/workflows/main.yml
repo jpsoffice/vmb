@@ -22,4 +22,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: cd vmd-deploy && ./deploy.sh
+          script: cd vmb-deploy && ./deploy.sh
