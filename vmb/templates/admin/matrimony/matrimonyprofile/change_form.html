@@ -1,0 +1,7 @@
+{% extends "tabbed_admin/change_form.html" %}
+{% load static %}
+
+{% block submit_buttons_bottom %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'places/places_extra.js' %}"></script>
+{% endblock %}
