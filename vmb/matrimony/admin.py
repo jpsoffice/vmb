@@ -465,6 +465,7 @@ class BaseMatrimonyProfileAdmin(
     ]
     list_display = (
         "profile_id",
+        "id",
         "registration_date",
         "name",
         "primary_image",
