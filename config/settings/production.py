@@ -88,7 +88,9 @@ AWS_S3_ENDPOINT_URL = env("DJANGO_AWS_S3_ENDPOINT_URL", default=None)
 # ------------------------
 STATICFILES_STORAGE = "config.settings.production.StaticRootS3Boto3Storage"
 COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
-STATIC_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/{STATIC_NOCACHE}/"
+STATIC_URL = (
+    f"https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/{STATIC_NOCACHE}/"
+)
 # MEDIA
 # ------------------------------------------------------------------------------
 # region http://stackoverflow.com/questions/10390244/
