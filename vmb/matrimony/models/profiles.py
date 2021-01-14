@@ -1,4 +1,5 @@
 import datetime
+from dateutil.relativedelta import relativedelta
 from hashlib import md5
 
 from django.conf import settings
@@ -6,6 +7,7 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
+from django.shortcuts import reverse
 from django.template import loader, Context
 from django.utils.html import format_html
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -575,6 +577,15 @@ class MatrimonyProfile(BaseModel):
     def expectations(self):
         return self.expectations.all()[0]
 
+    @property
+    def matching_profiles_url(self):
+        from urllib.parse import urlencode, quote_plus
+
+        querystr = urlencode({"q-l": "on", "q": self.expectations.djangoql_query_str})
+        return "{}matrimony/{}/?{}".format(
+            reverse("admin:index"), "female" if self.gender == "M" else "male", querystr
+        )
+
     def __str__(self):
         return self.name
 
@@ -808,6 +819,101 @@ class Expectation(BaseModel):
                 self.annual_income_to, settings.BASE_CURRENCY
             )
         return super().save(*args, **kwargs)
+
+    @property
+    def djangoql_query_str(self):
+        MARITAL_STATUS_DICT = dict(MARITAL_STATUS)
+        EMPLOYED_IN_CHOICES_DICT = dict(EMPLOYED_IN_CHOICES)
+        SPIRITUAL_STATUS_CHOICES_DICT = dict(SPIRITUAL_STATUS_CHOICES)
+        query = []
+        if self.age_from:
+            query.append(
+                'dob <= "{}"'.format(
+                    (
+                        timezone.datetime.now() - relativedelta(years=self.age_from)
+                    ).strftime("%Y-%m-%d")
+                )
+            )
+        if self.age_to:
+            query.append(
+                'dob >= "{}"'.format(
+                    (
+                        timezone.datetime.now() - relativedelta(years=self.age_to)
+                    ).strftime("%Y-%m-%d")
+                )
+            )
+        if self.height_from:
+            query.append(f"height >= {self.height_from}")
+        if self.height_to:
+            query.append(f"height <= {self.height_to}")
+        if self.religions.all():
+            query.append(
+                "religion.name in ({})".format(
+                    ",".join([f'"{r.name}"' for r in self.religions.all()])
+                )
+            )
+        if self.mother_tongues.all():
+            query.append(
+                "mother_tongue.name in ({})".format(
+                    ",".join([f'"{l.name}"' for l in self.mother_tongues.all()])
+                )
+            )
+        if self.castes.all():
+            query.append(
+                "caste.name in ({})".format(
+                    ",".join([f'"{c.name}"' for c in self.castes.all()])
+                )
+            )
+        if self.subcastes.all():
+            query.append(
+                "subcaste.name in ({})".format(
+                    ",".join([f'"{sc.name}"' for sc in self.subcastes.all()])
+                )
+            )
+        if self.marital_status:
+            query.append(
+                "marital_status in ({})".format(
+                    ",".join(
+                        [f'"{MARITAL_STATUS_DICT[ms]}"' for ms in self.marital_status]
+                    )
+                )
+            )
+        if self.employed_in:
+            query.append(
+                "employed_in in ({})".format(
+                    ",".join(
+                        [f'"{EMPLOYED_IN_CHOICES_DICT[ei]}"' for ei in self.employed_in]
+                    )
+                )
+            )
+        if self.spiritual_status:
+            query.append(
+                "spiritual_status in ({})".format(
+                    ",".join(
+                        [
+                            f'"{SPIRITUAL_STATUS_CHOICES_DICT[ss]}"'
+                            for ss in self.spiritual_status
+                        ]
+                    )
+                )
+            )
+        if self.annual_income_from:
+            query.append(
+                f"annual_income_in_base_currency >= {self.annual_income_from_in_base_currency.amount}"
+            )
+        if self.annual_income_to:
+            query.append(
+                f"annual_income_in_base_currency <= {self.annual_income_to_in_base_currency.amount}"
+            )
+        if self.spiritual_masters.all():
+            query.append(
+                "spiritual_master.name in ({})".format(
+                    ",".join([f'"{sm.name}"' for sm in self.spiritual_masters.all()])
+                )
+            )
+        # FIXME: implement query for NRI
+
+        return " and ".join(query)
 
     @property
     def religions_text(self):
