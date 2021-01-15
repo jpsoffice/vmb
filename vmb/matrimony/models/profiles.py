@@ -5,6 +5,7 @@ from hashlib import md5
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
+from django.db.models.signals import post_save, post_delete
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.shortcuts import reverse
@@ -646,34 +647,6 @@ class MatrimonyProfile(BaseModel):
         )
         return f"{settings.PROFILE_ID_PREFIX}{digest}"
 
-    def update_stats(self):
-        _, created = MatrimonyProfileStats.objects.get_or_create(profile=self)
-        matches_suggested = (
-            matches_accepted
-        ) = matches_rejected = matches_accepted_by = matches_rejected_by = 0
-        self_response_field_name = (
-            "male_response" if self.gender == "M" else "female_response"
-        )
-        response_field_name = (
-            "female_response" if self.gender == "M" else "male_response"
-        )
-        for m in self.matches:
-            matches_suggested += 1
-            matches_accepted += (
-                1 if getattr(m, self_response_field_name) == "ACP" else 0
-            )
-            matches_rejected += (
-                1 if getattr(m, self_response_field_name) == "REJ" else 0
-            )
-            matches_accepted_by += 1 if getattr(m, response_field_name) == "ACP" else 0
-            matches_rejected_by += 1 if getattr(m, response_field_name) == "REJ" else 0
-        self.stats.matches_suggested = matches_suggested
-        self.stats.matches_accepted = matches_accepted
-        self.stats.matches_rejected = matches_rejected
-        self.stats.matches_accepted_by = matches_accepted_by
-        self.stats.matches_rejected_by = matches_rejected_by
-        self.stats.save()
-
 
 class Expectation(BaseModel):
     profile = models.OneToOneField(
@@ -1083,12 +1056,8 @@ class Match(BaseModel):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        if (
-            self._original_male_response != self.male_response
-            or self._original_female_response != self.female_response
-        ):
-            self.male.update_stats()
-            self.female.update_stats()
+        self.male.save()
+        self.female.save()
 
 
 EMAIL_MESSAGE_STATUS_CHOICES = (
@@ -1221,3 +1190,42 @@ class MatrimonyProfileStats(BaseModel):
 
     class Meta:
         db_table = "matrimony_profile_stats"
+
+
+def update_stats(sender, instance, **kwargs):
+    _, created = MatrimonyProfileStats.objects.get_or_create(profile=instance.male)
+    _, created = MatrimonyProfileStats.objects.get_or_create(profile=instance.female)
+
+    matches_suggested = (
+        matches_accepted
+    ) = matches_rejected = matches_accepted_by = matches_rejected_by = 0
+
+    for m in instance.male.matches:
+        matches_suggested += 1
+        matches_accepted += 1 if getattr(m, "male_response") == "ACP" else 0
+        matches_rejected += 1 if getattr(m, "male_response") == "REJ" else 0
+        matches_accepted_by += 1 if getattr(m, "female_response") == "ACP" else 0
+        matches_rejected_by += 1 if getattr(m, "female_response") == "REJ" else 0
+    instance.male.stats.matches_suggested = matches_suggested
+    instance.male.stats.matches_accepted = matches_accepted
+    instance.male.stats.matches_rejected = matches_rejected
+    instance.male.stats.matches_accepted_by = matches_accepted_by
+    instance.male.stats.matches_rejected_by = matches_rejected_by
+    instance.male.stats.save()
+
+    for m in instance.female.matches:
+        matches_suggested += 1
+        matches_accepted += 1 if getattr(m, "female_response") == "ACP" else 0
+        matches_rejected += 1 if getattr(m, "female_response") == "REJ" else 0
+        matches_accepted_by += 1 if getattr(m, "male_response") == "ACP" else 0
+        matches_rejected_by += 1 if getattr(m, "male_response") == "REJ" else 0
+    instance.female.stats.matches_suggested = matches_suggested
+    instance.female.stats.matches_accepted = matches_accepted
+    instance.female.stats.matches_rejected = matches_rejected
+    instance.female.stats.matches_accepted_by = matches_accepted_by
+    instance.female.stats.matches_rejected_by = matches_rejected_by
+    instance.female.stats.save()
+
+
+post_save.connect(update_stats, sender=Match)
+post_delete.connect(update_stats, sender=Match)
