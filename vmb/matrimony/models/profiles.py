@@ -510,25 +510,28 @@ class MatrimonyProfile(BaseModel):
     @property
     def primary_image(self):
         if self.photo_set.all():
-            return format_html(
-                '<img src ="{}" style="width:90px; \
-                height: 90px"/>'.format(
-                    self.photo_set.get(primary=True).photo.image.url
+            try:
+                return format_html(
+                    '<img src ="{}" style="width:90px; \
+                    height: 90px"/>'.format(
+                        self.photo_set.get(primary=True).photo.image.url
+                    )
                 )
-            )
+            except:
+                return ""
 
     @property
     def primary_image_url(self):
         try:
             return self.photo_set.get(primary=True).photo.image.url
-        except Photo.DoesNotExist:
+        except:
             return ""
 
     @property
     def primary_image_thumbnail_url(self):
         try:
             return self.photo_set.get(primary=True).photo.get_thumbnail_url()
-        except Photo.DoesNotExist:
+        except:
             return ""
 
     @property
