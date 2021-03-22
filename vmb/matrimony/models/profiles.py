@@ -611,6 +611,10 @@ class MatrimonyProfile(BaseModel):
             self.annual_income_in_base_currency = convert_money(
                 self.annual_income, settings.BASE_CURRENCY
             )
+        if self.photo_set.filter(primary=True).count() > 1:
+            for photo in self.photo_set.filter(primary=True)[1:]:
+                photo.primary = False
+                photo.save()
 
         super().save(*args, **kwargs)
         _, created = MatrimonyProfileStats.objects.get_or_create(profile=self)
