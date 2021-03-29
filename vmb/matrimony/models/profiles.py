@@ -514,7 +514,9 @@ class MatrimonyProfile(BaseModel):
             return ""
         return format_html(
             '<img src ="{}" style="width:90px; \
-            height: 90px"/>'.format(primary_img.photo.image.url)
+            height: 90px"/>'.format(
+                primary_img.photo.image.url
+            )
         )
 
     @property
