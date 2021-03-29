@@ -509,27 +509,33 @@ class MatrimonyProfile(BaseModel):
 
     @property
     def primary_image(self):
-        if self.photo_set.all():
-            return format_html(
-                '<img src ="{}" style="width:90px; \
-                height: 90px"/>'.format(
-                    self.photo_set.get(primary=True).photo.image.url
-                )
+        primary_img = self.get_primary_image_obj()
+        if not primary_img:
+            return ""
+        return format_html(
+            '<img src ="{}" style="width:90px; \
+            height: 90px"/>'.format(
+                primary_img.photo.image.url
             )
+        )
 
     @property
     def primary_image_url(self):
-        try:
-            return self.photo_set.get(primary=True).photo.image.url
-        except Photo.DoesNotExist:
+        primary_img = self.get_primary_image_obj()
+        if not primary_img:
             return ""
+        return primary_img.photo.image.url
 
     @property
     def primary_image_thumbnail_url(self):
-        try:
-            return self.photo_set.get(primary=True).photo.get_thumbnail_url()
-        except Photo.DoesNotExist:
+        primary_img = self.get_primary_image_obj()
+        if not primary_img:
             return ""
+        return primary_img.photo.get_thumbnail_url()
+
+    def get_primary_image_obj(self):
+        objs = self.photo_set.filter(primary=True)
+        return objs[0] if objs else None
 
     @property
     def age(self):
