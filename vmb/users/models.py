@@ -4,6 +4,8 @@ from django.db.models import CharField, BooleanField
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
+from allauth.account.models import EmailAddress
+
 
 class User(AbstractUser):
 
@@ -29,3 +31,7 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
+
+    def send_confirmation_email(self):
+        email, _ = EmailAddress.objects.get_or_create(user=self, email=self.email)
+        email.send_confirmation(signup=True)
