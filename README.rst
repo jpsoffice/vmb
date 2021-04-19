@@ -13,6 +13,36 @@ Vaishnava Marriage Bureau
 
 :License: GPLv3
 
+Local development
+-----------------
+
+- Install Docker and run Docker on your system. Follow the instructions here to install Docker, https://docs.docker.com/engine/install/
+- Install `docker-compose` on your machine. https://docs.docker.com/compose/install/
+- Copy `local.yml` to `docker-compose.yml`
+- Edit `docker-compose.yml` to add a few API keys as env variables
+  - Fixer API Key for currency conversion
+    - Go to https://fixer.io and get a free API Key, and set the API key against `DJMONEY_EXCHANGE_FIXER_ACCESS_KEY` in `docker-compose.yml`
+  - Google places API key
+    - Follow the instructions here: https://developers.google.com/maps/documentation/places/web-service/get-api-key to create a Google Maps API key
+    - Set the API key against the `PLACES_MAPS_API_KEY` environment variable in `docker-compose.yml`
+- Run the services using `docker-compose up -d`
+- Check if service is up and running using `docker-compose ps`. It should show something like below.
+
+```
+     Name                   Command               State                    Ports
+     --------------------------------------------------------------------------------------------------
+     celerybeat       /entrypoint /start-celerybeat    Up
+     celeryworker     /entrypoint /start-celeryw ...   Up
+     flower           /entrypoint /start-flower        Up      0.0.0.0:5555->5555/tcp,:::5555->5555/tcp
+     redis            docker-entrypoint.sh redis ...   Up      6379/tcp
+     vmb_django_1     /entrypoint /start               Up      0.0.0.0:8000->8000/tcp,:::8000->8000/tcp
+     vmb_postgres_1   docker-entrypoint.sh postgres    Up      5432/tcp
+```
+- You can now access the service by opening `http://127.0.0.1:8000` on your browser
+- Create a superuser for the application using `docker-compose exec django /entrypoint /app/manage.py createsuperuser`
+- You can now login to the admin interface of the app using the superuser credentials from http://127.0.0.1:8000/admin
+- Load fixtures to get the app funcional `docker-compose exec django /entrypoint /app/manage.py loaddata /app/vmb/matrimony/fixtures/*`
+- Load currency data: `docker-compose exec django /entrypoint /app/manage.py update_rates`
 
 Settings
 --------
