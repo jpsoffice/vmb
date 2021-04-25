@@ -530,6 +530,11 @@ class BaseMatrimonyProfileAdmin(
     def all_occupations(self, obj):
         return obj.occupations_text
 
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        obj.refresh_from_db()
+        obj.create_user()
+
     def save_formset(self, request, form, formset, change):
         super().save_formset(request, form, formset, change)
 

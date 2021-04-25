@@ -3,6 +3,8 @@ from dateutil.relativedelta import relativedelta
 from hashlib import md5
 
 from django.conf import settings
+from django.contrib.sites.models import Site
+from django.core.mail import EmailMessage as DjangoEmailMessage
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
@@ -16,6 +18,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 from djmoney.contrib.exchange.models import convert_money
 from places.fields import PlacesField
 
+from vmb.common.utils import build_absolute_url
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
@@ -679,6 +682,38 @@ class MatrimonyProfile(BaseModel):
         self.stats.matches_accepted_by = matches_accepted_by
         self.stats.matches_rejected_by = matches_rejected_by
         self.stats.save()
+
+    def create_user(self):
+        user, created = User.objects.get_or_create(
+            username=self.email,
+            name=self.name,
+            email=self.email,
+            matrimony_profile=self,
+        )
+        if created:
+            self.send_profile_import_email()
+            user.send_confirmation_email()
+        return user
+
+    def send_profile_import_email(self):
+        site = Site.objects.get_current()
+        msg = loader.get_template("matrimony/emails/profile_import.html").render(
+            {
+                "current_site": site,
+                "password_reset_link": build_absolute_url(
+                    reverse("account_reset_password")
+                ),
+                "contact_email": settings.EMAIL_CONTACT,
+            }
+        )
+        email_msg = DjangoEmailMessage(
+            _("Matrimony profile created"),
+            msg,
+            to=[self.email],
+            reply_to=[settings.EMAIL_CONTACT],
+        )
+        email_msg.content_subtype = "html"
+        email_msg.send(fail_silently=True)
 
 
 class Expectation(BaseModel):

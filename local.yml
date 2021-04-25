@@ -18,8 +18,11 @@ services:
       - ./.envs/.local/.django
       - ./.envs/.local/.postgres
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     command: /start
+    environment:
+      DJMONEY_EXCHANGE_FIXER_ACCESS_KEY: ''
+      PLACES_MAPS_API_KEY: ''
 
   postgres:
     build:
