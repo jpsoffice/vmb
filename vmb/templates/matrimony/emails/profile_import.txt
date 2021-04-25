@@ -1,6 +1,3 @@
-{% extends "matrimony/emails/base.html" %}
-
-{% block content %}
 Hello from {{ current_site.name }}!
 
 Your matrimony profile has been imported from our offline records. Please follow the steps below to start using your account:
@@ -14,4 +11,3 @@ For any queries, you can reply to {{ contact_email }}
 
 Thank you from {{ current_site.name }}!
 {{ current_site.domain }}
-{% endblock %}
