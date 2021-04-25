@@ -538,7 +538,8 @@ class BaseMatrimonyProfileAdmin(
     def delete_model(self, request, obj):
         user = obj.user
         super().delete_model(request, obj)
-        user.delete()
+        if user:
+            user.delete()
 
     def save_formset(self, request, form, formset, change):
         super().save_formset(request, form, formset, change)
