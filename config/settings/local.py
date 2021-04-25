@@ -70,5 +70,10 @@ CELERY_TASK_ALWAYS_EAGER = True
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-eager-propagates
 CELERY_TASK_EAGER_PROPAGATES = True
 
+
+# django-allauth
+# ------------------------------------------------------------------------------
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = env("ACCOUNT_DEFAULT_HTTP_PROTOCOL", default="http")
+
 # Your stuff...
 # ------------------------------------------------------------------------------

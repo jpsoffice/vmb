@@ -712,7 +712,6 @@ class MatrimonyProfile(BaseModel):
             to=[self.email],
             reply_to=[settings.EMAIL_CONTACT],
         )
-        email_msg.content_subtype = "html"
         email_msg.send(fail_silently=True)
 
 
