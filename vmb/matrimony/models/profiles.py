@@ -688,6 +688,7 @@ class MatrimonyProfile(BaseModel):
             username=self.email,
             name=self.name,
             email=self.email,
+            is_matrimony_candidate=True,
             matrimony_profile=self,
         )
         if created:
