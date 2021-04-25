@@ -689,9 +689,10 @@ class MatrimonyProfile(BaseModel):
             name=self.name,
             email=self.email,
             is_matrimony_candidate=True,
-            matrimony_profile=self,
         )
         if created:
+            self.user = user
+            self.save()
             self.send_profile_import_email()
             user.send_confirmation_email()
         return user
