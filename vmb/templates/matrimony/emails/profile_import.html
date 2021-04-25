@@ -1,0 +1,17 @@
+{% extends "matrimony/emails/base.html" %}
+
+{% block content %}
+Hello from {{ current_site.name }}!
+
+Your matrimony profile has been imported from our offline records. Please follow the steps below to start using your account:
+
+1. You will get an email to confirm your e-mail address. Please click the link in that e-mail to verify your e-mail address.
+2. Next, you will need to request to reset your password from this page: {{ password_reset_link }}.
+3. You will then get an e-mail containing the link to reset your password
+4. Then, you can login using your new password. After login, you can edit your matrimony profile info.
+
+For any queries, you can reply to {{ contact_email }}
+
+Thank you from {{ current_site.name }}!
+{{ current_site.domain }}
+{% endblock %}

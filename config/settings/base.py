@@ -223,6 +223,8 @@ SECURE_BROWSER_XSS_FILTER = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
 X_FRAME_OPTIONS = "DENY"
 
+DEFAULT_HTTP_PROTOCOL = env("DEFAULT_HTTP_PROTOCOL", default="https")
+
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
@@ -231,6 +233,8 @@ EMAIL_BACKEND = env(
 )
 # https://docs.djangoproject.com/en/2.2/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
+EMAIL_NOREPLY = env("EMAIL_NOREPLY", default="noreply@localhost")
+EMAIL_CONTACT = env("EMAIL_CONTACT", default="contact@localhost")
 
 # ADMIN
 # ------------------------------------------------------------------------------
