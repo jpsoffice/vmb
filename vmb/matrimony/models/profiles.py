@@ -697,7 +697,7 @@ class MatrimonyProfile(BaseModel):
 
     def send_profile_import_email(self):
         site = Site.objects.get_current()
-        msg = loader.get_template("matrimony/emails/profile_import.html").render(
+        msg = loader.get_template("matrimony/emails/profile_import.txt").render(
             {
                 "current_site": site,
                 "password_reset_link": build_absolute_url(
@@ -712,7 +712,6 @@ class MatrimonyProfile(BaseModel):
             to=[self.email],
             reply_to=[settings.EMAIL_CONTACT],
         )
-        email_msg.content_subtype = "html"
         email_msg.send(fail_silently=True)
 
 

@@ -313,6 +313,7 @@ ACCOUNT_FORMS = {
 }
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "vmb.users.adapters.SocialAccountAdapter"
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = env("ACCOUNT_DEFAULT_HTTP_PROTOCOL", default="https")
 
 # django-modeladmin-reorder
 # -----------------------------------------------------------------------------
