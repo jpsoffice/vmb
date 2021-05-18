@@ -1,6 +1,5 @@
 from config import celery_app
 
-from post_office import import mail
 from django.utils import timezone
 
 

@@ -1129,49 +1129,6 @@ class Match(BaseModel):
             self.female.update_stats()
 
 
-EMAIL_MESSAGE_STATUS_CHOICES = (
-    ("NEW", _("New")),
-    ("SNT", _("Sent")),
-    ("FLD", _("Failed")),
-)
-
-EMAIL_MESSAGE_CATEGORY_CHOICES = (
-    ("DMD", _("Daily matches digest")),
-    ("MAN", _("Manual")),
-)
-
-
-class EmailMessage(BaseModel):
-    profile = models.ForeignKey(
-        MatrimonyProfile,
-        related_name="email_messages",
-        on_delete=models.SET_NULL,
-        null=True,
-    )
-    sender = models.EmailField()
-    subject = models.CharField(max_length=100)
-    body = models.TextField(max_length=2000)
-    to = models.EmailField()
-    status = models.CharField(
-        max_length=3, choices=EMAIL_MESSAGE_STATUS_CHOICES, default="NEW"
-    )
-    category = models.CharField(
-        max_length=3, choices=EMAIL_MESSAGE_CATEGORY_CHOICES, default="MAN"
-    )
-    sent_at = models.DateTimeField(default=None, null=True, blank=True)
-
-    def send(self):
-        from vmb.matrimony.tasks import send_email
-
-        send_email.apply_async(args=[self.id])
-
-    class Meta:
-        db_table = "matrimony_email_messages"
-        indexes = [
-            models.Index(fields=["profile"]),
-        ]
-
-
 class Photo(BaseModel):
     profile = models.ForeignKey(MatrimonyProfile, on_delete=models.CASCADE)
     photo = models.ForeignKey(
