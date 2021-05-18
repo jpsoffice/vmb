@@ -4,6 +4,8 @@ Base settings to build other settings files upon.
 
 import environ
 
+import datetime
+
 ROOT_DIR = environ.Path(__file__) - 3  # (vmb/config/settings/base.py - 3 = vmb/)
 APPS_DIR = ROOT_DIR.path("vmb")
 
@@ -84,6 +86,7 @@ THIRD_PARTY_APPS = [
     "djmoney.contrib.exchange",
     "places",
     "tabbed_admin",
+    "post_office",
 ]
 
 LOCAL_APPS = [
@@ -228,13 +231,23 @@ DEFAULT_HTTP_PROTOCOL = env("DEFAULT_HTTP_PROTOCOL", default="https")
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
-EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.dummy.EmailBackend"
-)
+EMAIL_BACKEND = "post_office.EmailBackend"
+
 # https://docs.djangoproject.com/en/2.2/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
 EMAIL_NOREPLY = env("EMAIL_NOREPLY", default="noreply@localhost")
 EMAIL_CONTACT = env("EMAIL_CONTACT", default="contact@localhost")
+POST_OFFICE = {
+    "BACKENDS": {
+        "default": env("DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend")
+    },
+    "CELERY_ENABLED": True,
+    "MESSAGE_ID_ENABLED": True,
+    "MESSAGE_ID_FQDN": "localhost",
+    "MAX_RETRIES": 2,
+    "RETRY_INTERVAL": datetime.timedelta(minutes=15),
+    "LOG_LEVEL": 1,
+}
 
 # ADMIN
 # ------------------------------------------------------------------------------
@@ -257,16 +270,31 @@ LOGGING = {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
             "%(process)d %(thread)d %(message)s"
-        }
+        },
+        "post_office": {
+            "format": "[%(levelname)s]%(asctime)s PID %(process)d: %(message)s",
+            "datefmt": "%d-%m-%Y %H:%M:%S",
+        },
     },
     "handlers": {
         "console": {
             "level": "DEBUG",
             "class": "logging.StreamHandler",
             "formatter": "verbose",
-        }
+        },
+        "post_office": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "post_office"
+        },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
+    "loggers": {
+        "post_office": {
+            "handlers": ["post_office"],
+            "level": "INFO"
+        },
+    }
 }
 
 # Celery
@@ -341,6 +369,7 @@ ADMIN_REORDER = (
             "matrimony.Mentor",
         ),
     },
+    "post_office",
     "photologue",
     "sites",
     "auth",
