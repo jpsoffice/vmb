@@ -237,6 +237,8 @@ EMAIL_BACKEND = "post_office.EmailBackend"
 EMAIL_TIMEOUT = 5
 EMAIL_NOREPLY = env("EMAIL_NOREPLY", default="noreply@localhost")
 EMAIL_CONTACT = env("EMAIL_CONTACT", default="contact@localhost")
+DEFAULT_FROM_EMAIL = EMAIL_NOREPLY
+
 POST_OFFICE = {
     "BACKENDS": {
         "default": env("DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend")

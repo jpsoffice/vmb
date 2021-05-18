@@ -1,6 +1,6 @@
 from config import celery_app
 
-from django.core.mail import send_mail
+from post_office import import mail
 from django.utils import timezone
 
 
@@ -21,20 +21,3 @@ def send_batch_matches_emails():
         female.send_batch_matches_email()
 
     Match.objects.filter(status="TON").update(status="NTF")
-
-
-@celery_app.task()
-def send_email(email_message_id):
-    from .models import EmailMessage
-
-    email_message = EmailMessage.objects.get(id=email_message_id)
-    send_mail(
-        email_message.subject,
-        "",
-        email_message.sender,
-        [email_message.to],
-        html_message=email_message.body,
-    )
-    email_message.status = "SNT"
-    email_message.sent_at = timezone.now()
-    email_message.save()

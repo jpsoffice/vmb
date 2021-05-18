@@ -4,7 +4,6 @@ from hashlib import md5
 
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.core.mail import EmailMessage as DjangoEmailMessage
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
@@ -17,6 +16,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from djmoney.contrib.exchange.models import convert_money
 from places.fields import PlacesField
+from post_office import mail
 
 from vmb.common.utils import build_absolute_url
 from vmb.users.models import User
@@ -628,15 +628,12 @@ class MatrimonyProfile(BaseModel):
     def send_batch_matches_email(self):
         body = self.get_batch_matches_email_body()
         subject = _("Matches for you")
-        email_message = self.email_messages.create(
-            sender=settings.MATRIMONY_SENDER_EMAIL,
-            subject="Suggested matches",
-            body=body,
-            to=self.email,
-            category="DMD",
-            status="NEW",
+        mail.send(
+            self.email,
+            subject=_("Suggested matches"),
+            html_message=body,
+            headers={'Reply-to': settings.EMAIL_CONTACT}
         )
-        email_message.send()
 
     def get_batch_matches_email_body(self):
         return loader.get_template("matrimony/emails/matches.html").render(
@@ -708,13 +705,12 @@ class MatrimonyProfile(BaseModel):
                 "contact_email": settings.EMAIL_CONTACT,
             }
         )
-        email_msg = DjangoEmailMessage(
-            _("Matrimony profile created"),
-            msg,
-            to=[self.email],
-            reply_to=[settings.EMAIL_CONTACT],
+        mail.send(
+            self.email,
+            subject=_("Matrimony profile created"),
+            html_message=msg,
+            headers={"Reply-to": settings.EMAIL_CONTACT}
         )
-        email_msg.send(fail_silently=True)
 
 
 class Expectation(BaseModel):
