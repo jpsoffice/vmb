@@ -138,6 +138,7 @@ SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 EMAIL_SUBJECT_PREFIX = env("DJANGO_EMAIL_SUBJECT_PREFIX", default="[Vaisnava Marriage]")
 EMAIL_NOREPLY = env("EMAIL_NOREPLY", default="noreply@vaisnavamarriage.com")
 EMAIL_CONTACT = env("EMAIL_CONTACT", default="contact@vaisnavamarriage.com")
+DEFAULT_FROM_EMAIL = EMAIL_NOREPLY
 
 # ADMIN
 # ------------------------------------------------------------------------------
@@ -148,7 +149,8 @@ ADMIN_URL = env("DJANGO_ADMIN_URL")
 # ------------------------------------------------------------------------------
 # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
 INSTALLED_APPS += ["anymail"]  # noqa F405
-EMAIL_BACKEND = env(
+
+POST_OFFICE["backends"]["default"] = env(
     "DJANGO_EMAIL_BACKEND", default="anymail.backends.mailgun.EmailBackend"
 )
 
@@ -186,14 +188,23 @@ LOGGING = {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
             "%(process)d %(thread)d %(message)s"
-        }
+        },
+        "post_office": {
+            "format": "[%(levelname)s]%(asctime)s PID %(process)d: %(message)s",
+            "datefmt": "%d-%m-%Y %H:%M:%S",
+        },
     },
     "handlers": {
         "console": {
             "level": "DEBUG",
             "class": "logging.StreamHandler",
             "formatter": "verbose",
-        }
+        },
+        "post_office": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "post_office",
+        },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
     "loggers": {
@@ -209,6 +220,7 @@ LOGGING = {
             "handlers": ["console"],
             "propagate": False,
         },
+        "post_office": {"handlers": ["post_office"], "level": "INFO"},
     },
 }
 
