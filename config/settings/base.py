@@ -247,6 +247,7 @@ POST_OFFICE = {
         )
     },
     "CELERY_ENABLED": True,
+    "DEFAULT_PRIORITY": "now",
     "MESSAGE_ID_ENABLED": True,
     "MESSAGE_ID_FQDN": "localhost",
     "MAX_RETRIES": 2,
