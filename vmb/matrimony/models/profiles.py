@@ -632,7 +632,7 @@ class MatrimonyProfile(BaseModel):
             self.email,
             subject=_("Suggested matches"),
             html_message=body,
-            headers={'Reply-to': settings.EMAIL_CONTACT}
+            headers={"Reply-to": settings.EMAIL_CONTACT},
         )
 
     def get_batch_matches_email_body(self):
@@ -709,7 +709,7 @@ class MatrimonyProfile(BaseModel):
             self.email,
             subject=_("Matrimony profile created"),
             html_message=msg,
-            headers={"Reply-to": settings.EMAIL_CONTACT}
+            headers={"Reply-to": settings.EMAIL_CONTACT},
         )
 
 

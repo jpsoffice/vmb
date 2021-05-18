@@ -241,7 +241,10 @@ DEFAULT_FROM_EMAIL = EMAIL_NOREPLY
 
 POST_OFFICE = {
     "BACKENDS": {
-        "default": env("DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend")
+        "default": env(
+            "DJANGO_EMAIL_BACKEND",
+            default="django.core.mail.backends.console.EmailBackend",
+        )
     },
     "CELERY_ENABLED": True,
     "MESSAGE_ID_ENABLED": True,
@@ -287,16 +290,11 @@ LOGGING = {
         "post_office": {
             "level": "DEBUG",
             "class": "logging.StreamHandler",
-            "formatter": "post_office"
+            "formatter": "post_office",
         },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
-    "loggers": {
-        "post_office": {
-            "handlers": ["post_office"],
-            "level": "INFO"
-        },
-    }
+    "loggers": {"post_office": {"handlers": ["post_office"], "level": "INFO"},},
 }
 
 # Celery
