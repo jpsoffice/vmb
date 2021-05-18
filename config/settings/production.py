@@ -150,7 +150,7 @@ ADMIN_URL = env("DJANGO_ADMIN_URL")
 # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
 INSTALLED_APPS += ["anymail"]  # noqa F405
 
-POST_OFFICE["backends"]["default"] = env(
+POST_OFFICE["BACKENDS"]["default"] = env(
     "DJANGO_EMAIL_BACKEND", default="anymail.backends.mailgun.EmailBackend"
 )
 
