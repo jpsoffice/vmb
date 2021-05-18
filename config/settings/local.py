@@ -31,14 +31,6 @@ EMAIL_BACKEND = env(
     "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend"
 )
 
-if EMAIL_BACKEND == "django.core.mail.backends.smtp.EmailBackend":
-    EMAIL_HOST = env("DJANGO_EMAIL_HOST")
-    EMAIL_PORT = env("DJANGO_EMAIL_PORT")
-    EMAIL_HOST_USER = env("DJANGO_EMAIL_HOST_USER")
-    EMAIL_HOST_PASSWORD = env("DJANGO_EMAIL_HOST_PASSWORD")
-    # EMAIL_USE_SSL = env("DJANGO_EMAIL_USE_SSL", default=True)
-    EMAIL_USE_TLS = env("DJANGO_EMAIL_USE_TLS", default=True)
-
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#prerequisites
@@ -66,7 +58,7 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 # Celery
 # ------------------------------------------------------------------------------
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-always-eager
-CELERY_TASK_ALWAYS_EAGER = True
+CELERY_TASK_ALWAYS_EAGER = False
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-eager-propagates
 CELERY_TASK_EAGER_PROPAGATES = True
 
