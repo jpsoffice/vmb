@@ -249,9 +249,11 @@ POST_OFFICE = {
     "CELERY_ENABLED": True,
     "DEFAULT_PRIORITY": "now",
     "MESSAGE_ID_ENABLED": True,
-    "MESSAGE_ID_FQDN": "localhost",
-    "MAX_RETRIES": 2,
-    "RETRY_INTERVAL": datetime.timedelta(minutes=15),
+    "MESSAGE_ID_FQDN": env("DJANGO_POST_OFFICE_MSG_ID_FQDN", default="localhost"),
+    "MAX_RETRIES": env.int("DJANGO_POST_OFFICE_MAX_RETRIES", default=6),
+    "RETRY_INTERVAL": datetime.timedelta(
+        minutes=env.int("DJANGO_POST_OFFICE_RETRY_INTERVAL", default=15)
+    ),
     "LOG_LEVEL": 1,
 }
 

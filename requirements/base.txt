@@ -21,6 +21,7 @@ django-modeladmin-reorder==0.3.1  # https://github.com/mishbahr/django-modeladmi
 dj-places==3.1.0
 django-tabbed-admin==1.0.4
 django-post_office==3.5.3
+bleach==3.3.0
 
 # Django REST Framework
 djangorestframework==3.10.3  # https://github.com/encode/django-rest-framework
