@@ -251,7 +251,9 @@ POST_OFFICE = {
     "MESSAGE_ID_ENABLED": True,
     "MESSAGE_ID_FQDN": env("DJANGO_POST_OFFICE_MSG_ID_FQDN", default="localhost"),
     "MAX_RETRIES": env.int("DJANGO_POST_OFFICE_MAX_RETRIES", default=6),
-    "RETRY_INTERVAL": datetime.timedelta(minutes=env.int("DJANGO_POST_OFFICE_RETRY_INTERVAL", default=15)),
+    "RETRY_INTERVAL": datetime.timedelta(
+        minutes=env.int("DJANGO_POST_OFFICE_RETRY_INTERVAL", default=15)
+    ),
     "LOG_LEVEL": 1,
 }
 
