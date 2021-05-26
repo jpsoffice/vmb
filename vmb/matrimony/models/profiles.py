@@ -683,7 +683,6 @@ class MatrimonyProfile(BaseModel):
     def create_user(self):
         user, created = User.objects.get_or_create(
             username=self.email,
-            name=self.name,
             email=self.email,
             is_matrimony_candidate=True,
         )
@@ -692,6 +691,11 @@ class MatrimonyProfile(BaseModel):
             self.save()
             self.send_profile_import_email()
             user.send_confirmation_email()
+
+        if self.name != user.name:
+            user.name = self.name
+            user.save()
+
         return user
 
     def send_profile_import_email(self):
