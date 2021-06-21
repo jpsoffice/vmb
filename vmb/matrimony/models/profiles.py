@@ -683,9 +683,7 @@ class MatrimonyProfile(BaseModel):
 
     def create_user(self):
         user, created = User.objects.get_or_create(
-            username=self.email,
-            email=self.email,
-            is_matrimony_candidate=True,
+            username=self.email, email=self.email, is_matrimony_candidate=True,
         )
         if created:
             self.user = user
@@ -715,7 +713,7 @@ class MatrimonyProfile(BaseModel):
             subject=_("Matrimony profile created"),
             html_message=msg,
             headers={"Reply-to": settings.EMAIL_CONTACT},
-            priority="medium"
+            priority="medium",
         )
 
 
