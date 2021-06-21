@@ -87,6 +87,7 @@ THIRD_PARTY_APPS = [
     "places",
     "tabbed_admin",
     "post_office",
+    "impersonate",
 ]
 
 LOCAL_APPS = [
@@ -152,6 +153,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "admin_reorder.middleware.ModelAdminReorder",
+    "impersonate.middleware.ImpersonateMiddleware",
 ]
 
 # STATIC
@@ -247,7 +249,7 @@ POST_OFFICE = {
         )
     },
     "CELERY_ENABLED": True,
-    "DEFAULT_PRIORITY": env("DJANGO_POST_OFFICE_DEFAULT_PRIORITY", default="medium"),
+    "DEFAULT_PRIORITY": env("DJANGO_POST_OFFICE_DEFAULT_PRIORITY", default="now"),
     "MESSAGE_ID_ENABLED": True,
     "MESSAGE_ID_FQDN": env("DJANGO_POST_OFFICE_MSG_ID_FQDN", default="localhost"),
     "MAX_RETRIES": env.int("DJANGO_POST_OFFICE_MAX_RETRIES", default=6),
@@ -329,7 +331,7 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 # ------------------------------------------------------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html

@@ -633,6 +633,7 @@ class MatrimonyProfile(BaseModel):
             subject=_("Suggested matches"),
             html_message=body,
             headers={"Reply-to": settings.EMAIL_CONTACT},
+            priority="medium",
         )
 
     def get_batch_matches_email_body(self):
@@ -682,9 +683,7 @@ class MatrimonyProfile(BaseModel):
 
     def create_user(self):
         user, created = User.objects.get_or_create(
-            username=self.email,
-            email=self.email,
-            is_matrimony_candidate=True,
+            username=self.email, email=self.email, is_matrimony_candidate=True,
         )
         if created:
             self.user = user
@@ -714,6 +713,7 @@ class MatrimonyProfile(BaseModel):
             subject=_("Matrimony profile created"),
             html_message=msg,
             headers={"Reply-to": settings.EMAIL_CONTACT},
+            priority="medium",
         )
 
 
