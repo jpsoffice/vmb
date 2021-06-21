@@ -87,6 +87,7 @@ THIRD_PARTY_APPS = [
     "places",
     "tabbed_admin",
     "post_office",
+    "impersonate",
 ]
 
 LOCAL_APPS = [
@@ -152,6 +153,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "admin_reorder.middleware.ModelAdminReorder",
+    "impersonate.middleware.ImpersonateMiddleware",
 ]
 
 # STATIC
