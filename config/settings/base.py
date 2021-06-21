@@ -247,7 +247,7 @@ POST_OFFICE = {
         )
     },
     "CELERY_ENABLED": True,
-    "DEFAULT_PRIORITY": env("DJANGO_POST_OFFICE_DEFAULT_PRIORITY", default="medium"),
+    "DEFAULT_PRIORITY": env("DJANGO_POST_OFFICE_DEFAULT_PRIORITY", default="now"),
     "MESSAGE_ID_ENABLED": True,
     "MESSAGE_ID_FQDN": env("DJANGO_POST_OFFICE_MSG_ID_FQDN", default="localhost"),
     "MAX_RETRIES": env.int("DJANGO_POST_OFFICE_MAX_RETRIES", default=6),
