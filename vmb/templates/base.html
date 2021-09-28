@@ -1,6 +1,6 @@
 {% extends "base_minimal.html" %}
 
-{% load static %}
+{% load static cookielaw_tags %}
 
 {% block body_attrs %}data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false, "darkMode":false}' data-leftbar-theme="dark"{% endblock %}
 
@@ -129,6 +129,9 @@
                 {% block content %}{% endblock content %}
 
             </div> <!-- container -->
+
+
+            {% cookielaw_banner %}
 
         </div> <!-- content -->
 

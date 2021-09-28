@@ -61,6 +61,7 @@ DJANGO_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.sites",
+    "django.contrib.flatpages",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
@@ -88,6 +89,8 @@ THIRD_PARTY_APPS = [
     "tabbed_admin",
     "post_office",
     "impersonate",
+    "cookielaw",
+    "ckeditor",
 ]
 
 LOCAL_APPS = [
@@ -152,6 +155,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
 ]
@@ -204,6 +208,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
                 "vmb.utils.context_processors.settings_context",
             ],
         },
@@ -377,6 +382,7 @@ ADMIN_REORDER = (
     "post_office",
     "photologue",
     "sites",
+    "flatpages",
     "auth",
     "users",
     "django_celery_beat",

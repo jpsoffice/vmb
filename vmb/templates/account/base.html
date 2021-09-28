@@ -1,4 +1,5 @@
 {% extends "base_minimal.html" %}
+{% load cookielaw_tags %}
 {% block title %}{{ block.super }} - {% block head_title %}{% endblock head_title %}{% endblock title %}
 
 {% block body_class %}loading authentication-bg{% endblock %}
@@ -15,6 +16,7 @@
         </div>
         <!-- end container -->
     </div>
+    {% cookielaw_banner %}
     <!-- end page -->
     <footer class="footer footer-alt">
     {% block footer %}
