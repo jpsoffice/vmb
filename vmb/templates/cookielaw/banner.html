@@ -1,0 +1,11 @@
+{% load i18n %}
+<div id="CookielawBanner" class="navbar fixed-bottom">
+    <div class="alert alert-info bg-info text-white" role="alert">
+        <h6 class="alert-heading">{% trans "COOKIE_INFO_HEADER" %}</h6>
+        <p>
+            {% trans "COOKIE_INFO_PARA" %}
+        </p>
+        <hr>
+        <a class="btn btn-primary pull-right" href="javascript:Cookielaw.createCookielawCookie();">{% trans "COOKIE_INFO_OK" %}</a>
+    </div>
+</div>
