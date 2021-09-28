@@ -21,6 +21,13 @@ from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.fields import DateField
 from django.utils import timezone
 
+# For enabling CKEditor for Flatpages
+from django.db import models
+from django.contrib.flatpages.admin import FlatPageAdmin
+from django.contrib.flatpages.models import FlatPage
+from django.utils.translation import gettext_lazy as _
+from ckeditor.widgets import CKEditorWidget
+
 from .models.profiles import MatrimonyProfile
 from .models import (
     Male,
@@ -49,6 +56,16 @@ from .forms import TextRangeForm
 from moneyed.classes import CurrencyDoesNotExist
 from decimal import InvalidOperation
 from builtins import IndexError
+
+
+class FlatPageAdmin(FlatPageAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorWidget}
+    }
+
+# Re-register FlatPageAdmin
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, FlatPageAdmin)
 
 
 class RoundsFilter(admin.SimpleListFilter):
