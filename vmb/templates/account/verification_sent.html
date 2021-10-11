@@ -27,8 +27,14 @@
                 <h4 class="text-dark-50 text-center mt-4 font-weight-bold">Please check your email</h4>
                 <p class="text-muted mb-4">
                     A email has been send to you.
-                    Please check for an email from company and click on the included link to
+                    Please check for an email from VaisnavaMarriage and click on the included link to
                     reset your password.
+                </p>
+
+                <p class="text-info mb-4">
+                    {% if "/accounts/signup" in request.META.HTTP_REFERER %}
+                    Please login after verifying your email, and fill your matrimony profile to complete your registration.    
+                    {% endif %}
                 </p>
             </div>
 

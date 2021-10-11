@@ -59,9 +59,8 @@ from builtins import IndexError
 
 
 class FlatPageAdmin(FlatPageAdmin):
-    formfield_overrides = {
-        models.TextField: {'widget': CKEditorWidget}
-    }
+    formfield_overrides = {models.TextField: {"widget": CKEditorWidget}}
+
 
 # Re-register FlatPageAdmin
 admin.site.unregister(FlatPage)
