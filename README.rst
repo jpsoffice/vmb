@@ -22,12 +22,12 @@ Local development
 
   * Fixer API Key for currency conversion
 
-    * Go to https://fixer.io and get a free API Key, and set the API key against ``DJMONEY_EXCHANGE_FIXER_ACCESS_KEY`` in ``docker-compose.yml``
+    * Go to https://fixer.io and get a free API Key
+    * ``export DJMONEY_EXCHANGE_FIXER_ACCESS_KEY=...``
   * Google places API key
-    * `export DJMONEY_EXCHANGE_FIXER_ACCESS_KEY=...`
 
     * Follow the instructions here: https://developers.google.com/maps/documentation/places/web-service/get-api-key to create a Google Maps API key
-    * `export PLACES_MAPS_API_KEY=...`
+    * ``export PLACES_MAPS_API_KEY=...``
 * Run the services using ``docker-compose up -d``
 * Check if service is up and running using ``docker-compose ps``. It should show something like below.
 
