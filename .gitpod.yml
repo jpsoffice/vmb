@@ -1,0 +1,13 @@
+
+tasks:
+  - init: |
+      docker-compose -f local.yml pull
+  - command: |
+      docker-compose -f local.yml up
+ports:
+  - port: 8000
+    onOpen: open-browser
+
+vscode:
+  extensions:
+    - ms-azuretools.vscode-docker
