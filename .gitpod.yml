@@ -1,9 +1,9 @@
 
 tasks:
   - init: |
-      docker-compose -f local.yml pull
+      docker-compose pull
   - command: |
-      docker-compose -f local.yml up
+      docker-compose up
 ports:
   - port: 8000
     onOpen: open-browser
