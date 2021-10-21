@@ -4,6 +4,10 @@ tasks:
       docker-compose pull
   - command: |
       docker-compose up
+  - command: |
+      gp await-port 8000
+      docker-compose exec django bash -c '/entrypoint /app/manage.py loaddata /app/vmb/matrimony/fixtures/*.json'
+      docker-compose exec django /entrypoint /app/manage.py shell -c "from djmoney.contrib.exchange.models import Rate; from django.utils.module_loading import import_string;from django.conf import settings; backend = import_string(settings.EXCHANGE_BACKEND)(); Rate.objects.count() or backend.update_rates();"
 ports:
   - port: 8000
     onOpen: open-browser
