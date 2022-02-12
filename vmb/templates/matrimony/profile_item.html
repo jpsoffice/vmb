@@ -1,0 +1,32 @@
+{% load static %}
+
+<div class="col-lg-12">
+    <div class="card{% ifequal match_response 'REJ' %} ribbon-box{% endifequal %}"{% ifequal match_response 'REJ' %} style="opacity: 1;"{% endifequal %}>
+      <div class="row no-gutters">
+          <div class="col-md-4 col-lg-3">
+          <img src="{% if profile.primary_image_url %}{{ profile.primary_image_url }}{% else %}{% static 'images/no-image-icon.png' %}{% endif %}" class="card-img" alt="..." style="max-height: 320px; object-fit: cover;{% if not show_photo %} filter: blur(8px); -webkit-filter: blur(8px);{% endif %}">
+          </div>
+          <div class="col-md-8 col-lg-9">
+              <div class="card-body">
+                  {% ifequal match_response 'REJ' %}<div class="ribbon ribbon-danger float-right"><span>You got rejected</span></div>{% endifequal %}
+                  <h5 class="card-title"><a href="{% url 'matrimony:profile-details' profile.profile_id %}" class="text-success stretched-link">{{ profile.profile_id }} {% if profile.spiritual_name %}({{ profile.spiritual_name }}){% endif %}</a></h5>
+                  <p class="card-text">
+                    <strong>Age: </strong>{{ profile.age }},
+                    <strong>Height: </strong>{{ profile.height }} cms,
+                    <strong>Mother tongue: </strong>{{ profile.mother_tongue.name }},
+                    <strong>Current location: </strong>{{ profile.current_city }}, {{ profile.current_state }}, {{ profile.current_country.name }}
+                    <strong>Ethnicity: </strong>{{ profile.ethnic_origin.nationality }}
+                    <strong>Education: </strong>{% for education in profile.education.all %}{{ education.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}
+                    <strong>Occupation: </strong>{% for occupation in profile.educations.all %}{{ occupation.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}
+                  </p>
+                  {% comment %}
+                  <p class="card-text">
+                      <a href="#" class="btn btn-success btn-sm match-action{% ifequal response 'ACP' %} disabled{% endifequal %}"{% ifequal response 'ACP' %} aria-disabled="true"{% endifequal %} data-action="#" style="position:relative; z-index:2;"><i class="uil-check"></i> Accept{% ifequal response 'ACP' %}ed{% endifequal %}</a>
+                      <a href="#" class="btn btn-danger btn-sm match-action{% ifequal response 'REJ' %} disabled{% endifequal %}"{% ifequal response 'REJ' %} aria-disabled="true"{% endifequal %} data-action="#" style="position:relative; z-index:2;"><i class="uil-times"></i> Reject{% ifequal response 'REJ' %}ed{% endifequal %}</a>
+                  </p>
+                  {% endcomment %}
+              </div> <!-- end card-body-->
+          </div> <!-- end col -->
+      </div> <!-- end row-->
+    </div>
+</div>

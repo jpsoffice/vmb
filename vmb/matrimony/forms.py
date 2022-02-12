@@ -1,5 +1,7 @@
 import re
 
+from collections import OrderedDict
+
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
@@ -15,6 +17,9 @@ from multiselectfield import MultiSelectFormField
 
 from vmb.matrimony.models.profiles import (
     GENDER_CHOICES,
+    MARITAL_STATUS,
+    SPIRITUAL_STATUS_CHOICES,
+    EMPLOYED_IN_CHOICES,
     PROFILE_CREATED_BY_CHOICES,
     MARITAL_STATUS,
     SPIRITUAL_STATUS_CHOICES,
@@ -853,3 +858,186 @@ class MatrimonyProfileExpectationsForm(BaseMatrimonyProfileForm):
 
         def save(self, *args, **kwargs):
             pass
+
+
+class MatrimonyProfileSearchForm(MatrimonyProfileExpectationsForm):
+    class Meta:
+        model = Expectation
+        exclude = [
+            "id",
+            "profile",
+            "annual_income_from_in_base_currency",
+            "annual_income_to_in_base_currency",
+            "partner_description",
+        ]
+        readonly = []
+        required = []
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper.form_id = "searchForm"
+        self.helper.form_method = "GET"
+        self.helper.layout = Layout(
+            Row(
+                Column("age_from", css_class="form-group col-md-12 md-3"),
+                Column("age_to", css_class="form-group col-md-12 md-3"),
+            ),
+            Row(
+                Column("height_from", css_class="form-group col-md-12 md-3"),
+                Column("height_to", css_class="form-group col-md-12 md-3"),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "religions",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-12 md-3",
+                ),
+                Column(
+                    Field(
+                        "mother_tongues",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-12 md-3",
+                ),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "castes",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-12 md-3",
+                ),
+                Column(
+                    Field(
+                        "subcastes",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-12 md-3",
+                ),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "countries_living_in",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-12 md-3",
+                ),
+                Column(
+                    Field(
+                        "ethnicities",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-12 md-3",
+                ),
+            ),
+            Row(
+                Column("marital_status", css_class="form-group col-md-12 md-3"),
+                Column("want_nri", css_class="form-group col-md-12 md-3"),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "languages_can_speak",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-12 md-3",
+                ),
+                Column(
+                    Field(
+                        "languages_can_read_write",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-12 md-3",
+                ),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "education",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-12 md-3",
+                ),
+                Column(
+                    Field(
+                        "occupations",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-12 md-3",
+                ),
+            ),
+            Row(Column("employed_in", css_class="form-group col-md-12 md-3")),
+            "annual_income_from",
+            "annual_income_to",
+            Row(
+                Column("spiritual_status", css_class="form-group col-md-12 md-3"),
+                Column("min_rounds_chanting", css_class="form-group col-md-12 md-3"),
+            ),
+            Field(
+                "spiritual_masters",
+                css_class="select2 form-control select2-multiple",
+                data_toggle="select2",
+                multiple="multiple",
+            ),
+        )
+
+    def humanized_data(self):
+        MARITAL_STATUS_DICT = dict(MARITAL_STATUS)
+        EMPLOYED_IN_CHOICES_DICT = dict(EMPLOYED_IN_CHOICES)
+        SPIRITUAL_STATUS_CHOICES_DICT = dict(SPIRITUAL_STATUS_CHOICES)
+
+        data = self.initial or self.cleaned_data
+        cleaned_data = OrderedDict()
+
+        for k, v in data.items():
+            if not v:
+                continue
+            k_ = self.Meta.model._meta.get_field(k).verbose_name.title()
+            v_ = v
+            if k == "marital_status":
+                v_ = ", ".join([MARITAL_STATUS_DICT[item] for item in v])
+            elif k == "employed_in":
+                v_ = ", ".join([str(EMPLOYED_IN_CHOICES_DICT[item]) for item in v])
+            elif k == "spiritual_status":
+                v_ = ", ".join([SPIRITUAL_STATUS_CHOICES_DICT[item] for item in v])
+            elif k in [
+                "religions",
+                "mother_tongues",
+                "castes",
+                "subcastes",
+                "countries_living_in",
+                "ethnicities",
+                "languages_can_speak",
+                "languages_can_read_write",
+                "education",
+                "occupations",
+                "spiritual_masters",
+            ]:
+                v_ = ", ".join([item.name for item in v])
+
+            cleaned_data[k_] = v_
+        return cleaned_data
