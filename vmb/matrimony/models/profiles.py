@@ -157,7 +157,7 @@ MARITAL_STATUS = (
 Y_N_MAYB = (
     ("Y", "Yes"),
     ("N", "No"),
-    ("Mb", "May be"),
+    ("", "May be"),
 )
 CHILDREN_COUNT = (
     (0, "0"),
@@ -549,6 +549,14 @@ class MatrimonyProfile(BaseModel):
         return objs[0] if objs else None
 
     @property
+    def is_registered(self):
+        return True if self.user.is_matrimony_registration_complete else False
+
+    @property
+    def is_active(self):
+        return True if self.status >= "20" else False
+
+    @property
     def age(self):
         if self.dob:
             return int((datetime.datetime.now().date() - self.dob).days / 365.25)
@@ -588,7 +596,7 @@ class MatrimonyProfile(BaseModel):
 
     @property
     def mentor(self):
-        return self.mentors.all()[0]
+        return self.mentors.all()[0] if self.mentors.all() else None
 
     @property
     def expectations(self):
@@ -602,6 +610,188 @@ class MatrimonyProfile(BaseModel):
         return "{}matrimony/{}/?{}".format(
             reverse("admin:index"), "female" if self.gender == "M" else "male", querystr
         )
+
+    def search_profiles(self, querydata=None):
+        """
+        When querydata is None, return preferred profiles as per expectations, by default.
+        """
+        MARITAL_STATUS_DICT = dict(MARITAL_STATUS)
+        EMPLOYED_IN_CHOICES_DICT = dict(EMPLOYED_IN_CHOICES)
+        SPIRITUAL_STATUS_CHOICES_DICT = dict(SPIRITUAL_STATUS_CHOICES)
+
+        if self.gender == "M":
+            q = Q(gender="F")
+        else:
+            q = Q(gender="M")
+
+        age_from = (
+            querydata.get("age_from") if querydata else self.expectations.age_from
+        )
+        if age_from:
+            q = q & Q(
+                dob__lte=(timezone.datetime.now() - relativedelta(years=age_from))
+            )
+
+        age_to = querydata.get("age_to") if querydata else self.expectations.age_to
+        if age_to:
+            q = q & Q(dob__gte=(timezone.datetime.now() - relativedelta(years=age_to)))
+
+        height_from = (
+            querydata.get("age_to") if querydata else self.expectations.height_from
+        )
+        if height_from:
+            q = q & Q(height__gte=height_from)
+
+        height_to = (
+            querydata.get("height_to") if querydata else self.expectations.height_to
+        )
+        if height_to:
+            q = q & Q(height__lte=height_to)
+
+        religions = (
+            querydata.get("religions")
+            if querydata
+            else self.expectations.religions.all()
+        )
+        if religions:
+            q = q & Q(religion__name__in=[f"{r.name}" for r in religions])
+
+        mother_tongues = (
+            querydata.get("mother_tongues")
+            if querydata
+            else self.expectations.mother_tongues.all()
+        )
+        print("mother_tongues", mother_tongues, [f"{l.name}" for l in mother_tongues])
+        if mother_tongues:
+            q = q & Q(mother_tongue__name__in=[f"{l.name}" for l in mother_tongues])
+
+        castes = (
+            querydata.get("castes") if querydata else self.expectations.castes.all()
+        )
+        if castes:
+            q = q & Q(caste__name__in=[f"{c.name}" for c in castes])
+
+        subcastes = (
+            querydata.get("subcastes")
+            if querydata
+            else self.expectations.subcastes.all()
+        )
+        if subcastes:
+            q = q & Q(subcaste__name__in=[f"{sc.name}" for sc in subcastes])
+
+        countries_living_in = (
+            querydata.get("countries_living_in")
+            if querydata
+            else self.expectations.countries_living_in.all()
+        )
+        if countries_living_in:
+            q = q & Q(current_country__in=countries_living_in)
+
+        ethnicities = (
+            querydata.get("ethnicities")
+            if querydata
+            else self.expectations.ethnicities.all()
+        )
+        if ethnicities:
+            q = q & Q(ethnic_origin__in=ethnicities)
+
+        marital_status = (
+            querydata.get("marital_status")
+            if querydata
+            else self.expectations.marital_status
+        )
+        if marital_status:
+            q = q & Q(marital_status__in=marital_status)
+
+        want_nri = (
+            querydata.get("want_nri") if querydata else self.expectations.want_nri
+        )
+        if want_nri == "Y":
+            q = q & ~Q(current_country__name="India")
+        elif want_nri == "N":
+            q = q & Q(current_country__name="India")
+
+        languages_can_speak = (
+            querydata.get("languages_can_speak")
+            if querydata
+            else self.expectations.languages_can_speak.all()
+        )
+        if languages_can_speak:
+            q = q & Q(languages_known__in=languages_can_speak)
+
+        languages_can_read_write = (
+            querydata.get("languages_can_read_write")
+            if querydata
+            else self.expectations.languages_can_read_write.all()
+        )
+        if languages_can_read_write:
+            q = q & Q(languages_can_read_write__in=languages_can_read_write)
+
+        education = (
+            querydata.get("education")
+            if querydata
+            else self.expectations.education.all()
+        )
+        if education:
+            q = q & Q(education__in=education)
+
+        occupations = (
+            querydata.get("occupations")
+            if querydata
+            else self.expectations.occupations.all()
+        )
+        if occupations:
+            q = q & Q(occupations__in=occupations)
+
+        employed_in = (
+            querydata.get("employed_in") if querydata else self.expectations.employed_in
+        )
+        if employed_in:
+            q = q & Q(employed_in__in=employed_in)
+
+        spiritual_status = (
+            querydata.get("spiritual_status")
+            if querydata
+            else self.expectations.spiritual_status
+        )
+        if spiritual_status:
+            q = q & Q(spiritual_status__in=spiritual_status)
+
+        annual_income_from = (
+            querydata.get("annual_income_from")
+            if querydata
+            else self.expectations.annual_income_from
+        )
+        if annual_income_from:
+            q = q & Q(
+                annual_income_in_base_currency__gte=convert_money(
+                    annual_income_from, settings.BASE_CURRENCY
+                ).amount
+            )
+
+        annual_income_to = (
+            querydata.get("annual_income_to")
+            if querydata
+            else self.expectations.annual_income_to
+        )
+        if annual_income_to:
+            q = q & Q(
+                annual_income_in_base_currency__lte=convert_money(
+                    annual_income_to, settings.BASE_CURRENCY
+                ).amount
+            )
+
+        spiritual_masters = (
+            querydata.get("spiritual_masters")
+            if querydata
+            else self.expectations.spiritual_masters.all()
+        )
+        if spiritual_masters:
+            q = q & Q(
+                spiritual_master__name__in=[f"{sm.name}" for sm in spiritual_masters]
+            )
+
+        return MatrimonyProfile.objects.filter(q).distinct()
 
     def __str__(self):
         return self.name

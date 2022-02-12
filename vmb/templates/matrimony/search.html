@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block content %}
+{% if not request.user.matrimony_profile.is_registered %}
+<div class="row">
+  <div class="col-md-12">
+    <h2>Search disabled!</h2>
+    <p>To access this page, please complete your matrimony profile to complete the registration process.</p> 
+    <p>
+      <a href="{% url 'matrimony:profile-edit' 'basic' %}" class="btn btn-primary">Complete registration</a>
+    </p>
+  </div>
+</div>
+{% else %}
+<div class="row">
+  <div class="col-md-12">
+    <div id="searchText">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">You searched for</h5>
+          <p class="card-text">
+            {% for k, v in querydata.items %}
+              <strong>{{ k }}: </strong>{{ v }}, 
+            {% endfor %}
+          </p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#search-modal">
+            <i class="uil-sliders-v-alt"></i>
+            Modify search
+          </button>
+          <div id="search-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="standard-modalLabel">Modify search</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      </div>
+                      <div class="modal-body">
+                          <div>
+                            {% crispy search_form %}
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                        <input type="submit" name="submit" value="Search" class="btn btn-primary" form="searchForm">
+                      </div>
+                  </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" id="searchResults">
+  {% for profile in profiles %}
+  {% include "matrimony/profile_item.html" %}
+  {% empty %}
+  <div class="col-md-12">
+    <h3>No matches found!</h3>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+  $('.match-action').on('click', function(e){
+    e.preventDefault();
+    actionUrl = $(this).data('action');
+    $.ajax
+    $.ajax({
+      type: "POST",
+      headers: {
+        'X-CSRFToken': "{{ csrf_token }}"
+      },
+      url: actionUrl,
+      success: function (data) {
+          location.reload();
+      },
+      error: function (err) {
+          console.log("error", err.responseJSON);
+      }
+    });
+  });
+});
+</script>
+{% endblock %} 
