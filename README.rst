@@ -18,16 +18,16 @@ Local development
 
 * Install Docker and run Docker on your system. Follow the instructions here to install Docker, https://docs.docker.com/engine/install/
 * Install ``docker-compose`` on your machine. https://docs.docker.com/compose/install/
-* Copy ``local.yml`` to ``docker-compose.yml``
-* Edit ``docker-compose.yml`` to add a few API keys as env variables
+* Set environment variables (e.g., API keys, secrets, etc.) used in ``docker-compose.yml``:
 
   * Fixer API Key for currency conversion
 
-    * Go to https://fixer.io and get a free API Key, and set the API key against ``DJMONEY_EXCHANGE_FIXER_ACCESS_KEY`` in ``docker-compose.yml``
+    * Go to https://fixer.io and get a free API Key
+    * ``export DJMONEY_EXCHANGE_FIXER_ACCESS_KEY=...``
   * Google places API key
 
     * Follow the instructions here: https://developers.google.com/maps/documentation/places/web-service/get-api-key to create a Google Maps API key
-    * Set the API key against the ``PLACES_MAPS_API_KEY`` environment variable in ``docker-compose.yml``
+    * ``export PLACES_MAPS_API_KEY=...``
 * Run the services using ``docker-compose up -d``
 * Check if service is up and running using ``docker-compose ps``. It should show something like below.
 

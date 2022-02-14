@@ -5,6 +5,14 @@
     <li>
         <a href="{{ original.matching_profiles_url }}" target="_blank">Matching profiles</a>
     </li>
+    <li>
+        <a href="{% url 'admin:users_user_change' original.user.id %}" target="_blank">User</a>
+    </li>
+    {% if user.is_superuser %}
+    <li>
+        <a href="{% url 'impersonate-start' original.user.id %}" target="_blank">Impersonate</a>
+    </li>
+    {% endif %}
     {{ block.super }}
 {% endblock %}
 
