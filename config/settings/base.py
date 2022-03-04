@@ -401,6 +401,16 @@ PLACES_MAP_WIDGET_HEIGHT = env("PLACES_MAP_WIDGET_HEIGHT", default=400)
 PLACES_MAP_OPTIONS = '{"center": { "lat": 38.971584, "lng": -95.235072 }, "zoom": 10}'
 PLACES_MARKER_OPTIONS = '{"draggable": true}'
 
+# posthog
+# ------------------------------------------------------------------------------
+POSTHOG_API_KEY = env("POSTHOG_API_KEY", default="")
+POSTHOG_HOST = env("POSTHOG_HOST", default="https://app.posthog.com")
+if POSTHOG_API_KEY:
+    MIDDLEWARE.append("posthog.sentry.django.PosthogDistinctIdMiddleware")
+    POSTHOG_DJANGO = {
+        "distinct_id": lambda request: request.user and request.user.username
+    }
+
 # Your stuff...
 # ------------------------------------------------------------------------------
 ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
