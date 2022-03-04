@@ -23,6 +23,8 @@ services:
     environment:
       DJMONEY_EXCHANGE_FIXER_ACCESS_KEY: '${DJMONEY_EXCHANGE_FIXER_ACCESS_KEY}'
       PLACES_MAPS_API_KEY: '${PLACES_MAPS_API_KEY}'
+      POSTHOG_API_KEY: '${POSTHOG_API_KEY}'
+      POSTHOG_HOST: '${POSTHOG_HOST}'
 
   postgres:
     build:
