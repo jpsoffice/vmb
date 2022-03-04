@@ -38,3 +38,5 @@ django-admin-list-filter-dropdown==1.0.3
 django-admin-select2==1.0.1
 django-multiselectfield==0.1.12
 djangoql==0.14.0
+posthog==1.4.5
+sentry-sdk==1.5.6
