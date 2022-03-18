@@ -547,6 +547,7 @@ class BaseMatrimonyProfileAdmin(
         return obj.occupations_text
 
     def save_model(self, request, obj, form, change):
+        obj.updated_by = request.user
         super().save_model(request, obj, form, change)
         obj.refresh_from_db()
         obj.create_user()
@@ -679,6 +680,10 @@ class MatchAdmin(admin.ModelAdmin):
     )
     raw_id_fields = ("male", "female")
     inlines = [CommentInline]
+
+    def save_model(self, request, obj, form, change):
+        obj.updated_by = request.user
+        super().save_model(request, obj, form, change)
 
     def save_formset(self, request, form, formset, change):
         super().save_formset(request, form, formset, change)

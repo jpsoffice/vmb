@@ -1,5 +1,7 @@
 from django.db import models
 
+from vmb.users.models import User
+
 
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, blank=True)

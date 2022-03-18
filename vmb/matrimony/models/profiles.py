@@ -486,6 +486,10 @@ class MatrimonyProfile(BaseModel):
         related_name="matrimony_profile",
     )
 
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+    )
+
     # Staff users
     assignee = models.ForeignKey(
         User,
@@ -1090,6 +1094,10 @@ class Match(BaseModel):
     )
     assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     comments = GenericRelation("Comment")
+
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
