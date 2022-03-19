@@ -210,7 +210,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.request",
-                "vmb.utils.context_processors.settings_context",
+                "vmb.utils.context_processors.extra_context",
             ],
         },
     }
