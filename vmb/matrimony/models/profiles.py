@@ -627,6 +627,18 @@ class MatrimonyProfile(BaseModel):
         d = {v: k for k, v in PROFILE_STATUS_CHOICES}
         self.status = d.get(status_text)
 
+    def add_count(self):
+        properties = {"gender": "male" if self.gender == "M" else "female"}
+        if self.updated_by:
+            properties["updated_by"] = self.updated_by.username
+        count(
+            self.profile_id,
+            "profile-{}".format(
+                "-".join(PROFILE_STATUS_CHOICES_DICT[self.status].lower().split())
+            ),
+            properties,
+        )
+
     def save(self, *args, **kwargs):
         create = False
         if self.id is None:
@@ -642,16 +654,7 @@ class MatrimonyProfile(BaseModel):
         super().save(*args, **kwargs)
 
         if self._original_status != self.status or create:
-            properties = {"gender": "male" if self.gender == "M" else "female"}
-            if self.updated_by:
-                properties["updated_by"] = self.updated_by.username
-            count(
-                self.profile_id,
-                "profile-{}".format(
-                    "-".join(PROFILE_STATUS_CHOICES_DICT[self.status].lower().split())
-                ),
-                properties,
-            )
+            self.add_count()
         _, created = MatrimonyProfileStats.objects.get_or_create(profile=self)
         _, created = Expectation.objects.get_or_create(profile=self)
 
