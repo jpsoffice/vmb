@@ -627,10 +627,20 @@ class MatrimonyProfile(BaseModel):
         d = {v: k for k, v in PROFILE_STATUS_CHOICES}
         self.status = d.get(status_text)
 
-    def add_count(self):
+    def add_count(self, initial=False):
         properties = {"gender": "male" if self.gender == "M" else "female"}
         if self.updated_by:
             properties["updated_by"] = self.updated_by.username
+        if initial:
+            count(
+                self.profile_id,
+                "profile-{}".format(
+                    "-".join(PROFILE_STATUS_CHOICES_DICT["00"].lower().split())
+                ),
+                properties,
+            )
+            if self.status == "00":
+                return
         count(
             self.profile_id,
             "profile-{}".format(
