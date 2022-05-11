@@ -96,6 +96,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "vmb.users.apps.UsersConfig",
     # Your stuff: custom apps go here
+    "vmb.metrics.apps.MetricsConfig",
     "vmb.photologue_custom.apps.PhotologueCustomConfig",
     "vmb.matrimony.apps.MatrimonyConfig",
     # "djmoney.apps.MoneyConfig",
@@ -209,7 +210,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.request",
-                "vmb.utils.context_processors.settings_context",
+                "vmb.utils.context_processors.extra_context",
             ],
         },
     }
@@ -401,8 +402,9 @@ PLACES_MAP_WIDGET_HEIGHT = env("PLACES_MAP_WIDGET_HEIGHT", default=400)
 PLACES_MAP_OPTIONS = '{"center": { "lat": 38.971584, "lng": -95.235072 }, "zoom": 10}'
 PLACES_MARKER_OPTIONS = '{"draggable": true}'
 
-# posthog
+# metrics
 # ------------------------------------------------------------------------------
+METRICS_BACKEND = env("METRICS_BACKEND", default="posthog")
 POSTHOG_API_KEY = env("POSTHOG_API_KEY", default="")
 POSTHOG_HOST = env("POSTHOG_HOST", default="https://app.posthog.com")
 if POSTHOG_API_KEY:

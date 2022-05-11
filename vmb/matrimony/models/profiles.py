@@ -19,6 +19,7 @@ from places.fields import PlacesField
 from post_office import mail
 
 from vmb.common.utils import build_absolute_url
+from vmb.metrics import count
 from vmb.users.models import User
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
@@ -95,9 +96,10 @@ PROFILE_STATUS_CHOICES = (
     ("40", "Matched"),
     ("50", "QA"),
     ("60", "Discussions"),
-    ("90", "Married (outside sources)"),
+    ("90", "Married externally"),
     ("99", "Married"),
 )
+PROFILE_STATUS_CHOICES_DICT = dict(PROFILE_STATUS_CHOICES)
 BODY_TYPE = (
     ("SLM", "Slim"),
     ("AVG", "Average"),
@@ -486,6 +488,10 @@ class MatrimonyProfile(BaseModel):
         related_name="matrimony_profile",
     )
 
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+    )
+
     # Staff users
     assignee = models.ForeignKey(
         User,
@@ -614,14 +620,40 @@ class MatrimonyProfile(BaseModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._original_annual_income = self.annual_income
+        self._original_status = self.status
+        self._original_updated_by = self.updated_by
 
     def set_status(self, status_text):
         d = {v: k for k, v in PROFILE_STATUS_CHOICES}
         self.status = d.get(status_text)
 
+    def add_count(self, initial=False):
+        properties = {"gender": "male" if self.gender == "M" else "female"}
+        if self.updated_by:
+            properties["updated_by"] = self.updated_by.username
+        if initial:
+            count(
+                self.profile_id,
+                "profile-{}".format(
+                    "-".join(PROFILE_STATUS_CHOICES_DICT["00"].lower().split())
+                ),
+                properties,
+            )
+            if self.status == "00":
+                return
+        count(
+            self.profile_id,
+            "profile-{}".format(
+                "-".join(PROFILE_STATUS_CHOICES_DICT[self.status].lower().split())
+            ),
+            properties,
+        )
+
     def save(self, *args, **kwargs):
+        create = False
         if self.id is None:
             self.profile_id = self.generate_profile_id()
+            create = True
         if self.annual_income and (
             self.id is None or self._original_annual_income != self.annual_income
         ):
@@ -630,6 +662,9 @@ class MatrimonyProfile(BaseModel):
             )
 
         super().save(*args, **kwargs)
+
+        if self._original_status != self.status or create:
+            self.add_count()
         _, created = MatrimonyProfileStats.objects.get_or_create(profile=self)
         _, created = Expectation.objects.get_or_create(profile=self)
 
@@ -1090,6 +1125,10 @@ class Match(BaseModel):
     )
     assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     comments = GenericRelation("Comment")
+
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
