@@ -20,6 +20,7 @@ from vmb.matrimony.forms import (
     MatrimonyProfileReligionAndFamilyForm,
     MatrimonyProfilePhotosForm,
     MatrimonyProfileExpectationsForm,
+    MatrimonyProfileSearchForm,
 )
 
 
@@ -28,6 +29,22 @@ def index(request):
         return HttpResponseRedirect(reverse("matrimony:profile-edit", args=["basic"]))
     else:
         return HttpResponseRedirect(reverse("account_login"))
+
+
+@login_required
+def profile_details(request, profile_id):
+    profile = get_object_or_404(MatrimonyProfile, profile_id=profile_id)
+
+    return render(
+        request,
+        "matrimony/profile_details.html",
+        {
+            "profile": profile,
+            "show_personal_info": profile.is_personal_data_visible_to_user(
+                request.user
+            ),
+        },
+    )
 
 
 @login_required
@@ -183,10 +200,35 @@ def profile_photo_action(request, photo_id, action):
 @login_required
 def matches(request):
     profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
-    context = {
-        "matches": profile.matching_profiles,
-    }
+    context = {"matches_suggested": profile.matching_profiles_list}
     return render(request, "matrimony/matches.html", context)
+
+
+@login_required
+def search(request):
+    profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
+    expectations = profile.expectations
+    form = MatrimonyProfileSearchForm(instance=expectations)
+    profiles = []
+    querydata = form.initial
+
+    if request.method == "GET" and request.GET:
+        form = MatrimonyProfileSearchForm(request.GET)
+        if not form.is_valid():
+            return render(
+                request, "matrimony/search.html", {"profiles": [], "search_form": form}
+            )
+        profiles = profile.search_profiles(form.cleaned_data)
+        querydata = form.cleaned_data
+    else:
+        profiles = profile.search_profiles()
+
+    context = {
+        "profiles": profiles,
+        "search_form": form,
+        "querydata": form.humanized_data(),
+    }
+    return render(request, "matrimony/search.html", context)
 
 
 @require_http_methods(["POST"])

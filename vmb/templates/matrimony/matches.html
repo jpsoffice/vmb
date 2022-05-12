@@ -6,6 +6,15 @@
 
 {% block content %}
 <div class="row">
+  {% if not request.user.matrimony_profile.is_registered %}
+  <div class="col-md-12">
+    <h2>Matches disabled!</h2>
+    <p>To access this page, please complete your matrimony profile to complete the registration process.</p> 
+    <p>
+      <a href="{% url 'matrimony:profile-edit' 'basic' %}" class="btn btn-primary">Complete registration</a>
+    </p>
+  </div>
+  {% else %}
   {% for match_id, profile, show_photo, match_response, response in matches %}
   <div class="col-lg-12">
       <div class="card{% ifequal match_response 'REJ' %} ribbon-box{% endifequal %}"{% ifequal match_response 'REJ' %} style="opacity: 1;"{% endifequal %}>
@@ -38,6 +47,7 @@
   {% empty %}
     <h2>You have no matches yet!</h2>
   {% endfor %}
+  {% endif %}
 {% endblock %}
 
 {% block javascript %}
