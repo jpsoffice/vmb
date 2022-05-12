@@ -35,7 +35,16 @@ def index(request):
 def profile_details(request, profile_id):
     profile = get_object_or_404(MatrimonyProfile, profile_id=profile_id)
 
-    return render(request, "matrimony/profile_details.html", {"profile": profile})
+    return render(
+        request,
+        "matrimony/profile_details.html",
+        {
+            "profile": profile,
+            "show_personal_info": profile.is_personal_data_visible_to_user(
+                request.user
+            ),
+        },
+    )
 
 
 @login_required
@@ -191,7 +200,7 @@ def profile_photo_action(request, photo_id, action):
 @login_required
 def matches(request):
     profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
-    context = {"matches_suggested": profile.matching_profiles}
+    context = {"matches_suggested": profile.matching_profiles_list}
     return render(request, "matrimony/matches.html", context)
 
 

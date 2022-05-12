@@ -573,8 +573,24 @@ class MatrimonyProfile(BaseModel):
             self.female_matches.all() if self.gender == "M" else self.male_matches.all()
         )
 
+    def match_profiles(self, response=None):
+        query_kwargs = {}
+        values_list_fields = ["female__id" if self.gender == "M" else "male__id"]
+        matches = None
+
+        if response in ["ACP", "REJ"]:
+            query_kwargs[
+                "female_response" if self.gender == "M" else "male_response"
+            ] = response
+
+        return MatrimonyProfile.objects.filter(
+            id__in=self.matches.filter(**query_kwargs).values_list(
+                *values_list_fields, flat=True
+            )
+        )
+
     @property
-    def matching_profiles(self):
+    def matching_profiles_list(self):
         matches = []
         if self.gender == "M":
             for m in self.female_matches.all():
@@ -799,6 +815,11 @@ class MatrimonyProfile(BaseModel):
 
         return MatrimonyProfile.objects.filter(q).distinct()
 
+    def is_personal_data_visible_to_user(self, user):
+        if user.is_staff or self.match_profiles(response="ACP").filter(user=user):
+            return True
+        return False
+
     def __str__(self):
         return self.name
 
@@ -871,7 +892,7 @@ class MatrimonyProfile(BaseModel):
 
     def get_batch_matches_email_body(self):
         return loader.get_template("matrimony/emails/matches.html").render(
-            {"matches": self.matching_profiles}
+            {"matches": self.matching_profiles_list}
         )
 
     def generate_profile_id(self):

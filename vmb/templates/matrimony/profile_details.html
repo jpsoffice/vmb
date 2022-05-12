@@ -75,7 +75,7 @@
                 <div class="col-md-6">
                     <div class="text-left">
                         <p class="text-muted">
-                            <strong>Name:</strong><span class="ml-1">{{ profile.name }}</span>
+                            <strong>Name:</strong><span class="ml-1">{% if show_personal_info %}{{ profile.name }}{% else %}*******************{% endif %}</span>
                         </p>
                         
                         <p class="text-muted">
@@ -111,7 +111,7 @@
                 <div class="col-md-6">
                     <div class="text-left">
                         <p class="text-muted">
-                            <strong>Spiritual name:</strong><span class="ml-1">{{ profile.spiritual_name }}</span>
+                            <strong>Spiritual name:</strong><span class="ml-1">{% if show_personal_info %}{{ profile.spiritual_name }}{% else %}********************{% endif %}</span>
                         </p>
                         <p class="text-muted">
                             <strong>Ethnic origin:</strong><span class="ml-1">{{ profile.ethnic_origin }}</span>
