@@ -589,6 +589,35 @@ class MatrimonyProfile(BaseModel):
             )
         )
 
+    def matches_sent(self):
+        return self.matches.filter(sender_gender=self.gender)
+
+    def matches_received(self):
+        return self.matches.filter(sender_gender="F" if self.gender == "M" else "M")
+
+    def matches_suggested(self):
+        return self.matches.fitler(sender_gender=None)
+
+    def send_match(self, to_profile, user=None):
+        if self.gender == to_profile.gender:
+            return
+
+        kwargs = {}
+
+        if self.gender == "M":
+            kwargs["male"] = self
+            kwargs["female"] = to_profile
+            kwargs["male_response"] = "ACP"
+        else:
+            kwargs["male"] = to_profile
+            kwargs["female"] = self
+            kwargs["female_response"] = "ACP"
+
+        kwargs["sender_gender"] = self.gender
+        kwargs["created_by"] = kwargs["updated_by"] = user or self.user
+
+        return Match.objects.create(**kwargs)
+
     @property
     def matching_profiles_list(self):
         matches = []
@@ -1331,12 +1360,18 @@ class Match(BaseModel):
     female_photos_visibility = models.NullBooleanField(blank=True)
     female_response_updated_at = models.DateTimeField(blank=True, null=True)
 
+    mutual_acceptance = models.NullBooleanField(blank=True)
     status = models.CharField(
         max_length=3, choices=MATCH_STATUS_CHOICES, blank=True, default=""
     )
     assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     comments = GenericRelation("Comment")
 
+    sender_gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default="", blank=True)
+
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+    )
     updated_by = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
     )
@@ -1357,7 +1392,7 @@ class Match(BaseModel):
             models.Index(fields=["female"]),
         ]
 
-        unique_together = [["male", "female"]]
+        unique_together = [["male", "female", "sender_gender"]]
 
         verbose_name = "Match"
         verbose_name_plural = "Matches"
@@ -1383,6 +1418,9 @@ class Match(BaseModel):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+        if self.male_response == self.female_response == "ACP":
+            self.mutual_acceptance = True
+
         if (
             self._original_male_response != self.male_response
             or self._original_female_response != self.female_response

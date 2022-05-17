@@ -682,6 +682,8 @@ class MatchAdmin(admin.ModelAdmin):
     inlines = [CommentInline]
 
     def save_model(self, request, obj, form, change):
+        if obj.id is None:
+            obj.created_by = request.user
         obj.updated_by = request.user
         super().save_model(request, obj, form, change)
 
