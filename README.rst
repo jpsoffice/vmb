@@ -46,7 +46,7 @@ Local development
 * You can now access the service by opening ``http://127.0.0.1:8000`` on your browser
 * Create a superuser for the application using ``docker-compose exec django /entrypoint /app/manage.py createsuperuser``
 * You can now login to the admin interface of the app using the superuser credentials from http://127.0.0.1:8000/admin
-* Load fixtures to get the app funcional ``docker-compose exec django /entrypoint /app/manage.py loaddata vmb/matrimony/fixtures/*``
+* Load fixtures to get the app funcional ``docker-compose exec django /entrypoint /app/manage.py loaddata vmb/matrimony/fixtures/*.json``
 * Load currency data: ``docker-compose exec django /entrypoint /app/manage.py update_rates``
 
 Settings
