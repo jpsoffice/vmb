@@ -6,7 +6,7 @@ from django.http import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_http_methods
@@ -21,6 +21,7 @@ from vmb.matrimony.forms import (
     MatrimonyProfilePhotosForm,
     MatrimonyProfileExpectationsForm,
     MatrimonyProfileSearchForm,
+    ChangePasswordForm,
 )
 
 
@@ -285,3 +286,4 @@ def match_details(request, id):
             "show_photo": show_photo,
         },
     )
+

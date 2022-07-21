@@ -1,5 +1,3 @@
-import re
-
 from collections import OrderedDict
 
 from django import forms
@@ -9,6 +7,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 
 from allauth.account.forms import SignupForm as AllAuthSignupForm
+# Added by Varun:
+# ==================================================
+from allauth.account.forms import ChangePasswordForm as AllAuthChangePasswordForm
+# ==================================================
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column, Fieldset, Field, Submit
@@ -1041,3 +1043,16 @@ class MatrimonyProfileSearchForm(MatrimonyProfileExpectationsForm):
 
             cleaned_data[k_] = v_
         return cleaned_data
+
+# account_change_password
+class ChangePasswordForm(AllAuthChangePasswordForm):
+    
+    oldpassword= forms.CharField(max_length=200)
+    password1= forms.CharField(max_length=200)
+    password2= forms.CharField(max_length=200)
+    def save(self, *args, **kwargs):
+        changed_password= super(ChangePasswordForm, self).save()
+        print("~~~~~~~~~~~~****************************~~~~~~~~~~~~~~~")
+        print(changed_password)
+        print("~~~~~~~~~~~~****************************~~~~~~~~~~~~~~~")
+        return changed_password

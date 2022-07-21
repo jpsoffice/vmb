@@ -1,18 +1,13 @@
 {% extends "base.html" %}
-
 {% load static crispy_forms_tags %}
-
 {% block css %}
 {{ block.super }}
 <link href="{% static 'css/vendor/dropzone.min.css' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
-
 {% block content_title %}Profile{% endblock %}
-
 {% block breadcrumb %}
 <li class="breadcrumb active">Profile</li>
 {% endblock %}
-
 {% block content %}
 <div class="row">
     <div class="col-12">
@@ -39,11 +34,9 @@
                         </span>
                     </div>
                 </form>
-
                 <div class="mt-3 mb-3 d-flex justify-content-center">
-                  <button id="uploadButton" class="btn btn-primary" class="text-center">Upload</button>
+                    <button id="uploadButton" class="btn btn-primary" class="text-center">Upload</button>
                 </div>
-
                 <div class="card-deck-wrapper">
                 <div class="card-deck">
                     {% for photo in form.instance.photo_set.all %}
@@ -79,14 +72,12 @@
     </div>
 </div> <!-- end row-->
 {% endblock %}
-
 {% block javascript %}
 {{ block.super }}
 <script type="text/javascript" src="{% static 'places/places_extra.js' %}"></script>
 {% ifequal section_id "photos" %}
 <!-- plugin js -->
 <script src="{% static 'js/vendor/dropzone.min.js' %}"></script>
-
 <script type="text/javascript">
 Dropzone.autoDiscover = false;
 $(function(){
@@ -98,15 +89,12 @@ $(function(){
       acceptedFiles: "image/*",
       maxFilesize: 5
     })[0].dropzone;
-
     photosDropzone.on("queuecomplete", function (progress) {
       location.reload();
     });
-
     $("#uploadButton").on("click", function (e) {
         photosDropzone.processQueue();
     });
-
     $(".photo-action").on("click", function (e) {
         let link = $(this);
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;

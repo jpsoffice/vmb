@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+{{ block.super }}
+<link href="{% static 'css/vendor/dropzone.min.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/varun_css/style.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block content_title %}User/Settings{% endblock %}
+{% block breadcrumb %}
+<li class="breadcrumb active">User/Settings</li>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-2 zero_padding">
+            <!-- ========== Left Sub-Sidebar Start ========== -->
+        <div class="left-side-menu-secondary">
+    
+            <div class="h-100" id="left-side-menu-container" data-simplebar>
+    
+                <!--- Sidemenu -->
+                <ul class="metismenu side-nav">
+                    <li class="sub-side-nav-title sub-side-nav-item pl-3 pt-2 pb-3">Settings</li>
+                    <li class="sub-side-nav-item">
+                        <a href="{% url 'account_change_password' %}" class="side-nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                                <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
+                                <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                            </svg>
+                            <span class="pl-2"> Password </span>
+                        </a>
+                    </li>
+    
+                    <li class="sub-side-nav-item">
+                        <a href="{% url 'matrimony:search' %}" class="side-nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                            </svg>
+                            <span class="pl-2"> Email </span>
+                        </a>
+                    </li>
+    
+                    <li class="sub-side-nav-item">
+                        <a href="{% url 'matrimony:matches' %}" class="side-nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                            <span class="pl-2"> Delete </span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- End Sidebar -->
+    
+                <div class="clearfix"></div>
+    
+            </div>
+            <!-- Sidebar -left -->
+    
+        </div>
+        <!-- Left Sub-Sidebar End -->
+    </div>
+    <div class="col-8">
+        <h2>Password</h2>
+        <form method="POST" action="{% url 'account_change_password' %}" class="password_change">
+            {% csrf_token %}
+            <div id="div_id_oldpassword" class="form-group">
+                <label for="id_oldpassword" class=" requiredField">Current Password<span class="asteriskField">*</span></label>
+                <div class="">
+                    <input type="password" name="oldpassword" placeholder="Current Password" class="textinput textInput form-control" required="" id="id_oldpassword">
+                </div>
+            </div> 
+            <div id="div_id_password1" class="form-group">
+                <label for="id_password1" class=" requiredField">New Password<span class="asteriskField">*</span></label>
+                <div class=""> 
+                    <input type="password" name="password1" placeholder="New Password" class="textinput textInput form-control" required="" id="id_password1">
+                </div>
+            </div>
+            <div id="div_id_password2" class="form-group">
+                <label for="id_password2" class=" requiredField">New Password (again)<span class="asteriskField">*</span> </label>
+                <div class="">
+                    <input type="password" name="password2" placeholder="New Password (again)" class="textinput textInput form-control" required="" id="id_password2"> 
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" name="action">Change Password</button>
+        </form>
+    </div>
+</div> <!-- end row-->
+{% endblock %}
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'places/places_extra.js' %}"></script>
+{% ifequal section_id "photos" %}
+<!-- plugin js -->
+<script src="{% static 'js/vendor/dropzone.min.js' %}"></script>
+<script type="text/javascript">
+Dropzone.autoDiscover = false;
+$(function(){
+    let photosDropzone = $("#photosDropzone").dropzone({
+      autoQueue: true,
+      autoProcessQueue: false,
+      addRemoveLinks: true,
+      parallelUploads: 20,
+      acceptedFiles: "image/*",
+      maxFilesize: 5
+    })[0].dropzone;
+    photosDropzone.on("queuecomplete", function (progress) {
+      location.reload();
+    });
+    $("#uploadButton").on("click", function (e) {
+        photosDropzone.processQueue();
+    });
+    $(".photo-action").on("click", function (e) {
+        let link = $(this);
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $.ajax({
+            type: "POST",
+            headers: {
+              'X-CSRFToken': csrftoken
+            },
+            url: link.data("action"),
+            success: function (data) {
+                location.reload();
+            },
+            error: function (err) {
+                console.log("error", err.responseJSON);
+            }
+        })
+    });
+});
+</script>
+{% endifequal %}
+{% endblock %}

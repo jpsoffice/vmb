@@ -69,3 +69,15 @@ ACCOUNT_DEFAULT_HTTP_PROTOCOL = env("ACCOUNT_DEFAULT_HTTP_PROTOCOL", default="ht
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+# Adding allAuth Form for form customisation:
+# ACCOUNT_FORMS = {
+#     'login': 'allauth.account.forms.LoginForm',
+#     'signup': 'allauth.account.forms.SignupForm',
+#     'add_email': 'allauth.account.forms.AddEmailForm',
+#     'change_password': 'allauth.account.forms.ChangePasswordForm',
+#     'set_password': 'allauth.account.forms.SetPasswordForm',
+#     'reset_password': 'allauth.account.forms.ResetPasswordForm',
+#     'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
+#     'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+# }

@@ -10,6 +10,7 @@ from vmb.matrimony.views import (
     match_details,
     match_action,
     search,
+    # added newly:
 )
 
 app_name = "matrimony"
