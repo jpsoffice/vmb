@@ -1,0 +1,45 @@
+.left-side-menu-secondary{
+    background-color: #dadada;
+    position: fixed;
+    width: 260px;
+    height: 78.6vh;
+    padding-left: 0 !important;
+    color: rgb(50, 51, 51);
+}
+
+.sub-side-nav-item span, svg, i{
+    color: rgb(50, 51, 51) !important;
+}
+.sub-side-nav-item :hover{
+    color: rgb(26, 24, 24) !important;
+    background-color: #FAFBFE;
+    font-weight: 600;
+}
+
+.sub-side-nav-title{
+    font-size: 1.2em;
+}
+.zero_padding{
+    padding: 0 !important;
+}
+
+.footer{
+    background-color: #FAFBFE;
+}
+.custom_card{
+    position: sticky;
+}
+
+@media (max-width: 995px){
+    .icon_only{
+        display: none;
+    }
+}
+@media (max-width: 700px){
+
+    .custom_card{
+        padding-inline: 0 !important;
+        margin-inline: 0 !important;
+        border-radius: 25px;
+    }
+}
