@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from allauth.account.models import EmailAddress
-
+from django.db import models
 
 class User(AbstractUser):
 
@@ -35,3 +35,11 @@ class User(AbstractUser):
     def send_confirmation_email(self):
         email, _ = EmailAddress.objects.get_or_create(user=self, email=self.email)
         email.send_confirmation(signup=True)
+        
+class UserNotificationPreference(models.Model):
+    user= models.OneToOneField(User, on_delete=models.CASCADE)
+    email_announcements = BooleanField(_("Announcements"), default=True, null=False)
+    email_matrimony = BooleanField(_("Matches Suggested"), default=True, null=False)
+    
+    def __str__(self):
+        return f"{self.user}"

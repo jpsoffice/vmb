@@ -21,8 +21,10 @@ from vmb.matrimony.forms import (
     MatrimonyProfilePhotosForm,
     MatrimonyProfileExpectationsForm,
     MatrimonyProfileSearchForm,
+    UserNotificationPreferenceForm,
 )
 
+from vmb.users.models import UserNotificationPreference
 
 def index(request):
     if request.user.is_authenticated:
@@ -285,3 +287,60 @@ def match_details(request, id):
             "show_photo": show_photo,
         },
     )
+
+
+@login_required
+def notification_preference(request):
+    form=  UserNotificationPreferenceForm()
+    user_id = request.user.id
+    all_users= list(UserNotificationPreference.objects.all().values_list('user_id', flat=True))
+    print("******************>>", user_id)
+    print("************||||||||||||******>>", all_users)
+    if request.method == 'POST':
+        form=  UserNotificationPreferenceForm(request.POST)
+        if 'save' in request.POST:
+            model_fields_list=[f.name for f in UserNotificationPreference._meta.get_fields()][2:]
+            print(model_fields_list)
+            user_preference_list = list(dict(request.POST.items()).keys())[1:-1]
+            
+            print("SAVED Pressed!!")
+            print("***************************THIS IS REQUEST DATA***************************")
+            print(user_preference_list)
+            if form.is_valid():
+                print("``````````````````````````````````````````````````````````")
+                print("``````````````````````````````````````````````````````````")
+                print("``````````````````````````````````````````````````````````")
+                preference_form= form.save(commit=False)
+                if user_id in all_users:
+                    current_user= UserNotificationPreference.objects.get(user_id=user_id)
+                    # for i in model_fields_list:
+                    #     if i not in user_preference_list:
+                    #         preference=False
+                    #     else:
+                    #         preference=True
+                    
+                        # current_user.i=preference
+                        # print(current_user.product_updates)
+                        # print(current_user.announcements)
+                        # print(current_user.matches_suggested)
+                        # print(current_user.matches_accepted)
+                        # print(current_user.matches_received)
+                        # print(current_user.matches_rejected)
+                    print("*****************77777777777777****************")
+                    update_preference= preference_form(request.POST, instance= current_user)
+                    print("****************888888888888888*****************")
+                    print(list(update_preference))
+                    # preference_form.user_id= user_id
+                    # update_preference.save()
+            else:
+                print(form.error())
+            
+            
+        elif 'unsubscribe' in request.POST:
+            print("Unsubscribe Pressed!!")
+        
+    context={
+        'form': form
+    }
+    
+    return render(request, "matrimony/notification_preference.html", context)

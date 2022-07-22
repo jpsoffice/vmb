@@ -27,6 +27,8 @@ from vmb.matrimony.models.profiles import (
     Expectation,
 )
 
+from vmb.users.models import UserNotificationPreference
+
 
 class TextRangeForm(forms.Form):
     name = None
@@ -1041,3 +1043,9 @@ class MatrimonyProfileSearchForm(MatrimonyProfileExpectationsForm):
 
             cleaned_data[k_] = v_
         return cleaned_data
+
+
+class UserNotificationPreferenceForm(forms.ModelForm):
+    class Meta:
+        model = UserNotificationPreference
+        exclude = ["id", "user"]

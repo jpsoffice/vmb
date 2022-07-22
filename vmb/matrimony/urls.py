@@ -10,6 +10,7 @@ from vmb.matrimony.views import (
     match_details,
     match_action,
     search,
+    notification_preference
 )
 
 app_name = "matrimony"
@@ -27,4 +28,5 @@ urlpatterns = [
     path("matches/", matches, name="matches"),
     path("match/<int:id>", match_details, name="match-details"),
     path("match/<int:id>/<slug:action>", match_action, name="match-action"),
+    path("notification_preference/", notification_preference, name="notification_preference"),
 ]
