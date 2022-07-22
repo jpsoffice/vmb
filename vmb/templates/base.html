@@ -73,7 +73,7 @@
     <!-- Start Page Content here -->
     <!-- ============================================================== -->
 
-    <div class="content-page">
+    <div class="content-page"  style="padding: 70px 0 65px;">
         <div class="content">
             <!-- Start Content-->
 
@@ -91,6 +91,10 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
                             <!-- item-->
+                            <a href="{% url 'account_change_password' %}" class="dropdown-item notify-item">
+                                <i class="mdi mdi-account-edit mr-1"></i>
+                                <span>Settings</span>
+                            </a>
                             <a href="{% url 'account_logout' %}" class="dropdown-item notify-item">
                                 <i class="mdi mdi-logout mr-1"></i>
                                 <span>Logout</span>
@@ -120,7 +124,7 @@
                 {% endif %}
 
                 <!-- start page title -->
-                <div class="row">
+                <div class="row" style="height: 80px;">
                     <div class="col-12">
                         <div class="page-title-box">
                             <div class="page-title-right">
