@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# ipython
+.ipython/
+
+# PID files
+*.pid
+
 # C extensions
 *.so
 
