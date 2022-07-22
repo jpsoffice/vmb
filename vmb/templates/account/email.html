@@ -1,19 +1,18 @@
-{% extends "account/base_custom.html" %}
+{% extends "account/base_user_settings.html" %}
 
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block content_title %}User/Settings{% endblock %}
+{% block content_title %}User Settings{% endblock %}
 {% block head_title %}{% trans "E-mail Addresses" %}{% endblock %}
 {% block breadcrumb %}
-<li class="breadcrumb active">User/Settings</li>
+<li class="breadcrumb active">User Settings</li>
 {% endblock %}
-{% block content %}
-<div class="col-md-8 col-lg-8 col-sm-12 custom_card" >
-  <div class="card d-block">
-    <h3 class="card-img-top text-center pt-3">{% trans "E-mail Addresses" %}</h3>
+{% block subnav_content %}
+  <div class="card mb-0">
+    <h4 class="card-header">{% trans "E-mail Addresses" %}</h4>
     {% if user.emailaddress_set.all %}
-    <div class="card-body text-center">
+    <div class="card-body">
         <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
 
         <form action="{% url 'account_email' %}" class="email_list" method="post">
@@ -45,6 +44,15 @@
 
             </fieldset>
       </form>
+
+    <hr/>
+    <h4 class="card-title">{% trans "Add E-mail Address" %}</h4>
+
+    <form method="post" action="{% url 'account_email' %}" class="add_email">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button name="action_add" class="btn btn-success mb-2" type="submit">{% trans "Add E-mail" %}</button>
+    </form>
     </div>
   </div>
 </div>
@@ -54,25 +62,24 @@
 
 {% endif %}
 
-{% if can_add_email %}
-    <h2>{% trans "Add E-mail Address" %}</h2>
-
-    <form method="post" action="{% url 'account_email' %}" class="add_email">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
-    </form>
-    {% endif %}
-
 {% endblock %}
 
-{% block extra_body %}
+{% block javascript %}
+{{ block.super }}
 <script type="text/javascript">
 (function() {
   var message = "{% trans 'Do you really want to remove the selected e-mail address?' %}";
 
-});
-
+  var actions = document.getElementsByName('action_remove');
+  if (actions.length) {
+    actions[0].addEventListener("click", function(e) {
+      console.log("HELLO");
+      if (! confirm(message)) {
+        e.preventDefault();
+      }
+    });
+  }
+})();
 </script>
 
 {% endblock %} 
