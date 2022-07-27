@@ -49,6 +49,26 @@ Local development
 * Load fixtures to get the app funcional ``docker-compose exec django /entrypoint /app/manage.py loaddata vmb/matrimony/fixtures/*.json``
 * Load currency data: ``docker-compose exec django /entrypoint /app/manage.py update_rates``
 
+Generate sample data
+====================
+
+In Django shell: ``docker-compose exec django /entrypoint /app/manage.py sell``, enter the following
+
+.. code-block::
+
+    from vmb.matrimony.factories import MatrimonyProfileFactory
+
+    MatrimonyProfileFactory.create_batch(1000)
+
+
+Update sequence_id for ``matrimony_profiles`` table in PostgreSQL from Django dbshell ``docker-compose exec django /entrypoint /app/manage.py dbsell``
+
+.. code-block::
+
+    SELECT setval('matrimony_profiles_id_seq', 1001, true);
+
+
+
 Settings
 --------
 
