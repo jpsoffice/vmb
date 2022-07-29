@@ -91,6 +91,9 @@ THIRD_PARTY_APPS = [
     "impersonate",
     "cookielaw",
     "ckeditor",
+    'newsletter',
+    'tinymce',
+    'sorl.thumbnail',
 ]
 
 LOCAL_APPS = [
@@ -419,3 +422,6 @@ ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
 MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.net")
 PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")
 TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True)
+
+
+NEWSLETTER_THUMBNAIL = 'sorl-thumbnail'
