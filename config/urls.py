@@ -21,7 +21,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("photologue/", include("photologue.urls", namespace="photologue")),
     path("", include("vmb.matrimony.urls", namespace="matrimony")),
-    path('newsletter/', include('newsletter.urls')),
+    path("newsletter/", include("newsletter.urls")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

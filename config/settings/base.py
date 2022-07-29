@@ -91,9 +91,9 @@ THIRD_PARTY_APPS = [
     "impersonate",
     "cookielaw",
     "ckeditor",
-    'newsletter',
-    'tinymce',
-    'sorl.thumbnail',
+    "newsletter",
+    "tinymce",
+    "sorl.thumbnail",
 ]
 
 LOCAL_APPS = [
@@ -424,4 +424,4 @@ PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")
 TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True)
 
 
-NEWSLETTER_THUMBNAIL = 'sorl-thumbnail'
+NEWSLETTER_THUMBNAIL = "sorl-thumbnail"
