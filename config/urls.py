@@ -22,6 +22,7 @@ urlpatterns = [
     path("photologue/", include("photologue.urls", namespace="photologue")),
     path("", include("vmb.matrimony.urls", namespace="matrimony")),
     path("newsletter/", include("newsletter.urls")),
+    path('tinymce/', include('tinymce.urls')),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

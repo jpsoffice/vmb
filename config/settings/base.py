@@ -103,6 +103,7 @@ LOCAL_APPS = [
     "vmb.photologue_custom.apps.PhotologueCustomConfig",
     "vmb.matrimony.apps.MatrimonyConfig",
     # "djmoney.apps.MoneyConfig",
+    'vmb.newsletter_app.apps.NewsletterAppConfig',
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -363,6 +364,10 @@ ADMIN_REORDER = (
     {
         "app": "matrimony",
         "models": ("matrimony.Male", "matrimony.Female", "matrimony.Match",),
+    },
+    {
+        "app": "newsletter_app",
+        "models": ("newsletter_app.MailMessage",),
     },
     {
         "app": "matrimony",
