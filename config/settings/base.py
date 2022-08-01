@@ -91,6 +91,20 @@ THIRD_PARTY_APPS = [
     "impersonate",
     "cookielaw",
     "ckeditor",
+    # Wagtail Apps:
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail.core",
+    "modelcluster",
+    "taggit",
 ]
 
 LOCAL_APPS = [
@@ -159,6 +173,7 @@ MIDDLEWARE = [
     "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
 # STATIC
@@ -419,3 +434,6 @@ ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
 MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.net")
 PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")
 TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True)
+
+# Wagtail App:
+WAGTAIL_SITE_NAME = "vmb"
