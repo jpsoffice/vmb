@@ -91,6 +91,9 @@ THIRD_PARTY_APPS = [
     "impersonate",
     "cookielaw",
     "ckeditor",
+    "sorl.thumbnail",
+    "tinymce",
+    "newsletter",
 ]
 
 LOCAL_APPS = [
@@ -387,6 +390,7 @@ ADMIN_REORDER = (
     "auth",
     "users",
     "django_celery_beat",
+    "newsletter",
 )
 
 # djmoney-exchange
@@ -419,3 +423,10 @@ ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
 MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.net")
 PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")
 TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True)
+
+
+# Using sorl-thumbnail
+NEWSLETTER_THUMBNAIL = "sorl-thumbnail"
+
+# Using django-tinymce
+NEWSLETTER_RICHTEXT_WIDGET = "tinymce.widgets.TinyMCE"
