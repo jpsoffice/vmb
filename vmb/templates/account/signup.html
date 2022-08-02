@@ -181,6 +181,16 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="{{ form.captcha.id_for_label}}"></label>
+                    {% crispy_field form.captcha %}
+                    {% if form.captcha.errors %}
+                        {% for error in form.captcha.errors %}
+                            <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
                 <div class="form-group mb-0 text-center">
                     <button class="btn btn-primary" type="submit"> Sign Up </button>
                 </div>
