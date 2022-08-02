@@ -12,6 +12,7 @@ from django.utils import timezone
 # -------------------------------------------
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
+
 # -------------------------------------------
 
 from allauth.account.forms import SignupForm as AllAuthSignupForm

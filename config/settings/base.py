@@ -91,7 +91,7 @@ THIRD_PARTY_APPS = [
     "impersonate",
     "cookielaw",
     "ckeditor",
-    'captcha',      # recaptcha
+    "captcha",  # recaptcha
 ]
 
 LOCAL_APPS = [
@@ -423,5 +423,5 @@ TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True
 
 # Django Recaptcha:
 # ------------------------------------------------------------------------------
-RECAPTCHA_PUBLIC_KEY = '6Ld7vz0hAAAAAKPNoffaypjDLK6aHJ-NC8BexW7Y'
-RECAPTCHA_PRIVATE_KEY = '6Ld7vz0hAAAAAODWIKhEtlgjZR4VrqmPEolrrMf8'
+RECAPTCHA_PUBLIC_KEY = "6Ld7vz0hAAAAAKPNoffaypjDLK6aHJ-NC8BexW7Y"
+RECAPTCHA_PRIVATE_KEY = "6Ld7vz0hAAAAAODWIKhEtlgjZR4VrqmPEolrrMf8"
