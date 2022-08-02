@@ -8,6 +8,12 @@ from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 
+# Imports for google recaptcha
+# -------------------------------------------
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
+# -------------------------------------------
+
 from allauth.account.forms import SignupForm as AllAuthSignupForm
 
 from crispy_forms.helper import FormHelper
@@ -81,6 +87,7 @@ class SignupForm(AllAuthSignupForm):
     contact_person_name = forms.CharField(
         min_length=3, max_length=200, strip=True, required=False
     )
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     def clean_dob(self):
         value = self.cleaned_data["dob"]

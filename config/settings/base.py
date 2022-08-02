@@ -91,6 +91,7 @@ THIRD_PARTY_APPS = [
     "impersonate",
     "cookielaw",
     "ckeditor",
+    'captcha',      # recaptcha
 ]
 
 LOCAL_APPS = [
@@ -419,3 +420,8 @@ ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
 MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.net")
 PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")
 TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True)
+
+# Django Recaptcha:
+# ------------------------------------------------------------------------------
+RECAPTCHA_PUBLIC_KEY = '6Ld7vz0hAAAAAKPNoffaypjDLK6aHJ-NC8BexW7Y'
+RECAPTCHA_PRIVATE_KEY = '6Ld7vz0hAAAAAODWIKhEtlgjZR4VrqmPEolrrMf8'
