@@ -91,6 +91,7 @@ THIRD_PARTY_APPS = [
     "impersonate",
     "cookielaw",
     "ckeditor",
+    "notifications",
 ]
 
 LOCAL_APPS = [
@@ -387,6 +388,7 @@ ADMIN_REORDER = (
     "auth",
     "users",
     "django_celery_beat",
+    "notifications",
 )
 
 # djmoney-exchange

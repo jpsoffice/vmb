@@ -6,6 +6,10 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+# Django-notifications-hq imports
+from django.conf.urls import url
+import notifications.urls
+
 admin.site.site_header = settings.ADMIN_SITE_HEADER
 
 urlpatterns = [
@@ -21,6 +25,9 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("photologue/", include("photologue.urls", namespace="photologue")),
     path("", include("vmb.matrimony.urls", namespace="matrimony")),
+    url(
+        "^inbox/notifications/", include(notifications.urls, namespace="notifications")
+    ),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -3,7 +3,7 @@ import uuid
 
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.urls import reverse
@@ -285,3 +285,23 @@ def match_details(request, id):
             "show_photo": show_photo,
         },
     )
+
+
+@login_required
+def mark_as_read(request, pk):
+
+    required_notification = request.user.notifications.get(id=pk)
+    required_notification.unread = False
+    required_notification.save()
+    return redirect(request.META["HTTP_REFERER"])
+
+
+@login_required
+def mark_all_as_read(request):
+
+    required_notifications = request.user.notifications.unread().all
+    required_notification_objects = required_notifications().all()
+    for notification_object in required_notification_objects:
+        notification_object.unread = False
+        notification_object.save()
+    return redirect(request.META["HTTP_REFERER"])
