@@ -305,3 +305,8 @@ def mark_all_as_read(request):
         notification_object.unread = False
         notification_object.save()
     return redirect(request.META["HTTP_REFERER"])
+
+
+@login_required
+def view_all_notifications(request):
+    return render(request, "matrimony/view_all_notifications.html")

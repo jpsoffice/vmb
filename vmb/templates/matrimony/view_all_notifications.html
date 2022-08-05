@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load static crispy_forms_tags %}
+
+
+{% block content_title %}Notifications{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb active">Notifications</li>
+{% endblock %}
+
+{% block content %}
+<style>
+    .notification_head{
+        font-size: 1.2rem;
+        color: black;
+
+    }
+    .unread{
+        background-color: rgb(196, 240, 240);
+        border-bottom: 1px solid white;
+        border-top: 1px solid white;
+        font-size: 1rem;
+        color:black
+    }
+    .read{
+        border-bottom: 1px solid rgb(61, 61, 61);
+        border-top: 1px solid rgb(61, 61, 61);
+        font-size: 1rem;
+    }
+</style>
+<div class="row">
+    <div class="col-3 p-0">
+        <div class="mb-3 notification_head pl-3">
+            Notification
+        </div>
+        {% for notification in request.user.notifications.all %}
+        {% if not notification.unread %}
+        <p class="notify-details read pl-3 m-0 py-2">{{ notification.verb }}</p>
+        {% else %}
+        <p class="notify-details unread pl-3 m-0 py-2">{{ notification.verb }}</p>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+    <div class="col-6 p-0">
+        <div class="mb-3 notification_head pl-3">
+            Detail
+        </div>
+        {% for notification in request.user.notifications.all %}
+        {% if not notification.unread %}
+        <p class="notify-details read pl-3 m-0 py-2">{{ notification.description }}</p>
+        {% else %}
+        <p class="notify-details unread pl-3 m-0 py-2">{{ notification.description }}</p>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-3 p-0">
+        <div class="mb-3 notification_head pl-3">
+            Time
+        </div>
+        {% for notification in request.user.notifications.all %}
+        {% if not notification.unread %}
+        <p class="notify-details read pl-3 m-0 py-2">{{ notification.timestamp }}</p>
+        {% else %}
+        <p class="notify-details unread pl-3 m-0 py-2">{{ notification.timestamp }}</p>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}
+
+
