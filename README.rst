@@ -49,6 +49,13 @@ Local development
 * Load fixtures to get the app funcional ``docker-compose exec django /entrypoint /app/manage.py loaddata vmb/matrimony/fixtures/*.json``
 * Load currency data: ``docker-compose exec django /entrypoint /app/manage.py update_rates``
 
+Adding new dependency
+=====================
+
+By default, if you have to add a dependency, add it in ``requirements/base.txt``. If the dependency is specific to ``local`` or ``production`` environment, add it in ``requirements/local.txt`` or ``requirements/production.txt`` accordingly. If a Python dependency needs some system level packages to be installed as a prerequisite, add it in ``compose/local/django/Dockerfile`` and ``compose/production/django/Dockerfile``.
+
+Once done, you can rebuild the Docker images using ``docker-compose build``.
+
 Generate sample data
 ====================
 

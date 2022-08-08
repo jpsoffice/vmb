@@ -240,5 +240,9 @@ sentry_sdk.init(
 )
 sentry_sdk.init(dsn=SENTRY_DSN, integrations=[sentry_logging, DjangoIntegration()])
 
+# django-tinymce
+# ------------------------------------------------------------------------------
+TINYMCE_COMPRESSOR = True
+
 # Your stuff...
 # ------------------------------------------------------------------------------

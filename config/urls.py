@@ -25,6 +25,8 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("photologue/", include("photologue.urls", namespace="photologue")),
     path("", include("vmb.matrimony.urls", namespace="matrimony")),
+    path("tinymce/", include("tinymce.urls")),
+    path("newsletter/", include("newsletter.urls")),
     url(
         "^inbox/notifications/", include(notifications.urls, namespace="notifications")
     ),
