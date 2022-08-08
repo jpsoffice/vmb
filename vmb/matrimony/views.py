@@ -289,7 +289,6 @@ def match_details(request, id):
 
 @login_required
 def mark_as_read(request, pk):
-
     required_notification = request.user.notifications.get(id=pk)
     required_notification.unread = False
     required_notification.save()
@@ -298,7 +297,6 @@ def mark_as_read(request, pk):
 
 @login_required
 def mark_all_as_read(request):
-
     required_notifications = request.user.notifications.unread().all
     required_notification_objects = required_notifications().all()
     for notification_object in required_notification_objects:
