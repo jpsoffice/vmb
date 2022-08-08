@@ -440,7 +440,7 @@ TINYMCE_DEFAULT_CONFIG = {
     "custom_undo_redo_levels": 10,
 }
 
-#TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
+# TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
 
 
 # Your stuff...
@@ -449,4 +449,3 @@ ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
 MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.net")
 PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")
 TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True)
-
