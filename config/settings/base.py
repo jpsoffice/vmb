@@ -94,6 +94,7 @@ THIRD_PARTY_APPS = [
     "tinymce",
     "sorl.thumbnail",
     "newsletter",
+    "notifications",
 ]
 
 LOCAL_APPS = [
@@ -392,6 +393,7 @@ ADMIN_REORDER = (
     "auth",
     "users",
     "django_celery_beat",
+    "notifications",
 )
 
 # djmoney-exchange

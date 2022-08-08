@@ -6,6 +6,15 @@
 
 {% block body_content %}
 <!-- Begin page -->
+<style>
+    .transparent_hover :hover{
+        background-color: #ffffff;
+        border:1px solid rgb(61, 61, 61);
+    }
+    .transparent_hover_unbordered :hover{
+        border:none;
+    }
+</style>
 <div class="wrapper">
     <!-- ========== Left Sidebar Start ========== -->
     <div class="left-side-menu">
@@ -80,7 +89,61 @@
             <!-- Topbar Start -->
             <div class="navbar-custom">
                 <ul class="list-unstyled topbar-right-menu float-right mb-0">
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <i class="dripicons-bell noti-icon"></i>
+                            {% if request.user.notifications.unread.count %}
+                            <span><b style="font-weight: bolder; color: rgb(219, 9, 9);">{{ request.user.notifications.unread.count }}</b></span>
+                            {% endif %}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+                            <!-- item-->
+                            <div class="dropdown-item noti-title mb-2" style="margin:auto;">
+                                <h5 class="">
+                                    <span class="float-right">
+                                        <a href="{% url 'matrimony:mark_all_as_read' %}" class="text-dark">
+                                            <small>Clear All</small>
+                                        </a>
+                                    </span>Notification
+                                </h5>
+                            
+                            <div class="dropdown-item" style="height: 300px;" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: auto; overflow: hidden;"><div class="simplebar-content" style="padding: 0px;">
+                                <!-- item-->
+                                {% if request.user.notifications.unread.count %}
+                                <ul class="list-unstyled" style="height: auto;">
+                                    {% for notification in request.user.notifications.unread.all %}
+                                    <li class="transparent_hover" style="width: 278px;">
+                                        <a href="{% url 'matrimony:mark_as_read' notification.id %}" class="dropdown-item notify-item transparent_hover_unbordered" type="submit">
+                                            <div class="notify-icon bg-primary">
+                                                <i class="mdi mdi-comment-account-outline"></i>
+                                            </div>
+                                            <p class="notify-details transparent_hover_unbordered">{{ notification.verb }}
+                                                <small class="text-muted">{{ notification.description }}</small>
+                                            </p>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                <ul class="list-unstyled" style="height: auto;">
+                                    <li style="width: 278px;">
+                                        <div class="dropdown-item notify-item">
+                                            <p class="notify-details">No Unread Notification
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
 
+                                {% endif %}
+                                <!-- item-->
+                            </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></div>
+                            <!-- All-->
+                            <a href="{% url 'matrimony:view_all_notifications' %}" class="dropdown-item text-center text-primary notify-item notify-all">
+                                View All
+                            </a>
+                        </div>
+                        </div>
+                    </li>
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                             aria-expanded="false">
