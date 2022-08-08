@@ -91,9 +91,9 @@ THIRD_PARTY_APPS = [
     "impersonate",
     "cookielaw",
     "ckeditor",
-    "newsletter",
     "tinymce",
     "sorl.thumbnail",
+    "newsletter",
 ]
 
 LOCAL_APPS = [
@@ -103,7 +103,6 @@ LOCAL_APPS = [
     "vmb.photologue_custom.apps.PhotologueCustomConfig",
     "vmb.matrimony.apps.MatrimonyConfig",
     # "djmoney.apps.MoneyConfig",
-    "vmb.newsletter_app.apps.NewsletterAppConfig",
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -385,6 +384,7 @@ ADMIN_REORDER = (
             "matrimony.Mentor",
         ),
     },
+    "newsletter",
     "post_office",
     "photologue",
     "sites",
@@ -418,6 +418,31 @@ if POSTHOG_API_KEY:
         "distinct_id": lambda request: request.user and request.user.username
     }
 
+# django-newsletter
+# ------------------------------------------------------------------------------
+NEWSLETTER_THUMBNAIL = "sorl-thumbnail"
+NEWSLETTER_RICHTEXT_WIDGET = "tinymce.widgets.TinyMCE"
+
+# django-tinymce
+# ------------------------------------------------------------------------------
+
+TINYMCE_DEFAULT_CONFIG = {
+    "height": "320px",
+    "width": "960px",
+    "menubar": "file edit view insert format tools table help",
+    "plugins": "paste advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
+    "fullscreen insertdatetime media table paste code help wordcount spellchecker",
+    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
+    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
+    "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
+    "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
+    "a11ycheck ltr rtl | showcomments addcomment code",
+    "custom_undo_redo_levels": 10,
+}
+
+#TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
+
+
 # Your stuff...
 # ------------------------------------------------------------------------------
 ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
@@ -425,5 +450,3 @@ MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.ne
 PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")
 TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True)
 
-
-NEWSLETTER_THUMBNAIL = "sorl-thumbnail"

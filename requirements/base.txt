@@ -25,6 +25,7 @@ bleach==3.3.0
 django-impersonate==1.7.3
 django-cookie-law==2.1.0
 django-ckeditor==6.1.0
+django-filebrowser==
 
 # Django REST Framework
 djangorestframework==3.10.3  # https://github.com/encode/django-rest-framework
