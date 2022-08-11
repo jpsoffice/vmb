@@ -91,6 +91,24 @@ THIRD_PARTY_APPS = [
     "impersonate",
     "cookielaw",
     "ckeditor",
+    "tinymce",
+    "sorl.thumbnail",
+    "newsletter",
+    "notifications",
+    # Wagtail Apps:
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail.core",
+    "modelcluster",
+    "taggit",
 ]
 
 LOCAL_APPS = [
@@ -159,6 +177,8 @@ MIDDLEWARE = [
     "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
+    "wagtail.core.middleware.SiteMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
 # STATIC
@@ -361,6 +381,7 @@ ADMIN_REORDER = (
         "app": "matrimony",
         "models": ("matrimony.Male", "matrimony.Female", "matrimony.Match",),
     },
+    {"app": "newsletter_app", "models": ("newsletter_app.MailMessage",),},
     {
         "app": "matrimony",
         "label": "Profile attributes",
@@ -380,6 +401,7 @@ ADMIN_REORDER = (
             "matrimony.Mentor",
         ),
     },
+    "newsletter",
     "post_office",
     "photologue",
     "sites",
@@ -387,6 +409,7 @@ ADMIN_REORDER = (
     "auth",
     "users",
     "django_celery_beat",
+    "notifications",
 )
 
 # djmoney-exchange
@@ -413,9 +436,37 @@ if POSTHOG_API_KEY:
         "distinct_id": lambda request: request.user and request.user.username
     }
 
+# django-newsletter
+# ------------------------------------------------------------------------------
+NEWSLETTER_THUMBNAIL = "sorl-thumbnail"
+NEWSLETTER_RICHTEXT_WIDGET = "tinymce.widgets.TinyMCE"
+
+# django-tinymce
+# ------------------------------------------------------------------------------
+
+TINYMCE_DEFAULT_CONFIG = {
+    "height": "320px",
+    "width": "960px",
+    "menubar": "file edit view insert format tools table help",
+    "plugins": "paste advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
+    "fullscreen insertdatetime media table paste code help wordcount spellchecker",
+    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
+    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
+    "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
+    "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
+    "a11ycheck ltr rtl | showcomments addcomment code",
+    "custom_undo_redo_levels": 10,
+}
+
+# TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
+
+
 # Your stuff...
 # ------------------------------------------------------------------------------
 ADMIN_SITE_HEADER = env("ADMIN_SITE_HEADER", default="VMB")
 MATRIMONY_SENDER_EMAIL = env("MATRIMONY_SENDER_EMAIL", default="admin@example.net")
 PROFILE_ID_PREFIX = env("PROFILE_ID_PREFIX", default="VMB")
 TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True)
+
+# Wagtail App:
+WAGTAIL_SITE_NAME = "vmb"

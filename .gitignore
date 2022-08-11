@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# ipython
+.ipython/
+
+# PID files
+*.pid
+
 # C extensions
 *.so
 
@@ -141,3 +147,6 @@ tags
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+### django-photologue ###
+vmb/media/photologue/photos/cache/CACHEDIR.TAG

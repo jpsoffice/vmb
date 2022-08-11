@@ -25,6 +25,7 @@ bleach==3.3.0
 django-impersonate==1.7.3
 django-cookie-law==2.1.0
 django-ckeditor==6.1.0
+wagtail==2.7      # https://github.com/wagtail/wagtail
 
 # Django REST Framework
 djangorestframework==3.10.3  # https://github.com/encode/django-rest-framework
@@ -39,3 +40,13 @@ django-admin-select2==1.0.1
 django-multiselectfield==0.1.12
 djangoql==0.14.0
 posthog==1.4.5
+
+# Django-newsletter and TinyMCE editor
+# ------------------------------------------------------------------------------
+django-newsletter==0.9      # https://github.com/jazzband/django-newsletter
+django-tinymce===3.4.0      # https://github.com/jazzband/django-tinymce
+sorl-thumbnail==12.6.3      # https://github.com/jazzband/sorl-thumbnail
+
+# Django Notification
+# ------------------------------------------------------------------------------
+django-notifications-hq==1.4.0

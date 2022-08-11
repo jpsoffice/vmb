@@ -1,0 +1,9 @@
+.alert-error {
+    color: #823040;
+    background-color: #fedee5;
+    border-color: #fed1da;
+}
+
+.bg-error {
+    background-color: #fa5c7c!important;
+}

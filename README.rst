@@ -46,8 +46,35 @@ Local development
 * You can now access the service by opening ``http://127.0.0.1:8000`` on your browser
 * Create a superuser for the application using ``docker-compose exec django /entrypoint /app/manage.py createsuperuser``
 * You can now login to the admin interface of the app using the superuser credentials from http://127.0.0.1:8000/admin
-* Load fixtures to get the app funcional ``docker-compose exec django /entrypoint /app/manage.py loaddata /app/vmb/matrimony/fixtures/*``
+* Load fixtures to get the app funcional ``docker-compose exec django /entrypoint /app/manage.py loaddata vmb/matrimony/fixtures/*.json``
 * Load currency data: ``docker-compose exec django /entrypoint /app/manage.py update_rates``
+
+Adding new dependency
+=====================
+
+By default, if you have to add a dependency, add it in ``requirements/base.txt``. If the dependency is specific to ``local`` or ``production`` environment, add it in ``requirements/local.txt`` or ``requirements/production.txt`` accordingly. If a Python dependency needs some system level packages to be installed as a prerequisite, add it in ``compose/local/django/Dockerfile`` and ``compose/production/django/Dockerfile``.
+
+Once done, you can rebuild the Docker images using ``docker-compose build``.
+
+Generate sample data
+====================
+
+In Django shell: ``docker-compose exec django /entrypoint /app/manage.py sell``, enter the following
+
+.. code-block::
+
+    from vmb.matrimony.factories import MatrimonyProfileFactory
+
+    MatrimonyProfileFactory.create_batch(1000)
+
+
+Update sequence_id for ``matrimony_profiles`` table in PostgreSQL from Django dbshell ``docker-compose exec django /entrypoint /app/manage.py dbsell``
+
+.. code-block::
+
+    SELECT setval('matrimony_profiles_id_seq', 1001, true);
+
+
 
 Settings
 --------

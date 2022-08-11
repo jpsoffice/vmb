@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static crispy_forms_tags %}
+
+{% block css %}
+{{ block.super }}
+{% endblock %}
+
+{% block content_title %}User Settings{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb active">User Settings</li>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="pr-0 bg-nav-pills col-sm-2 col-md-2 col-lg-2">
+      <ul class="nav nav-pills flex-sm-column mb-3">
+        <li class="nav-item">
+            {% url 'account_change_password' as account_change_password_url %}
+            <a href="{{ account_change_password_url }}" aria-expanded="false" class="nav-link rounded-0{% ifequal request.get_full_path account_change_password_url %} active{% endifequal %}">
+                <span class="d-md-block">Password</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            {% url 'account_email' as account_email_url %}
+            <a href="{{ account_email_url }}" aria-expanded="false" class="nav-link rounded-0{% ifequal request.get_full_path account_email_url %} active{% endifequal %}">
+                <span class="d-md-block">Email</span>
+            </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-10 col-md-10 col-lg-10">
+    {% block subnav_content %}{% endblock subnav_content %}
+    </div>
+  </div> <!-- End row -->
+{% endblock %}
