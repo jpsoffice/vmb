@@ -10,6 +10,11 @@ from django.views import defaults as default_views
 from django.conf.urls import url
 import notifications.urls
 
+# wagtail imports:
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.core import urls as wagtail_urls
+from wagtail.documents import urls as wagtaildocs_urls
+
 admin.site.site_header = settings.ADMIN_SITE_HEADER
 
 urlpatterns = [
@@ -30,6 +35,11 @@ urlpatterns = [
     url(
         "^inbox/notifications/", include(notifications.urls, namespace="notifications")
     ),
+    # Wagtail URLs:
+    path("cms/", include(wagtailadmin_urls)),
+    path("documents/", include(wagtaildocs_urls)),
+    path("wagtail-pages/", include(wagtail_urls)),
+    path("wagtail/", include(wagtail_urls)),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
