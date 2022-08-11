@@ -303,10 +303,7 @@ class MatrimonyProfile(BaseModel):
         "Language", on_delete=models.SET_NULL, null=True, blank=True
     )
     languages_can_speak = models.ManyToManyField(
-        "Language",
-        help_text="Languages you know",
-        related_name="speakers",
-        blank=True,
+        "Language", help_text="Languages you know", related_name="speakers", blank=True,
     )
     languages_can_read_write = models.ManyToManyField(
         "Language",
