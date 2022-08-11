@@ -21,7 +21,6 @@ urlpatterns = [
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
-    path("pages/", include("django.contrib.flatpages.urls")),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     path("impersonate/", include("impersonate.urls")),
@@ -38,7 +37,7 @@ urlpatterns = [
     # Wagtail URLs:
     path("cms/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
-    path("wagtail-pages/", include(wagtail_urls)),
+    path("pages/", include(wagtail_urls)),
     path("wagtail/", include(wagtail_urls)),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
