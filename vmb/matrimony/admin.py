@@ -510,7 +510,7 @@ class BaseMatrimonyProfileAdmin(
         ("caste", RelatedDropdownFilter),
         ("subcaste", RelatedDropdownFilter),
         ("current_country", RelatedDropdownFilter),
-        ("languages_known", RelatedDropdownFilter),
+        ("languages_can_speak", RelatedDropdownFilter),
         ("occupations", RelatedDropdownFilter),
         ("education", RelatedDropdownFilter),
         ("spiritual_master", RelatedDropdownFilter),
