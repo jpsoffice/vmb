@@ -147,3 +147,6 @@ tags
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+### django-photologue ###
+vmb/media/photologue/photos/cache/CACHEDIR.TAG
