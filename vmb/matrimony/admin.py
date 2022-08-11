@@ -364,7 +364,7 @@ class BaseMatrimonyProfileAdmin(
             {
                 "fields": [
                     ("dob", "ethnic_origin", "mother_tongue"),
-                    ("languages_known", "languages_read_write"),
+                    ("languages_can_speak", "languages_can_read_write"),
                     ("rounds_chanting"),
                     ("spiritual_status", "spiritual_master"),
                     "marital_status",

@@ -302,16 +302,16 @@ class MatrimonyProfile(BaseModel):
     mother_tongue = models.ForeignKey(
         "Language", on_delete=models.SET_NULL, null=True, blank=True
     )
-    languages_known = models.ManyToManyField(
+    languages_can_speak = models.ManyToManyField(
         "Language",
         help_text="Languages you know",
-        related_name="languages_known",
+        related_name="speakers",
         blank=True,
     )
-    languages_read_write = models.ManyToManyField(
+    languages_can_read_write = models.ManyToManyField(
         "Language",
         verbose_name="Languages you can read and write",
-        related_name="languages_read_write",
+        related_name="readers_and_writers",
         blank=True,
     )
 
@@ -503,16 +503,16 @@ class MatrimonyProfile(BaseModel):
     comments = GenericRelation("Comment")
 
     @property
-    def get_languages_known(self):
-        if self.languages_known is not None:
-            return ", ".join(p.name for p in self.languages_known.all())
+    def get_languages_can_speak(self):
+        if self.languages_can_speak is not None:
+            return ", ".join(p.name for p in self.languages_can_speak.all())
         else:
             return None
 
     @property
-    def get_languages_read_write(self):
-        if self.languages_read_write is not None:
-            return ", ".join(p.name for p in self.languages_read_write.all())
+    def get_languages_can_read_write(self):
+        if self.languages_can_read_write is not None:
+            return ", ".join(p.name for p in self.languages_can_read_write.all())
         else:
             return None
 
@@ -739,7 +739,7 @@ class MatrimonyProfile(BaseModel):
             else self.expectations.languages_can_speak.all()
         )
         if languages_can_speak:
-            q = q & Q(languages_known__in=languages_can_speak)
+            q = q & Q(languages_can_speak__in=languages_can_speak)
 
         languages_can_read_write = (
             querydata.get("languages_can_read_write")
