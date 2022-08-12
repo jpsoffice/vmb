@@ -9,7 +9,7 @@
           <div class="col-md-8 col-lg-9">
               <div class="card-body">
                   {% ifequal match_response 'REJ' %}<div class="ribbon ribbon-danger float-right"><span>You got rejected</span></div>{% endifequal %}
-                  <h5 class="card-title"><a href="{% url 'matrimony:profile-details' profile.profile_id %}" class="text-success stretched-link">{{ profile.profile_id }} {% if profile.spiritual_name %}({{ profile.spiritual_name }}){% endif %}</a></h5>
+                  <h5 class="card-title"><a href="{% url 'matrimony:profile-details' profile.profile_id %}" class="text-success stretched-link">{{ profile.profile_id }}</a></h5>
                   <p class="card-text">
                     <strong>Age: </strong>{{ profile.age }},
                     <strong>Height: </strong>{{ profile.height }} cms,

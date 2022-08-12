@@ -46,7 +46,7 @@
                         <strong>Ethnicity:</strong><span class="ml-1 text-white-50">{{ profile.ethnic_origin.nationality }}</span>
                         <strong>Education:</strong><span class="ml-1 text-white-50">{% for education in profile.education.all %}{{ education.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
                         <strong>Occupation:</strong><span class="ml-1 text-white-50">{% for occupation in profile.educations.all %}{{ occupation.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
-                        <strong>Languages known:</strong><span class="ml-1 text-white-50">{% for language in profile.languages_can_speak %}{{ language.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
+                        <strong>Languages known:</strong><span class="ml-1 text-white-50">{% for language in profile.languages_can_speak.all %}{{ language.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
                     </p>
                     {% comment %}
                     <p class="card-text">
