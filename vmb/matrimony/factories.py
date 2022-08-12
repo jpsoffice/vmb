@@ -2,11 +2,12 @@ import datetime
 import random
 from hashlib import md5
 import factory
-from factory.fuzzy import FuzzyDate, FuzzyInteger
+from factory.fuzzy import FuzzyChoice, FuzzyDate, FuzzyInteger
 
 from django.conf import settings
 
 from vmb.users.models import User
+from vmb.matrimony.models import Language
 from . import models
 
 
@@ -26,7 +27,7 @@ SPIRITUAL_MASTERS_IDS_LIST = [
     13,
 ]
 
-MOTHER_TONGUE_CODES = [19, 107, 58, 84, 157, 156]
+LANGUAGE_IDS = [19, 107, 58, 84]
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -60,7 +61,7 @@ class MatrimonyProfileFactory(factory.django.DjangoModelFactory):
     rounds_chanting = factory.Iterator([4, 8, 16])
     email = factory.Sequence(lambda n: "user_%d@example.com" % n)
     phone = factory.Sequence(lambda n: "999888%04d" % n)
-    gender = factory.Iterator(["M", "F"])
+    gender = FuzzyChoice(["M", "F"])
     profile_id = factory.LazyAttribute(lambda o: generate_profile_id(o))
     user = factory.SubFactory(
         UserFactory,
@@ -70,11 +71,11 @@ class MatrimonyProfileFactory(factory.django.DjangoModelFactory):
         phone=factory.SelfAttribute("..phone"),
     )
 
-    status = factory.Iterator(["00", "01", "20", "30"])
-    mother_tongue = factory.Iterator(
-        models.Language.objects.filter(id__in=MOTHER_TONGUE_CODES)
+    status = FuzzyChoice(["00", "01", "20", "30"])
+    mother_tongue = FuzzyChoice(
+        models.Language.objects.filter(id__in=LANGUAGE_IDS)
     )
-    marital_status = factory.Iterator(
+    marital_status = FuzzyChoice(
         [item[0] for item in models.profiles.MARITAL_STATUS]
     )
     ethnic_origin = factory.Iterator(models.Nationality.objects.filter(id__in=[57]))
@@ -121,15 +122,27 @@ class MatrimonyProfileFactory(factory.django.DjangoModelFactory):
 
     @factory.post_generation
     def post(obj, create, extracted, **kwargs):
+        obj.languages_can_speak.add(obj.mother_tongue)
+
+        spoken_language_ids = random.sample(LANGUAGE_IDS, 3)
+        for l_id in spoken_language_ids:
+            obj.languages_can_speak.add(Language.objects.get(id=l_id))
+        for l_id in random.sample(spoken_language_ids, 2):
+            obj.languages_can_read_write.add(Language.objects.get(id=l_id))
+
+        obj.save()
+
         expectations = obj.expectations
         expectations.age_from = obj.age + random.randint(-5, 0)
         expectations.age_to = obj.age + random.randint(0, 5)
         expectations.height_from = obj.height + random.randint(-5, 0)
         expectations.height_to = obj.height + random.randint(0, 5)
 
-        expect_same_mother_tongue = random.randint(0, 1)
-        if expect_same_mother_tongue:
-            l = models.Language.objects.get(code=obj.mother_tongue.code)
-            expectations.mother_tongues.add(l)
+
+        l = models.Language.objects.get(code=obj.mother_tongue.code)
+        expectations.mother_tongues.add(l)
+
+        for l in obj.languages_can_speak.all():
+           expectations.languages_can_speak.add(l)
 
         expectations.save()
