@@ -2,11 +2,12 @@ import datetime
 import random
 from hashlib import md5
 import factory
-from factory.fuzzy import FuzzyDate, FuzzyInteger
+from factory.fuzzy import FuzzyChoice, FuzzyDate, FuzzyInteger
 
 from django.conf import settings
 
 from vmb.users.models import User
+from vmb.matrimony.models import Language
 from . import models
 
 
@@ -26,7 +27,7 @@ SPIRITUAL_MASTERS_IDS_LIST = [
     13,
 ]
 
-LANGUAGE_IDS = [19, 107, 58, 84, 157, 156]
+LANGUAGE_IDS = [19, 107, 58, 84]
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -60,7 +61,7 @@ class MatrimonyProfileFactory(factory.django.DjangoModelFactory):
     rounds_chanting = factory.Iterator([4, 8, 16])
     email = factory.Sequence(lambda n: "user_%d@example.com" % n)
     phone = factory.Sequence(lambda n: "999888%04d" % n)
-    gender = factory.Iterator(["M", "F"])
+    gender = FuzzyChoice(["M", "F"])
     profile_id = factory.LazyAttribute(lambda o: generate_profile_id(o))
     user = factory.SubFactory(
         UserFactory,
@@ -70,11 +71,11 @@ class MatrimonyProfileFactory(factory.django.DjangoModelFactory):
         phone=factory.SelfAttribute("..phone"),
     )
 
-    status = factory.Iterator(["00", "01", "20", "30"])
-    mother_tongue = factory.Iterator(
+    status = FuzzyChoice(["00", "01", "20", "30"])
+    mother_tongue = FuzzyChoice(
         models.Language.objects.filter(id__in=LANGUAGE_IDS)
     )
-    marital_status = factory.Iterator(
+    marital_status = FuzzyChoice(
         [item[0] for item in models.profiles.MARITAL_STATUS]
     )
     ethnic_origin = factory.Iterator(models.Nationality.objects.filter(id__in=[57]))
@@ -140,6 +141,8 @@ class MatrimonyProfileFactory(factory.django.DjangoModelFactory):
 
         l = models.Language.objects.get(code=obj.mother_tongue.code)
         expectations.mother_tongues.add(l)
-        expectations.languages_can_speak.add(l)
+
+        for l in obj.languages_can_speak.all():
+           expectations.languages_can_speak.add(l)
 
         expectations.save()
