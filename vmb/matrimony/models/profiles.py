@@ -648,12 +648,12 @@ class MatrimonyProfile(BaseModel):
         )
         if age_from:
             q = q & Q(
-                dob__gte=(timezone.datetime.now() - relativedelta(years=age_from))
+                dob__lte=(timezone.datetime.now() - relativedelta(years=age_from))
             )
 
         age_to = querydata.get("age_to") if querydata else self.expectations.age_to
         if age_to:
-            q = q & Q(dob__lte=(timezone.datetime.now() - relativedelta(years=age_to)))
+            q = q & Q(dob__gte=(timezone.datetime.now() - relativedelta(years=age_to)))
 
         height_from = (
             querydata.get("height_from") if querydata else self.expectations.height_from
