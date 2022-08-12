@@ -177,6 +177,8 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "spiritual_master",
             "ethnic_origin",
             "mother_tongue",
+            "languages_can_speak",
+            "languages_can_read_write",
             "children_count",
             "height",
             "weight",
@@ -240,6 +242,26 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             Row(
                 Column(
                     Field("mother_tongue", css_class="select2", data_toggle="select2"),
+                    css_class="form-group col-md-6 md-3",
+                ),
+                Column(
+                    Field(
+                        "languages_can_speak",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
+                    css_class="form-group col-md-6 md-3",
+                ),
+            ),
+            Row(
+                Column(
+                    Field(
+                        "languages_can_read_write",
+                        css_class="select2 form-control select2-multiple",
+                        data_toggle="select2",
+                        multiple="multiple",
+                    ),
                     css_class="form-group col-md-6 md-3",
                 ),
                 Column("rounds_chanting", css_class="form-group col-md-6 md-3"),
