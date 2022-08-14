@@ -2,18 +2,35 @@
 
 {% load crispy_forms_tags %}
 
-{% block breadcrumb %}
-{% endblock %}
+{% block content_title %}Search{% endblock %}
+
+{% block breadcrumb %}Search{% endblock %}
 
 {% block content %}
-{% if not request.user.matrimony_profile.is_registered %}
+{% if search_disabled %}
 <div class="row">
   <div class="col-md-12">
-    <h2>Search disabled!</h2>
-    <p>To access this page, please complete your matrimony profile to complete the registration process.</p> 
-    <p>
-      <a href="{% url 'matrimony:profile-edit' 'basic' %}" class="btn btn-primary">Complete registration</a>
-    </p>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Search disabled!</h2>
+        <div class="card-text">
+          <p>Your profile is not active. It could happen due to the following reasons:</p>
+          <ul>
+            <li>
+              You have not completely filled your matrimony profile. Click <a href="{% url 'matrimony:profile-edit' 'basic' %}">here</a> to complete your matrimony profle.
+            </li>
+            <li>
+              Your matrimony profile is waiting to be reviewed and verified by our match makers. Please reach to our match makers at <a href="mailto:{{email_contact}}">{{ email_contact }}</a>.
+            </li>
+            <li>
+              Your profile has been deactivated. Please reach out to our match makers at <a href="mailto:{{email_contact}}">{{ email_contact }}</a> for help.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
 {% else %}

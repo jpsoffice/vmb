@@ -1,6 +1,7 @@
 import os
 import uuid
 
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect
@@ -207,6 +208,16 @@ def matches(request):
 @login_required
 def search(request):
     profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
+
+    if profile.status < "20":
+        return render(request, "matrimony/search.html", {
+            "search_disabled": True,
+            "profiles": None,
+            "search_form": None,
+            "querydata": None,
+            "email_contact": settings.EMAIL_CONTACT
+        })
+
     expectations = profile.expectations
     form = MatrimonyProfileSearchForm(instance=expectations)
     profiles = []
