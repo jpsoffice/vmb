@@ -23,7 +23,7 @@ RUN pip install --no-cache-dir -r /requirements/production.txt \
 
 COPY --chown=django:django ./compose/production/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
-RUN chmod +x /
+RUN chmod +x /entrypoint
 
 COPY --chown=django:django ./compose/production/django/start /start
 RUN sed -i 's/\r$//g' /start
