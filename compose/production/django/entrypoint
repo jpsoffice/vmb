@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 set -o errexit
 set -o pipefail
 set -o nounset
 
+# N.B. If only .env files supported variable expansion...
 export CELERY_BROKER_URL="${REDIS_URL}"
 
 if [ -z "${POSTGRES_USER}" ]; then
@@ -15,9 +16,7 @@ export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES
 postgres_ready() {
 python << END
 import sys
-
 import psycopg2
-
 try:
     psycopg2.connect(
         dbname="${POSTGRES_DB}",
@@ -29,7 +28,6 @@ try:
 except psycopg2.OperationalError:
     sys.exit(-1)
 sys.exit(0)
-
 END
 }
 until postgres_ready; do

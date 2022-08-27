@@ -1,52 +1,53 @@
-pytz==2019.3  # https://github.com/stub42/pytz
-python-slugify==4.0.0  # https://github.com/un33k/python-slugify
-Pillow==6.2.1  # https://github.com/python-pillow/Pillow
-argon2-cffi==19.2.0  # https://github.com/hynek/argon2_cffi
-redis==3.3.11  # https://github.com/antirez/redis
-celery==4.4.2  # pyup: < 5.0  # https://github.com/celery/celery
-django-celery-beat==2.0.0  # https://github.com/celery/django-celery-beat
-flower==0.9.4  # https://github.com/mher/flower
+pytz==2021.1  # https://github.com/stub42/pytz
+python-slugify==4.0.1 # https://github.com/un33k/python-slugify
+Pillow==8.1.0  # https://github.com/python-pillow/Pillow
+argon2-cffi==20.1.0  # https://github.com/hynek/argon2_cffi
+redis==3.5.3  # https://github.com/antirez/redis
+celery==4.4.6  # pyup: < 5.0,!=4.4.7  # https://github.com/celery/celery
+django-celery-beat==2.2.0  # https://github.com/celery/django-celery-beat
+flower==0.9.7  # https://github.com/mher/flower
 pipdeptree
 
 # Django
 # ------------------------------------------------------------------------------
-django==2.2.7  # pyup: < 3.0  # https://www.djangoproject.com/
+django==3.0.13  # pyup: < 3.1  # https://www.djangoproject.com/
 django-environ==0.4.5  # https://github.com/joke2k/django-environ
-django-model-utils==3.2.0  # https://github.com/jazzband/django-model-utils
-django-allauth==0.40.0  # https://github.com/pennersr/django-allauth
-django-crispy-forms==1.8.0  # https://github.com/django-crispy-forms/django-crispy-forms
-django-redis==4.10.0  # https://github.com/niwinz/django-redis
+django-model-utils==4.1.1  # https://github.com/jazzband/django-model-utils
+django-allauth==0.44.0  # https://github.com/pennersr/django-allauth
+django-crispy-forms==1.11.1  # https://github.com/django-crispy-forms/django-crispy-forms
+django-redis==4.12.1  # https://github.com/niwinz/django-redis
 django-photologue==3.15  # https://github.com/richardbarran/django-photologue
 django-modeladmin-reorder==0.3.1  # https://github.com/mishbahr/django-modeladmin-reorder
-dj-places==3.1.0
+dj-places==5.1.0
 django-tabbed-admin==1.0.4
-django-post_office==3.5.3
-bleach==3.3.0
-django-impersonate==1.7.3
-django-cookie-law==2.1.0
-django-ckeditor==6.1.0
-wagtail==2.7      # https://github.com/wagtail/wagtail
+django-post_office==3.6.1
+bleach==5.0.1
+django-impersonate==1.8.2
+django-cookie-law==2.2.0
+django-ckeditor==6.3.2
+wagtail==2.15.5      # https://github.com/wagtail/wagtail
 
 # Django REST Framework
-djangorestframework==3.10.3  # https://github.com/encode/django-rest-framework
+djangorestframework==3.12.2  # https://github.com/encode/django-rest-framework
+django-cors-headers==3.7.0 # https://github.com/adamchainz/django-cors-headers
 
 coreapi==2.3.3  # https://github.com/core-api/python-client
 django-admin-numeric-filter==0.1.6
-django-money==2.1
+django-money==3.0.0
 django-money[exchange]
-django-admin-rangefilter==0.5.4
+django-admin-rangefilter==0.8.7
 django-admin-list-filter-dropdown==1.0.3
 django-admin-select2==1.0.1
 django-multiselectfield==0.1.12
-djangoql==0.14.0
-posthog==1.4.5
+djangoql==0.17.0
+posthog==2.1.0
 
 # Django-newsletter and TinyMCE editor
 # ------------------------------------------------------------------------------
-django-newsletter==0.9      # https://github.com/jazzband/django-newsletter
+django-newsletter==0.9.1      # https://github.com/jazzband/django-newsletter
 django-tinymce===3.4.0      # https://github.com/jazzband/django-tinymce
 sorl-thumbnail==12.6.3      # https://github.com/jazzband/sorl-thumbnail
 
 # Django Notification
 # ------------------------------------------------------------------------------
-django-notifications-hq==1.4.0
+django-notifications-hq==1.7.0

@@ -177,7 +177,6 @@ MIDDLEWARE = [
     "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
-    "wagtail.core.middleware.SiteMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
@@ -232,6 +231,9 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "vmb.utils.context_processors.extra_context",
             ],
+            "libraries" : {
+                "staticfiles": "django.templatetags.static",
+            }
         },
     }
 ]
