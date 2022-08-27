@@ -41,6 +41,8 @@ COPY --chown=django:django ./compose/production/django/celery/beat/start /start-
 RUN sed -i 's/\r$//g' /start-celerybeat
 RUN chmod +x /start-celerybeat
 
+COPY --chown=django:django . /app
+
 USER django
 
 WORKDIR /app
