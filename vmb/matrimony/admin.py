@@ -677,6 +677,7 @@ class MatchAdmin(admin.ModelAdmin):
         "assignee",
         "male_response_updated_at",
         "female_response_updated_at",
+        "created_by",
     )
     raw_id_fields = ("male", "female")
     inlines = [CommentInline]

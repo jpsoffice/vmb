@@ -199,10 +199,26 @@ def profile_photo_action(request, photo_id, action):
 
 
 @login_required
-def matches(request):
+def matches(request, category=None):
     profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
-    context = {"matches_suggested": profile.matching_profiles_list}
-    return render(request, "matrimony/matches.html", context)
+    if category == "suggested":
+        matches = profile.female_matches.filter(sender_gender=None) if profile.gender == "M" else profile.male_matches.filter(sender_gender=None)
+    elif category == "sent":
+        matches = profile.matches.filter(sender_gender=profile.gender)
+    elif category == "received":
+        matches = profile.matches.filter(sender_gender="F" if profile.gender == "M" else "M")
+    else:
+        return HttpResponseRedirect(reverse("matrimony:matches", args=["suggested"]))
+
+    _matches = [{
+        "id": m.id,
+        "profile": m.male if profile.gender == "F" else m.female,
+        "your_response": m.male_response if profile.gender == "M" else m.female_response,
+        "response": m.male_response if profile.gender == "F" else m.female_response,
+        "show_photo": m.female_photos_visibility if profile.gender == "M" else m.male_photos_visibility,
+    } for m in matches]
+
+    return render(request, "matrimony/matches.html", {"category": category, "matches": _matches})
 
 
 @login_required

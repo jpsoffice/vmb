@@ -28,6 +28,7 @@ urlpatterns = [
     ),
     path("search/", search, name="search"),
     path("matches/", matches, name="matches"),
+    path("matches/<slug:category>/", matches, name="matches"),
     path("match/<int:id>", match_details, name="match-details"),
     path("match/<int:id>/<slug:action>", match_action, name="match-action"),
     path("mark_as_read/<int:pk>", mark_as_read, name="mark_as_read"),

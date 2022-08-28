@@ -1290,8 +1290,11 @@ MATCH_RESPONSE_CHOICES = (("", _("")), ("ACP", _("Accepted")), ("REJ", _("Reject
 MATCH_STATUS_CHOICES = (
     ("", _("")),
     ("SUG", _("Suggested")),
+    ("SNT", _("Sent")),
     ("TON", _("To notify")),
     ("NTF", _("Notified")),
+    ("ACP", _("Accepted")),
+    ("REJ", _("Rejected")),
     ("FOL", _("Follow up")),
     ("PRD", _("Parties discussing")),
     ("MRC", _("Marriage cancelled")),
@@ -1299,8 +1302,20 @@ MATCH_STATUS_CHOICES = (
     ("MRD", _("Married")),
 )
 
+MATCH_CATEGORY_CHOICES = (
+    ("USR", _("User")),
+    ("STF", _("Staff")),
+    ("SYS", _("Auto generated")),
+)
 
 class Match(BaseModel):
+    category = models.CharField(
+        max_length=3, choices=MATCH_CATEGORY_CHOICES, blank=True, default="STF"
+    )
+    is_mutual = models.NullBooleanField(blank=True, help_text="Is it a mutual match based on expectations?")
+    is_visible = models.NullBooleanField(blank=True, help_text="Is match visible to users?")
+    notified = models.NullBooleanField(blank=True)
+
     male = models.ForeignKey(
         Male,
         on_delete=models.SET_NULL,
@@ -1308,6 +1323,7 @@ class Match(BaseModel):
         blank=True,
         related_name="female_matches",
     )
+
     male_response = models.CharField(
         max_length=3, choices=MATCH_RESPONSE_CHOICES, blank=True, default=""
     )
@@ -1327,12 +1343,17 @@ class Match(BaseModel):
     female_photos_visibility = models.NullBooleanField(blank=True)
     female_response_updated_at = models.DateTimeField(blank=True, null=True)
 
+    sender_gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True, blank=True)
+
     status = models.CharField(
         max_length=3, choices=MATCH_STATUS_CHOICES, blank=True, default=""
     )
     assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     comments = GenericRelation("Comment")
 
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+    )
     updated_by = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
     )
@@ -1344,6 +1365,10 @@ class Match(BaseModel):
 
     def __str__(self):
         return f"{self.male}/{self.female}"
+
+    @property
+    def response(self):
+        return "Accepted" if self.male_response == self.female_response == "ACP" else "Rejected"
 
     class Meta:
         db_table = "matrimony_matches"
