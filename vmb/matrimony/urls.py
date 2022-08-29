@@ -7,6 +7,7 @@ from vmb.matrimony.views import (
     profile_photos_add,
     profile_photo_action,
     matches,
+    match_create,
     match_details,
     match_action,
     search,
@@ -31,6 +32,7 @@ urlpatterns = [
     path("matches/<slug:category>/", matches, name="matches"),
     path("match/<int:id>", match_details, name="match-details"),
     path("match/<int:id>/<slug:action>", match_action, name="match-action"),
+    path("match/<slug:profile_id>/create/", match_create, name="match-create"),
     path("mark_as_read/<int:pk>", mark_as_read, name="mark_as_read"),
     path("mark_all_as_read/", mark_all_as_read, name="mark_all_as_read"),
     path(

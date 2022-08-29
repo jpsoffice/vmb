@@ -89,10 +89,9 @@
 {{ block.super }}
 <script type="text/javascript">
 $(function(){
-  $('.match-action').on('click', function(e){
+  $('.match-create').on('click', function(e){
     e.preventDefault();
     actionUrl = $(this).data('action');
-    $.ajax
     $.ajax({
       type: "POST",
       headers: {

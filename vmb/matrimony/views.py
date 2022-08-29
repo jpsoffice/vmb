@@ -3,6 +3,7 @@ import uuid
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
@@ -279,6 +280,36 @@ def match_action(request, id, action):
         match.female_response = action_code
         match.female_response_updated_at = timezone.now()
     match.save()
+
+    return JsonResponse(data={})
+
+
+@require_http_methods(["POST"])
+@login_required
+def match_create(request, profile_id):
+    profile = request.user.matrimony_profile
+
+    recipient_profile = get_object_or_404(MatrimonyProfile, profile_id=profile_id, gender="M" if profile.gender == "F" else "F")
+
+    defaults = {
+        "sender_gender": profile.gender,
+        "category": "USR",
+        "created_by": request.user,
+        "updated_by": request.user,
+    }
+    kwargs = {
+        "male": profile if profile.gender == "M" else recipient_profile,
+        "female": recipient_profile if profile.gender == "M" else profile,
+        "defaults": defaults,
+    }
+    match, created = Match.objects.get_or_create(**kwargs)
+
+    response_data = {}
+
+    if created:
+        messages.add_message(request, messages.SUCCESS, "Match request sent. You can view 'Sent' tab in your Matches page")
+    else:
+        messages.add_message(request, messages.ERROR, "A match already exists under '{}' tab in your Matches page".format("Suggested" if match.sender_gender is None else "Received"))
 
     return JsonResponse(data={})
 

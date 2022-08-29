@@ -19,12 +19,9 @@
                     <strong>Education: </strong>{% for education in profile.education.all %}{{ education.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}
                     <strong>Occupation: </strong>{% for occupation in profile.educations.all %}{{ occupation.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}
                   </p>
-                  {% comment %}
                   <p class="card-text">
-                      <a href="#" class="btn btn-success btn-sm match-action{% ifequal response 'ACP' %} disabled{% endifequal %}"{% ifequal response 'ACP' %} aria-disabled="true"{% endifequal %} data-action="#" style="position:relative; z-index:2;"><i class="uil-check"></i> Accept{% ifequal response 'ACP' %}ed{% endifequal %}</a>
-                      <a href="#" class="btn btn-danger btn-sm match-action{% ifequal response 'REJ' %} disabled{% endifequal %}"{% ifequal response 'REJ' %} aria-disabled="true"{% endifequal %} data-action="#" style="position:relative; z-index:2;"><i class="uil-times"></i> Reject{% ifequal response 'REJ' %}ed{% endifequal %}</a>
+                      <a href="#" class="btn btn-success btn-sm match-create" data-action="{% url 'matrimony:match-create' profile.profile_id %}" style="position:relative; z-index:2;"><i class="mdi mdi-send"></i> Send match request</a>
                   </p>
-                  {% endcomment %}
               </div> <!-- end card-body-->
           </div> <!-- end col -->
       </div> <!-- end row-->
