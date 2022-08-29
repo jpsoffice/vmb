@@ -46,8 +46,8 @@
                         <strong>Current location:</strong><span class="ml-1 text-white-50">{{ match_profile.current_city }}, {{ match_profile.current_state }}, {{ match_profile.current_country.name }}</span>
                         <strong>Ethnicity:</strong><span class="ml-1 text-white-50">{{ match_profile.ethnic_origin.nationality }}</span>
                         <strong>Education:</strong><span class="ml-1 text-white-50">{% for education in match_profile.education.all %}{{ education.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
-                        <strong>Occupation:</strong><span class="ml-1 text-white-50">{% for occupation in match_profile.educations.all %}{{ occupation.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
-                        <strong>Languages known:</strong><span class="ml-1 text-white-50">{% for language in match_profile.languages_can_speak %}{{ language.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
+                        <strong>Occupation:</strong><span class="ml-1 text-white-50">{% for occupation in match_profile.occupations.all %}{{ occupation.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
+                        <strong>Languages known:</strong><span class="ml-1 text-white-50">{% for language in match_profile.languages_can_speak.all %}{{ language.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
                     </p>
                     <p class="card-text">
                         <a href="#" class="btn btn-success btn-sm match-action{% ifequal response 'ACP' %} disabled{% endifequal %}"{% ifequal response 'ACP' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' match.id 'accept' %}" style="position:relative; z-index:2;"><i class="uil-check"></i> Accept{% ifequal response 'ACP' %}ed{% endifequal %}</a>
