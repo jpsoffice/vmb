@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block breadcrumb %}
 <li class="breadcrumb active">Matches</li>
 {% endblock %}
@@ -10,20 +12,20 @@
     <ul class="nav nav-tabs mb-3">
       <li class="nav-item">
           <a href="{% url 'matrimony:matches' 'suggested' %}" aria-expanded="false" class="nav-link{% ifequal category 'suggested' %} active{% endifequal %}">
-              <i class="mdi mdi-home-variant d-md-none d-block"></i>
-              <span class="d-none d-md-block">Suggested</span>
+              <i class="mdi mdi-hand-heart"></i>
+              <span>Suggested</span>
           </a>
       </li>
       <li class="nav-item">
           <a href="{% url 'matrimony:matches' 'sent' %}" aria-expanded="true" class="nav-link{% ifequal category 'sent' %} active{% endifequal %}">
-              <i class="mdi mdi-account-circle d-md-none d-block"></i>
-              <span class="d-none d-md-block">Sent</span>
+              <i class="mdi mdi-send"></i>
+              <span>Sent</span>
           </a>
       </li>
       <li class="nav-item">
           <a href="{% url 'matrimony:matches' 'received' %}" aria-expanded="false" class="nav-link{% ifequal category 'received' %} active{% endifequal %}">
-              <i class="mdi mdi-settings-outline d-md-none d-block"></i>
-              <span class="d-none d-md-block">Received</span>
+              <i class="mdi mdi-call-received"></i>
+              <span>Received</span>
           </a>
       </li>
     </ul>
@@ -47,12 +49,12 @@
         <div class="card{% ifequal m.response 'REJ' %} ribbon-box{% endifequal %}"{% ifequal m.response 'REJ' %} style="opacity: 1;"{% endifequal %}>
           <div class="row no-gutters">
               <div class="col-md-4 col-lg-3">
-              <img src="{{ m.profile.primary_image_url }}" class="card-img" alt="..." style="max-height: 320px; object-fit: cover;{% if not show_photo %} filter: blur(8px); -webkit-filter: blur(8px);{% endif %}">
+              <img src="{% if profile.primary_image_url %}{{ profile.primary_image_url }}{% else %}{% static 'images/no-image-icon.png' %}{% endif %}" class="card-img" alt="..." style="max-height: 320px; object-fit: cover;{% if not show_photo %} filter: blur(8px); -webkit-filter: blur(8px);{% endif %}">
               </div>
               <div class="col-md-8 col-lg-9">
                   <div class="card-body">
                       {% ifequal m.response 'REJ' %}<div class="ribbon ribbon-danger float-right"><span>You got rejected</span></div>{% endifequal %}
-                      <h5 class="card-title"><a href="{% url 'matrimony:match-details' m.id %}" class="text-success stretched-link">{{ m.profile.name }} {% if m.profile.spiritual_name %}({{ m.profile.spiritual_name }}){% endif %}</a></h5>
+                      <h5 class="card-title"><a href="{% url 'matrimony:match-details' m.id %}" class="text-success stretched-link">{{ m.profile.profile_id }}</a></h5>
                       <p class="card-text">
                         <strong>Age: </strong>{{ m.profile.age }},
                         <strong>Height: </strong>{{ m.profile.height }} cms,
@@ -63,8 +65,10 @@
                         <strong>Occupation: </strong>{% for occupation in m.profile.educations.all %}{{ occupation.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}
                       </p>
                       <p class="card-text">
+                        {% if category == "received" or category == "suggested" %}
                           <a href="#" class="btn btn-success btn-sm match-action{% ifequal m.your_response 'ACP' %} disabled{% endifequal %}"{% ifequal m.your_response 'ACP' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' m.id 'accept' %}" style="position:relative; z-index:2;"><i class="uil-check"></i> Accept{% ifequal m.your_response 'ACP' %}ed{% endifequal %}</a>
                           <a href="#" class="btn btn-danger btn-sm match-action{% ifequal m.your_response 'REJ' %} disabled{% endifequal %}"{% ifequal m.your_response 'REJ' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' m.id 'reject' %}" style="position:relative; z-index:2;"><i class="uil-times"></i> Reject{% ifequal m.your_response 'REJ' %}ed{% endifequal %}</a>
+                        {% endif %}
                       </p>
                   </div> <!-- end card-body-->
               </div> <!-- end col -->
