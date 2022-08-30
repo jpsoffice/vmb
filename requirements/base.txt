@@ -39,7 +39,7 @@ django-admin-rangefilter==0.8.7
 django-admin-list-filter-dropdown==1.0.3
 django-admin-select2==1.0.1
 django-multiselectfield==0.1.12
-djangoql==0.17.0
+djangoql==0.17.1
 posthog==2.1.0
 
 # Django-newsletter and TinyMCE editor

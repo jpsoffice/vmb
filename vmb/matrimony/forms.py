@@ -692,7 +692,6 @@ class MatrimonyProfilePhotosForm(forms.Form):
             "photos_visible_to_all_matches",
             Submit("submit", "Next" if self.wizard else "Save"),
         )
-        self.fields.required = True
 
     def save(self, *args, **kwargs):
         self.instance.photos_visible_to_all_matches = self.cleaned_data[
