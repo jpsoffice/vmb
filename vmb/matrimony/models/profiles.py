@@ -1314,6 +1314,7 @@ class Match(BaseModel):
     )
     is_mutual = models.NullBooleanField(blank=True, help_text="Is it a mutual match based on expectations?")
     is_visible = models.NullBooleanField(blank=True, help_text="Is match visible to users?")
+    show_personal_info = models.NullBooleanField(blank=True, default=False, help_text="Show personal profile info")
     notified = models.NullBooleanField(blank=True)
 
     male = models.ForeignKey(
