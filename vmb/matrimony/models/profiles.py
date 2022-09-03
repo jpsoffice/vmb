@@ -1289,14 +1289,13 @@ class Female(MatrimonyProfile):
 MATCH_RESPONSE_CHOICES = (("", _("")), ("ACP", _("Accepted")), ("REJ", _("Rejected")))
 MATCH_STATUS_CHOICES = (
     ("", _("")),
+    ("TSG", _("To suggest")),
     ("SUG", _("Suggested")),
     ("SNT", _("Sent")),
-    ("TON", _("To notify")),
-    ("NTF", _("Notified")),
     ("ACP", _("Accepted")),
     ("REJ", _("Rejected")),
-    ("FOL", _("Follow up")),
-    ("PRD", _("Parties discussing")),
+    ("NIM", _("Need info from matches")),
+    ("CNV", _("In conversation")),
     ("MRC", _("Marriage cancelled")),
     ("MRF", _("Marriage finalized")),
     ("MRD", _("Married")),
@@ -1313,9 +1312,11 @@ class Match(BaseModel):
         max_length=3, choices=MATCH_CATEGORY_CHOICES, blank=True, default="STF"
     )
     is_mutual = models.NullBooleanField(blank=True, help_text="Is it a mutual match based on expectations?")
-    is_visible = models.NullBooleanField(blank=True, help_text="Is match visible to users?")
-    show_personal_info = models.NullBooleanField(blank=True, default=False, help_text="Show personal profile info")
+    is_visible = models.NullBooleanField(blank=True, default=True, help_text="Is match visible to users?")
+    show_entire_profile = models.NullBooleanField(blank=True, default=False, help_text="Show entire profile info")
+
     notified = models.NullBooleanField(blank=True)
+    notification_time = models.DateTimeField(blank=True, null=True)
 
     male = models.ForeignKey(
         Male,
