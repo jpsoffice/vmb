@@ -109,6 +109,7 @@ THIRD_PARTY_APPS = [
     "wagtail.core",
     "modelcluster",
     "taggit",
+    "flags",
 ]
 
 LOCAL_APPS = [
@@ -180,6 +181,9 @@ MIDDLEWARE = [
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
+# Messages
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+
 # STATIC
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
@@ -232,9 +236,9 @@ TEMPLATES = [
                 "cookielaw.context_processors.cookielaw",
                 "vmb.utils.context_processors.extra_context",
             ],
-            "libraries" : {
+            "libraries": {
                 "staticfiles": "django.templatetags.static",
-            }
+            },
         },
     }
 ]
@@ -328,7 +332,9 @@ LOGGING = {
         },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
-    "loggers": {"post_office": {"handlers": ["post_office"], "level": "INFO"},},
+    "loggers": {
+        "post_office": {"handlers": ["post_office"], "level": "INFO"},
+    },
 }
 
 # Celery
@@ -382,9 +388,16 @@ ACCOUNT_DEFAULT_HTTP_PROTOCOL = env("ACCOUNT_DEFAULT_HTTP_PROTOCOL", default="ht
 ADMIN_REORDER = (
     {
         "app": "matrimony",
-        "models": ("matrimony.Male", "matrimony.Female", "matrimony.Match",),
+        "models": (
+            "matrimony.Male",
+            "matrimony.Female",
+            "matrimony.Match",
+        ),
     },
-    {"app": "newsletter_app", "models": ("newsletter_app.MailMessage",),},
+    {
+        "app": "newsletter_app",
+        "models": ("newsletter_app.MailMessage",),
+    },
     {
         "app": "matrimony",
         "label": "Profile attributes",
@@ -413,6 +426,7 @@ ADMIN_REORDER = (
     "users",
     "django_celery_beat",
     "notifications",
+    "flags",
 )
 
 # djmoney-exchange
@@ -473,3 +487,6 @@ TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True
 
 # Wagtail App:
 WAGTAIL_SITE_NAME = "vmb"
+
+# Django Flags
+FLAGS = {"ENABLE_SEARCH_FLAG": [{"condition": "boolean", "value": True}]}

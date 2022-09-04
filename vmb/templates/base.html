@@ -1,6 +1,9 @@
 {% extends "base_minimal.html" %}
 
 {% load static cookielaw_tags %}
+{% load feature_flags %}
+
+{% flag_enabled 'ENABLE_SEARCH_FLAG' as enable_search_flag %}
 
 {% block body_attrs %}data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false, "darkMode":false}' data-leftbar-theme="dark"{% endblock %}
 
@@ -14,6 +17,22 @@
     .transparent_hover_unbordered :hover{
         border:none;
     }
+    .alert-fixed {
+        position:fixed; 
+        top: 75px; 
+        width: 100%;
+        z-index:9990;
+    }
+
+    .alert-fixed.alert-dismissible .close {
+        position: fixed;
+        top: 75px;
+        right: 0;
+        z-index: 9999;
+        padding: 0.75rem 1.25rem;
+        color: inherit;
+    }
+}
 </style>
 <div class="wrapper">
     <!-- ========== Left Sidebar Start ========== -->
@@ -53,7 +72,6 @@
                         <span> Profile </span>
                     </a>
                 </li>
-
                 <li class="side-nav-item">
                     <a href="{% url 'matrimony:search' %}" class="side-nav-link">
                         <i class="uil-search-alt"></i>
@@ -176,7 +194,7 @@
                 {% if messages %}
                 <div class="messages">
                     {% for message in messages %}
-                    <div class="alert alert-{{ message.level_tag }} alert-dismissible bg-{{ message.level_tag }} text-white border-0 fade show" role="alert">
+                    <div class="alert alert-fixed alert-{{ message.level_tag }} alert-dismissible bg-{{ message.level_tag }} text-white border-0 fade show" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

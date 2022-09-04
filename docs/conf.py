@@ -180,7 +180,13 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-    ("index", "vmb.tex", "vmb Documentation", """Ratnadeep Debnath""", "manual",)
+    (
+        "index",
+        "vmb.tex",
+        "vmb Documentation",
+        """Ratnadeep Debnath""",
+        "manual",
+    )
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -208,7 +214,15 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [("index", "vmb", "vmb Documentation", ["""Ratnadeep Debnath"""], 1,)]
+man_pages = [
+    (
+        "index",
+        "vmb",
+        "vmb Documentation",
+        ["""Ratnadeep Debnath"""],
+        1,
+    )
+]
 
 # If true, show URL addresses after external links.
 # man_show_urls = False

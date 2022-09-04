@@ -3,6 +3,7 @@ import uuid
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
@@ -199,10 +200,41 @@ def profile_photo_action(request, photo_id, action):
 
 
 @login_required
-def matches(request):
+def matches(request, category=None):
     profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
-    context = {"matches_suggested": profile.matching_profiles_list}
-    return render(request, "matrimony/matches.html", context)
+    if category == "suggested":
+        matches = (
+            profile.female_matches.filter(sender_gender=None)
+            if profile.gender == "M"
+            else profile.male_matches.filter(sender_gender=None)
+        )
+    elif category == "sent":
+        matches = profile.matches.filter(sender_gender=profile.gender)
+    elif category == "received":
+        matches = profile.matches.filter(
+            sender_gender="F" if profile.gender == "M" else "M"
+        )
+    else:
+        return HttpResponseRedirect(reverse("matrimony:matches", args=["suggested"]))
+
+    _matches = [
+        {
+            "id": m.id,
+            "profile": m.male if profile.gender == "F" else m.female,
+            "your_response": m.male_response
+            if profile.gender == "M"
+            else m.female_response,
+            "response": m.male_response if profile.gender == "F" else m.female_response,
+            "show_photo": m.female_photos_visibility
+            if profile.gender == "M"
+            else m.male_photos_visibility,
+        }
+        for m in matches
+    ]
+
+    return render(
+        request, "matrimony/matches.html", {"category": category, "matches": _matches}
+    )
 
 
 @login_required
@@ -210,13 +242,17 @@ def search(request):
     profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
 
     if profile.status < "20":
-        return render(request, "matrimony/search.html", {
-            "search_disabled": True,
-            "profiles": None,
-            "search_form": None,
-            "querydata": None,
-            "email_contact": settings.EMAIL_CONTACT
-        })
+        return render(
+            request,
+            "matrimony/search.html",
+            {
+                "search_disabled": True,
+                "profiles": None,
+                "search_form": None,
+                "querydata": None,
+                "email_contact": settings.EMAIL_CONTACT,
+            },
+        )
 
     expectations = profile.expectations
     form = MatrimonyProfileSearchForm(instance=expectations)
@@ -263,6 +299,50 @@ def match_action(request, id, action):
         match.female_response = action_code
         match.female_response_updated_at = timezone.now()
     match.save()
+
+    return JsonResponse(data={})
+
+
+@require_http_methods(["POST"])
+@login_required
+def match_create(request, profile_id):
+    profile = request.user.matrimony_profile
+
+    recipient_profile = get_object_or_404(
+        MatrimonyProfile,
+        profile_id=profile_id,
+        gender="M" if profile.gender == "F" else "F",
+    )
+
+    defaults = {
+        "sender_gender": profile.gender,
+        "category": "USR",
+        "created_by": request.user,
+        "updated_by": request.user,
+    }
+    kwargs = {
+        "male": profile if profile.gender == "M" else recipient_profile,
+        "female": recipient_profile if profile.gender == "M" else profile,
+        "defaults": defaults,
+    }
+    match, created = Match.objects.get_or_create(**kwargs)
+
+    response_data = {}
+
+    if created:
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            "Match request sent. You can view 'Sent' tab in your Matches page",
+        )
+    else:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            "A match already exists under '{}' tab in your Matches page".format(
+                "Suggested" if match.sender_gender is None else "Received"
+            ),
+        )
 
     return JsonResponse(data={})
 

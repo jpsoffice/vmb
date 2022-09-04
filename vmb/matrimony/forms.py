@@ -661,7 +661,9 @@ class MatrimonyProfileProfessionalInfoForm(BaseMatrimonyProfileForm):
                 data_toggle="select2",
                 multiple="multiple",
             ),
-            Row(Column("institution", css_class="form-group col-md-6 md-3"),),
+            Row(
+                Column("institution", css_class="form-group col-md-6 md-3"),
+            ),
             "education_details",
             Submit("submit", "Next" if self.wizard else "Save"),
         )
