@@ -905,6 +905,9 @@ class MatrimonyProfile(BaseModel):
         self.status = d.get(status_text)
 
     def add_count(self, initial=False):
+        if self.name.startswith("Test"):
+            return
+
         properties = {"gender": "male" if self.gender == "M" else "female"}
         if self.updated_by:
             properties["updated_by"] = self.updated_by.username
