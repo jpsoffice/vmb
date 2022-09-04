@@ -72,12 +72,8 @@ class MatrimonyProfileFactory(factory.django.DjangoModelFactory):
     )
 
     status = FuzzyChoice(["00", "01", "20", "30"])
-    mother_tongue = FuzzyChoice(
-        models.Language.objects.filter(id__in=LANGUAGE_IDS)
-    )
-    marital_status = FuzzyChoice(
-        [item[0] for item in models.profiles.MARITAL_STATUS]
-    )
+    mother_tongue = FuzzyChoice(models.Language.objects.filter(id__in=LANGUAGE_IDS))
+    marital_status = FuzzyChoice([item[0] for item in models.profiles.MARITAL_STATUS])
     ethnic_origin = factory.Iterator(models.Nationality.objects.filter(id__in=[57]))
     height = FuzzyInteger(145, 165)
     weight = FuzzyInteger(50, 90)
@@ -138,11 +134,10 @@ class MatrimonyProfileFactory(factory.django.DjangoModelFactory):
         expectations.height_from = obj.height + random.randint(-5, 0)
         expectations.height_to = obj.height + random.randint(0, 5)
 
-
         l = models.Language.objects.get(code=obj.mother_tongue.code)
         expectations.mother_tongues.add(l)
 
         for l in obj.languages_can_speak.all():
-           expectations.languages_can_speak.add(l)
+            expectations.languages_can_speak.add(l)
 
         expectations.save()

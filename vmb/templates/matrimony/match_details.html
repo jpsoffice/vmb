@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block content_title %}{{ match_profile.name }}{% endblock %}
+{% block content_title %}{{ match_profile.profile_id }}{% endblock %}
 
 {% block breadcrumb %}
 <li class="breadcrumb-item"><a href="{% url 'matrimony:matches' %}">Matches</a></li>
-<li class="breadcrumb-item active">{{ match_profile.name }}</li>
+<li class="breadcrumb-item active">{{ match_profile.profile_id }}</li>
 {% endblock %}
 
 {% block content %}
@@ -46,12 +46,14 @@
                         <strong>Current location:</strong><span class="ml-1 text-white-50">{{ match_profile.current_city }}, {{ match_profile.current_state }}, {{ match_profile.current_country.name }}</span>
                         <strong>Ethnicity:</strong><span class="ml-1 text-white-50">{{ match_profile.ethnic_origin.nationality }}</span>
                         <strong>Education:</strong><span class="ml-1 text-white-50">{% for education in match_profile.education.all %}{{ education.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
-                        <strong>Occupation:</strong><span class="ml-1 text-white-50">{% for occupation in match_profile.educations.all %}{{ occupation.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
-                        <strong>Languages known:</strong><span class="ml-1 text-white-50">{% for language in match_profile.languages_can_speak %}{{ language.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
+                        <strong>Occupation:</strong><span class="ml-1 text-white-50">{% for occupation in match_profile.occupations.all %}{{ occupation.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
+                        <strong>Languages known:</strong><span class="ml-1 text-white-50">{% for language in match_profile.languages_can_speak.all %}{{ language.name }}{% if not forloop.last %}, {% endif %}{% empty %}Not specified{% endfor %}</span>
                     </p>
                     <p class="card-text">
+                        {% if category == "received" or category == "suggested" %}
                         <a href="#" class="btn btn-success btn-sm match-action{% ifequal response 'ACP' %} disabled{% endifequal %}"{% ifequal response 'ACP' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' match.id 'accept' %}" style="position:relative; z-index:2;"><i class="uil-check"></i> Accept{% ifequal response 'ACP' %}ed{% endifequal %}</a>
                         <a href="#" class="btn btn-danger btn-sm match-action{% ifequal response 'REJ' %} disabled{% endifequal %}"{% ifequal response 'REJ' %} aria-disabled="true"{% endifequal %} data-action="{% url 'matrimony:match-action' match.id 'reject' %}" style="position:relative; z-index:2;"><i class="uil-times"></i> Reject{% ifequal response 'REJ' %}ed{% endifequal %}</a>
+                        {% endif %}
                     </p>
                 </div>
             </div>
@@ -74,7 +76,7 @@
                 <div class="col-md-6">
                     <div class="text-left">
                         <p class="text-muted">
-                            <strong>Name:</strong><span class="ml-1">{{ match_profile.name }}</span>
+                            <strong>Name:</strong><span class="ml-1">{% if match.show_personal_info %}{{ match_profile.name }}{% else %}*******************{% endif %}</span>
                         </p>
                         
                         <p class="text-muted">
@@ -110,7 +112,7 @@
                 <div class="col-md-6">
                     <div class="text-left">
                         <p class="text-muted">
-                            <strong>Spiritual name:</strong><span class="ml-1">{{ match_profile.spiritual_name }}</span>
+                            <strong>Spiritual name:</strong><span class="ml-1">{% if match.show_personal_info %}{{ match_profile.spiritual_name }}{% else %}*******************{% endif %}</span>
                         </p>
                         <p class="text-muted">
                             <strong>Ethnic origin:</strong><span class="ml-1">{{ match_profile.ethnic_origin }}</span>

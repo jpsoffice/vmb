@@ -156,7 +156,9 @@ class AnnualIncomeRangeFilter(admin.SimpleListFilter):
         if value_to is not None and value_to != "":
             try:
                 filters.update(
-                    {self.field_name + "__lte": value_to,}
+                    {
+                        self.field_name + "__lte": value_to,
+                    }
                 )
             except (CurrencyDoesNotExist, InvalidOperation):
                 pass
@@ -235,13 +237,17 @@ class AgeRangeFilter(admin.SimpleListFilter):
         value_from = self.used_parameters.get(self.field_name + "_from", None)
         if value_from is not None and value_from != "":
             filters.update(
-                {self.field_name + "__gte": value_from,}
+                {
+                    self.field_name + "__gte": value_from,
+                }
             )
 
         value_to = self.used_parameters.get(self.field_name + "_to", None)
         if value_to is not None and value_to != "":
             filters.update(
-                {self.field_name + "__lte": value_to,}
+                {
+                    self.field_name + "__lte": value_to,
+                }
             )
 
         return queryset.filter(**filters)
@@ -382,7 +388,14 @@ class BaseMatrimonyProfileAdmin(
     ]
     tab_photo = [
         PhotoInline,
-        (None, {"fields": ["photos_visible_to_all_matches",]},),
+        (
+            None,
+            {
+                "fields": [
+                    "photos_visible_to_all_matches",
+                ]
+            },
+        ),
     ]
     tab_birth_details = [
         (
@@ -677,6 +690,7 @@ class MatchAdmin(admin.ModelAdmin):
         "assignee",
         "male_response_updated_at",
         "female_response_updated_at",
+        "created_by",
     )
     raw_id_fields = ("male", "female")
     inlines = [CommentInline]
