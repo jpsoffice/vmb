@@ -179,7 +179,10 @@ class MatrimonyProfile(BaseModel):
 
     profile_id = models.CharField(max_length=15, blank=True, unique=True)
     registration_date = models.DateTimeField(default=timezone.now, blank=True)
-    name = models.CharField(max_length=200, verbose_name=_("Name"),)
+    name = models.CharField(
+        max_length=200,
+        verbose_name=_("Name"),
+    )
     spiritual_name = models.CharField(
         max_length=200, default="", blank=True, verbose_name=_("Spiritual name")
     )
@@ -189,11 +192,18 @@ class MatrimonyProfile(BaseModel):
     profile_created_by = models.CharField(
         max_length=2, choices=PROFILE_CREATED_BY_CHOICES, default="SE"
     )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES,)
+    gender = models.CharField(
+        max_length=1,
+        choices=GENDER_CHOICES,
+    )
     status = models.CharField(
         max_length=2, choices=PROFILE_STATUS_CHOICES, blank=True, default="00"
     )
-    marital_status = models.CharField(max_length=3, choices=MARITAL_STATUS, null=True,)
+    marital_status = models.CharField(
+        max_length=3,
+        choices=MARITAL_STATUS,
+        null=True,
+    )
     children_count = models.PositiveIntegerField(
         choices=CHILDREN_COUNT, default=0, blank=True, null=True
     )
@@ -235,7 +245,10 @@ class MatrimonyProfile(BaseModel):
     )
 
     # Birth details
-    dob = models.DateField(verbose_name=_("Date of birth"), null=True,)
+    dob = models.DateField(
+        verbose_name=_("Date of birth"),
+        null=True,
+    )
     is_tob_unknown = models.BooleanField(
         choices=BOOL_YES_NO, null=True, verbose_name=_("Is Birth Time unknown?")
     )
@@ -295,7 +308,10 @@ class MatrimonyProfile(BaseModel):
         blank=True,
     )
     nationality = models.ForeignKey(
-        Nationality, on_delete=models.SET_NULL, blank=True, null=True,
+        Nationality,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
     )
 
     # Language details
@@ -303,7 +319,10 @@ class MatrimonyProfile(BaseModel):
         "Language", on_delete=models.SET_NULL, null=True, blank=True
     )
     languages_can_speak = models.ManyToManyField(
-        "Language", help_text="Languages you know", related_name="speakers", blank=True,
+        "Language",
+        help_text="Languages you know",
+        related_name="speakers",
+        blank=True,
     )
     languages_can_read_write = models.ManyToManyField(
         "Language",
@@ -328,7 +347,10 @@ class MatrimonyProfile(BaseModel):
         blank=True,
     )
     body_type = models.CharField(
-        max_length=3, choices=BODY_TYPE, null=True, blank=True,
+        max_length=3,
+        choices=BODY_TYPE,
+        null=True,
+        blank=True,
     )
     weight = models.DecimalField(
         max_digits=5,
@@ -338,10 +360,16 @@ class MatrimonyProfile(BaseModel):
         blank=True,
     )
     color_of_eyes = models.CharField(
-        max_length=3, choices=COLOR_OF_EYES, null=True, blank=True,
+        max_length=3,
+        choices=COLOR_OF_EYES,
+        null=True,
+        blank=True,
     )
     hair_color = models.CharField(
-        max_length=3, choices=HAIR_COLOR, null=True, blank=True,
+        max_length=3,
+        choices=HAIR_COLOR,
+        null=True,
+        blank=True,
     )
 
     # Personality
@@ -363,10 +391,15 @@ class MatrimonyProfile(BaseModel):
 
     # Professional details
     education = models.ManyToManyField(
-        "Education", blank=True, help_text="HS, Graduate etc.",
+        "Education",
+        blank=True,
+        help_text="HS, Graduate etc.",
     )
     education_details = models.TextField(
-        max_length=100, null=True, verbose_name="Education in Detail", blank=True,
+        max_length=100,
+        null=True,
+        verbose_name="Education in Detail",
+        blank=True,
     )
     institution = models.CharField(
         max_length=75,
@@ -376,16 +409,27 @@ class MatrimonyProfile(BaseModel):
         help_text="Enter College/Institution Name",
     )
     employed_in = models.CharField(
-        max_length=3, null=True, choices=EMPLOYED_IN_CHOICES, blank=True,
+        max_length=3,
+        null=True,
+        choices=EMPLOYED_IN_CHOICES,
+        blank=True,
     )
     occupations = models.ManyToManyField(
-        "Occupation", blank=True, help_text="Doctor, Engineer, Entrepreneur etc.",
+        "Occupation",
+        blank=True,
+        help_text="Doctor, Engineer, Entrepreneur etc.",
     )
     occupation_details = models.TextField(
-        max_length=100, null=True, verbose_name="Occupation in Detail", blank=True,
+        max_length=100,
+        null=True,
+        verbose_name="Occupation in Detail",
+        blank=True,
     )
     organization = models.CharField(
-        max_length=75, null=True, help_text="Enter Organization Name", blank=True,
+        max_length=75,
+        null=True,
+        help_text="Enter Organization Name",
+        blank=True,
     )
     annual_income = MoneyField(
         max_digits=20, decimal_places=2, null=True, default_currency="INR", blank=True
@@ -423,19 +467,34 @@ class MatrimonyProfile(BaseModel):
         verbose_name="Are your parents devotees?",
     )
     family_values = models.CharField(
-        max_length=4, choices=FAMILY_VALUE_CHOICES, null=True, blank=True,
+        max_length=4,
+        choices=FAMILY_VALUE_CHOICES,
+        null=True,
+        blank=True,
     )
     family_type = models.CharField(
-        max_length=3, choices=FAMILY_TYPE_CHOICES, null=True, blank=True,
+        max_length=3,
+        choices=FAMILY_TYPE_CHOICES,
+        null=True,
+        blank=True,
     )
     family_status = models.CharField(
-        max_length=2, choices=FAMILY_STATUS_CHOICES, null=True, blank=True,
+        max_length=2,
+        choices=FAMILY_STATUS_CHOICES,
+        null=True,
+        blank=True,
     )
     father_status = models.CharField(
-        max_length=3, choices=FATHER_STATUS_CHOICES, null=True, blank=True,
+        max_length=3,
+        choices=FATHER_STATUS_CHOICES,
+        null=True,
+        blank=True,
     )
     mother_status = models.CharField(
-        max_length=3, choices=MOTHER_STATUS_CHOICES, null=True, blank=True,
+        max_length=3,
+        choices=MOTHER_STATUS_CHOICES,
+        null=True,
+        blank=True,
     )
     brothers = models.PositiveIntegerField(
         null=True, blank=True, verbose_name="No. of Brothers", default=0
@@ -446,7 +505,10 @@ class MatrimonyProfile(BaseModel):
     brothers_married = models.PositiveIntegerField(null=True, blank=True, default=0)
     sisters_married = models.PositiveIntegerField(null=True, blank=True, default=0)
     family_location = models.CharField(
-        max_length=10, choices=FAMILY_LOCATION_CHOICES, null=True, blank=True,
+        max_length=10,
+        choices=FAMILY_LOCATION_CHOICES,
+        null=True,
+        blank=True,
     )
     family_origin = models.CharField(
         max_length=50,
@@ -461,7 +523,11 @@ class MatrimonyProfile(BaseModel):
         null=True,
         help_text="Religious background of the family",
     )
-    family_details = models.TextField(max_length=200, blank=True, null=True,)
+    family_details = models.TextField(
+        max_length=200,
+        blank=True,
+        null=True,
+    )
 
     # Medical details
     want_children = models.CharField(
@@ -486,7 +552,11 @@ class MatrimonyProfile(BaseModel):
     )
 
     updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
     )
 
     # Staff users
@@ -933,7 +1003,9 @@ class MatrimonyProfile(BaseModel):
 
     def create_user(self):
         user, created = User.objects.get_or_create(
-            username=self.profile_id, email=self.email, is_matrimony_candidate=True,
+            username=self.profile_id,
+            email=self.email,
+            is_matrimony_candidate=True,
         )
         if created:
             self.user = user
@@ -995,7 +1067,10 @@ class Expectation(BaseModel):
     )
 
     # Religuous preferences
-    religions = models.ManyToManyField(Religion, blank=True,)
+    religions = models.ManyToManyField(
+        Religion,
+        blank=True,
+    )
     mother_tongues = models.ManyToManyField(Language, blank=True)
     castes = models.ManyToManyField(Caste, blank=True)
     subcastes = models.ManyToManyField(Subcaste, blank=True)
@@ -1081,9 +1156,14 @@ class Expectation(BaseModel):
         null=True,
         blank=True,
     )
-    spiritual_masters = models.ManyToManyField(Guru, blank=True,)
+    spiritual_masters = models.ManyToManyField(
+        Guru,
+        blank=True,
+    )
     min_rounds_chanting = models.PositiveIntegerField(
-        null=True, blank=True, verbose_name="Minimum rounds of japa",
+        null=True,
+        blank=True,
+        verbose_name="Minimum rounds of japa",
     )
 
     partner_description = models.TextField(max_length=1500, null=True, blank=True)
@@ -1307,13 +1387,20 @@ MATCH_CATEGORY_CHOICES = (
     ("SYS", _("Auto generated")),
 )
 
+
 class Match(BaseModel):
     category = models.CharField(
         max_length=3, choices=MATCH_CATEGORY_CHOICES, blank=True, default="STF"
     )
-    is_mutual = models.NullBooleanField(blank=True, help_text="Is it a mutual match based on expectations?")
-    is_visible = models.NullBooleanField(blank=True, default=True, help_text="Is match visible to users?")
-    show_entire_profile = models.NullBooleanField(blank=True, default=False, help_text="Show entire profile info")
+    is_mutual = models.NullBooleanField(
+        blank=True, help_text="Is it a mutual match based on expectations?"
+    )
+    is_visible = models.NullBooleanField(
+        blank=True, default=True, help_text="Is match visible to users?"
+    )
+    show_entire_profile = models.NullBooleanField(
+        blank=True, default=False, help_text="Show entire profile info"
+    )
 
     notified = models.NullBooleanField(blank=True)
     notification_time = models.DateTimeField(blank=True, null=True)
@@ -1345,7 +1432,9 @@ class Match(BaseModel):
     female_photos_visibility = models.NullBooleanField(blank=True)
     female_response_updated_at = models.DateTimeField(blank=True, null=True)
 
-    sender_gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True, blank=True)
+    sender_gender = models.CharField(
+        max_length=1, choices=GENDER_CHOICES, null=True, blank=True
+    )
 
     status = models.CharField(
         max_length=3, choices=MATCH_STATUS_CHOICES, blank=True, default=""
@@ -1354,10 +1443,18 @@ class Match(BaseModel):
     comments = GenericRelation("Comment")
 
     created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
     )
     updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
     )
 
     def __init__(self, *args, **kwargs):
@@ -1370,7 +1467,11 @@ class Match(BaseModel):
 
     @property
     def response(self):
-        return "Accepted" if self.male_response == self.female_response == "ACP" else "Rejected"
+        return (
+            "Accepted"
+            if self.male_response == self.female_response == "ACP"
+            else "Rejected"
+        )
 
     class Meta:
         db_table = "matrimony_matches"
@@ -1457,7 +1558,11 @@ class Comment(BaseModel):
     message = models.TextField(max_length=2000, default="")
     timestamp = models.DateTimeField(default=timezone.now, blank=True)
     author = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
     )
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
