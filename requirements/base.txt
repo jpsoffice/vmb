@@ -41,6 +41,7 @@ django-admin-select2==1.0.1
 django-multiselectfield==0.1.12
 djangoql==0.17.1
 posthog==2.1.0
+django-flags==5.0.12  # https://github.com/cfpb/django-flags
 
 # Django-newsletter and TinyMCE editor
 # ------------------------------------------------------------------------------
