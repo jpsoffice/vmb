@@ -879,6 +879,9 @@ class MatrimonyProfile(BaseModel):
                 spiritual_master__name__in=[f"{sm.name}" for sm in spiritual_masters]
             )
 
+        if not self.name.find("(test)"):
+            q = q & ~Q(name__icontains="(test)")
+
         return MatrimonyProfile.objects.filter(q).distinct()
 
     def is_personal_data_visible_to_user(self, user):
@@ -905,7 +908,7 @@ class MatrimonyProfile(BaseModel):
         self.status = d.get(status_text)
 
     def add_count(self, initial=False):
-        if self.name.startswith("Test"):
+        if self.name.find("(test)"):
             return
 
         properties = {"gender": "male" if self.gender == "M" else "female"}

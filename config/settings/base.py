@@ -489,4 +489,4 @@ TABBED_ADMIN_USE_JQUERY_UI = env.bool("TABBED_ADMIN_USE_JQUERY_UI", default=True
 WAGTAIL_SITE_NAME = "vmb"
 
 # Django Flags
-FLAGS = {"ENABLE_SEARCH_FLAG": [{"condition": "boolean", "value": True}]}
+FLAGS = {"ENABLE_SEARCH_FLAG": []}

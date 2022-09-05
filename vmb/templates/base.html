@@ -3,8 +3,6 @@
 {% load static cookielaw_tags %}
 {% load feature_flags %}
 
-{% flag_enabled 'ENABLE_SEARCH_FLAG' as enable_search_flag %}
-
 {% block body_attrs %}data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false, "darkMode":false}' data-leftbar-theme="dark"{% endblock %}
 
 {% block body_content %}
@@ -72,12 +70,15 @@
                         <span> Profile </span>
                     </a>
                 </li>
+                {% flag_enabled 'ENABLE_SEARCH_FLAG' as enable_search_flag %}
+                {% if enable_search_flag %}
                 <li class="side-nav-item">
                     <a href="{% url 'matrimony:search' %}" class="side-nav-link">
                         <i class="uil-search-alt"></i>
                         <span> Search </span>
                     </a>
                 </li>
+                {% endif %}
 
                 <li class="side-nav-item">
                     <a href="{% url 'matrimony:matches' %}" class="side-nav-link">
