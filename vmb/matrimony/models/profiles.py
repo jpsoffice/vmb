@@ -897,11 +897,18 @@ class MatrimonyProfile(BaseModel):
 
         ordering = ["-registration_date"]
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._original_annual_income = self.annual_income
-        self._original_status = self.status
-        self._original_updated_by = self.updated_by
+    @classmethod
+    def from_db(cls, db, field_names, values):
+        new = super().from_db(db, field_names, values)
+
+        # cache value went from the base
+        if "annual_income_from" in field_names:
+            new._original_annual_income = values[field_names.index("annual_income")]
+        if "status" in field_names:
+            new._original_status = values[field_names.index("status")]
+        if "updated_by" in field_names:
+            new._original_updated_by = values[field_names.index("updated_by")]
+        return new
 
     def set_status(self, status_text):
         d = {v: k for k, v in PROFILE_STATUS_CHOICES}
@@ -938,7 +945,11 @@ class MatrimonyProfile(BaseModel):
             self.profile_id = self.generate_profile_id()
             create = True
         if self.annual_income and (
-            self.id is None or self._original_annual_income != self.annual_income
+            self.id is None
+            or (
+                hasattr(self, "_original_annual_income")
+                and self._original_annual_income != self.annual_income
+            )
         ):
             self.annual_income_in_base_currency = convert_money(
                 self.annual_income, settings.BASE_CURRENCY
@@ -946,7 +957,11 @@ class MatrimonyProfile(BaseModel):
 
         super().save(*args, **kwargs)
 
-        if self._original_status != self.status or create:
+        if (
+            hasattr(self, "_original_status")
+            and self._original_status != self.status
+            or create
+        ):
             self.add_count()
         _, created = MatrimonyProfileStats.objects.get_or_create(profile=self)
         _, created = Expectation.objects.get_or_create(profile=self)
@@ -1177,21 +1192,38 @@ class Expectation(BaseModel):
     class Meta:
         db_table = "matrimony_expectations"
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._original_annual_income_from = self.annual_income_from
-        self._original_annual_income_to = self.annual_income_to
+    @classmethod
+    def from_db(cls, db, field_names, values):
+        new = super().from_db(db, field_names, values)
+
+        # cache value went from the base
+        if "annual_income_from" in field_names:
+            new._original_annual_income_from = values[
+                field_names.index("annual_income_from")
+            ]
+        if "annual_income_to" in field_names:
+            new._original_annual_income_to = values[
+                field_names.index("annual_income_to")
+            ]
+        return new
 
     def save(self, *args, **kwargs):
         if self.annual_income_from and (
             self.id is None
-            or self._original_annual_income_from != self.annual_income_from
+            or (
+                hasattr(self, "_original_annual_income_from")
+                and self._original_annual_income_from != self.annual_income_from
+            )
         ):
             self.annual_income_from_in_base_currency = convert_money(
                 self.annual_income_from, settings.BASE_CURRENCY
             )
         if self.annual_income_to and (
-            self.id is None or self._original_annual_income_to != self.annual_income_to
+            self.id is None
+            or (
+                hasattr(self, "_original_annual_income_to")
+                and self._original_annual_income_to != self.annual_income_to
+            )
         ):
             self.annual_income_to_in_base_currency = convert_money(
                 self.annual_income_to, settings.BASE_CURRENCY
