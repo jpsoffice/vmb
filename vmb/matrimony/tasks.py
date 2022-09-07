@@ -19,4 +19,6 @@ def send_batch_matches_emails():
         female = Female.objects.get(id=female_id)
         female.send_batch_matches_email()
 
-    Match.objects.filter(status="TSG").update(status="SUG", notified=True, notification_time=timezone.now())
+    Match.objects.filter(status="TSG").update(
+        status="SUG", notified=True, notification_time=timezone.now()
+    )
