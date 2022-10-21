@@ -1025,8 +1025,7 @@ class MatrimonyProfile(BaseModel):
     def create_user(self):
         user, created = User.objects.get_or_create(
             username=self.profile_id,
-            email=self.email,
-            is_matrimony_candidate=True,
+            defaults={"email": self.email, "is_matrimony_candidate": True},
         )
         if created:
             self.user = user
@@ -1034,8 +1033,17 @@ class MatrimonyProfile(BaseModel):
             self.send_profile_import_email()
             user.send_confirmation_email()
 
+        user_changed = False
+
         if self.name != user.name:
             user.name = self.name
+            user_changed = True
+
+        if self.email != user.email:
+            user.email = self.email
+            user_changed = True
+
+        if user_changed:
             user.save()
 
         return user
