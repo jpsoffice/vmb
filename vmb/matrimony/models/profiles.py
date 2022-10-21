@@ -1025,8 +1025,7 @@ class MatrimonyProfile(BaseModel):
     def create_user(self):
         user, created = User.objects.get_or_create(
             username=self.profile_id,
-            email=self.email,
-            is_matrimony_candidate=True,
+            defaults={"email": self.email, "is_matrimony_candidate": True},
         )
         if created:
             self.user = user
