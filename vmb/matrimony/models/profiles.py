@@ -873,6 +873,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.annual_income_from
         )
+        query_params["annual_income_from"] = annual_income_from
         if annual_income_from:
             q = q & Q(
                 annual_income_in_base_currency__gte=convert_money(
@@ -908,6 +909,7 @@ class MatrimonyProfile(BaseModel):
             q = q & ~Q(name__icontains="(test)")
 
         logging.info("search_profiles querydata: {}".format(query_params))
+        logging.info("q deconsructed: {}".format(q.deconstruct()))
 
         return MatrimonyProfile.objects.filter(q).distinct()
 
