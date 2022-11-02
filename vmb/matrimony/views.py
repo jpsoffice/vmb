@@ -1,3 +1,4 @@
+import logging
 import os
 import uuid
 
@@ -262,6 +263,7 @@ def search(request):
     if request.method == "GET" and request.GET:
         form = MatrimonyProfileSearchForm(request.GET)
         if not form.is_valid():
+            logging.error("profile search form errors: {}".format(form.errors))
             return render(
                 request, "matrimony/search.html", {"profiles": [], "search_form": form}
             )
