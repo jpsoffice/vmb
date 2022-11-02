@@ -1,4 +1,5 @@
 import datetime
+import logging
 from dateutil.relativedelta import relativedelta
 from hashlib import md5
 
@@ -708,32 +709,40 @@ class MatrimonyProfile(BaseModel):
         EMPLOYED_IN_CHOICES_DICT = dict(EMPLOYED_IN_CHOICES)
         SPIRITUAL_STATUS_CHOICES_DICT = dict(SPIRITUAL_STATUS_CHOICES)
 
+        query_params = {}
+
         if self.gender == "M":
             q = Q(gender="F")
+            query_params["gender"] = "F"
         else:
             q = Q(gender="M")
+            query_params["gender"] = "M"
 
         age_from = (
             querydata.get("age_from") if querydata else self.expectations.age_from
         )
+        query_params["age_from"] = age_from
         if age_from:
             q = q & Q(
                 dob__lte=(timezone.datetime.now() - relativedelta(years=age_from))
             )
 
         age_to = querydata.get("age_to") if querydata else self.expectations.age_to
+        query_params["age_to"] = age_to
         if age_to:
             q = q & Q(dob__gte=(timezone.datetime.now() - relativedelta(years=age_to)))
 
         height_from = (
             querydata.get("height_from") if querydata else self.expectations.height_from
         )
+        query_params["height_from"] = height_from
         if height_from:
             q = q & Q(height__gte=height_from)
 
         height_to = (
             querydata.get("height_to") if querydata else self.expectations.height_to
         )
+        query_params["height_to"] = height_to
         if height_to:
             q = q & Q(height__lte=height_to)
 
@@ -742,6 +751,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.religions.all()
         )
+        query_params["religions"] = religions
         if religions:
             q = q & Q(religion__name__in=[f"{r.name}" for r in religions])
 
@@ -750,12 +760,14 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.mother_tongues.all()
         )
+        query_params["mother_tongues"] = mother_tongues
         if mother_tongues:
             q = q & Q(mother_tongue__name__in=[f"{l.name}" for l in mother_tongues])
 
         castes = (
             querydata.get("castes") if querydata else self.expectations.castes.all()
         )
+        query_params["castes"] = castes
         if castes:
             q = q & Q(caste__name__in=[f"{c.name}" for c in castes])
 
@@ -764,6 +776,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.subcastes.all()
         )
+        query_params["subcastes"] = subcastes
         if subcastes:
             q = q & Q(subcaste__name__in=[f"{sc.name}" for sc in subcastes])
 
@@ -772,6 +785,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.countries_living_in.all()
         )
+        query_params["countries_living_in"] = countries_living_in
         if countries_living_in:
             q = q & Q(current_country__in=countries_living_in)
 
@@ -780,6 +794,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.ethnicities.all()
         )
+        query_params["ethnicities"] = ethnicities
         if ethnicities:
             q = q & Q(ethnic_origin__in=ethnicities)
 
@@ -788,12 +803,14 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.marital_status
         )
+        query_params["marital_status"] = marital_status
         if marital_status:
             q = q & Q(marital_status__in=marital_status)
 
         want_nri = (
             querydata.get("want_nri") if querydata else self.expectations.want_nri
         )
+        query_params["want_nri"] = want_nri
         if want_nri == "Y":
             q = q & ~Q(current_country__name="India")
         elif want_nri == "N":
@@ -804,6 +821,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.languages_can_speak.all()
         )
+        query_params["languages_can_speak"] = languages_can_speak
         if languages_can_speak:
             q = q & Q(languages_can_speak__in=languages_can_speak)
 
@@ -812,6 +830,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.languages_can_read_write.all()
         )
+        query_params["languages_can_read_write"] = languages_can_read_write
         if languages_can_read_write:
             q = q & Q(languages_can_read_write__in=languages_can_read_write)
 
@@ -820,6 +839,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.education.all()
         )
+        query_params["education"] = education
         if education:
             q = q & Q(education__in=education)
 
@@ -828,12 +848,14 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.occupations.all()
         )
+        query_params["occupations"] = occupations
         if occupations:
             q = q & Q(occupations__in=occupations)
 
         employed_in = (
             querydata.get("employed_in") if querydata else self.expectations.employed_in
         )
+        query_params["employed_in"] = employed_in
         if employed_in:
             q = q & Q(employed_in__in=employed_in)
 
@@ -842,6 +864,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.spiritual_status
         )
+        query_params["spiritual_status"] = spiritual_status
         if spiritual_status:
             q = q & Q(spiritual_status__in=spiritual_status)
 
@@ -862,6 +885,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.annual_income_to
         )
+        query_params["annual_income_to"] = annual_income_to
         if annual_income_to:
             q = q & Q(
                 annual_income_in_base_currency__lte=convert_money(
@@ -874,6 +898,7 @@ class MatrimonyProfile(BaseModel):
             if querydata
             else self.expectations.spiritual_masters.all()
         )
+        query_params["spiritual_masters"] = spiritual_masters
         if spiritual_masters:
             q = q & Q(
                 spiritual_master__name__in=[f"{sm.name}" for sm in spiritual_masters]
@@ -881,6 +906,8 @@ class MatrimonyProfile(BaseModel):
 
         if not self.name.find("(test)"):
             q = q & ~Q(name__icontains="(test)")
+
+        logging.info("search_profiles querydata: {}".format(query_params))
 
         return MatrimonyProfile.objects.filter(q).distinct()
 
