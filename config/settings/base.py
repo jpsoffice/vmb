@@ -333,6 +333,11 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
     "loggers": {
         "post_office": {"handlers": ["post_office"], "level": "INFO"},
+        #"django.db.backends": {
+        #    "level": "DEBUG",
+        #    "handlers": ["console"],
+        #    "propagate": False,
+        #},
     },
 }
 

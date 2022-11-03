@@ -705,7 +705,7 @@ class MatrimonyProfile(BaseModel):
         """
         When querydata is None, return preferred profiles as per expectations, by default.
         """
-        logging.info("search_profiles querydata: {}".format(querydata))
+        logging.debug("search_profiles querydata: {}".format(querydata))
 
         MARITAL_STATUS_DICT = dict(MARITAL_STATUS)
         EMPLOYED_IN_CHOICES_DICT = dict(EMPLOYED_IN_CHOICES)
@@ -922,7 +922,7 @@ class MatrimonyProfile(BaseModel):
         if not self.name.find("(test)"):
             q = q & ~Q(name__icontains="(test)")
 
-        logging.info("search_profiles q obj: {}".format(q))
+        logging.debug("search_profiles q obj: {}".format(q))
 
         return q
 
