@@ -705,7 +705,7 @@ class MatrimonyProfile(BaseModel):
         """
         When querydata is None, return preferred profiles as per expectations, by default.
         """
-        logging.info("search_profiles querydata: {}".format(querydata))
+        logging.debug("search_profiles querydata: {}".format(querydata))
 
         MARITAL_STATUS_DICT = dict(MARITAL_STATUS)
         EMPLOYED_IN_CHOICES_DICT = dict(EMPLOYED_IN_CHOICES)
@@ -815,7 +815,7 @@ class MatrimonyProfile(BaseModel):
         marital_status = (
             querydata.get("marital_status")
             if querydata
-            else self.expectations.marital_status
+            else list(self.expectations.marital_status)
         )
         query_params["marital_status"] = marital_status
         if marital_status:
@@ -867,7 +867,7 @@ class MatrimonyProfile(BaseModel):
             q = q & Q(occupations__in=occupations)
 
         employed_in = (
-            querydata.get("employed_in") if querydata else self.expectations.employed_in
+            querydata.get("employed_in") if querydata else list(self.expectations.employed_in)
         )
         query_params["employed_in"] = employed_in
         if employed_in:
@@ -876,7 +876,7 @@ class MatrimonyProfile(BaseModel):
         spiritual_status = (
             querydata.get("spiritual_status")
             if querydata
-            else self.expectations.spiritual_status
+            else list(self.expectations.spiritual_status)
         )
         query_params["spiritual_status"] = spiritual_status
         if spiritual_status:
@@ -922,7 +922,7 @@ class MatrimonyProfile(BaseModel):
         if not self.name.find("(test)"):
             q = q & ~Q(name__icontains="(test)")
 
-        logging.info("search_profiles q obj: {}".format(q))
+        logging.debug("search_profiles q obj: {}".format(q))
 
         return q
 
