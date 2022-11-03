@@ -701,7 +701,7 @@ class MatrimonyProfile(BaseModel):
             reverse("admin:index"), "female" if self.gender == "M" else "male", querystr
         )
 
-    def search_profiles(self, querydata=None):
+    def _get_search_profiles_q_obj(self, querydata=None):
         """
         When querydata is None, return preferred profiles as per expectations, by default.
         """
@@ -911,6 +911,10 @@ class MatrimonyProfile(BaseModel):
         logging.info("search_profiles querydata: {}".format(query_params))
         logging.info("q deconsructed: {}".format(q.deconstruct()))
 
+        return q
+
+    def search_profiles(self, querydata=None):
+        q = self._get_search_profiles_q_obj(querydata=querydata)
         return MatrimonyProfile.objects.filter(q).distinct()
 
     def is_personal_data_visible_to_user(self, user):
