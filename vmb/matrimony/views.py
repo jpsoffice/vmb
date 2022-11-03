@@ -268,9 +268,11 @@ def search(request):
                 request, "matrimony/search.html", {"profiles": [], "search_form": form}
             )
         profiles = profile.search_profiles(form.cleaned_data)
+        logging.info("search profile results: {}".format((profiles)))
         querydata = form.cleaned_data
     else:
         profiles = profile.search_profiles()
+        logging.info("search profile results: {}".format((profiles)))
 
     context = {
         "profiles": profiles,
