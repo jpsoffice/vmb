@@ -1,0 +1,281 @@
+{% extends "base_minimal.html" %}
+
+{% load static cookielaw_tags %}
+{% load feature_flags %}
+
+{% block body_class %}loading{% endblock %}
+
+{% block body_attrs %}data-layout-config='{"darkMode":false}'{% endblock %}
+
+{% block body_content %}
+<!-- NAVBAR START -->
+<nav class="navbar navbar-expand-lg py-lg-3 navbar-dark" style="background-color: #727cf5;">
+    <div class="container">
+
+        <!-- logo -->
+        <a href="/" class="navbar-brand mr-lg-5">
+            <i class="mdi mdi-set-right font-24"></i> VMB
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="mdi mdi-menu"></i>
+        </button>
+
+        <!-- menus -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+            <!-- left menu -->
+            <ul class="navbar-nav mr-auto align-items-center">
+            </ul>
+
+            <!-- right menu -->
+            <ul class="navbar-nav ml-auto align-items-center">
+                <li class="nav-item mr-0">
+                    <a href="/accounts/login/" class="nav-link d-lg-none">Signin</a>
+                    <a href="/accounts/login/" class="btn btn-sm btn-light btn-rounded d-none d-lg-inline-flex">
+                        Signin
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<!-- NAVBAR END -->
+
+<!-- START HERO -->
+
+{% block landing_content %}
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-5">
+                <div class="mt-md-4">
+                    <h2 class="text-white font-weight-normal mb-4 mt-3 hero-title">
+                        The <strong style="font-size: 35px;">VaisnavaMarriage</strong> Bureau
+                    </h2>
+
+                    <p class="mb-4 font-16 text-white-50">Vaisnava Marriage is an active matrimony bureau managed by the office of HH Jayapataka Swami Maharaj to assist ISKCON devotees get married to the right partner.</p>
+
+                    <a href="/accounts/signup/" class="btn btn-success">Signup <i
+                            class="mdi mdi-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            <div class="col-md-5 offset-md-2">
+                <div class="text-md-right mt-3 mt-md-0">
+                    <!-- <img src="assets/images/startup.svg" alt="" class="img-fluid" /> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END HERO -->
+
+<!-- START SERVICES -->
+<section class="py-5">
+    <div class="container">
+        <div class="row py-4">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <h1 class="mt-0"><i class="mdi mdi-infinity"></i></h1>
+                    <h3>VaisnavaMarriage Bureau is an <span class="text-primary">active</span> match making service</h3>
+                    <p class="text-muted mt-2">We use the right mix of human efforts and technology to give you
+                        <br>a wholistic match making experience.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="text-center p-3">
+                    <div class="avatar-sm m-auto">
+                        <span class="avatar-title bg-primary-lighten rounded-circle">
+                            <i class="uil uil-user-check text-primary font-24"></i>
+                        </span>
+                    </div>
+                    <h4 class="mt-3">Verified profiles</h4>
+                    <p class="text-muted mt-2 mb-0">We verify all the matrimony profiles.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="text-center p-3">
+                    <div class="avatar-sm m-auto">
+                        <span class="avatar-title bg-primary-lighten rounded-circle">
+                            <i class="mdi mdi-head-lightbulb text-primary font-24"></i>
+                        </span>
+                    </div>
+                    <h4 class="mt-3">Marriage counselling</h4>
+                    <p class="text-muted mt-2 mb-0">We provide counselling on how to chose the right match for you.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="text-center p-3">
+                    <div class="avatar-sm m-auto">
+                        <span class="avatar-title bg-primary-lighten rounded-circle">
+                            <i class="uil uil-comments-alt text-primary font-24"></i>
+                        </span>
+                    </div>
+                    <h4 class="mt-3">Scientific discussions</h4>
+                    <p class="text-muted mt-2 mb-0">Using an exhaustive questionnaire, we help you to discuss your priorities
+                    and goals with your prospective matches.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="text-center p-3">
+                    <div class="avatar-sm m-auto">
+                        <span class="avatar-title bg-primary-lighten rounded-circle">
+                            <i class="mdi mdi-hand-heart text-primary font-24"></i>
+                        </span>
+                    </div>
+                    <h4 class="mt-3">Handpicked matches</h4>
+                    <p class="text-muted mt-2 mb-0">We handpick matches for you.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="text-center p-3">
+                    <div class="avatar-sm m-auto">
+                        <span class="avatar-title bg-primary-lighten rounded-circle">
+                            <i class="uil uil-desktop text-primary font-24"></i>
+                            <i class="uil uil-mobile-android text-primary font-24"></i>
+                        </span>
+                    </div>
+                    <h4 class="mt-3">Responsive web app</h4>
+                    <p class="text-muted mt-2 mb-0">You can access our friendly web app from laptop and mobile.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="text-center p-3">
+                    <div class="avatar-sm m-auto">
+                        <span class="avatar-title bg-primary-lighten rounded-circle">
+                            <i class="mdi mdi-headset text-primary font-24"></i>
+                        </span>
+                    </div>
+                    <h4 class="mt-3">Dedicated support</h4>
+                    <p class="text-muted mt-2 mb-0">Our dedicated match makers are there to support you through your match making journey.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- END SERVICES -->
+
+<!-- START FEATURES 1 -->
+<!--
+<section class="py-5 bg-light-lighten border-top border-bottom border-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <h3>Success stories</h3>
+                    <p class="text-muted mt-2">Coming soon...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+<!-- END FEATURES 1 -->
+
+<!-- START CONTACT -->
+<section class="py-5 bg-light-lighten border-top border-bottom border-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <h3>Get In <span class="text-primary">Touch</span></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-3">
+            <div class="col-md-4">
+                <p class="text-muted mt-4"><span class="font-weight-bold">Customer Support:</span><br> <span class="d-block mt-1">+91 96470 89832</span></p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-muted mt-4"><span class="font-weight-bold">Email Address:</span><br> <span class="d-block mt-1">contact@vaisnavamarriage.com</span></p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-muted mt-4"><span class="font-weight-bold">Office Address:</span><br> <span class="d-block mt-1">Room no 106, Chakra Building, ISKCON, Sree Mayapur, Nabadwip, West Bengal 741313, India</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END CONTACT -->
+{% endblock landing_content %}
+
+<!-- START FOOTER -->
+<footer class="bg-dark py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">                    
+                <p class="text-white" style="font-size: 24px;"><i class="mdi mdi-set-right" style="font-size: 28px;"></i> VMB</p>
+                <p class="text-white-50 mt-4">Vaisnava Marriage is an active matrimony bureau
+                    <br> managed by the office of HH Jayapataka Swami Maharaj
+                    <br> to assist ISKCON devotees get married to the right partner.</p>
+
+                <!--
+                <ul class="social-list list-inline mt-3">
+                    <li class="list-inline-item text-center">
+                        <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item text-center">
+                        <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
+                    </li>
+                    <li class="list-inline-item text-center">
+                        <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item text-center">
+                        <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
+                    </li>
+                </ul>
+                -->
+
+            </div>
+
+            <div class="col-lg-2 mt-3 mt-lg-0">
+                <h5 class="text-white">Organization</h5>
+
+                <ul class="list-unstyled pl-0 mb-0 mt-3">
+                    <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">About Us</a></li>
+                    <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Blog</a></li>
+                </ul>
+
+            </div>
+
+            <div class="col-lg-2 mt-3 mt-lg-0">
+                <h5 class="text-white">Discover</h5>
+
+                <ul class="list-unstyled pl-0 mb-0 mt-3">
+                    <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Privacy</a></li>
+                    <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Terms of service</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mt-5">
+                    <p class="text-white-50 mt-4 text-center mb-0">© VaisnavaMarriage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- END FOOTER -->
+
+{% endblock %}

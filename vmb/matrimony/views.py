@@ -31,7 +31,7 @@ def index(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse("matrimony:profile-edit", args=["basic"]))
     else:
-        return HttpResponseRedirect(reverse("account_login"))
+        return render(request, "landing.html")
 
 
 @login_required
