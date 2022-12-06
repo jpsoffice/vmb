@@ -1698,3 +1698,10 @@ class MatrimonyProfileStats(BaseModel):
 
     class Meta:
         db_table = "matrimony_profile_stats"
+
+from tos.models import UserAgreement
+
+def __str__(self):
+    return '%s agreed to TOS: %s' % (self.user.username, str(self.terms_of_service))
+
+UserAgreement.__str__ = __str__
