@@ -21,9 +21,22 @@ CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
         "LOCATION": "",
+    },
+    # 'tos': {  # Can use any name here
+    #     'BACKEND': "django.core.cache.backends.locmem.LocMemCache",
+    #     'LOCATION': "",
+    #     'NAME': 'tos-cache',  # Can use any name here
+    # },
+    'tos': {
+        'BACKEND': "django.core.cache.backends.locmem.LocMemCache",
+        'LOCATION': "",
+        'NAME': 'tos-cache',
     }
 }
 
+# TOS_CACHE_NAME = 'tos'
+
+TOS_CACHE_NAME = 'tos'
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
@@ -35,6 +48,7 @@ EMAIL_BACKEND = env(
 # ------------------------------------------------------------------------------
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#prerequisites
 INSTALLED_APPS += ["debug_toolbar"]  # noqa F405
+# INSTALLED_APPS += ["tos"] # adding the tos app of django-tos package
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#middleware
 MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]  # noqa F405
 # https://django-debug-toolbar.readthedocs.io/en/latest/configuration.html#debug-toolbar-config

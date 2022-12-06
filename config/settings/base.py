@@ -75,6 +75,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "tos",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -179,6 +180,8 @@ MIDDLEWARE = [
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    # 'tos.middleware.UserAgreementMiddleware',
+    'tos.middleware.UserAgreementMiddleware',
 ]
 
 # Messages
@@ -431,6 +434,7 @@ ADMIN_REORDER = (
     "django_celery_beat",
     "notifications",
     "flags",
+    "tos",
 )
 
 # djmoney-exchange
