@@ -5,7 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 RUN apt-get update \
   # dependencies to install packages from github
-  && apt-get install -y git \ 
+  # && apt-get install -y git \ 
   # dependencies for building Python packages
   && apt-get install -y build-essential \
   # psycopg2 dependencies

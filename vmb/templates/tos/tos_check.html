@@ -1,0 +1,99 @@
+{% load i18n %}
+{% load static %}
+<!-- {% if note %}
+    <h2>{{ note }}</note>
+{% else %}
+    <h2>{% blocktrans %}Terms of Service as of {{ tos.created|date:"SHORT_DATE_FORMAT" }}{% endblocktrans %}</h2>
+{% endif %}
+
+{{ tos.content|safe }}
+
+<h2>{% trans "Accept Terms of Service?" %}</h2> -->
+<!-- <form method="post" action="{% url "tos_check_tos" %}">
+    {% csrf_token %}
+    {% if next %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ next }}">
+    {% endif %}
+    <button type="submit" name="reject" value="reject">{% trans "Reject" %}</button>
+    <button type="submit" name="accept" value="accept">{% trans "Accept" %}</button>
+</form> -->
+
+<style>
+    *{
+        font-family: Nunito,sans-serif;
+        color: #6c757d;
+        font-weight: 400;
+    }
+
+    .authentication-bg {
+        height: 100vh;
+        width: 100vw;    
+        background-image: url("{% static 'images/bg-pattern-light.svg' %}");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        max-width: 600px;
+        max-height: 70vh;
+        overflow-y: scroll;
+        border: none;
+        -webkit-box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+        box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+        margin-bottom: 24px;
+        background-color: white;
+        width: 90%;
+    }
+
+    .card-header {
+        background-color: #727cf5 !important;
+        padding: 30px;
+    }
+
+    .content{
+        padding: 0.75rem;
+    }
+
+    .btn{
+        color: #fff;
+        background-color: #727cf5;
+        border-color: #727cf5;
+        border-radius: .15rem;
+        text-align: center;
+        vertical-align: middle;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+        font-weight: 400;
+        box-shadow: none;
+        padding: 10px;
+        border: none;
+    }
+
+</style>
+
+<div class="authentication-bg">
+    <div class="card">
+        <div class="card-header"></div>
+        <div class="content">
+            {% if note %}
+                <h2>{{ note }}</note>
+            {% else %}
+                <h2>{% blocktrans %}Terms of Service as of {{ tos.created|date:"SHORT_DATE_FORMAT" }}{% endblocktrans %}</h2>
+            {% endif %}
+
+            {{ tos.content|safe }}
+
+            <h2>{% trans "Accept Terms of Service?" %}</h2>
+            <form method="POST" class="form-group" action="{% url "tos_check_tos" %}">
+                {% csrf_token %}
+                {% if next %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ next }}" >
+                {% endif %}
+                <button type="submit" name="reject" value="reject" class="btn" >{% trans "Reject" %}</button>
+                <button type="submit" name="accept" value="accept" class="btn" >{% trans "Accept" %}</button>
+            </form>
+        </div>
+    </div>
+</div>
