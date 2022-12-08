@@ -22,11 +22,6 @@ CACHES = {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
         "LOCATION": "",
     },
-    # 'tos': {  # Can use any name here
-    #     'BACKEND': "django.core.cache.backends.locmem.LocMemCache",
-    #     'LOCATION': "",
-    #     'NAME': 'tos-cache',  # Can use any name here
-    # },
     'tos': {
         'BACKEND': "django.core.cache.backends.locmem.LocMemCache",
         'LOCATION': "",

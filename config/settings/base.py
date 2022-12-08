@@ -180,7 +180,6 @@ MIDDLEWARE = [
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-    # 'tos.middleware.UserAgreementMiddleware',
     'tos.middleware.UserAgreementMiddleware',
 ]
 
