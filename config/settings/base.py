@@ -181,7 +181,7 @@ MIDDLEWARE = [
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-    'tos.middleware.UserAgreementMiddleware',
+    "tos.middleware.UserAgreementMiddleware",
 ]
 
 # Messages
@@ -336,11 +336,11 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
     "loggers": {
         "post_office": {"handlers": ["post_office"], "level": "INFO"},
-        #"django.db.backends": {
+        # "django.db.backends": {
         #    "level": "DEBUG",
         #    "handlers": ["console"],
         #    "propagate": False,
-        #},
+        # },
     },
 }
 
@@ -499,21 +499,21 @@ WAGTAIL_SITE_NAME = "vmb"
 # Django Flags
 FLAGS = {"ENABLE_SEARCH_FLAG": []}
 
-CACHE_TTL = 60*15
+CACHE_TTL = 60 * 15
 
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
         "LOCATION": "",
     },
-    'tos': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://redis:6379/0',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+    "tos": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
-        'NAME': 'tos-cache',
-    }
+        "NAME": "tos-cache",
+    },
 }
 
-TOS_CACHE_NAME = 'tos'
+TOS_CACHE_NAME = "tos"
