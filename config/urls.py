@@ -42,7 +42,6 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# urlpatterns += [ path('terms-of-service/', include('tos.urls')), ]
 urlpatterns += [path('terms-of-service/', include('tos.urls')), ]
 
 if settings.DEBUG:

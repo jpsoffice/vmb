@@ -76,6 +76,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "tos",
+    "tos_custom",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -497,3 +498,22 @@ WAGTAIL_SITE_NAME = "vmb"
 
 # Django Flags
 FLAGS = {"ENABLE_SEARCH_FLAG": []}
+
+CACHE_TTL = 60*15
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "",
+    },
+    'tos': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/0',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        },
+        'NAME': 'tos-cache',
+    }
+}
+
+TOS_CACHE_NAME = 'tos'

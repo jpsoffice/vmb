@@ -1,5 +1,8 @@
-{% load i18n %}
-{% load static %}
+{% extends "base_minimal.html" %}
+
+<!-- Original Template of django-tos -->
+<!-- {% load i18n %}
+{% load static %} -->
 <!-- {% if note %}
     <h2>{{ note }}</note>
 {% else %}
@@ -17,7 +20,7 @@
     <button type="submit" name="reject" value="reject">{% trans "Reject" %}</button>
     <button type="submit" name="accept" value="accept">{% trans "Accept" %}</button>
 </form> -->
-
+{% block body_content %}
 <style>
     *{
         font-family: Nunito,sans-serif;
@@ -97,3 +100,4 @@
         </div>
     </div>
 </div>
+{% endblock body_content %}
