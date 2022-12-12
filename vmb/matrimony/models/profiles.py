@@ -867,7 +867,9 @@ class MatrimonyProfile(BaseModel):
             q = q & Q(occupations__in=occupations)
 
         employed_in = (
-            querydata.get("employed_in") if querydata else list(self.expectations.employed_in)
+            querydata.get("employed_in")
+            if querydata
+            else list(self.expectations.employed_in)
         )
         query_params["employed_in"] = employed_in
         if employed_in:

@@ -75,6 +75,8 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "tos",
+    "tos_custom",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -179,6 +181,7 @@ MIDDLEWARE = [
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    "tos.middleware.UserAgreementMiddleware",
 ]
 
 # Messages
@@ -333,11 +336,11 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
     "loggers": {
         "post_office": {"handlers": ["post_office"], "level": "INFO"},
-        #"django.db.backends": {
+        # "django.db.backends": {
         #    "level": "DEBUG",
         #    "handlers": ["console"],
         #    "propagate": False,
-        #},
+        # },
     },
 }
 
@@ -431,6 +434,7 @@ ADMIN_REORDER = (
     "django_celery_beat",
     "notifications",
     "flags",
+    "tos",
 )
 
 # djmoney-exchange
@@ -494,3 +498,22 @@ WAGTAIL_SITE_NAME = "vmb"
 
 # Django Flags
 FLAGS = {"ENABLE_SEARCH_FLAG": []}
+
+CACHE_TTL = 60 * 15
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "",
+    },
+    "tos": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "NAME": "tos-cache",
+    },
+}
+
+TOS_CACHE_NAME = "tos"
