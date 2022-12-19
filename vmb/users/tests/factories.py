@@ -13,7 +13,6 @@ class UserFactory(factory.django.DjangoModelFactory):
     username = fake.user_name()
     email = fake.email()
     name = fake.name()
-    print(username, email, name)
 
     @post_generation
     def password(self, create: bool, extracted: Sequence[Any], **kwargs):
