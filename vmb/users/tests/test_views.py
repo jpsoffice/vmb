@@ -14,6 +14,7 @@ import datetime
 from tos.models import *
 from vmb.matrimony.tests.factories import *
 
+
 class TestUserUpdateView:
     """
     TODO:
@@ -58,26 +59,29 @@ class TestUserRedirectView:
 
         assert view.get_redirect_url() == f"/users/{user.username}/"
 
+
 def test_user_signup_view(client):
 
     data = {
-        "email":"test_user@gmail.com",
-        "password1":"wordpass123",
-        "password2":"wordpass123",
-        "name":"test_user",
-        "gender":"M",
-        "marital_status":"UMR",
-        "phone":"9876543210",
-        "dob":"Dec 14, 2000",
-        "rounds_chanting":20,
-        "profile_created_by":"SE",
-        "contact_person_name":"test_user123",
+        "email": "test_user@gmail.com",
+        "password1": "wordpass123",
+        "password2": "wordpass123",
+        "name": "test_user",
+        "gender": "M",
+        "marital_status": "UMR",
+        "phone": "9876543210",
+        "dob": "Dec 14, 2000",
+        "rounds_chanting": 20,
+        "profile_created_by": "SE",
+        "contact_person_name": "test_user123",
     }
 
-    response = client.post('http://127.0.0.1:8000/accounts/signup/', data=data, follow=True)
+    response = client.post(
+        "http://127.0.0.1:8000/accounts/signup/", data=data, follow=True
+    )
 
     assert response.status_code == 200
-    assert 'account/verification_sent.html' in (t.name for t in response.templates)
+    assert "account/verification_sent.html" in (t.name for t in response.templates)
 
 
 def test_user_login_view_without_email_verification(client):
@@ -85,34 +89,50 @@ def test_user_login_view_without_email_verification(client):
     user = UserCustomFactory()
     profile = MatrimonyFactory(user=user, profile_id=user.username)
 
-    response = client.post('http://127.0.0.1:8000/accounts/login/', data={'login':profile.user.email, 'password':'wordpass123'}, follow=True)
+    response = client.post(
+        "http://127.0.0.1:8000/accounts/login/",
+        data={"login": profile.user.email, "password": "wordpass123"},
+        follow=True,
+    )
 
     assert response.status_code == 200
-    assert 'account/verification_sent.html' in (t.name for t in response.templates)
+    assert "account/verification_sent.html" in (t.name for t in response.templates)
+
 
 def test_user_login_view_without_tos_acceptance(client):
 
     user = UserCustomFactory()
     profile = MatrimonyFactory(user=user, profile_id=user.username)
-    EmailAddress.objects.create(user=profile.user, email=profile.user.email, primary=True, verified=True)
+    EmailAddress.objects.create(
+        user=profile.user, email=profile.user.email, primary=True, verified=True
+    )
     tos = TermsOfService.objects.create(active=True, content="This is the new TOS.")
-    UserAgreement.objects.create(user=profile.user,terms_of_service=tos)
+    UserAgreement.objects.create(user=profile.user, terms_of_service=tos)
 
-    response = client.post('http://127.0.0.1:8000/accounts/login/', data={'login':profile.user.email, 'password':'wordpass123'}, follow=True)
+    response = client.post(
+        "http://127.0.0.1:8000/accounts/login/",
+        data={"login": profile.user.email, "password": "wordpass123"},
+        follow=True,
+    )
 
     assert response.status_code == 200
-    assert 'matrimony/profile_edit.html' in (t.name for t in response.templates)
+    assert "matrimony/profile_edit.html" in (t.name for t in response.templates)
+
 
 def test_user_login_view(client):
 
     user = UserCustomFactory()
     profile = MatrimonyFactory(user=user, profile_id=user.username)
-    EmailAddress.objects.create(user=profile.user, email=profile.user.email, primary=True, verified=True)
+    EmailAddress.objects.create(
+        user=profile.user, email=profile.user.email, primary=True, verified=True
+    )
     tos = TermsOfService.objects.create(active=True, content="This is the new TOS.")
 
-    response = client.post('http://127.0.0.1:8000/accounts/login/', data={'login':profile.user.email, 'password':'wordpass123'}, follow=True)
+    response = client.post(
+        "http://127.0.0.1:8000/accounts/login/",
+        data={"login": profile.user.email, "password": "wordpass123"},
+        follow=True,
+    )
 
     assert response.status_code == 200
-    assert 'tos/tos_check.html' in (t.name for t in response.templates)
-
-
+    assert "tos/tos_check.html" in (t.name for t in response.templates)

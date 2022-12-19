@@ -5,8 +5,10 @@ from factory import Faker, post_generation
 import factory
 
 from faker.factory import Factory
+
 Faker = Factory.create
 fake = Faker()
+
 
 class UserFactory(factory.django.DjangoModelFactory):
 
@@ -28,4 +30,3 @@ class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = get_user_model()
         django_get_or_create = ["username"]
-
