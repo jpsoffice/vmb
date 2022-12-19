@@ -80,16 +80,39 @@ def test_user_signup_view(client):
     assert 'account/verification_sent.html' in (t.name for t in response.templates)
 
 
-def test_user_login_view(client):
+def test_user_login_view_without_email_verification(client):
+
+    user = UserCustomFactory()
+    profile = MatrimonyFactory(user=user, profile_id=user.username)
+
+    response = client.post('http://127.0.0.1:8000/accounts/login/', data={'login':profile.user.email, 'password':'wordpass123'}, follow=True)
+
+    assert response.status_code == 200
+    assert 'account/verification_sent.html' in (t.name for t in response.templates)
+
+def test_user_login_view_without_tos_acceptance(client):
 
     user = UserCustomFactory()
     profile = MatrimonyFactory(user=user, profile_id=user.username)
     EmailAddress.objects.create(user=profile.user, email=profile.user.email, primary=True, verified=True)
     tos = TermsOfService.objects.create(active=True, content="This is the new TOS.")
     UserAgreement.objects.create(user=profile.user,terms_of_service=tos)
+
     response = client.post('http://127.0.0.1:8000/accounts/login/', data={'login':profile.user.email, 'password':'wordpass123'}, follow=True)
-    
+
     assert response.status_code == 200
     assert 'matrimony/profile_edit.html' in (t.name for t in response.templates)
+
+def test_user_login_view(client):
+
+    user = UserCustomFactory()
+    profile = MatrimonyFactory(user=user, profile_id=user.username)
+    EmailAddress.objects.create(user=profile.user, email=profile.user.email, primary=True, verified=True)
+    tos = TermsOfService.objects.create(active=True, content="This is the new TOS.")
+
+    response = client.post('http://127.0.0.1:8000/accounts/login/', data={'login':profile.user.email, 'password':'wordpass123'}, follow=True)
+
+    assert response.status_code == 200
+    assert 'tos/tos_check.html' in (t.name for t in response.templates)
 
 
