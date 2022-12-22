@@ -21,3 +21,4 @@ before_script:
   - export PLACES_MAPS_API_KEY=""
 script:
   - "black --check ./"
+  - pytest

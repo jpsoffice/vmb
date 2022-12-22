@@ -93,7 +93,7 @@ def profile_edit(request, section_id):
     section_index = section_id_index_map[section_id]
     section = sections[section_index]
     section["active"] = True
-
+    
     try:
         matrimony_profile = MatrimonyProfile.objects.get(user=request.user)
     except MatrimonyProfile.DoesNotExist:
