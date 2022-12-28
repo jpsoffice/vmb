@@ -11,6 +11,7 @@
 {% block body_attrs %}data-layout-config='{"darkMode":false}'{% endblock %}
 
 {% block body_content %}
+{% block navbar %}
 <!-- NAVBAR START -->
 <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark" style="background-color: #727cf5;">
     <div class="container">
@@ -46,10 +47,11 @@
     </div>
 </nav>
 <!-- NAVBAR END -->
+{% endblock navbar %}
 
+{% block content %}
 <!-- START HERO -->
 
-{% block landing_content %}
 <section class="hero-section">
     <div class="container">
         <div class="row align-items-top">
@@ -225,8 +227,9 @@
     </div>
 </section>
 <!-- END CONTACT -->
-{% endblock landing_content %}
+{% endblock content %}
 
+{% block footer %}
 <!-- START FOOTER -->
 <footer class="bg-dark py-5">
     <div class="container">
@@ -286,5 +289,6 @@
     </div>
 </footer>
 <!-- END FOOTER -->
+{% endblock footer %}
 
-{% endblock %}
+{% endblock body_content %}
