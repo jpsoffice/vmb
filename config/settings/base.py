@@ -77,6 +77,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "tos",
     "tos_custom",
+    "actstream",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -435,6 +436,7 @@ ADMIN_REORDER = (
     "notifications",
     "flags",
     "tos",
+    "actstream",
 )
 
 # djmoney-exchange
@@ -517,3 +519,11 @@ CACHES = {
 }
 
 TOS_CACHE_NAME = "tos"
+
+ACTSTREAM_SETTINGS = {
+    'MANAGER': 'vmb.matrimony.managers.MyActionManager',
+    'FETCH_RELATIONS': True,
+    'USE_PREFETCH': True,
+    'USE_JSONFIELD': True,
+    'GFK_FETCH_DEPTH': 1,
+}

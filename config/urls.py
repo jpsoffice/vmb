@@ -44,6 +44,7 @@ urlpatterns = [
 
 urlpatterns += [
     path("terms-of-service/", include("tos.urls")),
+    path('^activity/', include('actstream.urls')),
 ]
 
 if settings.DEBUG:
