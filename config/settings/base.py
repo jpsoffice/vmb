@@ -389,6 +389,7 @@ ACCOUNT_FORMS = {
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "vmb.users.adapters.SocialAccountAdapter"
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = env("ACCOUNT_DEFAULT_HTTP_PROTOCOL", default="https")
+ACCOUNT_LOGOUT_ON_GET = True
 
 # django-modeladmin-reorder
 # -----------------------------------------------------------------------------
@@ -517,4 +518,4 @@ CACHES = {
 }
 
 TOS_CACHE_NAME = "tos"
-TOS_EXCLUDE_PATH_PREFIXES = ["/privacy", "/terms"]
+TOS_EXCLUDE_PATH_PREFIXES = ["/privacy", "/terms", "/accounts/logout"]

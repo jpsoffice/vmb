@@ -41,8 +41,8 @@
                     {% if next %}
                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ next }}" >
                     {% endif %}
-                    <button type="submit" name="reject" value="reject" class="btn btn-danger" >{% trans "Reject" %}</button>
-                    <button type="submit" name="accept" value="accept" class="btn btn-success" >{% trans "Accept" %}</button>
+                    <button type="submit" name="reject" value="reject" class="btn btn-danger" ><i class="mdi mdi-cancel"></i> {% trans "Reject" %}</button>
+                    <button type="submit" name="accept" value="accept" class="btn btn-success" ><i class="mdi mdi-check"></i> {% trans "Accept" %}</button>
                 </form>
             </div>
         </div>
