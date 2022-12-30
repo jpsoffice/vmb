@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load activity_tags %}
+
+{% block content_title %}Your Timeline{% endblock %}
+
+{% block content %}
+<div>
+    {% activity_stream 'actor' user %}
+    {% for action in stream %}
+        {% display_action action %}
+    {% endfor %}
+</div>
+{% endblock %}

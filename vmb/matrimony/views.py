@@ -403,3 +403,7 @@ def mark_all_as_read(request):
 @login_required
 def view_all_notifications(request):
     return render(request, "matrimony/view_all_notifications.html")
+
+@login_required
+def view_timeline(request):
+    return render(request, "actstream/view_timeline.html")
