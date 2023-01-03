@@ -6,6 +6,15 @@
 {% load crispy_forms_tags %}
 {% load crispy_forms_field %}
 
+{% block css %}
+{{ block.super }}
+<style>
+    .form-group {
+        margin-bottom: 0.6rem;
+    }
+</style>
+{% endblock css %}
+
 {% block body_class %}loading{% endblock %}
 
 {% block body_attrs %}data-layout-config='{"darkMode":false}'{% endblock %}
@@ -26,7 +35,7 @@
 
 {% block navbar %}
 <!-- NAVBAR START -->
-<nav class="navbar navbar-expand-lg py-lg-3 navbar-dark" style="background-color: #727cf5;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #727cf5;">
     <div class="container">
 
         <!-- logo -->
@@ -66,7 +75,7 @@
 
 <!-- START HERO -->
 
-<section class="hero-section">
+<section class="hero-section" style="padding: 20px 0 120px 0;">
     <div class="container">
         <div class="row align-items-top">
             <div class="col-md-5">
@@ -287,8 +296,8 @@
                 <h5 class="text-white">Discover</h5>
 
                 <ul class="list-unstyled pl-0 mb-0 mt-3">
-                    <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Privacy</a></li>
-                    <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Terms of service</a></li>
+                    <li class="mt-2"><a href="/privacy/" class="text-white-50">Privacy</a></li>
+                    <li class="mt-2"><a href="/terms/" class="text-white-50">Terms of service</a></li>
                 </ul>
             </div>
         </div>
