@@ -3,14 +3,12 @@
 {% block title %}{{ block.super }} - {{ flatpage.title }}{% endblock title %}
 
 {% block content %}
-<div class="mt-5 mb-5">
+<div class="mt-5 mb-5 pl-2 pr-2">
     <div class="container" style="min-height: 50vh;">
-    {% block container %}
         <div class="row">
             {{ flatpage.content }}
         </div>
         <!-- end row -->
-    {% endblock %}
     </div>
     <!-- end container -->
 </div>
