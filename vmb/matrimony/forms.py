@@ -82,6 +82,10 @@ class SignupForm(AllAuthSignupForm):
         min_length=3, max_length=200, strip=True, required=False
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["password2"].widget.attrs["placeholder"] = "Password (confirm)"
+
     def clean_dob(self):
         value = self.cleaned_data["dob"]
         if ((timezone.now().date() - value).days / 365.25) < 18:
