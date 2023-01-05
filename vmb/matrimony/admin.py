@@ -58,6 +58,11 @@ from decimal import InvalidOperation
 from builtins import IndexError
 
 
+from actstream import action
+from actstream.models import Action
+from vmb.common import activities
+from vmb.users.models import User
+
 class FlatPageAdmin(FlatPageAdmin):
     formfield_overrides = {models.TextField: {"widget": CKEditorWidget}}
 
@@ -697,6 +702,9 @@ class MatchAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.updated_by = request.user
+        if obj.sender_gender == None:
+            action.send(obj.male.user, verb=activities.MATCH_SUGGESTED)
+            action.send(obj.female.user, verb=activities.MATCH_SUGGESTED)
         super().save_model(request, obj, form, change)
 
     def save_formset(self, request, form, formset, change):

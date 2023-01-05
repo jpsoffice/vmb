@@ -14,6 +14,7 @@ import notifications.urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
+from vmb.users.views import NewSignupView
 
 admin.site.site_header = settings.ADMIN_SITE_HEADER
 
@@ -26,6 +27,7 @@ urlpatterns = [
     path("impersonate/", include("impersonate.urls")),
     # User management
     path("users/", include("vmb.users.urls", namespace="users")),
+    path('accounts/signup/', NewSignupView.as_view(), name="new_signup"),
     path("accounts/", include("allauth.urls")),
     path("photologue/", include("photologue.urls", namespace="photologue")),
     path("", include("vmb.matrimony.urls", namespace="matrimony")),
