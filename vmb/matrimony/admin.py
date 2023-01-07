@@ -567,6 +567,26 @@ class BaseMatrimonyProfileAdmin(
     def save_model(self, request, obj, form, change):
         obj.updated_by = request.user
         super().save_model(request, obj, form, change)
+        if obj.status == "02":
+            action.send(obj.user, verb=activities.USER_REQUEST_MORE_INFO)
+        elif obj.status == "10":
+            action.send(obj.user, verb=activities.USER_DEACTIVATED)
+        elif obj.status == "11":
+            action.send(obj.user, verb=activities.USER_BLOCKED)
+        elif obj.status == "20":
+            action.send(obj.user, verb=activities.USER_ACTIVATED)
+        elif obj.status == "30":
+            action.send(obj.user, verb=activities.USER_MATCH_SEARCH_IN_PROGRESS)
+        elif obj.status == "40":
+            action.send(obj.user, verb=activities.USER_MATCHED)
+        elif obj.status == "50":
+            action.send(obj.user, verb=activities.USER_COMPLETED_QUESTIONNAIRE)
+        elif obj.status == "60":
+            action.send(obj.user, verb=activities.USER_STARTED_MARRIAGE_DISCUSSION)
+        elif obj.status == "90":
+            action.send(obj.user, verb=activities.USER_MARRIED_EXTERNALLY)
+        elif obj.status == "99":
+            action.send(obj.user, verb=activities.USER_MARRIED)
         obj.refresh_from_db()
         obj.create_user()
 
