@@ -59,7 +59,7 @@ Once done, you can rebuild the Docker images using ``docker-compose build``.
 Generate sample data
 ====================
 
-In Django shell: ``docker-compose exec django /entrypoint /app/manage.py sell``, enter the following
+In Django shell: ``docker-compose exec django /entrypoint /app/manage.py shell``, enter the following
 
 .. code-block::
 

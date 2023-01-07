@@ -867,7 +867,9 @@ class MatrimonyProfile(BaseModel):
             q = q & Q(occupations__in=occupations)
 
         employed_in = (
-            querydata.get("employed_in") if querydata else list(self.expectations.employed_in)
+            querydata.get("employed_in")
+            if querydata
+            else list(self.expectations.employed_in)
         )
         query_params["employed_in"] = employed_in
         if employed_in:
@@ -1497,6 +1499,14 @@ class Match(BaseModel):
     notified = models.NullBooleanField(blank=True)
     notification_time = models.DateTimeField(blank=True, null=True)
 
+    response = models.CharField(
+        max_length=3,
+        choices=MATCH_RESPONSE_CHOICES,
+        blank=True,
+        default="",
+        help_text="Combined response from both parties of the match",
+    )
+
     male = models.ForeignKey(
         Male,
         on_delete=models.SET_NULL,
@@ -1557,14 +1567,6 @@ class Match(BaseModel):
     def __str__(self):
         return f"{self.male}/{self.female}"
 
-    @property
-    def response(self):
-        return (
-            "Accepted"
-            if self.male_response == self.female_response == "ACP"
-            else "Rejected"
-        )
-
     class Meta:
         db_table = "matrimony_matches"
 
@@ -1598,7 +1600,17 @@ class Match(BaseModel):
         )
 
     def save(self, *args, **kwargs):
+        if self.male_response and self.female_response:
+            if self.male_response == self.female_response == "ACP":
+                self.response = "ACP"
+                if self.status in ["", "TSG", "SUG", "SNT"]:
+                    self.status = "ACP"
+            else:
+                self.response = "REJ"
+                self.status = "REJ"
+
         super().save(*args, **kwargs)
+
         if (
             self._original_male_response != self.male_response
             or self._original_female_response != self.female_response

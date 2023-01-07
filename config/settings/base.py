@@ -75,6 +75,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "tos",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -118,6 +119,7 @@ LOCAL_APPS = [
     "vmb.metrics.apps.MetricsConfig",
     "vmb.photologue_custom.apps.PhotologueCustomConfig",
     "vmb.matrimony.apps.MatrimonyConfig",
+    "vmb.tos_custom.apps.TOSCustomConfig",
     # "djmoney.apps.MoneyConfig",
 ]
 
@@ -179,6 +181,7 @@ MIDDLEWARE = [
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    # "vmb.tos_custom.middleware.CustomUserAgreementMiddleware",
 ]
 
 # Messages
@@ -333,11 +336,11 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
     "loggers": {
         "post_office": {"handlers": ["post_office"], "level": "INFO"},
-        #"django.db.backends": {
+        # "django.db.backends": {
         #    "level": "DEBUG",
         #    "handlers": ["console"],
         #    "propagate": False,
-        #},
+        # },
     },
 }
 
@@ -386,6 +389,7 @@ ACCOUNT_FORMS = {
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "vmb.users.adapters.SocialAccountAdapter"
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = env("ACCOUNT_DEFAULT_HTTP_PROTOCOL", default="https")
+ACCOUNT_LOGOUT_ON_GET = True
 
 # django-modeladmin-reorder
 # -----------------------------------------------------------------------------
@@ -431,6 +435,7 @@ ADMIN_REORDER = (
     "django_celery_beat",
     "notifications",
     "flags",
+    "tos",
 )
 
 # djmoney-exchange
@@ -494,3 +499,23 @@ WAGTAIL_SITE_NAME = "vmb"
 
 # Django Flags
 FLAGS = {"ENABLE_SEARCH_FLAG": []}
+
+CACHE_TTL = 60 * 15
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "",
+    },
+    "tos": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "NAME": "tos-cache",
+    },
+}
+
+TOS_CACHE_NAME = "tos"
+TOS_EXCLUDE_PATH_PREFIXES = ["/privacy", "/terms", "/accounts/logout"]

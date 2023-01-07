@@ -15,6 +15,8 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from vmb.tos_custom.views import check_tos as custom_check_tos
+
 admin.site.site_header = settings.ADMIN_SITE_HEADER
 
 urlpatterns = [
@@ -41,6 +43,11 @@ urlpatterns = [
     path("wagtail/", include(wagtail_urls)),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [
+    path("terms-of-service/confirm/", custom_check_tos, name="tos_check_tos"),
+    path("terms-of-service/", include("tos.urls")),
+]
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit

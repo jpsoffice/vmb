@@ -24,6 +24,7 @@ from vmb.matrimony.forms import (
     MatrimonyProfilePhotosForm,
     MatrimonyProfileExpectationsForm,
     MatrimonyProfileSearchForm,
+    SignupForm,
 )
 
 
@@ -31,7 +32,8 @@ def index(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse("matrimony:profile-edit", args=["basic"]))
     else:
-        return HttpResponseRedirect(reverse("account_login"))
+        form = SignupForm()
+        return render(request, "landing.html", {"form": form})
 
 
 @login_required
