@@ -181,7 +181,7 @@ MIDDLEWARE = [
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-    "vmb.tos_custom.middleware.CustomUserAgreementMiddleware",
+    # "vmb.tos_custom.middleware.CustomUserAgreementMiddleware",
 ]
 
 # Messages
