@@ -707,6 +707,9 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
 class MatchAdmin(admin.ModelAdmin):
     model = Match
     list_display = (
+        "id",
+        "category",
+        "response",
         "male",
         "male_response",
         "female",
@@ -719,6 +722,18 @@ class MatchAdmin(admin.ModelAdmin):
     )
     raw_id_fields = ("male", "female")
     inlines = [CommentInline]
+
+    readonly_fields = ["response"]
+    search_fields = [
+        "male",
+        "female",
+    ]
+    list_filter = [
+        "status",
+        "category",
+        "created_at",
+        "updated_at",
+    ]
 
     def save_model(self, request, obj, form, change):
         obj.updated_by = request.user
