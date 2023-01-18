@@ -76,7 +76,6 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "tos",
-    "tos_custom",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -120,6 +119,7 @@ LOCAL_APPS = [
     "vmb.metrics.apps.MetricsConfig",
     "vmb.photologue_custom.apps.PhotologueCustomConfig",
     "vmb.matrimony.apps.MatrimonyConfig",
+    "vmb.tos_custom.apps.TOSCustomConfig",
     # "djmoney.apps.MoneyConfig",
 ]
 
@@ -181,7 +181,7 @@ MIDDLEWARE = [
     "admin_reorder.middleware.ModelAdminReorder",
     "impersonate.middleware.ImpersonateMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-    "tos.middleware.UserAgreementMiddleware",
+    "vmb.tos_custom.middleware.CustomUserAgreementMiddleware",
 ]
 
 # Messages
@@ -389,6 +389,7 @@ ACCOUNT_FORMS = {
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "vmb.users.adapters.SocialAccountAdapter"
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = env("ACCOUNT_DEFAULT_HTTP_PROTOCOL", default="https")
+ACCOUNT_LOGOUT_ON_GET = True
 
 # django-modeladmin-reorder
 # -----------------------------------------------------------------------------
@@ -517,3 +518,4 @@ CACHES = {
 }
 
 TOS_CACHE_NAME = "tos"
+TOS_EXCLUDE_PATH_PREFIXES = ["/privacy", "/terms", "/accounts/logout"]

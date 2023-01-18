@@ -1,19 +1,15 @@
-{% extends "base_minimal.html" %}
+{% extends "landing.html" %}
 {% load cookielaw_tags %}
 {% block title %}{{ block.super }} - {{ flatpage.title }}{% endblock title %}
 
-{% block body_class %}authentication-bg{% endblock %}
-
-{% block body_content %}
-<div class="account-pages mt-5 mb-5">
-    <div class="container">
-    {% block container %}
-        <div class="row justify-content-center">
+{% block content %}
+<div class="mt-5 mb-5 pl-2 pr-2">
+    <div class="container" style="min-height: 50vh;">
+        <div class="row">
             {{ flatpage.content }}
         </div>
         <!-- end row -->
-    {% endblock %}
     </div>
     <!-- end container -->
 </div>
-{% endblock body_content %}
+{% endblock content %}

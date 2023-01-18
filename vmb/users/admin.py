@@ -26,4 +26,4 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
     ) + auth_admin.UserAdmin.fieldsets
     list_display = ["username", "name", "is_superuser"]
-    search_fields = ["name"]
+    search_fields = ["name", "username", "email"]
