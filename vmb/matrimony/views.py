@@ -24,6 +24,7 @@ from vmb.matrimony.forms import (
     MatrimonyProfilePhotosForm,
     MatrimonyProfileExpectationsForm,
     MatrimonyProfileSearchForm,
+    SignupForm,
 )
 
 from actstream import action
@@ -37,7 +38,8 @@ def index(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse("matrimony:profile-edit", args=["basic"]))
     else:
-        return HttpResponseRedirect(reverse("account_login"))
+        form = SignupForm()
+        return render(request, "landing.html", {"form": form})
 
 
 @login_required
@@ -99,7 +101,7 @@ def profile_edit(request, section_id):
     section_index = section_id_index_map[section_id]
     section = sections[section_index]
     section["active"] = True
-    
+
     try:
         matrimony_profile = MatrimonyProfile.objects.get(user=request.user)
     except MatrimonyProfile.DoesNotExist:

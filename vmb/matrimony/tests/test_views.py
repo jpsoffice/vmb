@@ -36,7 +36,7 @@ def test_index_view(client):
     assert "account/login.html" in (t.name for t in response.templates)
 
     # With Login
-    
+
     profile = Reusable_Profile_Generator()
 
     client.login(username=profile.user.username, password="wordpass123")
@@ -52,7 +52,9 @@ def test_profile_details_view(client):
 
     # Without Login
 
-    response = client.get(reverse('matrimony:profile-details',args=[profile.profile_id]), follow=True)
+    response = client.get(
+        reverse("matrimony:profile-details", args=[profile.profile_id]), follow=True
+    )
 
     assert response.status_code == 200
     assert "account/login.html" in (t.name for t in response.templates)
@@ -61,10 +63,13 @@ def test_profile_details_view(client):
 
     client.login(username=profile.user.username, password="wordpass123")
 
-    response = client.get(reverse('matrimony:profile-details',args=[profile.profile_id]), follow=True)
+    response = client.get(
+        reverse("matrimony:profile-details", args=[profile.profile_id]), follow=True
+    )
 
     assert response.status_code == 200
     assert "matrimony/profile_details.html" in (t.name for t in response.templates)
+
 
 def test_profile_edit_basic_get_view(client):
 
@@ -223,3 +228,4 @@ def test_mark_as_read_view(client, django_db_setup):
     assert len(profile.user.notifications.unread()) == 1
     assert response.status_code == 200
     assert "matrimony/view_all_notifications.html" in (t.name for t in response.templates)
+
