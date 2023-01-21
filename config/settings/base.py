@@ -519,3 +519,7 @@ CACHES = {
 
 TOS_CACHE_NAME = "tos"
 TOS_EXCLUDE_PATH_PREFIXES = ["/privacy", "/terms", "/accounts/logout"]
+
+
+# Pagination Page Size
+MATCH_SEARCH_PAGE_SIZE=10

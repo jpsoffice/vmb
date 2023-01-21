@@ -27,7 +27,7 @@ urlpatterns = [
         view=profile_photo_action,
         name="profile-photo-action",
     ),
-    path("search/", search, name="search"),
+    path("search/<int:page>/", search, name="search"),
     path("matches/", matches, name="matches"),
     path("matches/<slug:category>/", matches, name="matches"),
     path("match/<int:id>", match_details, name="match-details"),

@@ -81,6 +81,24 @@
     <h3>No matches found!</h3>
   </div>
   {% endfor %}
+
+  <div class="pagination" style="padding: 10px;font-size: 15px;">
+    <span class="step-links">
+        {% if active_page.has_previous %}
+            <a href="../1/" style="padding: 5px;">&laquo; first</a>
+            <a href="../{{active_page.previous_page_number}}/" style="padding: 5px;">previous</a>
+        {% endif %}
+
+        <span class="current" style="padding: 5px;">
+            Page {{ active_page.number }} of {{ active_page.paginator.num_pages }}.
+        </span>
+
+        {% if active_page.has_next %}
+            <a href="../{{ active_page.next_page_number }}/" style="padding: 5px;">next</a>
+            <a href="../{{ active_page.paginator.num_pages }}/" style="padding: 5px;">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 </div>
 {% endif %}
 {% endblock %}
