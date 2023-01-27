@@ -70,7 +70,6 @@ def test_profile_details_view(client):
     assert response.status_code == 200
     assert "matrimony/profile_details.html" in (t.name for t in response.templates)
 
-
 def test_profile_edit_basic_get_view(client):
 
     profile = Reusable_Profile_Generator()
