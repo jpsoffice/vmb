@@ -76,9 +76,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "tos",
-    "tos_custom",
     "actstream",
-    "actstream_custom.apps.ActstreamCustomConfig",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -123,6 +121,7 @@ LOCAL_APPS = [
     "vmb.photologue_custom.apps.PhotologueCustomConfig",
     "vmb.matrimony.apps.MatrimonyConfig",
     "vmb.tos_custom.apps.TOSCustomConfig",
+    "vmb.actstream_custom.apps.ActstreamCustomConfig",
     # "djmoney.apps.MoneyConfig",
 ]
 

@@ -49,7 +49,7 @@ urlpatterns = [
 urlpatterns += [
     path("terms-of-service/confirm/", custom_check_tos, name="tos_check_tos"),
     path("terms-of-service/", include("tos.urls")),
-    path('^activity/', include('actstream.urls')),
+    path('activity/', include('actstream.urls')),
 ]
 
 if settings.DEBUG:
