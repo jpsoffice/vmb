@@ -70,7 +70,6 @@ def test_profile_details_view(client):
     assert response.status_code == 200
     assert "matrimony/profile_details.html" in (t.name for t in response.templates)
 
-
 def test_profile_edit_basic_get_view(client):
 
     profile = Reusable_Profile_Generator()
@@ -228,4 +227,3 @@ def test_mark_as_read_view(client, django_db_setup):
     assert len(profile.user.notifications.unread()) == 1
     assert response.status_code == 200
     assert "matrimony/view_all_notifications.html" in (t.name for t in response.templates)
-
