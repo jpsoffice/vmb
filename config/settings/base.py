@@ -123,6 +123,7 @@ LOCAL_APPS = [
     "vmb.photologue_custom.apps.PhotologueCustomConfig",
     "vmb.matrimony.apps.MatrimonyConfig",
     "vmb.tos_custom.apps.TOSCustomConfig",
+    "vmb.actstream_custom.apps.ActstreamCustomConfig",
     # "djmoney.apps.MoneyConfig",
 ]
 

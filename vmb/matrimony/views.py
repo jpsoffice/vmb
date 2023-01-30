@@ -308,9 +308,17 @@ def match_action(request, id, action):
     if profile.gender == "M":
         match.male_response = action_code
         match.male_response_updated_at = timezone.now()
+        if action == "accept":
+            globals()['action'].send(request.user, verb=activities.MATCH_REQUEST_ACCEPTED, target=match.female.user)
+        else:
+            globals()['action'].send(request.user, verb=activities.MATCH_REQUEST_REJECTED, target=match.female.user)
     else:
         match.female_response = action_code
         match.female_response_updated_at = timezone.now()
+        if action == "accept":
+            globals()['action'].send(request.user, verb=activities.MATCH_REQUEST_ACCEPTED, target=match.male.user)
+        else:
+            globals()['action'].send(request.user, verb=activities.MATCH_REQUEST_REJECTED, target=match.male.user)
     match.save()
 
     return JsonResponse(data={})

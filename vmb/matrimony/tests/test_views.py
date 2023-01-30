@@ -227,3 +227,4 @@ def test_mark_as_read_view(client, django_db_setup):
     assert len(profile.user.notifications.unread()) == 1
     assert response.status_code == 200
     assert "matrimony/view_all_notifications.html" in (t.name for t in response.templates)
+
