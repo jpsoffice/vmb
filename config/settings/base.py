@@ -532,3 +532,6 @@ ACTSTREAM_SETTINGS = {
     'USE_JSONFIELD': True,
     'GFK_FETCH_DEPTH': 1,
 }
+
+# Pagination Page Size
+MATCH_SEARCH_PAGE_SIZE=10

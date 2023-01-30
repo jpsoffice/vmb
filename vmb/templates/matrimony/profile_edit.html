@@ -4,7 +4,39 @@
 
 {% block css %}
 {{ block.super }}
-<link href="{% static 'css/vendor/dropzone.min.css' %}" rel="stylesheet" type="text/css" />
+<!-- <link href="{% static 'css/vendor/dropzone.min.css' %}" rel="stylesheet" type="text/css" /> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/basic.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.7/cropper.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/basic.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.css"> -->
+
+<style>
+    /* .cropper-container.cropper-bg{
+        width: 100% !important;
+        height: 95% !important;
+    }
+    .cropper-canvas{
+        width: 90% !important;
+        height: 90% !important;
+        top: 10%;
+        left: 10%;
+    }
+    .cropper-canvas img{
+        width: 90% !important;
+        height: 90% !important;
+        top: 10%;
+        left: 10%;
+    } */
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    #dropzone {
+        height: 100px 
+    }
+</style>
 {% endblock %}
 
 {% block content_title %}Profile{% endblock %}
@@ -40,12 +72,13 @@
                     </div>
                 </form>
 
-                <div class="mt-3 mb-3 d-flex justify-content-center">
+                <!-- <div class="mt-3 mb-3 d-flex justify-content-center">
                   <button id="uploadButton" class="btn btn-primary" class="text-center">Upload</button>
-                </div>
+                  <button id="cropButton" class="btn btn-primary mx-2" class="text-center">Crop</button>
+                </div> -->
 
                 <div class="card-deck-wrapper">
-                <div class="card-deck">
+                <div classf="card-deck">
                     {% for photo in form.instance.photo_set.all %}
                     <div class="card d-block mb-5" style="max-width:400px;">
                         <img class="card-img-top img-fluid rounded" src="{{photo.photo.get_display_url}}" style="height: 100%; object-fit: cover;">
@@ -85,46 +118,188 @@
 <script type="text/javascript" src="{% static 'places/places_extra.js' %}"></script>
 {% ifequal section_id "photos" %}
 <!-- plugin js -->
-<script src="{% static 'js/vendor/dropzone.min.js' %}"></script>
+<!-- <script src="{% static 'js/vendor/dropzone.min.js' %}"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.js"></script>
+<script>window.Dropzone.autoDiscover = false;</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.7/cropper.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-cropper@1.0.1/dist/jquery-cropper.min.js"></script> -->
 <script type="text/javascript">
-Dropzone.autoDiscover = false;
-$(function(){
-    let photosDropzone = $("#photosDropzone").dropzone({
-      autoQueue: true,
-      autoProcessQueue: false,
-      addRemoveLinks: true,
-      parallelUploads: 20,
-      acceptedFiles: "image/*",
-      maxFilesize: 5
-    })[0].dropzone;
+// Dropzone.autoDiscover = false;
+// $(function(){
+//     let photosDropzone = $("#photosDropzone").dropzone({
+//       autoQueue: true,
+//       autoProcessQueue: false,
+//       addRemoveLinks: true,
+//       parallelUploads: 20,
+//       acceptedFiles: "image/*",
+//       maxFilesize: 5
+//     })[0].dropzone;
 
-    photosDropzone.on("queuecomplete", function (progress) {
-      location.reload();
-    });
+//     photosDropzone.on("queuecomplete", function (progress) {
+//       location.reload();
+//     });
 
-    $("#uploadButton").on("click", function (e) {
-        photosDropzone.processQueue();
-    });
+//     $("#uploadButton").on("click", function (e) {
+//         photosDropzone.processQueue();
+//     });
 
-    $(".photo-action").on("click", function (e) {
-        let link = $(this);
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        $.ajax({
-            type: "POST",
-            headers: {
-              'X-CSRFToken': csrftoken
-            },
-            url: link.data("action"),
-            success: function (data) {
-                location.reload();
-            },
-            error: function (err) {
-                console.log("error", err.responseJSON);
-            }
-        })
-    });
-});
+//     $(".photo-action").on("click", function (e) {
+//         let link = $(this);
+//         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+//         $.ajax({
+//             type: "POST",
+//             headers: {
+//               'X-CSRFToken': csrftoken
+//             },
+//             url: link.data("action"),
+//             success: function (data) {
+//                 location.reload();
+//             },
+//             error: function (err) {
+//                 console.log("error", err.responseJSON);
+//             }
+//         })
+//     });
+
+//     var $image = $('#image')
+
+//     $image.cropper({
+//         aspectRation: 16/9,
+//         crop: function(event){
+//             console.log(event.detail.x);
+//         }
+//     });
+
+// });
+Dropzone.options.photosDropzone = {
+  url: document.querySelector(".dropzone").action,
+  transformFile: function(file, done) {  // Create Dropzone reference for use in confirm button click handler
+    var myDropZone = this;  // Create the image editor overlay
+    var editor = document.createElement('div');
+    editor.style.position = 'fixed';
+    editor.style.height = '80%';
+    editor.style.width = '80%';
+    editor.style.left = '10%';
+    editor.style.right = 0;
+    editor.style.top = '10%';
+    editor.style.bottom = 0;
+    // editor.style.margin = 'auto';
+    editor.style.zIndex = 9999;
+    editor.style.backgroundColor = '#ffffff';
+    editor.style.padding = "20px";
+    document.body.appendChild(editor);  // Create confirm button at the top left of the viewport
+    var buttonBox = document.createElement('div')
+    buttonBox.style.display = 'flex';
+    editor.append(buttonBox)
+    var buttonConfirm = document.createElement('button');
+    buttonConfirm.style.left = '10px';
+    buttonConfirm.style.top = '10px';
+    buttonConfirm.style.zIndex = 9999;
+    buttonConfirm.textContent = 'Confirm';
+    buttonBox.appendChild(buttonConfirm);
+    buttonConfirm.addEventListener('click', function() {    // Get the canvas with image data from Cropper.js
+        var canvas = cropper.getCroppedCanvas({
+        width: 200,
+        height: 200
+        });    // Turn the canvas into a Blob (file object without a name)
+        canvas.toBlob(function(blob) {      // Create a new Dropzone file thumbnail
+        myDropZone.createThumbnail(
+            blob,
+            myDropZone.options.thumbnailWidth,
+            myDropZone.options.thumbnailHeight,
+            myDropZone.options.thumbnailMethod,
+            false, 
+            function(dataURL) {
+            
+            // Update the Dropzone file thumbnail
+            myDropZone.emit('thumbnail', file, dataURL);          // Return the file to Dropzone
+            done(blob);      });    });    // Remove the editor from the view
+        document.body.removeChild(editor);  
+    });  // Create an image node for Cropper.js
+    // var buttonDelete = document.createElement('button');
+    // buttonDelete.style.left = '130px';
+    // buttonDelete.style.top = '130px';
+    // buttonDelete.style.zIndex = 9999;
+    // buttonDelete.textContent = 'Cancel';
+    // buttonBox.appendChild(buttonDelete);
+    var image = new Image();
+    image.src = URL.createObjectURL(file);
+    editor.appendChild(image);
+    
+    // Create Cropper.js
+    var cropper = new Cropper(image, { aspectRatio: 1 });}
+};
+
+// var dropzone = new Dropzone('#photosDropzone', {
+//     url: this.action,
+//     addRemoveLinks: true,
+//     createImageThumbnails: true,
+//     autoProcessQueue: false
+//     });
+
+//     dropzone.on('addedfile', function(file) {
+    
+//     dropzone.removeFile(file);
+//     cropper(file);
+    
+//     });
+
+    // $(function() {
+    // fetch("https://i.picsum.photos/id/539/200/300.jpg")
+    //     .then(response => response.blob())
+    //     .then(blob => {
+    //     cropper(blob);
+    //     })
+    // })
+
+    // function cropper(file) { 
+    // const url = URL.createObjectURL(file);
+        
+    // var modalTemplate = `
+    // <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    // <div class="modal-dialog modal-lg" role="document">
+    //     <div class="modal-content">
+    //     <div class="modal-header">
+    //     </div>
+    //     <div class="modal-body">
+    //         <img id="img" src="${url}" data-vertical-flip="false" data-horizontal-flip="false">
+    //     </div>
+    //     <div class="modal-footer">
+    //         <button class="rotate-right">Rotate Right</button>
+    //     </div>  
+    //     </div>
+    // </div>
+    // </div>`
+
+    // var $cropperModal = $(modalTemplate);
+    // var $image = null;
+    
+    // $cropperModal.on("shown.bs.modal", function() {
+    //     $image = $('#img');
+    //     console.log($image)
+    //     var cropper = $image.cropper({
+    //     autoCropArea: 1,
+    //     aspectRatio: 9 / 16,
+    //     cropBoxResizable: false,
+    //     movable: true,
+    //     rotatable: true,
+    //     scalable: true,
+    //     viewMode: 2,
+    //     minContainerWidth: 200,
+    //     maxContainerWidth: 200
+    //     });
+    
+    // }).on('click', '.rotate-right', function() {
+    //     $image.cropper('rotate', 90);
+    // }).on('hidden.bs.modal', function() {
+    //     $(this).remove();
+    //     $image.cropper('destroy');
+    // })
+    // .modal({show: true})
+    // }
 </script>
 {% endifequal %}
 {% endblock %}

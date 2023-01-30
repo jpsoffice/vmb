@@ -32,6 +32,9 @@ from actstream.models import Action
 from vmb.common import activities
 from vmb.users.models import User
 
+from django.core.paginator import Paginator
+from config.settings.base import *
+
 import traceback
 
 def index(request):
@@ -248,7 +251,7 @@ def matches(request, category=None):
 
 
 @login_required
-def search(request):
+def search(request, page):
     profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
 
     if profile.status < "20":
@@ -283,11 +286,14 @@ def search(request):
         profiles = profile.search_profiles()
         logging.debug("search profile results: {}".format((profiles)))
 
+    pages = Paginator(profiles, per_page=MATCH_SEARCH_PAGE_SIZE)
     context = {
-        "profiles": profiles,
+        "profiles": pages.page(page),
         "search_form": form,
         "querydata": form.humanized_data(),
-    }
+        "num_pages": pages.num_pages+1,
+        "active_page": pages.page(page)
+    } 
     return render(request, "matrimony/search.html", context)
 
 
