@@ -27,6 +27,12 @@ from vmb.matrimony.forms import (
     SignupForm,
 )
 
+from actstream import action
+from actstream.models import Action
+from vmb.common import activities
+from vmb.users.models import User
+
+import traceback
 
 def index(request):
     if request.user.is_authenticated:
@@ -129,6 +135,7 @@ def profile_edit(request, section_id):
                     matrimony_profile.registration_date = timezone.now()
                     matrimony_profile.save()
                     request.user.save()
+                    action.send(request.user, verb=activities.USER_REGISTERED)
                     messages.add_message(
                         request,
                         messages.SUCCESS,
@@ -336,6 +343,7 @@ def match_create(request, profile_id):
     response_data = {}
 
     if created:
+        action.send(request.user, verb=activities.MATCH_REQUEST_SENT, target=recipient_profile)
         messages.add_message(
             request,
             messages.SUCCESS,
@@ -405,3 +413,11 @@ def mark_all_as_read(request):
 @login_required
 def view_all_notifications(request):
     return render(request, "matrimony/view_all_notifications.html")
+
+@login_required
+def view_timeline(request):
+    try:
+        return render(request, "actstream/view_timeline.html")
+    except Exception as e:
+        print(traceback.format_exc())
+        print(str(e))
