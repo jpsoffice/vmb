@@ -27,8 +27,15 @@ from vmb.matrimony.forms import (
     SignupForm,
 )
 
+from actstream import action
+from actstream.models import Action
+from vmb.common import activities
+from vmb.users.models import User
+
 from django.core.paginator import Paginator
 from config.settings.base import *
+
+import traceback
 
 def index(request):
     if request.user.is_authenticated:
@@ -131,6 +138,7 @@ def profile_edit(request, section_id):
                     matrimony_profile.registration_date = timezone.now()
                     matrimony_profile.save()
                     request.user.save()
+                    action.send(request.user, verb=activities.USER_REGISTERED)
                     messages.add_message(
                         request,
                         messages.SUCCESS,
@@ -306,9 +314,17 @@ def match_action(request, id, action):
     if profile.gender == "M":
         match.male_response = action_code
         match.male_response_updated_at = timezone.now()
+        if action == "accept":
+            globals()['action'].send(request.user, verb=activities.MATCH_REQUEST_ACCEPTED, target=match.female.user)
+        else:
+            globals()['action'].send(request.user, verb=activities.MATCH_REQUEST_REJECTED, target=match.female.user)
     else:
         match.female_response = action_code
         match.female_response_updated_at = timezone.now()
+        if action == "accept":
+            globals()['action'].send(request.user, verb=activities.MATCH_REQUEST_ACCEPTED, target=match.male.user)
+        else:
+            globals()['action'].send(request.user, verb=activities.MATCH_REQUEST_REJECTED, target=match.male.user)
     match.save()
 
     return JsonResponse(data={})
@@ -341,6 +357,7 @@ def match_create(request, profile_id):
     response_data = {}
 
     if created:
+        action.send(request.user, verb=activities.MATCH_REQUEST_SENT, target=recipient_profile)
         messages.add_message(
             request,
             messages.SUCCESS,
@@ -410,3 +427,11 @@ def mark_all_as_read(request):
 @login_required
 def view_all_notifications(request):
     return render(request, "matrimony/view_all_notifications.html")
+
+@login_required
+def view_timeline(request):
+    try:
+        return render(request, "actstream/view_timeline.html")
+    except Exception as e:
+        print(traceback.format_exc())
+        print(str(e))
