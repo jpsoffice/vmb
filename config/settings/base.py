@@ -76,7 +76,9 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "tos",
+    "tos_custom",
     "actstream",
+    "actstream_custom.apps.ActstreamCustomConfig",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -530,4 +532,3 @@ ACTSTREAM_SETTINGS = {
     'USE_JSONFIELD': True,
     'GFK_FETCH_DEPTH': 1,
 }
-
