@@ -76,9 +76,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "tos",
-    "tos_custom",
     "actstream",
-    "actstream_custom.apps.ActstreamCustomConfig",
     "crispy_forms",
     "allauth",
     "allauth.account",
