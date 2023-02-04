@@ -33,7 +33,6 @@ from vmb.common import activities
 from vmb.users.models import User
 
 from django.core.paginator import Paginator
-from config.settings.base import *
 
 import traceback
 
@@ -286,7 +285,7 @@ def search(request, page):
         profiles = profile.search_profiles()
         logging.debug("search profile results: {}".format((profiles)))
 
-    pages = Paginator(profiles, per_page=MATCH_SEARCH_PAGE_SIZE)
+    pages = Paginator(profiles, per_page=settings.MATCH_SEARCH_PAGE_SIZE)
     context = {
         "profiles": pages.page(page),
         "search_form": form,

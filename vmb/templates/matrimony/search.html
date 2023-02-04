@@ -34,6 +34,15 @@
   </div>
 </div>
 {% else %}
+<style>
+  .page-link-custom{
+    color: #4e5bf2 !important;
+  }
+  .page-link-custom:hover{
+    cursor: pointer !important;
+    color: #2b3af0 !important;
+  }
+</style>
 <div class="row">
   <div class="col-md-12">
     <div id="searchText">
@@ -85,8 +94,18 @@
   <div class="pagination" style="padding: 10px;font-size: 15px;">
     <span class="step-links">
         {% if active_page.has_previous %}
-            <a href="../1/" style="padding: 5px;">&laquo; first</a>
-            <a href="../{{active_page.previous_page_number}}/" style="padding: 5px;">previous</a>
+            <a 
+              style="padding: 5px;" 
+              onclick="navigateTo(1)"
+              class="page-link-custom"
+              >&laquo; first</a>
+            <a 
+              onclick="navigateTo(
+              '{{active_page.previous_page_number}}'
+              )"
+              style="padding: 5px;"
+              class="page-link-custom"
+              >previous</a>
         {% endif %}
 
         <span class="current" style="padding: 5px;">
@@ -94,8 +113,20 @@
         </span>
 
         {% if active_page.has_next %}
-            <a href="../{{ active_page.next_page_number }}/" style="padding: 5px;">next</a>
-            <a href="../{{ active_page.paginator.num_pages }}/" style="padding: 5px;">last &raquo;</a>
+            <a 
+            onclick="navigateTo(
+              '{{active_page.next_page_number }}'
+              )"
+            style="padding: 5px;"
+            class="page-link-custom"
+            >next</a>
+            <a 
+            onclick="navigateTo(
+              '{{active_page.paginator.num_pages }}'
+              )"
+            style="padding: 5px;"
+            class="page-link-custom"
+            >last &raquo;</a>
         {% endif %}
     </span>
 </div>
@@ -106,6 +137,11 @@
 {% block javascript %}
 {{ block.super }}
 <script type="text/javascript">
+
+function navigateTo(num){
+  window.location.replace(window.location.origin + "/search/"+`${num}/`+window.location.search)
+}
+
 $(function(){
   $('.match-create').on('click', function(e){
     e.preventDefault();
