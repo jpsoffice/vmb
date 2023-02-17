@@ -59,3 +59,8 @@ django-notifications-hq==1.7.0
 # ------------------------------------------------------------------------------
 django-tos # git+https://github.com/Vaibhav-22-dm/django-tos@de4cd18
 
+# Django Avatar
+# ------------------------------------------------------------------------------
+django-avatar==5.0.0 # https://github.com/jazzband/django-avatar
+
+

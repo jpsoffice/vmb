@@ -75,6 +75,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "avatar",
     "tos",
     "actstream",
     "crispy_forms",
@@ -533,3 +534,6 @@ ACTSTREAM_SETTINGS = {
 
 # Pagination Page Size
 MATCH_SEARCH_PAGE_SIZE=10
+
+# Django avatar settings
+AVATAR_EXPOSE_USERNAMES = False

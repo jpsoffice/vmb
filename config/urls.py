@@ -31,6 +31,7 @@ urlpatterns = [
     path("users/", include("vmb.users.urls", namespace="users")),
     path('accounts/signup/', NewSignupView.as_view(), name="new_signup"),
     path("accounts/", include("allauth.urls")),
+    url('avatar/', include('avatar.urls')),
     path("photologue/", include("photologue.urls", namespace="photologue")),
     path("", include("vmb.matrimony.urls", namespace="matrimony")),
     path("tinymce/", include("tinymce.urls")),
