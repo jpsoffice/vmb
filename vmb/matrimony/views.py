@@ -250,8 +250,10 @@ def matches(request, category=None):
 
 
 @login_required
-def search(request, page):
+def search(request):
     profile = get_object_or_404(MatrimonyProfile, email=request.user.email)
+    requestGet = request.GET.copy()
+    page_number = int(requestGet.pop('page', ['1'])[0])
 
     if profile.status < "20":
         return render(
@@ -271,8 +273,8 @@ def search(request, page):
     profiles = []
     querydata = form.initial
 
-    if request.method == "GET" and request.GET:
-        form = MatrimonyProfileSearchForm(request.GET)
+    if request.method == "GET" and requestGet:
+        form = MatrimonyProfileSearchForm(requestGet)
         if not form.is_valid():
             logging.debug("profile search form errors: {}".format(form.errors))
             return render(
@@ -285,13 +287,12 @@ def search(request, page):
         profiles = profile.search_profiles()
         logging.debug("search profile results: {}".format((profiles)))
 
-    pages = Paginator(profiles, per_page=settings.MATCH_SEARCH_PAGE_SIZE)
+    paginator = Paginator(profiles, per_page=settings.MATCH_SEARCH_PAGE_SIZE)
     context = {
-        "profiles": pages.page(page),
+        "profiles": paginator.page(page_number),
         "search_form": form,
         "querydata": form.humanized_data(),
-        "num_pages": pages.num_pages+1,
-        "active_page": pages.page(page)
+        "page_obj": paginator.get_page(page_number),
     } 
     return render(request, "matrimony/search.html", context)
 
