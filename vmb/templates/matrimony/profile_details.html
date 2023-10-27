@@ -218,7 +218,7 @@
                             <strong>Birth Place:</strong><span class="ml-1">{{ profile.birth_city }}, {{ profile.birth_state }}, {{ profile.birth_country.name }}</span>
                         </p>
                         <p class="text-muted">
-                            {% if profile.religious_background %}<strong>Religious Background:</strong><span class="ml-1">{{ profile.religious_background }}</span>{% endif %}
+                            {% if profile.religious_background %}<strong>Religious Background(hint to say what it means):</strong><span class="ml-1">{{ profile.religious_background }}</span>{% endif %}
                         </p>
                         <p class="text-muted">
                             {% if profile.mentor %}<strong>Mentor's Name:</strong><span class="ml-1">{{ profile.mentor.name }}</span>{% endif %}
@@ -245,10 +245,19 @@
                             <strong>Family Status:</strong><span class="ml-1">{{ profile.get_family_status_display }}</span>
                         </p>
                         <p class="text-muted">
+                            <strong>Father's Name:</strong><span class="ml-1">{{ profile.get_father_name_display }}</span>
+                        </p>
+                        <p class="text-muted">
                             <strong>Father's Status:</strong><span class="ml-1">{{ profile.get_father_status_display }}</span>
                         </p>
                         <p class="text-muted">
+                            <strong>Mother's Name:</strong><span class="ml-1">{{ profile.get_mother_name_display }}</span>
+                        </p>
+                        <p class="text-muted">
                             <strong>Mother's Status:</strong><span class="ml-1">{{ profile.get_mother_status_display }}</span>
+                        </p>
+                        <p class="text-muted">
+                            <strong>Parents's Contact:</strong><span class="ml-1">{{ match_profile.get_parent_contact_display }}</span>
                         </p>
                         <p class="text-muted">
                             {% if profile.brothers %}<strong>Brothers:</strong><span class="ml-1">{{ profile.brothers }}/{{ profile.brothers_married }} married</span>{% endif %}
