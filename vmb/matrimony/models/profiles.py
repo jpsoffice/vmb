@@ -141,6 +141,7 @@ FAMILY_TYPE_CHOICES = (
 FAMILY_STATUS_CHOICES = (
     ("LC", _("Lower Class")),
     ("UC", _("Upper Class")),
+    ("M", _("Middle Class")),
     ("MC", _("Upper Middle Class")),
     ("AF", _("Affluent")),
 )
@@ -156,6 +157,7 @@ MARITAL_STATUS = (
     ("UMR", "Unmarried"),
     ("DIV", "Divorced"),
     ("WID", "Widowed"),
+    ("WIR", "Widower"),
 )
 Y_N_MAYB = (
     ("Y", "Yes"),
@@ -204,6 +206,11 @@ class MatrimonyProfile(BaseModel):
         max_length=3,
         choices=MARITAL_STATUS,
         null=True,
+    )
+    no_of_children = models.CharField(
+        max_length=10, default="0", blank=True, verbose_name=_("No Of Children"),
+        help_text="Specify If Have Children",
+
     )
     children_count = models.PositiveIntegerField(
         choices=CHILDREN_COUNT, default=0, blank=True, null=True
@@ -523,6 +530,27 @@ class MatrimonyProfile(BaseModel):
         blank=True,
         null=True,
         help_text="Religious background of the family",
+    )
+    father_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+    )
+    mother_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+    )
+    parent_contact = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+    )
+    actual_dob = models.BooleanField(
+        default=False,
+        blank=True,
+        null=True,
+        verbose_name="Actual Date of birth",
     )
     family_details = models.TextField(
         max_length=200,

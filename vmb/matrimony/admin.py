@@ -375,6 +375,7 @@ class BaseMatrimonyProfileAdmin(
             {
                 "fields": [
                     ("dob", "ethnic_origin", "mother_tongue"),
+                    ("gender"),
                     ("languages_can_speak", "languages_can_read_write"),
                     ("rounds_chanting"),
                     ("spiritual_status", "spiritual_master"),
@@ -488,7 +489,9 @@ class BaseMatrimonyProfileAdmin(
                 "fields": [
                     ("are_parents_devotees", "family_values"),
                     ("family_type", "family_status"),
-                    ("father_status", "mother_status"),
+                    ("father_name", "father_status"),
+                    ("mother_name", "mother_status"),
+                    ("parent_contact"),
                     ("brothers", "brothers_married"),
                     ("sisters", "sisters_married"),
                     ("family_location", "family_origin"),

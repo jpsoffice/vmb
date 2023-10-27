@@ -153,6 +153,10 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
 
 
 class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
+    actual_dob = forms.BooleanField(
+         label=_("Actual Date of birth"),
+        required=False,
+    )
     dob = forms.DateField(
         label=_("Date of birth"),
         widget=forms.DateInput(
@@ -176,6 +180,8 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "name",
             "spiritual_name",
             "dob",
+            "actual_dob",
+            "gender",
             "rounds_chanting",
             "spiritual_status",
             "spiritual_master",
@@ -238,16 +244,23 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             ),
             Row(
                 Column("dob", css_class="form-group col-md-6 md-3"),
+                Column("actual_dob", css_class="form-group col-md-6 md-3"),
+            ),
+            Row(
+                Column("gender", css_class="form-group col-md-6 md-3"),
+            ),
+            Row(
                 Column(
                     Field("ethnic_origin", css_class="select2", data_toggle="select2"),
                     css_class="form-group col-md-6 md-3",
                 ),
-            ),
-            Row(
                 Column(
                     Field("mother_tongue", css_class="select2", data_toggle="select2"),
                     css_class="form-group col-md-6 md-3",
                 ),
+            ),
+            Row(
+                
                 Column(
                     Field(
                         "languages_can_speak",
@@ -255,7 +268,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
                         data_toggle="select2",
                         multiple="multiple",
                     ),
-                    css_class="form-group col-md-6 md-3",
+                    css_class="form-group col-md-12 md-3",
                 ),
             ),
             Row(
@@ -388,6 +401,7 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "subcaste",
             "subcaste_other",
             "dob",
+            "actual_dob",
             "is_tob_unknown",
             "tob",
             "birth_place",
@@ -399,6 +413,9 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "family_type",
             "family_status",
             "father_status",
+            "father_name",
+            "mother_name",
+            "parent_contact",
             "mother_status",
             "brothers",
             "sisters",
@@ -416,6 +433,9 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "are_parents_devotees",
             "family_type",
             "family_status",
+            "father_name",
+            "mother_name",
+            "parent_contact",
             "father_status",
             "mother_status",
             "brothers",
@@ -512,18 +532,28 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                     ),
                 ),
                 Row(
+                    Column("father_name", css_class="form-group col-md-6 md-3"),
+                    
                     Column(
                         Field(
                             "father_status", css_class="select2", data_toggle="select2"
                         ),
                         css_class="form-group col-md-6 md-3",
                     ),
+                    
+                ),
+                Row(
+                    Column("mother_name", css_class="form-group col-md-6 md-3"),
+                    
                     Column(
                         Field(
                             "mother_status", css_class="select2", data_toggle="select2"
                         ),
                         css_class="form-group col-md-6 md-3",
                     ),
+                ),
+                Row(
+                    Column("parent_contact", css_class="form-group col-md-12 md-3"),
                 ),
                 Row(
                     Column("brothers", css_class="form-group col-md-6 md-3"),
