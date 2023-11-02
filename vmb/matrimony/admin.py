@@ -349,6 +349,7 @@ class PhotoInline(admin.TabularInline):
 class BaseMatrimonyProfileAdmin(
     DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
 ):
+    
     form = MatrimonyProfileForm
     change_form_template = "admin/matrimony/matrimonyprofile/change_form.html"
     tab_profile = [
@@ -374,7 +375,7 @@ class BaseMatrimonyProfileAdmin(
             "BASIC INFORMATION",
             {
                 "fields": [
-                    ("dob", "ethnic_origin", "mother_tongue"),
+                    ("dob","is_actual_dob", "ethnic_origin", "mother_tongue"),
                     ("languages_can_speak", "languages_can_read_write"),
                     ("rounds_chanting"),
                     ("spiritual_status", "spiritual_master"),

@@ -153,6 +153,10 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
 
 
 class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
+    is_actual_dob = forms.BooleanField(
+         label=_("Must be actual date of birth"),
+        required=True,
+    )
     dob = forms.DateField(
         label=_("Date of birth"),
         widget=forms.DateInput(
@@ -176,6 +180,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "name",
             "spiritual_name",
             "dob",
+            "is_actual_dob",
             "rounds_chanting",
             "spiritual_status",
             "spiritual_master",
@@ -238,6 +243,10 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             ),
             Row(
                 Column("dob", css_class="form-group col-md-6 md-3"),
+                Column("is_actual_dob", css_class="form-group col-md-6 md-3"),
+            ),
+            Row(
+                
                 Column(
                     Field("ethnic_origin", css_class="select2", data_toggle="select2"),
                     css_class="form-group col-md-6 md-3",

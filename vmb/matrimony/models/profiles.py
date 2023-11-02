@@ -524,6 +524,12 @@ class MatrimonyProfile(BaseModel):
         null=True,
         help_text="Religious background of the family",
     )
+    is_actual_dob = models.BooleanField(
+        default=False,
+        blank=True,
+        null=True,
+        verbose_name="Actual date of birth",
+    )
     family_details = models.TextField(
         max_length=200,
         blank=True,
