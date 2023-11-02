@@ -489,7 +489,8 @@ class BaseMatrimonyProfileAdmin(
                 "fields": [
                     ("are_parents_devotees", "family_values"),
                     ("family_type", "family_status"),
-                    ("father_status", "mother_status"),
+                    ("father_name","father_phone", "father_status"),
+                    ("mother_name","mother_phone", "mother_status"),
                     ("brothers", "brothers_married"),
                     ("sisters", "sisters_married"),
                     ("family_location", "family_origin"),

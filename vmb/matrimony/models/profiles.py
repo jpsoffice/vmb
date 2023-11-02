@@ -532,6 +532,32 @@ class MatrimonyProfile(BaseModel):
         null=True,
         verbose_name="Actual date of birth",
     )
+    father_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name="Father name"
+    )
+
+    mother_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name="Mother name"
+    )
+    mother_phone = models.CharField(
+        max_length=17,
+        blank=True,
+        null=True,
+        verbose_name=_("Mother Phone number")
+    )
+    father_phone = models.CharField(
+        max_length=17, 
+        blank=True, 
+        null=True,
+        verbose_name=_("Father Phone number")
+    )
+
     family_details = models.TextField(
         max_length=200,
         blank=True,

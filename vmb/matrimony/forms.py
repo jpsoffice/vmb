@@ -417,7 +417,11 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "family_values",
             "family_type",
             "family_status",
+            "father_name",
+            "father_phone",
             "father_status",
+            "mother_name",
+            "mother_phone",
             "mother_status",
             "brothers",
             "sisters",
@@ -531,18 +535,29 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                     ),
                 ),
                 Row(
+                    Column("father_name", css_class="form-group col-md-6 md-3"),
+                    
                     Column(
                         Field(
                             "father_status", css_class="select2", data_toggle="select2"
                         ),
                         css_class="form-group col-md-6 md-3",
                     ),
+                    
+                ),
+                Row(
+                    Column("mother_name", css_class="form-group col-md-6 md-3"),
+                    
                     Column(
                         Field(
                             "mother_status", css_class="select2", data_toggle="select2"
                         ),
                         css_class="form-group col-md-6 md-3",
                     ),
+                ),
+                Row(
+                    Column("father_phone", css_class="form-group col-md-6 md-3"),
+                    Column("mother_phone", css_class="form-group col-md-6 md-3"),
                 ),
                 Row(
                     Column("brothers", css_class="form-group col-md-6 md-3"),
