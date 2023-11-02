@@ -1,7 +1,7 @@
 import re
 
 from collections import OrderedDict
-
+from rest_framework import serializers
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
@@ -220,6 +220,8 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "personality",
             "medical_history",
         ]
+      
+            
         readonly = [
             "name",
             "dob",
@@ -349,7 +351,15 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             and current_place[2]
         ):
             raise forms.ValidationError(_("Select a valid place from maps"))
+        
+        cleaned_data = super().clean()
+        spiritual_status = cleaned_data.get("spiritual_status")
+        spiritual_master = cleaned_data.get("spiritual_master")
 
+        if spiritual_status in ["A", "S"] and not spiritual_master:
+            self.add_error("spiritual_master", "Select Spiritual Master")
+            raise forms.ValidationError(_("Please Select Spiritual Master"))
+        return cleaned_data
 
 class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
     dob = forms.DateField(
