@@ -358,7 +358,7 @@ class BaseMatrimonyProfileAdmin(
             {
                 "fields": [
                     ("profile_id", "name", "spiritual_name"),
-                    ("registration_date", "status"),
+                    ("registration_date", "status","gender"),
                 ]
             },
         ),
