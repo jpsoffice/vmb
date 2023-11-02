@@ -156,6 +156,7 @@ MARITAL_STATUS = (
     ("UMR", "Unmarried"),
     ("DIV", "Divorced"),
     ("WID", "Widowed"),
+    ("WIR", "Widower"),
 )
 Y_N_MAYB = (
     ("Y", "Yes"),
