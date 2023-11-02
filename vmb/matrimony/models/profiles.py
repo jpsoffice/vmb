@@ -141,6 +141,7 @@ FAMILY_TYPE_CHOICES = (
 FAMILY_STATUS_CHOICES = (
     ("LC", _("Lower Class")),
     ("UC", _("Upper Class")),
+     ("M", _("Middle Class")),
     ("MC", _("Upper Middle Class")),
     ("AF", _("Affluent")),
 )
