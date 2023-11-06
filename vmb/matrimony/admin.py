@@ -15,6 +15,12 @@ from django_admin_listfilter_dropdown.filters import (
     ChoiceDropdownFilter,
     RelatedDropdownFilter,
 )
+from more_admin_filters import (
+    MultiSelectRelatedDropdownFilter,
+    MultiSelectFilter,
+    
+    )
+from django_admin_multi_select_filter.filters import (MultiSelectFieldListFilter)
 from djangoql.admin import DjangoQLSearchMixin
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
@@ -517,23 +523,23 @@ class BaseMatrimonyProfileAdmin(
         "email",
     )
     list_filter = (
-        "status",
+        ("status",MultiSelectFieldListFilter),
         AgeRangeFilter,
         ("annual_income_in_base_currency", RangeNumericFilter),
         ("registration_date", DateTimeRangeFilter),
         RoundsFilter,
         ("height", RangeNumericFilter),
-        "spiritual_status",
-        "marital_status",
-        ("religion", RelatedDropdownFilter),
-        ("mother_tongue", RelatedDropdownFilter),
-        ("caste", RelatedDropdownFilter),
-        ("subcaste", RelatedDropdownFilter),
-        ("current_country", RelatedDropdownFilter),
-        ("languages_can_speak", RelatedDropdownFilter),
-        ("occupations", RelatedDropdownFilter),
-        ("education", RelatedDropdownFilter),
-        ("spiritual_master", RelatedDropdownFilter),
+        ("spiritual_status",MultiSelectFieldListFilter),
+        ("marital_status",MultiSelectFieldListFilter),
+        ("religion", MultiSelectRelatedDropdownFilter),
+        ("mother_tongue", MultiSelectRelatedDropdownFilter),
+        ("caste", MultiSelectRelatedDropdownFilter),
+        ("subcaste", MultiSelectRelatedDropdownFilter),
+        ("current_country", MultiSelectRelatedDropdownFilter),
+        ("languages_can_speak", MultiSelectRelatedDropdownFilter),
+        ("occupations", MultiSelectRelatedDropdownFilter),
+        ("education", MultiSelectRelatedDropdownFilter),
+        ("spiritual_master", MultiSelectRelatedDropdownFilter),
     )
     search_fields = [
         "name",

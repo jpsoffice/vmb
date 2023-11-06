@@ -72,6 +72,7 @@ DJANGO_APPS = [
     "rangefilter",
     "django_admin_listfilter_dropdown",
     "multiselectfield",
+    "more_admin_filters",
 ]
 
 THIRD_PARTY_APPS = [
