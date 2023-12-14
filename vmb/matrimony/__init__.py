@@ -1,0 +1,1 @@
+default_app_config = 'vmb.matrimony.apps.MatrimonyConfig'
