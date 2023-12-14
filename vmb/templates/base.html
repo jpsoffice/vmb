@@ -2,7 +2,6 @@
 
 {% load static cookielaw_tags %}
 {% load feature_flags %}
-{% load avatar_tags %}
 
 {% block body_attrs %}data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false, "darkMode":false}' data-leftbar-theme="dark"{% endblock %}
 
@@ -166,12 +165,9 @@
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                             aria-expanded="false">
-                            <span class="account-user-avatar">
-                                {% avatar user 32 class="rounded-circle" id="user_avatar" %}
-                            </span>
                             <span>
                                 <span class="account-user-name">{{ request.user.username }}</span>
-                                <span class="account-position">{% if request.user.is_staff %}STAFF{% else %}USER{% endif %}</span>
+                                <span class="account-position"></span>
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">

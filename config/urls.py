@@ -14,7 +14,6 @@ import notifications.urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-from vmb.users.views import NewSignupView
 
 from vmb.tos_custom.views import check_tos as custom_check_tos
 
@@ -29,9 +28,7 @@ urlpatterns = [
     path("impersonate/", include("impersonate.urls")),
     # User management
     path("users/", include("vmb.users.urls", namespace="users")),
-    path('accounts/signup/', NewSignupView.as_view(), name="new_signup"),
     path("accounts/", include("allauth.urls")),
-    url('avatar/', include('avatar.urls')),
     path("photologue/", include("photologue.urls", namespace="photologue")),
     path("", include("vmb.matrimony.urls", namespace="matrimony")),
     path("tinymce/", include("tinymce.urls")),
@@ -50,7 +47,6 @@ urlpatterns = [
 urlpatterns += [
     path("terms-of-service/confirm/", custom_check_tos, name="tos_check_tos"),
     path("terms-of-service/", include("tos.urls")),
-    path('activity/', include('actstream.urls')),
 ]
 
 if settings.DEBUG:
