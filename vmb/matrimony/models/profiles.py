@@ -7,6 +7,7 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.db import models
 from django.db.models import Q
+from django.db.models.signals import post_delete
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.shortcuts import reverse
@@ -1509,7 +1510,7 @@ class Match(BaseModel):
 
     male = models.ForeignKey(
         Male,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         null=True,
         blank=True,
         related_name="female_matches",
@@ -1523,7 +1524,7 @@ class Match(BaseModel):
 
     female = models.ForeignKey(
         Female,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         null=True,
         blank=True,
         related_name="male_matches",
@@ -1710,3 +1711,12 @@ class MatrimonyProfileStats(BaseModel):
 
     class Meta:
         db_table = "matrimony_profile_stats"
+
+
+def post_delete_user(sender, instance, **kwargs):
+    if instance.user:
+        instance.user.delete()
+
+
+post_delete.connect(post_delete_user, sender=Male)
+post_delete.connect(post_delete_user, sender=Female)
