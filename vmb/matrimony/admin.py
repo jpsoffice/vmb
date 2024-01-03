@@ -33,6 +33,7 @@ from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import gettext_lazy as _
 from ckeditor.widgets import CKEditorWidget
+from django_admin_inline_paginator.admin import TabularInlinePaginated
 
 from .models.profiles import MatrimonyProfile
 from .models import (
@@ -620,7 +621,8 @@ class BaseMatrimonyProfileAdmin(
     # inlines = [MentorInline]
 
 
-class MatchInline(admin.TabularInline):
+class MatchInline(TabularInlinePaginated):
+    per_page = 3
     model = Match
     extra = 1
     can_delete = True
@@ -629,6 +631,7 @@ class MatchInline(admin.TabularInline):
 
     verbose_name = "Matche"
     verbose_name_plural = "Matches"
+    
 
 
 class ExpectationInline(admin.StackedInline):
@@ -664,13 +667,14 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
         CommentInline,
     )
     tabs = [
+        ("Matches & Comments", tab_match),
         ("Profile", BaseMatrimonyProfileAdmin.tab_profile),
         ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
         ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
         ("Mentor", tab_mentor),
         ("Photo", BaseMatrimonyProfileAdmin.tab_photo),
         ("Expectation", tab_expectation),
-        ("Matches & Comments", tab_match),
+        
     ]
     inlines = [
         MentorInline,
