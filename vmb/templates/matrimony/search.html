@@ -34,6 +34,15 @@
   </div>
 </div>
 {% else %}
+<style>
+  .page-link-custom{
+    color: #4e5bf2 !important;
+  }
+  .page-link-custom:hover{
+    cursor: pointer !important;
+    color: #2b3af0 !important;
+  }
+</style>
 <div class="row">
   <div class="col-md-12">
     <div id="searchText">
@@ -73,6 +82,39 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <nav>
+      <ul class="pagination justify-content-end">
+        <li class="page-item{% if not page_obj.has_previous %} disabled{% endif %}">
+            <a class="page-link" href="javascript:{% if page_obj.has_previous %}navigateTo('1'){% else %}void(0){% endif %};" aria-label="First">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">First</span>
+            </a>
+        </li>
+          <li class="page-item{% if not page_obj.has_previous %} disabled{% endif %}">
+              <a class="page-link" href="javascript:{% if page_obj.has_previous %}navigateTo('{{ page_obj.previous_page_number }}'){% else %}void(0){% endif %};" aria-label="Previous">
+                <span aria-hidden="true">&lsaquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="javascript: void(0);">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</a></li>
+          <li class="page-item{% if not page_obj.has_next %} disabled{% endif %}">
+            <a class="page-link" href="javascript:{% if page_obj.has_next %}navigateTo('{{ page_obj.next_page_number }}'){% else %}void(0){% endif %};" arial-label="Next">
+              <span aria-hidden="true">&rsaquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+        </li>
+        <li class="page-item{% if not page_obj.has_next %} disabled{% endif %}">
+            <a class="page-link" href="javascript:{% if page_obj.has_next %}navigateTo('{{ page_obj.paginator.num_pages }}'){% else %}void(0){% endif %};" aria-label="Last">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Last</span>
+            </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
 <div class="row" id="searchResults">
   {% for profile in profiles %}
   {% include "matrimony/profile_item.html" %}
@@ -82,12 +124,59 @@
   </div>
   {% endfor %}
 </div>
+<div class="row mb-2">
+  <div class="col-md-12">
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item{% if not page_obj.has_previous %} disabled{% endif %}">
+            <a class="page-link" href="javascript:{% if page_obj.has_previous %}navigateTo('1'){% else %}void(0){% endif %};" aria-label="First">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">First</span>
+            </a>
+        </li>
+          <li class="page-item{% if not page_obj.has_previous %} disabled{% endif %}">
+              <a class="page-link" href="javascript:{% if page_obj.has_previous %}navigateTo('{{ page_obj.previous_page_number }}'){% else %}void(0){% endif %};" aria-label="Previous">
+                <span aria-hidden="true">&lsaquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="javascript: void(0);">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</a></li>
+          <li class="page-item{% if not page_obj.has_next %} disabled{% endif %}">
+            <a class="page-link" href="javascript:{% if page_obj.has_next %}navigateTo('{{ page_obj.next_page_number }}'){% else %}void(0){% endif %};" arial-label="Next">
+              <span aria-hidden="true">&rsaquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+        </li>
+        <li class="page-item{% if not page_obj.has_next %} disabled{% endif %}">
+            <a class="page-link" href="javascript:{% if page_obj.has_next %}navigateTo('{{ page_obj.paginator.num_pages }}'){% else %}void(0){% endif %};" aria-label="Last">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Last</span>
+            </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
 {% endif %}
 {% endblock %}
 
 {% block javascript %}
 {{ block.super }}
 <script type="text/javascript">
+
+function navigateTo(num){
+  var url = new URL(window.location.toString());
+  var searchParams = url.searchParams;
+  if (searchParams.get('page') === null) {
+    searchParams.append('page', num);
+  } else {
+    searchParams.set('page', num);
+  }
+  searchParams["page"] = num;
+  url.search = searchParams.toString();
+  window.location.assign(url.toString());
+}
+
 $(function(){
   $('.match-create').on('click', function(e){
     e.preventDefault();
