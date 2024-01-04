@@ -1,7 +1,7 @@
 import re
 
 from collections import OrderedDict
-
+from rest_framework import serializers
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
@@ -153,6 +153,10 @@ class BaseMatrimonyProfileForm(forms.ModelForm):
 
 
 class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
+    is_actual_dob = forms.BooleanField(
+         label=_("Must be actual date of birth"),
+        required=True,
+    )
     dob = forms.DateField(
         label=_("Date of birth"),
         widget=forms.DateInput(
@@ -176,6 +180,7 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "name",
             "spiritual_name",
             "dob",
+            "is_actual_dob",
             "rounds_chanting",
             "spiritual_status",
             "spiritual_master",
@@ -215,6 +220,8 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             "personality",
             "medical_history",
         ]
+      
+            
         readonly = [
             "name",
             "dob",
@@ -238,6 +245,10 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             ),
             Row(
                 Column("dob", css_class="form-group col-md-6 md-3"),
+                Column("is_actual_dob", css_class="form-group col-md-6 md-3"),
+            ),
+            Row(
+                
                 Column(
                     Field("ethnic_origin", css_class="select2", data_toggle="select2"),
                     css_class="form-group col-md-6 md-3",
@@ -340,7 +351,15 @@ class MatrimonyProfileBasicDetailsForm(BaseMatrimonyProfileForm):
             and current_place[2]
         ):
             raise forms.ValidationError(_("Select a valid place from maps"))
+        
+        cleaned_data = super().clean()
+        spiritual_status = cleaned_data.get("spiritual_status")
+        spiritual_master = cleaned_data.get("spiritual_master")
 
+        if spiritual_status in ["A", "S"] and not spiritual_master:
+            self.add_error("spiritual_master", "Select Spiritual Master")
+            raise forms.ValidationError(_("Please Select Spiritual Master"))
+        return cleaned_data
 
 class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
     dob = forms.DateField(
@@ -398,7 +417,11 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
             "family_values",
             "family_type",
             "family_status",
+            "father_name",
+            "father_phone",
             "father_status",
+            "mother_name",
+            "mother_phone",
             "mother_status",
             "brothers",
             "sisters",
@@ -512,18 +535,29 @@ class MatrimonyProfileReligionAndFamilyForm(BaseMatrimonyProfileForm):
                     ),
                 ),
                 Row(
+                    Column("father_name", css_class="form-group col-md-6 md-3"),
+                    
                     Column(
                         Field(
                             "father_status", css_class="select2", data_toggle="select2"
                         ),
                         css_class="form-group col-md-6 md-3",
                     ),
+                    
+                ),
+                Row(
+                    Column("mother_name", css_class="form-group col-md-6 md-3"),
+                    
                     Column(
                         Field(
                             "mother_status", css_class="select2", data_toggle="select2"
                         ),
                         css_class="form-group col-md-6 md-3",
                     ),
+                ),
+                Row(
+                    Column("father_phone", css_class="form-group col-md-6 md-3"),
+                    Column("mother_phone", css_class="form-group col-md-6 md-3"),
                 ),
                 Row(
                     Column("brothers", css_class="form-group col-md-6 md-3"),
