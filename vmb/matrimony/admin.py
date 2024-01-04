@@ -25,6 +25,7 @@ from djangoql.admin import DjangoQLSearchMixin
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.fields import DateField
+from django.db.models import Q
 from django.utils import timezone
 
 # For enabling CKEditor for Flatpages
@@ -629,8 +630,15 @@ class MatchInline(TabularInlinePaginated):
 
     raw_id_fields = ["male", "female"]
 
-    verbose_name = "Matche"
+    verbose_name = "Match"
     verbose_name_plural = "Matches"
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.exclude(
+            Q(male__status=99) |Q(male__status=90) | Q(female__status=99)| Q(female__status=90)
+        )  # Exclude matches with status 99 and 90 on either side
+
     
     
 
