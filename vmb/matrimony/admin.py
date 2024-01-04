@@ -632,6 +632,7 @@ class MatchInline(TabularInlinePaginated):
     verbose_name = "Matche"
     verbose_name_plural = "Matches"
     
+    
 
 
 class ExpectationInline(admin.StackedInline):
@@ -697,13 +698,14 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
         CommentInline,
     )
     tabs = [
+         ("Matches & Comments", tab_match),
         ("Profile", BaseMatrimonyProfileAdmin.tab_profile),
         ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
         ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
         ("Mentor", tab_mentor),
         ("Photo", BaseMatrimonyProfileAdmin.tab_photo),
         ("Expectation", tab_expectation),
-        ("Matches & Comments", tab_match),
+       
     ]
     inlines = [
         MentorInline,
