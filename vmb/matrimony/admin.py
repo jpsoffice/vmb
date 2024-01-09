@@ -15,10 +15,17 @@ from django_admin_listfilter_dropdown.filters import (
     ChoiceDropdownFilter,
     RelatedDropdownFilter,
 )
+from more_admin_filters import (
+    MultiSelectRelatedDropdownFilter,
+    MultiSelectFilter,
+    
+    )
+from django_admin_multi_select_filter.filters import (MultiSelectFieldListFilter)
 from djangoql.admin import DjangoQLSearchMixin
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db.models.fields import DateField
+from django.db.models import Q
 from django.utils import timezone
 
 # For enabling CKEditor for Flatpages
@@ -27,6 +34,7 @@ from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import gettext_lazy as _
 from ckeditor.widgets import CKEditorWidget
+from django_admin_inline_paginator.admin import TabularInlinePaginated
 
 from .models.profiles import MatrimonyProfile
 from .models import (
@@ -344,6 +352,7 @@ class PhotoInline(admin.TabularInline):
 class BaseMatrimonyProfileAdmin(
     DjangoQLSearchMixin, NumericFilterModelAdmin, TabbedModelAdmin
 ):
+    
     form = MatrimonyProfileForm
     change_form_template = "admin/matrimony/matrimonyprofile/change_form.html"
     tab_profile = [
@@ -352,7 +361,7 @@ class BaseMatrimonyProfileAdmin(
             {
                 "fields": [
                     ("profile_id", "name", "spiritual_name"),
-                    ("registration_date", "status"),
+                    ("registration_date", "status","gender"),
                 ]
             },
         ),
@@ -369,7 +378,7 @@ class BaseMatrimonyProfileAdmin(
             "BASIC INFORMATION",
             {
                 "fields": [
-                    ("dob", "ethnic_origin", "mother_tongue"),
+                    ("dob","is_actual_dob", "ethnic_origin", "mother_tongue"),
                     ("languages_can_speak", "languages_can_read_write"),
                     ("rounds_chanting"),
                     ("spiritual_status", "spiritual_master"),
@@ -483,7 +492,8 @@ class BaseMatrimonyProfileAdmin(
                 "fields": [
                     ("are_parents_devotees", "family_values"),
                     ("family_type", "family_status"),
-                    ("father_status", "mother_status"),
+                    ("father_name","father_phone", "father_status"),
+                    ("mother_name","mother_phone", "mother_status"),
                     ("brothers", "brothers_married"),
                     ("sisters", "sisters_married"),
                     ("family_location", "family_origin"),
@@ -510,23 +520,23 @@ class BaseMatrimonyProfileAdmin(
         "email",
     )
     list_filter = (
-        "status",
+        ("status",MultiSelectFieldListFilter),
         AgeRangeFilter,
         ("annual_income_in_base_currency", RangeNumericFilter),
         ("registration_date", DateTimeRangeFilter),
         RoundsFilter,
         ("height", RangeNumericFilter),
-        "spiritual_status",
-        "marital_status",
-        ("religion", RelatedDropdownFilter),
-        ("mother_tongue", RelatedDropdownFilter),
-        ("caste", RelatedDropdownFilter),
-        ("subcaste", RelatedDropdownFilter),
-        ("current_country", RelatedDropdownFilter),
-        ("languages_can_speak", RelatedDropdownFilter),
-        ("occupations", RelatedDropdownFilter),
-        ("education", RelatedDropdownFilter),
-        ("spiritual_master", RelatedDropdownFilter),
+        ("spiritual_status",MultiSelectFieldListFilter),
+        ("marital_status",MultiSelectFieldListFilter),
+        ("religion", MultiSelectRelatedDropdownFilter),
+        ("mother_tongue", MultiSelectRelatedDropdownFilter),
+        ("caste", MultiSelectRelatedDropdownFilter),
+        ("subcaste", MultiSelectRelatedDropdownFilter),
+        ("current_country", MultiSelectRelatedDropdownFilter),
+        ("languages_can_speak", MultiSelectRelatedDropdownFilter),
+        ("occupations", MultiSelectRelatedDropdownFilter),
+        ("education", MultiSelectRelatedDropdownFilter),
+        ("spiritual_master", MultiSelectRelatedDropdownFilter),
     )
     search_fields = [
         "name",
@@ -587,15 +597,25 @@ class BaseMatrimonyProfileAdmin(
     # inlines = [MentorInline]
 
 
-class MatchInline(admin.TabularInline):
+class MatchInline(TabularInlinePaginated):
+    per_page = 3
     model = Match
     extra = 1
     can_delete = True
 
     raw_id_fields = ["male", "female"]
 
-    verbose_name = "Matche"
+    verbose_name = "Match"
     verbose_name_plural = "Matches"
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.exclude(
+            Q(male__status=99) |Q(male__status=90) | Q(female__status=99)| Q(female__status=90)
+        )  # Exclude matches with status 99 and 90 on either side
+
+    
+    
 
 
 class ExpectationInline(admin.StackedInline):
@@ -631,13 +651,14 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
         CommentInline,
     )
     tabs = [
+        ("Matches & Comments", tab_match),
         ("Profile", BaseMatrimonyProfileAdmin.tab_profile),
         ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
         ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
         ("Mentor", tab_mentor),
         ("Photo", BaseMatrimonyProfileAdmin.tab_photo),
         ("Expectation", tab_expectation),
-        ("Matches & Comments", tab_match),
+        
     ]
     inlines = [
         MentorInline,
@@ -660,13 +681,14 @@ class FemalAdmin(BaseMatrimonyProfileAdmin):
         CommentInline,
     )
     tabs = [
+         ("Matches & Comments", tab_match),
         ("Profile", BaseMatrimonyProfileAdmin.tab_profile),
         ("Profession", BaseMatrimonyProfileAdmin.tab_professional_details),
         ("Religion & Family", BaseMatrimonyProfileAdmin.tab_religion_and_family),
         ("Mentor", tab_mentor),
         ("Photo", BaseMatrimonyProfileAdmin.tab_photo),
         ("Expectation", tab_expectation),
-        ("Matches & Comments", tab_match),
+       
     ]
     inlines = [
         MentorInline,
