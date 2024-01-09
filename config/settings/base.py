@@ -72,8 +72,6 @@ DJANGO_APPS = [
     "rangefilter",
     "django_admin_listfilter_dropdown",
     "multiselectfield",
-    "more_admin_filters",
-    "django_admin_inline_paginator",
 ]
 
 THIRD_PARTY_APPS = [
