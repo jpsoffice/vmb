@@ -14,7 +14,6 @@ from vmb.matrimony.views import (
     mark_as_read,
     mark_all_as_read,
     view_all_notifications,
-    view_timeline,
 )
 
 app_name = "matrimony"
@@ -39,5 +38,4 @@ urlpatterns = [
     path(
         "view_all_notifications/", view_all_notifications, name="view_all_notifications"
     ),
-    path("view_timeline/", view_timeline, name="view_timeline")
 ]
