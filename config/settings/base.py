@@ -77,9 +77,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "avatar",
     "tos",
-    "actstream",
     "crispy_forms",
     "allauth",
     "allauth.account",
@@ -124,7 +122,6 @@ LOCAL_APPS = [
     "vmb.photologue_custom.apps.PhotologueCustomConfig",
     "vmb.matrimony.apps.MatrimonyConfig",
     "vmb.tos_custom.apps.TOSCustomConfig",
-    "vmb.actstream_custom.apps.ActstreamCustomConfig",
     # "djmoney.apps.MoneyConfig",
 ]
 
@@ -441,7 +438,6 @@ ADMIN_REORDER = (
     "notifications",
     "flags",
     "tos",
-    "actstream",
 )
 
 # djmoney-exchange
@@ -525,18 +521,3 @@ CACHES = {
 
 TOS_CACHE_NAME = "tos"
 TOS_EXCLUDE_PATH_PREFIXES = ["/privacy", "/terms", "/accounts/logout"]
-
-ACTSTREAM_SETTINGS = {
-    'MANAGER': 'vmb.matrimony.managers.MyActionManager',
-    'FETCH_RELATIONS': True,
-    'USE_PREFETCH': True,
-    'USE_JSONFIELD': True,
-    'GFK_FETCH_DEPTH': 1,
-}
-
-# Pagination Page Size
-MATCH_SEARCH_PAGE_SIZE=10
-
-# Django avatar settings
-AVATAR_GRAVATAR_DEFAULT = "mp"
-AVATAR_EXPOSE_USERNAMES = False

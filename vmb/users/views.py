@@ -4,12 +4,6 @@ from django.urls import reverse
 from django.views.generic import DetailView, RedirectView, UpdateView
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
-from allauth.account.views import SignupView
-from actstream import action
-from vmb.common import activities
-from allauth.exceptions import ImmediateHttpResponse
-from allauth.account.utils import complete_signup
-from allauth.account import app_settings
 
 User = get_user_model()
 
@@ -54,21 +48,3 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
-
-
-class NewSignupView(SignupView):
-
-    def form_valid(self, form):
-        # By assigning the User to a property on the view, we allow subclasses
-        # of SignupView to access the newly created User instance
-        self.user = form.save(self.request)
-        action.send(self.user, verb=activities.USER_SIGNEDUP)
-        try:
-            return complete_signup(
-                self.request,
-                self.user,
-                app_settings.EMAIL_VERIFICATION,
-                self.get_success_url(),
-            )
-        except ImmediateHttpResponse as e:
-            return e.response
