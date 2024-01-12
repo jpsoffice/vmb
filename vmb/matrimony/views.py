@@ -272,7 +272,7 @@ def search(request):
     form = MatrimonyProfileSearchForm(instance=expectations)
     profiles = []
     querydata = form.initial
-
+    excluded_statuses = [99, 90]
     if request.method == "GET" and requestGet:
         form = MatrimonyProfileSearchForm(requestGet)
         if not form.is_valid():
@@ -280,11 +280,11 @@ def search(request):
             return render(
                 request, "matrimony/search.html", {"profiles": [], "search_form": form}
             )
-        profiles = profile.search_profiles(form.cleaned_data)
-        logging.debug("search profile results: {}".format((profiles)))
+        profiles = profile.search_profiles(form.cleaned_data).exclude(status__in=excluded_statuses)
+        logging.debug("search profile results: {}".format(([profiles])))
         querydata = form.cleaned_data
     else:
-        profiles = profile.search_profiles()
+        profiles = profile.search_profiles().exclude(status__in=excluded_statuses)
         logging.debug("search profile results: {}".format((profiles)))
 
     paginator = Paginator(profiles, per_page=settings.MATCH_SEARCH_PAGE_SIZE)
