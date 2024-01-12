@@ -222,17 +222,20 @@ def matches(request, category=None):
 
     _matches = [
         {
-            "id": m.id,
-            "profile": m.male if profile.gender == "F" else m.female,
-            "your_response": m.male_response
-            if profile.gender == "M"
-            else m.female_response,
-            "response": m.male_response if profile.gender == "F" else m.female_response,
-            "show_photo": m.female_photos_visibility
-            if profile.gender == "M"
-            else m.male_photos_visibility,
+                "id": m.id,
+                "profile": m.male if profile.gender == "F" else m.female,
+                "your_response": m.male_response
+                if profile.gender == "M"
+                else m.female_response,
+                "response": m.male_response if profile.gender == "F" else m.female_response,
+                "show_photo": m.female_photos_visibility
+                if profile.gender == "M"
+                else m.male_photos_visibility,
+            
         }
         for m in matches
+        if (m.male.status if profile.gender == "F" else m.female.status) not in ["90","99"]
+
     ]
 
     return render(
@@ -262,18 +265,20 @@ def search(request):
     profiles = []
     querydata = form.initial
 
-    if request.method == "GET" and request.GET:
-        form = MatrimonyProfileSearchForm(request.GET)
+    excluded_statuses = [99, 90]
+    if request.method == "GET" and requestGet:
+        form = MatrimonyProfileSearchForm(requestGet)
+
         if not form.is_valid():
             logging.debug("profile search form errors: {}".format(form.errors))
             return render(
                 request, "matrimony/search.html", {"profiles": [], "search_form": form}
             )
-        profiles = profile.search_profiles(form.cleaned_data)
-        logging.debug("search profile results: {}".format((profiles)))
+        profiles = profile.search_profiles(form.cleaned_data).exclude(status__in=excluded_statuses)
+        logging.debug("search profile results: {}".format(([profiles])))
         querydata = form.cleaned_data
     else:
-        profiles = profile.search_profiles()
+        profiles = profile.search_profiles().exclude(status__in=excluded_statuses)
         logging.debug("search profile results: {}".format((profiles)))
 
     context = {
