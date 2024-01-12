@@ -231,17 +231,20 @@ def matches(request, category=None):
 
     _matches = [
         {
-            "id": m.id,
-            "profile": m.male if profile.gender == "F" else m.female,
-            "your_response": m.male_response
-            if profile.gender == "M"
-            else m.female_response,
-            "response": m.male_response if profile.gender == "F" else m.female_response,
-            "show_photo": m.female_photos_visibility
-            if profile.gender == "M"
-            else m.male_photos_visibility,
+                "id": m.id,
+                "profile": m.male if profile.gender == "F" else m.female,
+                "your_response": m.male_response
+                if profile.gender == "M"
+                else m.female_response,
+                "response": m.male_response if profile.gender == "F" else m.female_response,
+                "show_photo": m.female_photos_visibility
+                if profile.gender == "M"
+                else m.male_photos_visibility,
+            
         }
         for m in matches
+        if (m.male.status if profile.gender == "F" else m.female.status) not in ["90","99"]
+
     ]
 
     return render(
