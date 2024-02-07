@@ -448,9 +448,9 @@ class MatrimonyProfile(BaseModel):
     religion = models.ForeignKey(
         Religion, on_delete=models.SET_NULL, null=True, blank=True
     )
-    caste = models.ForeignKey(Caste, on_delete=models.SET_NULL, null=True, blank=True)
+    caste = models.ForeignKey(Caste, verbose_name="Varna", on_delete=models.SET_NULL, null=True, blank=True)
     caste_other = models.CharField(
-        max_length=50, verbose_name="Other caste", blank=True, default=""
+        max_length=50, verbose_name="Caste", blank=True, default=""
     )
     subcaste = models.ForeignKey(
         Subcaste, on_delete=models.SET_NULL, null=True, blank=True
