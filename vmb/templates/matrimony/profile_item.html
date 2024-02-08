@@ -4,7 +4,7 @@
     <div class="card{% ifequal match_response 'REJ' %} ribbon-box{% endifequal %}"{% ifequal match_response 'REJ' %} style="opacity: 1;"{% endifequal %}>
       <div class="row no-gutters">
           <div class="col-md-4 col-lg-3">
-          <img src="{% if profile.primary_image_url %}{{ profile.primary_image_url }}{% else %}{% static 'images/no-image-icon.png' %}{% endif %}" class="card-img" alt="..." style="max-height: 320px; object-fit: cover;{% if not show_photo %} filter: blur(8px); -webkit-filter: blur(8px);{% endif %}">
+          <!-- <img src="{% if profile.primary_image_url %}{{ profile.primary_image_url }}{% else %}{% static 'images/no-image-icon.png' %}{% endif %}" class="card-img" alt="..." style="max-height: 320px; object-fit: cover;{% if not show_photo %} filter: blur(8px); -webkit-filter: blur(8px);{% endif %}"> -->
           </div>
           <div class="col-md-8 col-lg-9">
               <div class="card-body">
