@@ -153,10 +153,9 @@ COMPLEXION_CHOICES = (
 )
 
 MARITAL_STATUS = (
-    ("UMR", "Unmarried"),
+    ("UMR", "Never Married"),
     ("DIV", "Divorced"),
     ("WID", "Widowed"),
-    ("NM","Never Married"),
 )
 Y_N_MAYB = (
     ("Y", "Yes"),
