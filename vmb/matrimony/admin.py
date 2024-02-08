@@ -646,9 +646,9 @@ class MaleAdmin(BaseMatrimonyProfileAdmin):
     tab_mentor = (MentorInline,)
     tab_expectation = (ExpectationInline,)
     tab_match = (
+        CommentInline,
         MatchInline,
         MatrimonyProfileStatsInline,
-        CommentInline,
     )
     tabs = [
         ("Matches & Comments", tab_match),
